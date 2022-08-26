@@ -6,8 +6,16 @@ public class PlayerController : MonoBehaviour
 {
     int speed = 2;
     int rotatingSpeed = 1;
-    Rigidbody playerRb;
     bool rotating;
+
+    Vector3 offSet = new Vector3(0, 0, 250);
+
+    public KeyCode turn;
+    public KeyCode shoot;
+
+    public GameObject bullet;
+
+    Rigidbody playerRb;
 
     // Start is called before the first frame update
     void Start()
@@ -22,12 +30,17 @@ public class PlayerController : MonoBehaviour
         {
             playerRb.AddRelativeForce(new Vector3(0, 0, speed), ForceMode.VelocityChange);
         }
-        if (Input.GetKeyDown(KeyCode.A)){
+        if (Input.GetKeyDown(turn)){
             rotating = true;
         }
-        if (Input.GetKeyUp(KeyCode.A))
+        if (Input.GetKeyUp(turn))
         {
             rotating = false;
+        }
+
+        if (Input.GetKeyDown(shoot))
+        {
+            Instantiate(bullet, transform.position + offSet, transform.rotation);
         }
 
         if (rotating)
