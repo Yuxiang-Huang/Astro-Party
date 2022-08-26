@@ -5,18 +5,19 @@ using UnityEngine;
 public class BulletMove : MonoBehaviour
 {
     Rigidbody Rb;
-    int speed = 100;
+    int speed = 500;
 
     // Start is called before the first frame update
     void Start()
     {
         Rb = GetComponent<Rigidbody>();
+        Rb.AddRelativeForce(new Vector3(0, 0, speed), ForceMode.VelocityChange);
     }
 
     // Update is called once per frame
     void Update()
     {
-        Rb.AddForce(new Vector3(0, 0, speed));
+        
     }
 
     private void OnCollisionEnter(Collision collision)

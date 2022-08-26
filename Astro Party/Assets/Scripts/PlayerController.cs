@@ -7,8 +7,7 @@ public class PlayerController : MonoBehaviour
     int speed = 2;
     int rotatingSpeed = 1;
     bool rotating;
-
-    Vector3 offSet = new Vector3(0, 0, 250);
+    int bulletDistance = 250;
 
     public KeyCode turn;
     public KeyCode shoot;
@@ -40,7 +39,14 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(shoot))
         {
-            Instantiate(bullet, transform.position + offSet, transform.rotation);
+            float angle = transform.rotation.ToEulerAngles().y;
+
+            //Debug.Log(Mathf.Cos(transform.rotation.y));
+            //Debug.Log(Mathf.Sin(transform.rotation.y));
+
+            Instantiate(bullet, transform.position +
+            new Vector3(bulletDistance * Mathf.Sin(angle), 0, bulletDistance * Mathf.Cos(angle)),
+            transform.rotation);
         }
 
         if (rotating)
