@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    int speed = 10;
+    int speed = 2;
+    int rotatingSpeed = 1;
     Rigidbody playerRb;
+    bool rotating;
 
     // Start is called before the first frame update
     void Start()
@@ -16,9 +18,22 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        playerRb.AddRelativeForce(new Vector3(0, 0, speed), ForceMode.Force);
-        if (Input.GetKeyDown(KeyCode.A)){
-            transform.Rotate(0, 10, 0); 
+        if (!rotating)
+        {
+            playerRb.AddRelativeForce(new Vector3(0, 0, speed), ForceMode.VelocityChange);
         }
+        if (Input.GetKeyDown(KeyCode.A)){
+            rotating = true;
+        }
+        if (Input.GetKeyUp(KeyCode.A))
+        {
+            rotating = false;
+        }
+
+        if (rotating)
+        {
+            transform.Rotate(0, rotatingSpeed, 0);
+        }
+ 
     }
 }
