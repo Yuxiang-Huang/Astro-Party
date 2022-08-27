@@ -5,7 +5,7 @@ using UnityEngine;
 public class BulletMove : MonoBehaviour
 {
     Rigidbody Rb;
-    int speed = 500;
+    int speed = 2000;
 
     // Start is called before the first frame update
     void Start()
