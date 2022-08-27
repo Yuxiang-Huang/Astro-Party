@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    int speed = 20;
-    int rotatingSpeed = 1;
+    int speed = 750;
+    float rotatingSpeed = 1.5f;
     bool rotating;
     int bulletDis = 250;
     public int ammo;
@@ -30,10 +30,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!rotating)
-        {
+        //if (!rotating)
+        //{
             playerRb.AddRelativeForce(new Vector3(0, 0, speed), ForceMode.Force);
-        }
+
+        
         if (Input.GetKeyDown(turn)){
             rotating = true;
         }
