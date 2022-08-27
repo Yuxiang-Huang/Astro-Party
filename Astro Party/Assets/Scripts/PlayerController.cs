@@ -51,7 +51,9 @@ public class PlayerController : MonoBehaviour
 
         if (rotating)
         {
+            playerRb.freezeRotation = false;
             transform.Rotate(0, rotatingSpeed, 0);
+            playerRb.freezeRotation = true;
         }
  
     }
