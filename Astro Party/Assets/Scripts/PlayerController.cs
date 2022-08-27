@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     public string shootMode;
     //normal, laser
 
+    public AudioClip laserSound;
+
     public KeyCode turn;
     public KeyCode shoot;
 
@@ -23,11 +25,13 @@ public class PlayerController : MonoBehaviour
     public GameObject[] bulletAnimation;
 
     Rigidbody playerRb;
+    AudioSource playerAudio;
 
     // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
+        playerAudio = GetComponent<AudioSource>();
         ammo = 3;
 
         shootMode = "laser";
@@ -42,9 +46,12 @@ public class PlayerController : MonoBehaviour
 
             if (shootMode == "laser")
             {
+                //5000 is half the length of laserbeam
                 Instantiate(laser, transform.position +
                 new Vector3((bulletDis + 5000) * Mathf.Sin(angle), 0, (bulletDis + 5000) * Mathf.Cos(angle)),
                 transform.rotation);
+
+                playerAudio.PlayOneShot(laserSound);
 
                 playerRb.constraints = RigidbodyConstraints.FreezePosition;
 
