@@ -90,6 +90,8 @@ public class PlayerController : MonoBehaviour
 
         for (int i = 0; i < bulletAnimation.Length; i++)
         {
+            Debug.Log(i);
+
             bulletAnimation[i].transform.position = new Vector3(transform.position.x +
                 Mathf.Cos(bulletAnimationPos + i * 2 * Mathf.PI / 3) * bulletDis,
                 transform.position.y, transform.position.z + Mathf.Sin(bulletAnimationPos + i * 2 * Mathf.PI / 3) * bulletDis);
