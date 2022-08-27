@@ -102,7 +102,7 @@ public class PlayerController : MonoBehaviour
             reloadTime = 2;
         }
 
-        if (rotating)
+        if (rotating && playerRb.constraints != RigidbodyConstraints.FreezePosition)
         {
             playerRb.freezeRotation = false;
             transform.Rotate(0, rotatingSpeed, 0);
@@ -122,7 +122,8 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator ableToMove()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.3f);
         playerRb.constraints = RigidbodyConstraints.None;
+        playerRb.AddRelativeForce(new Vector3(0, 0, -speed * 30), ForceMode.Force);
     }
 }
