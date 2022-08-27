@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    int speed = 2;
+    int speed = 20;
     int rotatingSpeed = 1;
     bool rotating;
     int bulletDistance = 250;
+    public int ammo;
+    public float reloadTime;
 
     public KeyCode turn;
     public KeyCode shoot;
@@ -20,6 +22,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
+        ammo = 3;
     }
 
     // Update is called once per frame
@@ -27,7 +30,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!rotating)
         {
-            playerRb.AddRelativeForce(new Vector3(0, 0, speed), ForceMode.VelocityChange);
+            playerRb.AddRelativeForce(new Vector3(0, 0, speed), ForceMode.Force);
         }
         if (Input.GetKeyDown(turn)){
             rotating = true;
@@ -37,8 +40,15 @@ public class PlayerController : MonoBehaviour
             rotating = false;
         }
 
-        if (Input.GetKeyDown(shoot))
+        if (Input.GetKeyDown(shoot) && ammo > 0)
         {
+            ammo--;
+
+            if (reloadTime == 0)
+            {
+                reloadTime = 2;
+            }
+
             float angle = transform.rotation.ToEulerAngles().y;
 
             //Debug.Log(Mathf.Cos(transform.rotation.y));
@@ -47,6 +57,21 @@ public class PlayerController : MonoBehaviour
             Instantiate(bullet, transform.position +
             new Vector3(bulletDistance * Mathf.Sin(angle), 0, bulletDistance * Mathf.Cos(angle)),
             transform.rotation);
+        }
+
+        if (reloadTime > 0)
+        {
+            reloadTime -= Time.deltaTime;
+            reloadTime = Mathf.Max(reloadTime, 0);
+            if (reloadTime == 0)
+            {
+                ammo++;
+            }
+        }
+
+        if (ammo < 3 && reloadTime == 0)
+        {
+            reloadTime = 2;
         }
 
         if (rotating)
