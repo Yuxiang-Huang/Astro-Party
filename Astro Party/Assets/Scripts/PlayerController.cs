@@ -7,14 +7,16 @@ public class PlayerController : MonoBehaviour
     int speed = 20;
     int rotatingSpeed = 1;
     bool rotating;
-    int bulletDistance = 250;
+    int bulletDis = 250;
     public int ammo;
     public float reloadTime;
+    public float bulletAnimationPos;
 
     public KeyCode turn;
     public KeyCode shoot;
 
     public GameObject bullet;
+    public GameObject[] bulletAnimation;
 
     Rigidbody playerRb;
 
@@ -44,6 +46,8 @@ public class PlayerController : MonoBehaviour
         {
             ammo--;
 
+            bulletAnimation[ammo].SetActive(false);
+
             if (reloadTime == 0)
             {
                 reloadTime = 2;
@@ -55,7 +59,7 @@ public class PlayerController : MonoBehaviour
             //Debug.Log(Mathf.Sin(transform.rotation.y));
 
             Instantiate(bullet, transform.position +
-            new Vector3(bulletDistance * Mathf.Sin(angle), 0, bulletDistance * Mathf.Cos(angle)),
+            new Vector3(bulletDis * Mathf.Sin(angle), 0, bulletDis * Mathf.Cos(angle)),
             transform.rotation);
         }
 
@@ -66,6 +70,7 @@ public class PlayerController : MonoBehaviour
             if (reloadTime == 0)
             {
                 ammo++;
+                bulletAnimation[ammo - 1].SetActive(true);
             }
         }
 
@@ -80,6 +85,14 @@ public class PlayerController : MonoBehaviour
             transform.Rotate(0, rotatingSpeed, 0);
             playerRb.freezeRotation = true;
         }
- 
+
+        bulletAnimationPos += Time.deltaTime;
+
+        for (int i = 0; i < bulletAnimation.Length; i++)
+        {
+            bulletAnimation[i].transform.position = new Vector3(transform.position.x +
+                Mathf.Cos(bulletAnimationPos + i * 2 * Mathf.PI / 3) * bulletDis,
+                transform.position.y, transform.position.z + Mathf.Sin(bulletAnimationPos + i * 2 * Mathf.PI / 3) * bulletDis);
+        }    
     }
 }
