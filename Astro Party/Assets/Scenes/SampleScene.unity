@@ -148,7 +148,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 468c0df8126fb4c01857f4dbcca902a9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 610
+      value: 3054
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 468c0df8126fb4c01857f4dbcca902a9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -800,7 +800,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 468c0df8126fb4c01857f4dbcca902a9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -3039
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 468c0df8126fb4c01857f4dbcca902a9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1521,7 +1521,7 @@ GameObject:
   - component: {fileID: 2105545908}
   m_Layer: 0
   m_Name: Floor
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
