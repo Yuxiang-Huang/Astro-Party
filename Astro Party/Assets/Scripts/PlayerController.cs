@@ -12,9 +12,13 @@ public class PlayerController : MonoBehaviour
     public float reloadTime;
     public float bulletAnimationPos;
 
+    public string shootMode;
+    //normal, laser
+
     public KeyCode turn;
     public KeyCode shoot;
 
+    public GameObject laser;
     public GameObject bullet;
     public GameObject[] bulletAnimation;
 
@@ -25,14 +29,52 @@ public class PlayerController : MonoBehaviour
     {
         playerRb = GetComponent<Rigidbody>();
         ammo = 3;
+
+        shootMode = "laser";
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(shoot))
+        {
+            float angle = transform.rotation.ToEulerAngles().y;
+
+            if (shootMode == "laser")
+            {
+                Instantiate(laser, transform.position +
+                new Vector3(bulletDis * Mathf.Sin(angle), 0, bulletDis * Mathf.Cos(angle)),
+                transform.rotation);
+
+                playerRb.constraints = RigidbodyConstraints.FreezePosition;
+                
+            }
+
+            if (shootMode == "normal" && ammo > 0)
+            {
+                ammo--;
+
+                bulletAnimation[ammo].SetActive(false);
+
+                if (reloadTime == 0)
+                {
+                    reloadTime = 2;
+                }
+
+                
+
+                //Debug.Log(Mathf.Cos(transform.rotation.y));
+                //Debug.Log(Mathf.Sin(transform.rotation.y));
+
+                Instantiate(bullet, transform.position +
+                new Vector3(bulletDis * Mathf.Sin(angle), 0, bulletDis * Mathf.Cos(angle)),
+                transform.rotation);
+            }  
+        }
+
         //if (!rotating)
         //{
-            playerRb.AddRelativeForce(new Vector3(0, 0, speed), ForceMode.Force);
+        playerRb.AddRelativeForce(new Vector3(0, 0, speed), ForceMode.Force);
 
         
         if (Input.GetKeyDown(turn)){
@@ -41,27 +83,6 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyUp(turn))
         {
             rotating = false;
-        }
-
-        if (Input.GetKeyDown(shoot) && ammo > 0)
-        {
-            ammo--;
-
-            bulletAnimation[ammo].SetActive(false);
-
-            if (reloadTime == 0)
-            {
-                reloadTime = 2;
-            }
-
-            float angle = transform.rotation.ToEulerAngles().y;
-
-            //Debug.Log(Mathf.Cos(transform.rotation.y));
-            //Debug.Log(Mathf.Sin(transform.rotation.y));
-
-            Instantiate(bullet, transform.position +
-            new Vector3(bulletDis * Mathf.Sin(angle), 0, bulletDis * Mathf.Cos(angle)),
-            transform.rotation);
         }
 
         if (reloadTime > 0)
