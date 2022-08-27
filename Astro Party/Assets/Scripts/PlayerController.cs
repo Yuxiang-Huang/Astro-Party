@@ -43,11 +43,14 @@ public class PlayerController : MonoBehaviour
             if (shootMode == "laser")
             {
                 Instantiate(laser, transform.position +
-                new Vector3(bulletDis * Mathf.Sin(angle), 0, bulletDis * Mathf.Cos(angle)),
+                new Vector3((bulletDis + 5000) * Mathf.Sin(angle), 0, (bulletDis + 5000) * Mathf.Cos(angle)),
                 transform.rotation);
 
                 playerRb.constraints = RigidbodyConstraints.FreezePosition;
-                
+
+                StartCoroutine("ableToMove");
+
+                shootMode = "normal";
             }
 
             if (shootMode == "normal" && ammo > 0)
@@ -60,9 +63,7 @@ public class PlayerController : MonoBehaviour
                 {
                     reloadTime = 2;
                 }
-
-                
-
+           
                 //Debug.Log(Mathf.Cos(transform.rotation.y));
                 //Debug.Log(Mathf.Sin(transform.rotation.y));
 
@@ -117,5 +118,11 @@ public class PlayerController : MonoBehaviour
                 Mathf.Cos(bulletAnimationPos + i * 2 * Mathf.PI / 3) * bulletDis,
                 transform.position.y, transform.position.z + Mathf.Sin(bulletAnimationPos + i * 2 * Mathf.PI / 3) * bulletDis);
         }    
+    }
+
+    IEnumerator ableToMove()
+    {
+        yield return new WaitForSeconds(0.5f);
+        playerRb.constraints = RigidbodyConstraints.None;
     }
 }
