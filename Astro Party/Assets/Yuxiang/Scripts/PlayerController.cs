@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    int speed = 750;
+    int speed = 350;
     float rotatingSpeed = 1.5f;
     bool rotating;
-    int bulletDis = 250;
+    int bulletDis = 100;
     public int ammo;
     public float reloadTime;
     public float bulletAnimationPos;
@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
                 shootMode = "normal";
             }
 
-            if (shootMode == "normal" && ammo > 0)
+            else if (shootMode == "normal" && ammo > 0)
             {
                 ammo--;
 

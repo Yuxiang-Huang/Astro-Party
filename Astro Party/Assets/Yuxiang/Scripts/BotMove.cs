@@ -45,7 +45,7 @@ public class BotMove : MonoBehaviour
     {
         //agent.SetDestination(transform.position + new Vector3 (100, 0, 0);
         agent.SetDestination(player.transform.position);
-        Debug.Log(player.transform.position);
+       
     }
 
     //    if (reloadTime == 0) {
