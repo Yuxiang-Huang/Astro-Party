@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     List<GameObject> ships = new List<GameObject> ();
-    List<GameObject> inGameShips = new List<GameObject>();
+    public List<GameObject> inGameShips = new List<GameObject>();
     List<Vector3> pos;
     List<Vector3> rot;
 

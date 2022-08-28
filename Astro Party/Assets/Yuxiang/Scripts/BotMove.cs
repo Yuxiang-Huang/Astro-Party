@@ -26,7 +26,7 @@ public class BotMove : MonoBehaviour
     Rigidbody playerRb;
     AudioSource playerAudio;
 
-    GameObject player;
+    GameManager gameManagerScript;
 
     // Start is called before the first frame update
     void Start()
@@ -34,15 +34,30 @@ public class BotMove : MonoBehaviour
         playerRb = GetComponent<Rigidbody>();
         playerAudio = GetComponent<AudioSource>();
 
-        shootMode = "laser";
+        gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
 
-        player = GameObject.Find("Player Red");
+        shootMode = "laser";
     }
 
     // Update is called once per frame
     void Update()
     {
-        agent.SetDestination(player.transform.position);
+        GameObject target = this.gameObject;
+        float minDistance = 10000;
+
+        Debug.Log(gameManagerScript.inGameShips);
+
+        foreach (GameObject ship in gameManagerScript.inGameShips)
+        {
+            if (ship != this.gameObject)
+            {
+                if (distance(ship, this.gameObject) < minDistance){
+                    target = ship;
+                }
+            }
+        }
+
+        agent.SetDestination(target.transform.position);
 
         if (reloadTime == 0)
         {
@@ -88,6 +103,12 @@ public class BotMove : MonoBehaviour
             transform.Rotate(0, rotatingSpeed, 0);
             playerRb.freezeRotation = true;
         }
+    }
+
+    float distance(GameObject ship1, GameObject ship2)
+    {
+        return Mathf.Sqrt(Mathf.Pow((ship1.transform.position.x - ship2.transform.position.x), 2) +
+            Mathf.Pow((ship1.transform.position.z - ship2.transform.position.z), 2));   
     }
 
     IEnumerator ableToMove()
