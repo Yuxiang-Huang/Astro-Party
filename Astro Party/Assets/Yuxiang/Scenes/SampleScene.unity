@@ -2503,6 +2503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1825dd4e2df5479783b49cfaa86347f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextButton: {fileID: 846400692}
   blueShipPlayer: {fileID: 5458894458688238044, guid: 7c0419a36677d4cb6886c0454ffb6615, type: 3}
   blueShipBot: {fileID: 1133596451880189216, guid: ab8e0b32f0a374f799dfc66ac9162a6f, type: 3}
   blueTextPlayer: {fileID: 364083805}

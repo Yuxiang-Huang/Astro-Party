@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
 {
     List<GameObject> ships = new List<GameObject> ();
 
+    public GameObject nextButton;
+
     public GameObject blueShipPlayer;
     public GameObject blueShipBot;
     public GameObject blueTextPlayer;
@@ -33,13 +35,20 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        nextButton.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (ships.Count >= 2)
+        { 
+            nextButton.SetActive(true);
+        }
+        else
+        {
+            nextButton.SetActive(false);
+        }
     }
 
     public void P1Button()
