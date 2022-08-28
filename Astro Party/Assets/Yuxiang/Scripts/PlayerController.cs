@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     int speed = 350;
     float rotatingSpeed = 1.5f;
     bool rotating;
-    int bulletDis = 100;
+    int bulletDis = 75;
     public int ammo;
     public float reloadTime;
     public float bulletAnimationPos;
