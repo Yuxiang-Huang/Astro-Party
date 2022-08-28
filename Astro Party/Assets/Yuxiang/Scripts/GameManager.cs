@@ -12,6 +12,23 @@ public class GameManager : MonoBehaviour
     public GameObject blueTextBot;
     public GameObject blueTextOff;
 
+    public GameObject redShipPlayer;
+    public GameObject redShipBot;
+    public GameObject redTextPlayer;
+    public GameObject redTextBot;
+    public GameObject redTextOff;
+
+    public GameObject yellowShipPlayer;
+    public GameObject yellowShipBot;
+    public GameObject yellowTextPlayer;
+    public GameObject yellowTextBot;
+    public GameObject yellowTextOff;
+
+    public GameObject cyanShipPlayer;
+    public GameObject cyanShipBot;
+    public GameObject cyanTextPlayer;
+    public GameObject cyanTextBot;
+    public GameObject cyanTextOff;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +45,21 @@ public class GameManager : MonoBehaviour
     public void P1Button()
     {
         buttonHelper(blueShipPlayer, blueShipBot, blueTextPlayer, blueTextBot, blueTextOff);
+    }
+
+    public void P2Button()
+    {
+        buttonHelper(redShipPlayer, redShipBot, redTextPlayer, redTextBot, redTextOff);
+    }
+
+    public void P3Button()
+    {
+        buttonHelper(yellowShipPlayer, yellowShipBot, yellowTextPlayer, yellowTextBot, yellowTextOff);
+    }
+
+    public void P4Button()
+    {
+        buttonHelper(cyanShipPlayer, cyanShipBot, cyanTextPlayer, cyanTextBot, cyanTextOff);
     }
 
     void buttonHelper(GameObject player, GameObject bot, GameObject textPlayer, GameObject textBot, GameObject textOff)

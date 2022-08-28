@@ -11,7 +11,7 @@ public class ScreenManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //startScreen.SetActive(true);
+        startScreen.SetActive(true);
     }
 
     // Update is called once per frame
