@@ -423,8 +423,8 @@ MonoBehaviour:
   bulletAnimationPos: 0
   shootMode: 
   laserSound: {fileID: 8300000, guid: 94cd1fa4bfb2e4df096fad64c2fd1bc1, type: 3}
-  turn: 97
-  shoot: 100
+  turn: 106
+  shoot: 108
   laser: {fileID: 6509910874384710604, guid: cfea443daa6b1433aa831465e8c8e4da, type: 3}
   bullet: {fileID: 4074745524491351559, guid: 3029e57bd05d644daa79107a6ba55699, type: 3}
   bulletAnimation:
