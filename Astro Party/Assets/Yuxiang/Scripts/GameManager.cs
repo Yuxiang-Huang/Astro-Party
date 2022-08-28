@@ -5,6 +5,9 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     List<GameObject> ships = new List<GameObject> ();
+    List<GameObject> inGameShips = new List<GameObject>();
+    List<Vector3> pos;
+    List<Vector3> rot;
 
     public GameObject nextButton;
 
@@ -32,10 +35,17 @@ public class GameManager : MonoBehaviour
     public GameObject cyanTextBot;
     public GameObject cyanTextOff;
 
+    int spawnX = 850;
+    int spawnZ = 400;
+
     // Start is called before the first frame update
     void Start()
     {
         nextButton.SetActive(false);
+        pos = new List<Vector3>() { new Vector3(spawnX, 30, spawnZ), new Vector3(-spawnX, 30, spawnZ),
+        new Vector3(spawnX, 30, -spawnZ), new Vector3(-spawnX, 30, -spawnZ)};
+        rot = new List<Vector3>() {new Vector3(0, 180, 0), new Vector3(0, 90, 0),
+        new Vector3(0, -90, 0), new Vector3(0, 0, 0)};
     }
 
     // Update is called once per frame
@@ -48,6 +58,18 @@ public class GameManager : MonoBehaviour
         else
         {
             nextButton.SetActive(false);
+        }
+    }
+
+    public void spawnShips()
+    {
+        for (int i = 0; i < ships.Count; i++)
+        {
+            int ran = Random.Range(0, pos.Count);
+            inGameShips.Add(Instantiate(ships[i], pos[ran], ships[i].transform.rotation));
+            inGameShips[i].transform.Rotate(rot[ran]);
+            pos.RemoveAt(ran);
+            rot.RemoveAt(ran);
         }
     }
 
