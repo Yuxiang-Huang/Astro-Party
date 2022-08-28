@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
 
     int spawnX = 850;
     int spawnZ = 400;
+    bool gameStarted;
 
     // Start is called before the first frame update
     void Start()
@@ -59,10 +60,25 @@ public class GameManager : MonoBehaviour
         {
             nextButton.SetActive(false);
         }
+
+        for (int i = inGameShips.Count - 1; i >= 0; i--)
+        {
+            if (inGameShips[i] == null)
+            {
+                inGameShips.RemoveAt(i);
+            }
+        }
+       
+        if (gameStarted && inGameShips.Count <= 1)
+        {
+            Debug.Log("Game Over");
+        }
     }
 
     public void spawnShips()
     {
+        gameStarted = true;
+
         for (int i = 0; i < ships.Count; i++)
         {
             int ran = Random.Range(0, pos.Count);

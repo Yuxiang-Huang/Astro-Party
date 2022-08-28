@@ -45,8 +45,6 @@ public class BotMove : MonoBehaviour
         GameObject target = this.gameObject;
         float minDistance = 10000;
 
-        Debug.Log(gameManagerScript.inGameShips);
-
         foreach (GameObject ship in gameManagerScript.inGameShips)
         {
             if (ship != this.gameObject)
