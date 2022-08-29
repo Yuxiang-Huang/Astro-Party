@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
     public GameObject P1TextBot;
     public GameObject P1TextOff;
     int P1Team = 0;
+    public GameObject P1SetRotateButton;
+    public GameObject P1SetShootButton;
 
     public GameObject P2ShipPlayer;
     public GameObject P2ShipBot;
@@ -32,6 +34,8 @@ public class GameManager : MonoBehaviour
     public GameObject P2TextBot;
     public GameObject P2TextOff;
     int P2Team = 1;
+    public GameObject P2SetRotateButton;
+    public GameObject P2SetShootButton;
 
     public GameObject P3ShipPlayer;
     public GameObject P3ShipBot;
@@ -39,6 +43,8 @@ public class GameManager : MonoBehaviour
     public GameObject P3TextBot;
     public GameObject P3TextOff;
     int P3Team = 2;
+    public GameObject P3SetRotateButton;
+    public GameObject P3SetShootButton;
 
     public GameObject P4ShipPlayer;
     public GameObject P4ShipBot;
@@ -46,6 +52,8 @@ public class GameManager : MonoBehaviour
     public GameObject P4TextBot;
     public GameObject P4TextOff;
     int P4Team = 3;
+    public GameObject P4SetRotateButton;
+    public GameObject P4SetShootButton;
 
     int spawnX = 850;
     int spawnZ = 400;
@@ -157,25 +165,26 @@ public class GameManager : MonoBehaviour
 
     public void P1Button()
     {
-        buttonHelper(P1ShipPlayer, P1ShipBot, P1TextPlayer, P1TextBot, P1TextOff, P1Team);
+        buttonHelper(P1ShipPlayer, P1ShipBot, P1TextPlayer, P1TextBot, P1TextOff, P1Team, P1SetRotateButton, P1SetShootButton);
     }
 
     public void P2Button()
     {
-        buttonHelper(P2ShipPlayer, P2ShipBot, P2TextPlayer, P2TextBot, P2TextOff, P2Team);
+        buttonHelper(P2ShipPlayer, P2ShipBot, P2TextPlayer, P2TextBot, P2TextOff, P2Team, P2SetRotateButton, P2SetShootButton);
     }
 
     public void P3Button()
     {
-        buttonHelper(P3ShipPlayer, P3ShipBot, P3TextPlayer, P3TextBot, P3TextOff, P3Team);
+        buttonHelper(P3ShipPlayer, P3ShipBot, P3TextPlayer, P3TextBot, P3TextOff, P3Team, P3SetRotateButton, P3SetShootButton);
     }
 
     public void P4Button()
     {
-        buttonHelper(P4ShipPlayer, P4ShipBot, P4TextPlayer, P4TextBot, P4TextOff, P4Team);
+        buttonHelper(P4ShipPlayer, P4ShipBot, P4TextPlayer, P4TextBot, P4TextOff, P4Team, P4SetRotateButton, P4SetShootButton);
     }
 
-    void buttonHelper(GameObject player, GameObject bot, GameObject textPlayer, GameObject textBot, GameObject textOff, int team)
+    void buttonHelper(GameObject player, GameObject bot, GameObject textPlayer, GameObject textBot, GameObject textOff,
+        int team, GameObject setRotateButton, GameObject setShootButton)
     {
         List<GameObject> ship = ships[team];
         if (ship.Contains(player))
@@ -184,6 +193,8 @@ public class GameManager : MonoBehaviour
             textBot.SetActive(true);
             ship.Remove(player);
             ship.Add(bot);
+            setRotateButton.SetActive(false);
+            setShootButton.SetActive(false);
         }
         else if (ship.Contains(bot))
         {
@@ -196,6 +207,8 @@ public class GameManager : MonoBehaviour
             textOff.SetActive(false);
             textPlayer.SetActive(true);
             ship.Add(player);
+            setRotateButton.SetActive(true);
+            setShootButton.SetActive(true);
         }
     }
 

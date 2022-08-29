@@ -13,6 +13,7 @@ public class TextManager : MonoBehaviour
     public GameObject P1Team4Text;
 
     public Text P1RotateText;
+    public Text P1ShootText;
 
     public GameObject P2Team1Text;
     public GameObject P2Team2Text;
@@ -91,6 +92,12 @@ public class TextManager : MonoBehaviour
         setRotateHelper(script, P1RotateText);
     }
 
+    public void P1SetShoot()
+    {
+        PlayerController script = gameManagerScript.P1ShipPlayer.GetComponent<PlayerController>();
+        setShootHelper(script, P1ShootText);
+    }
+
     void setRotateHelper(PlayerController script, Text changeText)
     {
         KeyCode now = KeyCode.None;
@@ -105,4 +112,17 @@ public class TextManager : MonoBehaviour
         changeText.text = now.ToString();
     }
 
+    void setShootHelper(PlayerController script, Text changeText)
+    {
+        KeyCode now = KeyCode.None;
+
+        foreach (KeyCode kcode in System.Enum.GetValues(typeof(KeyCode)))
+        {
+            if (Input.GetKey(kcode))
+                now = kcode;
+        }
+
+        script.shoot = now;
+        changeText.text = now.ToString();
+    }
 }

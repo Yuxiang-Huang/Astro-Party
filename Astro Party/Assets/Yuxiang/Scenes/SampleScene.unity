@@ -2584,7 +2584,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &647624335
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2651,7 +2651,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1428168329}
         m_TargetAssemblyTypeName: TextManager, Assembly-CSharp
-        m_MethodName: P1SetRotate
+        m_MethodName: P1SetShoot
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4541,21 +4541,29 @@ MonoBehaviour:
   P1TextPlayer: {fileID: 364083805}
   P1TextBot: {fileID: 422878897}
   P1TextOff: {fileID: 219498271}
+  P1SetRotateButton: {fileID: 2018466731}
+  P1SetShootButton: {fileID: 647624334}
   P2ShipPlayer: {fileID: 7270249754344800516, guid: 6d194bc238ff84e8990a688d5912c153, type: 3}
   P2ShipBot: {fileID: 5618583518423719376, guid: 4124268ea448744838d6dedeeac151be, type: 3}
   P2TextPlayer: {fileID: 474399339}
   P2TextBot: {fileID: 1430251426}
   P2TextOff: {fileID: 234231548}
+  P2SetRotateButton: {fileID: 0}
+  P2SetShootButton: {fileID: 0}
   P3ShipPlayer: {fileID: 3690194591637616563, guid: e7d379f7056d741b2aae78bc7a6d7e2f, type: 3}
   P3ShipBot: {fileID: 7280473301515485181, guid: d739a3cd91b544e718266678dcc0554f, type: 3}
   P3TextPlayer: {fileID: 245549478}
   P3TextBot: {fileID: 1353819213}
   P3TextOff: {fileID: 375665859}
+  P3SetRotateButton: {fileID: 0}
+  P3SetShootButton: {fileID: 0}
   P4ShipPlayer: {fileID: 1018621659645993208, guid: b3448684f93bb4604827064a2c4b4612, type: 3}
   P4ShipBot: {fileID: 4991560605403691354, guid: cff6b4d8cc60748d0953667de596ed43, type: 3}
   P4TextPlayer: {fileID: 878065018}
   P4TextBot: {fileID: 1455678751}
   P4TextOff: {fileID: 230966338}
+  P4SetRotateButton: {fileID: 0}
+  P4SetShootButton: {fileID: 0}
 --- !u!1 &1157677923
 GameObject:
   m_ObjectHideFlags: 0
@@ -5537,7 +5545,8 @@ MonoBehaviour:
   P1Team2Text: {fileID: 279133019}
   P1Team3Text: {fileID: 631198012}
   P1Team4Text: {fileID: 1085399511}
-  P1RotateText: {fileID: 0}
+  P1RotateText: {fileID: 1007203083}
+  P1ShootText: {fileID: 1666018935}
   P2Team1Text: {fileID: 120275134}
   P2Team2Text: {fileID: 286145317}
   P2Team3Text: {fileID: 1575942256}
@@ -6996,7 +7005,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2018466732
 RectTransform:
   m_ObjectHideFlags: 0
