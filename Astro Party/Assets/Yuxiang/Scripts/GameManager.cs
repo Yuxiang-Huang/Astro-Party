@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     List<List<GameObject>> ships;
-    public List<GameObject> inGameShips = new List<GameObject>();
+    public List<List<GameObject>> inGameShips;
     List<Vector3> pos;
     List<Vector3> rot;
 
@@ -65,12 +65,27 @@ public class GameManager : MonoBehaviour
         ships.Add(new List<GameObject>());
         ships.Add(new List<GameObject>());
         ships.Add(new List<GameObject>());
+
+        inGameShips = new List<List<GameObject>>();
+        inGameShips.Add(new List<GameObject>());
+        inGameShips.Add(new List<GameObject>());
+        inGameShips.Add(new List<GameObject>());
+        inGameShips.Add(new List<GameObject>());
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (ships.Count >= 2)
+        //choosing team
+        int activeTeam = 0;
+        foreach (List<GameObject> ship in ships)
+        {
+            if (ship.Count > 0)
+            {
+                activeTeam++;
+            }
+        }
+        if (activeTeam >= 2)
         { 
             nextButton.SetActive(true);
         }
@@ -79,15 +94,28 @@ public class GameManager : MonoBehaviour
             nextButton.SetActive(false);
         }
 
-        for (int i = inGameShips.Count - 1; i >= 0; i--)
+        //in game
+        foreach (List<GameObject> ship in inGameShips)
         {
-            if (inGameShips[i] == null)
+            for (int i = ship.Count - 1; i >= 0; i--)
             {
-                inGameShips.RemoveAt(i);
+                if (ship[i] == null)
+                {
+                    ship.RemoveAt(i);
+                }
             }
         }
-       
-        if (gameStarted && inGameShips.Count <= 1)
+
+        int activeTeamInGame = 0;
+        foreach (List<GameObject> ship in inGameShips)
+        {
+            if (ship.Count > 0)
+            {
+                activeTeam++;
+            }
+        }
+
+        if (gameStarted && activeTeamInGame <= 1)
         {
             StartCoroutine("endRound");
             gameStarted = false;
@@ -100,11 +128,15 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < ships.Count; i++)
         {
-            int ran = Random.Range(0, pos.Count);
-            inGameShips.Add(Instantiate(ships[i], pos[ran], ships[i].transform.rotation));
-            inGameShips[i].transform.Rotate(rot[ran]);
-            pos.RemoveAt(ran);
-            rot.RemoveAt(ran);
+            List<GameObject> ship = ships[i];
+            for (int j = 0; j < ship.Count; j++)
+            {
+                int ran = Random.Range(0, pos.Count);
+                inGameShips[i].Add(Instantiate(ship[j], pos[ran], ship[j].transform.rotation));
+                inGameShips[i][j].transform.Rotate(rot[ran]);
+                pos.RemoveAt(ran);
+                rot.RemoveAt(ran);
+            }
         }
 
         pos = new List<Vector3>() { new Vector3(spawnX, 30, spawnZ), new Vector3(-spawnX, 30, spawnZ),
