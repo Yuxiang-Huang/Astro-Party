@@ -157,6 +157,52 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void P1TeamButton()
+    {
+        GameObject curr = findShip(blueTeam, blueShipPlayer, blueShipBot);
+        if (curr != null)
+        {
+            ships[blueTeam].Remove(curr);
+            blueTeam++;
+            if (blueTeam == 4)
+            {
+                blueTeam = 0;
+            }
+            ships[blueTeam].Add(curr);
+        }
+    }
+
+    //public void P2TeamButton()
+    //{
+    //    buttonHelper(redShipPlayer, redShipBot, redTextPlayer, redTextBot, redTextOff, redTeam);
+    //}
+
+    //public void P3TeamButton()
+    //{
+    //    buttonHelper(yellowShipPlayer, yellowShipBot, yellowTextPlayer, yellowTextBot, yellowTextOff, yellowTeam);
+    //}
+
+    //public void P4TeamButton()
+    //{
+    //    buttonHelper(cyanShipPlayer, cyanShipBot, cyanTextPlayer, cyanTextBot, cyanTextOff, cyanTeam);
+    //}
+
+    GameObject findShip(int team, GameObject shipTarget, GameObject bot)
+    {
+        GameObject ans = null;
+        List<GameObject> ship = ships[blueTeam];
+        if (ship.Contains(shipTarget))
+        {
+            ans = shipTarget;
+        }
+        else if (ship.Contains(bot))
+        {
+            ans = bot;
+        }
+        return ans;
+    }
+
+
     public void rematch()
     {
         endScreen.SetActive(false);
@@ -192,4 +238,6 @@ public class GameManager : MonoBehaviour
     {
         endScreen.SetActive(false);
     }
+
+
 }
