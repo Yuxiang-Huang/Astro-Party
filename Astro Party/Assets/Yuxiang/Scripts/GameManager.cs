@@ -146,7 +146,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void restart()
+    public void rematch()
     {
         endScreen.SetActive(false);
     }
@@ -175,5 +175,10 @@ public class GameManager : MonoBehaviour
         {
             Destroy(inGameShips[0]);
         }
+    }
+
+    public void endBack()
+    {
+        endScreen.SetActive(false);
     }
 }
