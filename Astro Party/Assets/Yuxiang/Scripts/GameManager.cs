@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    List<GameObject> ships = new List<GameObject> ();
+    List<List<GameObject>> ships;
     public List<GameObject> inGameShips = new List<GameObject>();
     List<Vector3> pos;
     List<Vector3> rot;
@@ -24,24 +24,28 @@ public class GameManager : MonoBehaviour
     public GameObject blueTextPlayer;
     public GameObject blueTextBot;
     public GameObject blueTextOff;
+    int blueTeam = 0;
 
     public GameObject redShipPlayer;
     public GameObject redShipBot;
     public GameObject redTextPlayer;
     public GameObject redTextBot;
     public GameObject redTextOff;
+    int redTeam = 1;
 
     public GameObject yellowShipPlayer;
     public GameObject yellowShipBot;
     public GameObject yellowTextPlayer;
     public GameObject yellowTextBot;
     public GameObject yellowTextOff;
+    int yellowTeam = 2;
 
     public GameObject cyanShipPlayer;
     public GameObject cyanShipBot;
     public GameObject cyanTextPlayer;
     public GameObject cyanTextBot;
     public GameObject cyanTextOff;
+    int cyanTeam = 3;
 
     int spawnX = 850;
     int spawnZ = 400;
@@ -55,6 +59,12 @@ public class GameManager : MonoBehaviour
         new Vector3(spawnX, 30, -spawnZ), new Vector3(-spawnX, 30, -spawnZ)};
         rot = new List<Vector3>() {new Vector3(0, 180, 0), new Vector3(0, 90, 0),
         new Vector3(0, -90, 0), new Vector3(0, 0, 0)};
+
+        ships = new List<List<GameObject>>();
+        ships.Add(new List<GameObject>());
+        ships.Add(new List<GameObject>());
+        ships.Add(new List<GameObject>());
+        ships.Add(new List<GameObject>());
     }
 
     // Update is called once per frame
@@ -105,44 +115,45 @@ public class GameManager : MonoBehaviour
 
     public void P1Button()
     {
-        buttonHelper(blueShipPlayer, blueShipBot, blueTextPlayer, blueTextBot, blueTextOff);
+        buttonHelper(blueShipPlayer, blueShipBot, blueTextPlayer, blueTextBot, blueTextOff, blueTeam);
     }
 
     public void P2Button()
     {
-        buttonHelper(redShipPlayer, redShipBot, redTextPlayer, redTextBot, redTextOff);
+        buttonHelper(redShipPlayer, redShipBot, redTextPlayer, redTextBot, redTextOff, redTeam);
     }
 
     public void P3Button()
     {
-        buttonHelper(yellowShipPlayer, yellowShipBot, yellowTextPlayer, yellowTextBot, yellowTextOff);
+        buttonHelper(yellowShipPlayer, yellowShipBot, yellowTextPlayer, yellowTextBot, yellowTextOff, yellowTeam);
     }
 
     public void P4Button()
     {
-        buttonHelper(cyanShipPlayer, cyanShipBot, cyanTextPlayer, cyanTextBot, cyanTextOff);
+        buttonHelper(cyanShipPlayer, cyanShipBot, cyanTextPlayer, cyanTextBot, cyanTextOff, cyanTeam);
     }
 
-    void buttonHelper(GameObject player, GameObject bot, GameObject textPlayer, GameObject textBot, GameObject textOff)
+    void buttonHelper(GameObject player, GameObject bot, GameObject textPlayer, GameObject textBot, GameObject textOff, int team)
     {
-        if (ships.Contains(player))
+        List<GameObject> ship = ships[team];
+        if (ship.Contains(player))
         {
             textPlayer.SetActive(false);
             textBot.SetActive(true);
-            ships.Remove(player);
-            ships.Add(bot);
+            ship.Remove(player);
+            ship.Add(bot);
         }
-        else if (ships.Contains(bot))
+        else if (ship.Contains(bot))
         {
             textBot.SetActive(false);
             textOff.SetActive(true);
-            ships.Remove(bot);
+            ship.Remove(bot);
         }
         else
         {
             textOff.SetActive(false);
             textPlayer.SetActive(true);
-            ships.Add(player);
+            ship.Add(player);
         }
     }
 
