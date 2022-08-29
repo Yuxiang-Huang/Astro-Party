@@ -11,7 +11,6 @@ public class TextManager : MonoBehaviour
     public GameObject P1Team2Text;
     public GameObject P1Team3Text;
     public GameObject P1Team4Text;
-
     public Text P1RotateText;
     public Text P1ShootText;
 
@@ -19,16 +18,22 @@ public class TextManager : MonoBehaviour
     public GameObject P2Team2Text;
     public GameObject P2Team3Text;
     public GameObject P2Team4Text;
+    public Text P2RotateText;
+    public Text P2ShootText;
 
     public GameObject P3Team1Text;
     public GameObject P3Team2Text;
     public GameObject P3Team3Text;
     public GameObject P3Team4Text;
+    public Text P3RotateText;
+    public Text P3ShootText;
 
     public GameObject P4Team1Text;
     public GameObject P4Team2Text;
     public GameObject P4Team3Text;
     public GameObject P4Team4Text;
+    public Text P4RotateText;
+    public Text P4ShootText;
 
     // Start is called before the first frame update
     void Start()
@@ -96,6 +101,42 @@ public class TextManager : MonoBehaviour
     {
         PlayerController script = gameManagerScript.P1ShipPlayer.GetComponent<PlayerController>();
         setShootHelper(script, P1ShootText);
+    }
+
+    public void P2SetRotate()
+    {
+        PlayerController script = gameManagerScript.P2ShipPlayer.GetComponent<PlayerController>();
+        setRotateHelper(script, P2RotateText);
+    }
+
+    public void P2SetShoot()
+    {
+        PlayerController script = gameManagerScript.P2ShipPlayer.GetComponent<PlayerController>();
+        setShootHelper(script, P2ShootText);
+    }
+
+    public void P3SetRotate()
+    {
+        PlayerController script = gameManagerScript.P3ShipPlayer.GetComponent<PlayerController>();
+        setRotateHelper(script, P3RotateText);
+    }
+
+    public void P3SetShoot()
+    {
+        PlayerController script = gameManagerScript.P3ShipPlayer.GetComponent<PlayerController>();
+        setShootHelper(script, P3ShootText);
+    }
+
+    public void P4SetRotate()
+    {
+        PlayerController script = gameManagerScript.P4ShipPlayer.GetComponent<PlayerController>();
+        setRotateHelper(script, P4RotateText);
+    }
+
+    public void P4SetShoot()
+    {
+        PlayerController script = gameManagerScript.P4ShipPlayer.GetComponent<PlayerController>();
+        setShootHelper(script, P4ShootText);
     }
 
     void setRotateHelper(PlayerController script, Text changeText)
