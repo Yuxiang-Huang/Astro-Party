@@ -12,40 +12,40 @@ public class GameManager : MonoBehaviour
     public GameObject endScreen;
 
     public GameObject nextButton;
-    public GameObject P1WonText;
-    public GameObject P2WonText;
-    public GameObject P3WonText;
-    public GameObject P4WonText;
-    public GameObject BotWonText;
-    public GameObject DrawText;
+    //public GameObject P1WonText;
+    //public GameObject P2WonText;
+    //public GameObject P3WonText;
+    //public GameObject P4WonText;
+    //public GameObject BotWonText;
+    //public GameObject DrawText;
 
-    public GameObject blueShipPlayer;
-    public GameObject blueShipBot;
-    public GameObject blueTextPlayer;
-    public GameObject blueTextBot;
-    public GameObject blueTextOff;
-    int blueTeam = 0;
+    public GameObject P1ShipPlayer;
+    public GameObject P1ShipBot;
+    public GameObject P1TextPlayer;
+    public GameObject P1TextBot;
+    public GameObject P1TextOff;
+    int P1Team = 0;
 
-    public GameObject redShipPlayer;
-    public GameObject redShipBot;
-    public GameObject redTextPlayer;
-    public GameObject redTextBot;
-    public GameObject redTextOff;
-    int redTeam = 1;
+    public GameObject P2ShipPlayer;
+    public GameObject P2ShipBot;
+    public GameObject P2TextPlayer;
+    public GameObject P2TextBot;
+    public GameObject P2TextOff;
+    int P2Team = 1;
 
-    public GameObject yellowShipPlayer;
-    public GameObject yellowShipBot;
-    public GameObject yellowTextPlayer;
-    public GameObject yellowTextBot;
-    public GameObject yellowTextOff;
-    int yellowTeam = 2;
+    public GameObject P3ShipPlayer;
+    public GameObject P3ShipBot;
+    public GameObject P3TextPlayer;
+    public GameObject P3TextBot;
+    public GameObject P3TextOff;
+    int P3Team = 2;
 
-    public GameObject cyanShipPlayer;
-    public GameObject cyanShipBot;
-    public GameObject cyanTextPlayer;
-    public GameObject cyanTextBot;
-    public GameObject cyanTextOff;
-    int cyanTeam = 3;
+    public GameObject P4ShipPlayer;
+    public GameObject P4ShipBot;
+    public GameObject P4TextPlayer;
+    public GameObject P4TextBot;
+    public GameObject P4TextOff;
+    int P4Team = 3;
 
     int spawnX = 850;
     int spawnZ = 400;
@@ -157,22 +157,22 @@ public class GameManager : MonoBehaviour
 
     public void P1Button()
     {
-        buttonHelper(blueShipPlayer, blueShipBot, blueTextPlayer, blueTextBot, blueTextOff, blueTeam);
+        buttonHelper(P1ShipPlayer, P1ShipBot, P1TextPlayer, P1TextBot, P1TextOff, P1Team);
     }
 
     public void P2Button()
     {
-        buttonHelper(redShipPlayer, redShipBot, redTextPlayer, redTextBot, redTextOff, redTeam);
+        buttonHelper(P2ShipPlayer, P2ShipBot, P2TextPlayer, P2TextBot, P2TextOff, P2Team);
     }
 
     public void P3Button()
     {
-        buttonHelper(yellowShipPlayer, yellowShipBot, yellowTextPlayer, yellowTextBot, yellowTextOff, yellowTeam);
+        buttonHelper(P3ShipPlayer, P3ShipBot, P3TextPlayer, P3TextBot, P3TextOff, P3Team);
     }
 
     public void P4Button()
     {
-        buttonHelper(cyanShipPlayer, cyanShipBot, cyanTextPlayer, cyanTextBot, cyanTextOff, cyanTeam);
+        buttonHelper(P4ShipPlayer, P4ShipBot, P4TextPlayer, P4TextBot, P4TextOff, P4Team);
     }
 
     void buttonHelper(GameObject player, GameObject bot, GameObject textPlayer, GameObject textBot, GameObject textOff, int team)
@@ -201,38 +201,68 @@ public class GameManager : MonoBehaviour
 
     public void P1TeamButton()
     {
-        GameObject curr = findShip(blueTeam, blueShipPlayer, blueShipBot);
+        GameObject curr = findShip(P1Team, P1ShipPlayer, P1ShipBot);
         if (curr != null)
         {
-            ships[blueTeam].Remove(curr);
-            blueTeam++;
-            if (blueTeam == 4)
+            ships[P1Team].Remove(curr);
+            P1Team++;
+            if (P1Team == 4)
             {
-                blueTeam = 0;
+                P1Team = 0;
             }
-            ships[blueTeam].Add(curr);
+            ships[P1Team].Add(curr);
         }
     }
 
-    //public void P2TeamButton()
-    //{
-    //    buttonHelper(redShipPlayer, redShipBot, redTextPlayer, redTextBot, redTextOff, redTeam);
-    //}
+    public void P2TeamButton()
+    {
+        GameObject curr = findShip(P2Team, P2ShipPlayer, P2ShipBot);
+        if (curr != null)
+        {
+            ships[P2Team].Remove(curr);
+            P2Team++;
+            if (P2Team == 4)
+            {
+                P2Team = 0;
+            }
+            ships[P2Team].Add(curr);
+        }
+    }
 
-    //public void P3TeamButton()
-    //{
-    //    buttonHelper(yellowShipPlayer, yellowShipBot, yellowTextPlayer, yellowTextBot, yellowTextOff, yellowTeam);
-    //}
+    public void P3TeamButton()
+    {
+        GameObject curr = findShip(P3Team, P3ShipPlayer, P3ShipBot);
+        if (curr != null)
+        {
+            ships[P3Team].Remove(curr);
+            P3Team++;
+            if (P3Team == 4)
+            {
+                P3Team = 0;
+            }
+            ships[P3Team].Add(curr);
+        }
+    }
 
-    //public void P4TeamButton()
-    //{
-    //    buttonHelper(cyanShipPlayer, cyanShipBot, cyanTextPlayer, cyanTextBot, cyanTextOff, cyanTeam);
-    //}
+    public void P4TeamButton()
+    {
+        GameObject curr = findShip(P4Team, P4ShipPlayer, P4ShipBot);
+        if (curr != null)
+        {
+            ships[P4Team].Remove(curr);
+            P4Team++;
+            if (P4Team == 4)
+            {
+                P4Team = 0;
+            }
+            ships[P4Team].Add(curr);
+        }
+    }
 
     GameObject findShip(int team, GameObject shipTarget, GameObject bot)
     {
         GameObject ans = null;
-        List<GameObject> ship = ships[blueTeam];
+        List<GameObject> ship = ships[P1Team];
         if (ship.Contains(shipTarget))
         {
             ans = shipTarget;
