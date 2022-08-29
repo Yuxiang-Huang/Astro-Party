@@ -1,13 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TextManager : MonoBehaviour
 {
+    GameManager gameManagerScript;
+
     public GameObject P1Team1Text;
     public GameObject P1Team2Text;
     public GameObject P1Team3Text;
     public GameObject P1Team4Text;
+
+    public Text P1RotateText;
 
     public GameObject P2Team1Text;
     public GameObject P2Team2Text;
@@ -27,7 +32,7 @@ public class TextManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -79,4 +84,25 @@ public class TextManager : MonoBehaviour
             Team1Text.SetActive(true);
         }
     }
+
+    public void P1SetRotate()
+    {
+        PlayerController script = gameManagerScript.P1ShipPlayer.GetComponent<PlayerController>();
+        setRotateHelper(script, P1RotateText);
+    }
+
+    void setRotateHelper(PlayerController script, Text changeText)
+    {
+        KeyCode now = KeyCode.None;
+
+        foreach (KeyCode kcode in System.Enum.GetValues(typeof(KeyCode)))
+        {
+            if (Input.GetKey(kcode))
+                now = kcode;
+        }
+
+        script.turn = now;
+        changeText.text = now.ToString();
+    }
+
 }

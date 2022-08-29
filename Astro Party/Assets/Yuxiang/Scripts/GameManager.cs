@@ -274,7 +274,6 @@ public class GameManager : MonoBehaviour
         return ans;
     }
 
-
     public void rematch()
     {
         endScreen.SetActive(false);
