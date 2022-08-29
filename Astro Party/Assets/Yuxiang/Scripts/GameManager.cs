@@ -9,7 +9,15 @@ public class GameManager : MonoBehaviour
     List<Vector3> pos;
     List<Vector3> rot;
 
+    public GameObject endScreen;
+
     public GameObject nextButton;
+    public GameObject P1WonText;
+    public GameObject P2WonText;
+    public GameObject P3WonText;
+    public GameObject P4WonText;
+    public GameObject BotWonText;
+    public GameObject DrawText;
 
     public GameObject blueShipPlayer;
     public GameObject blueShipBot;
@@ -71,7 +79,8 @@ public class GameManager : MonoBehaviour
        
         if (gameStarted && inGameShips.Count <= 1)
         {
-            Debug.Log("Game Over");
+            StartCoroutine("endRound");
+            gameStarted = false;
         }
     }
 
@@ -87,6 +96,11 @@ public class GameManager : MonoBehaviour
             pos.RemoveAt(ran);
             rot.RemoveAt(ran);
         }
+
+        pos = new List<Vector3>() { new Vector3(spawnX, 30, spawnZ), new Vector3(-spawnX, 30, spawnZ),
+        new Vector3(spawnX, 30, -spawnZ), new Vector3(-spawnX, 30, -spawnZ)};
+        rot = new List<Vector3>() {new Vector3(0, 180, 0), new Vector3(0, 90, 0),
+        new Vector3(0, -90, 0), new Vector3(0, 0, 0)};
     }
 
     public void P1Button()
@@ -129,6 +143,37 @@ public class GameManager : MonoBehaviour
             textOff.SetActive(false);
             textPlayer.SetActive(true);
             ships.Add(player);
+        }
+    }
+
+    public void restart()
+    {
+        endScreen.SetActive(false);
+    }
+
+    IEnumerator endRound()
+    {
+        yield return new WaitForSeconds(1.5f);
+
+        endScreen.SetActive(true);
+
+        //P1WonText.SetActive(false);
+        //P2WonText.SetActive(false);
+        //P3WonText.SetActive(false);
+        //P4WonText.SetActive(false);
+        //BotWonText.SetActive(false);
+        //DrawText.SetActive(false);
+
+        //if (inGameShips.Count == 0)
+        //{
+        //    DrawText.SetActive(true);
+        //} else if (inGameShips[0] == )
+        //{
+
+        //}
+        if (inGameShips.Count > 0)
+        {
+            Destroy(inGameShips[0]);
         }
     }
 }

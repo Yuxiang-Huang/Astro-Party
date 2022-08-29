@@ -17,10 +17,10 @@ public class ScreenManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    public void nextToShip ()
+    public void nextToShip()
     {
         startScreen.SetActive(false);
         shipScreen.SetActive(true);
