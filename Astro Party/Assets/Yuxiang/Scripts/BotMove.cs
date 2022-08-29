@@ -45,12 +45,15 @@ public class BotMove : MonoBehaviour
         GameObject target = this.gameObject;
         float minDistance = 10000;
 
-        foreach (GameObject ship in gameManagerScript.inGameShips)
-        {
-            if (ship != this.gameObject)
+        foreach (List<GameObject> shipList in gameManagerScript.inGameShips)
+        { 
+            foreach (GameObject ship in shipList)
             {
-                if (distance(ship, this.gameObject) < minDistance){
-                    target = ship;
+                if (ship != this.gameObject)
+                {
+                    if (distance(ship, this.gameObject) < minDistance) {
+                        target = ship;
+                    }
                 }
             }
         }

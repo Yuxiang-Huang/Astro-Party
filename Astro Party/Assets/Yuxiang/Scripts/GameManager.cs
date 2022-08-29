@@ -76,6 +76,14 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //foreach (List<GameObject> shipList in inGameShips)
+        //{
+        //    foreach (GameObject ship in shipList)
+        //    {
+        //        Debug.Log(ship);
+        //    }
+        //}
+
         //choosing team
         int activeTeam = 0;
         foreach (List<GameObject> ship in ships)
@@ -106,20 +114,23 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        int activeTeamInGame = 0;
-        foreach (List<GameObject> ship in inGameShips)
+        if (gameStarted)
         {
-            if (ship.Count > 0)
+            int activeTeamInGame = 0;
+            foreach (List<GameObject> ship in inGameShips)
             {
-                activeTeam++;
+                if (ship.Count > 0)
+                {
+                    activeTeamInGame++;
+                }
             }
-        }
 
-        if (gameStarted && activeTeamInGame <= 1)
-        {
-            StartCoroutine("endRound");
-            gameStarted = false;
-        }
+            if (activeTeamInGame <= 1)
+            {
+                StartCoroutine("endRound");
+                gameStarted = false;
+            }
+        }  
     }
 
     public void spawnShips()
@@ -128,11 +139,10 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < ships.Count; i++)
         {
-            List<GameObject> ship = ships[i];
-            for (int j = 0; j < ship.Count; j++)
+            for (int j = 0; j < ships[i].Count; j++)
             {
                 int ran = Random.Range(0, pos.Count);
-                inGameShips[i].Add(Instantiate(ship[j], pos[ran], ship[j].transform.rotation));
+                inGameShips[i].Add(Instantiate(ships[i][j], pos[ran], ships[i][j].transform.rotation));
                 inGameShips[i][j].transform.Rotate(rot[ran]);
                 pos.RemoveAt(ran);
                 rot.RemoveAt(ran);
@@ -260,9 +270,13 @@ public class GameManager : MonoBehaviour
         //{
 
         //}
-        if (inGameShips.Count > 0)
+        foreach (List<GameObject> shipList in inGameShips)
         {
-            Destroy(inGameShips[0]);
+            while (shipList.Count > 0)
+            {
+                Destroy(shipList[0]);
+                shipList.RemoveAt(0);
+            }
         }
     }
 
