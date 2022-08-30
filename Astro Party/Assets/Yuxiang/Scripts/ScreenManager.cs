@@ -7,6 +7,7 @@ public class ScreenManager : MonoBehaviour
     public GameObject startScreen;
     public GameObject shipScreen;
     public GameObject lastScreen;
+    public GameObject infoScreen;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +31,12 @@ public class ScreenManager : MonoBehaviour
     {
         shipScreen.SetActive(false);
         lastScreen.SetActive(true);
+    }
+
+    public void nextToInfo()
+    {
+        startScreen.SetActive(false);
+        infoScreen.SetActive(true);
     }
 
     public void backToStart()
