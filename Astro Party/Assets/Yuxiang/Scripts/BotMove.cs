@@ -46,16 +46,20 @@ public class BotMove : MonoBehaviour
         float minDistance = 10000;
 
         foreach (List<GameObject> shipList in gameManagerScript.inGameShips)
-        { 
-            foreach (GameObject ship in shipList)
+        {
+            if (! shipList.Contains(this.gameObject))
             {
-                if (ship != this.gameObject)
+                foreach (GameObject ship in shipList)
                 {
-                    if (distance(ship, this.gameObject) < minDistance) {
-                        target = ship;
+                    if (ship != this.gameObject)
+                    {
+                        if (distance(ship, this.gameObject) < minDistance)
+                        {
+                            target = ship;
+                        }
                     }
                 }
-            }
+            }    
         }
 
         agent.SetDestination(target.transform.position);
