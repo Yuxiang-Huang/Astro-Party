@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     List<Vector3> pos;
     List<Vector3> rot;
 
+    ScoreManager scoreManagerScript;
+
     public GameObject raceTrackScreen;
 
     public GameObject nextButton;
@@ -77,6 +79,8 @@ public class GameManager : MonoBehaviour
         inGameShips.Add(new List<GameObject>());
         inGameShips.Add(new List<GameObject>());
         inGameShips.Add(new List<GameObject>());
+
+        scoreManagerScript = GameObject.Find("Score Manager").GetComponent<ScoreManager>();
     }
 
     // Update is called once per frame
@@ -296,6 +300,26 @@ public class GameManager : MonoBehaviour
 
         foreach (List<GameObject> shipList in inGameShips)
         {
+            foreach (GameObject ship in shipList)
+            {
+                if (ship == P1ShipPlayer || ship == P1ShipBot)
+                {
+                    scoreManagerScript.P1Score++;
+                }
+                if (ship == P2ShipPlayer || ship == P2ShipBot)
+                {
+                    scoreManagerScript.P2Score++;
+                }
+                if (ship == P3ShipPlayer || ship == P3ShipBot)
+                {
+                    scoreManagerScript.P3Score++;
+                }
+                if (ship == P4ShipPlayer || ship == P4ShipBot)
+                {
+                    scoreManagerScript.P4Score++;
+                }
+            }
+
             while (shipList.Count > 0)
             {
                 Destroy(shipList[0]);
