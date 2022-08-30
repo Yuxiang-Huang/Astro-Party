@@ -9,15 +9,9 @@ public class GameManager : MonoBehaviour
     List<Vector3> pos;
     List<Vector3> rot;
 
-    public GameObject endScreen;
+    public GameObject raceTrackScreen;
 
     public GameObject nextButton;
-    //public GameObject P1WonText;
-    //public GameObject P2WonText;
-    //public GameObject P3WonText;
-    //public GameObject P4WonText;
-    //public GameObject BotWonText;
-    //public GameObject DrawText;
 
     public GameObject P1ShipPlayer;
     public GameObject P1ShipBot;
@@ -290,31 +284,16 @@ public class GameManager : MonoBehaviour
         return ans;
     }
 
-    public void rematch()
-    {
-        endScreen.SetActive(false);
-    }
+    
 
     IEnumerator endRound()
     {
         yield return new WaitForSeconds(1.5f);
 
-        endScreen.SetActive(true);
+        raceTrackScreen.SetActive(true);
 
-        //P1WonText.SetActive(false);
-        //P2WonText.SetActive(false);
-        //P3WonText.SetActive(false);
-        //P4WonText.SetActive(false);
-        //BotWonText.SetActive(false);
-        //DrawText.SetActive(false);
+        StartCoroutine("raceTrackDisplay");
 
-        //if (inGameShips.Count == 0)
-        //{
-        //    DrawText.SetActive(true);
-        //} else if (inGameShips[0] == )
-        //{
-
-        //}
         foreach (List<GameObject> shipList in inGameShips)
         {
             while (shipList.Count > 0)
@@ -325,10 +304,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void endBack()
+    IEnumerator raceTrackDisplay()
     {
-        endScreen.SetActive(false);
+        yield return new WaitForSeconds(1.5f);
+        raceTrackScreen.SetActive(false);
+        spawnShips();
     }
-
-
 }
