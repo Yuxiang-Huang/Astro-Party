@@ -24,7 +24,8 @@ public class GameManager : MonoBehaviour
     public GameObject P1TextPlayer;
     public GameObject P1TextBot;
     public GameObject P1TextOff;
-    int P1Team = 0;
+    public int P1Team = 0;
+    public GameObject P1TeamButtonObject;
     public GameObject P1SetRotateButton;
     public GameObject P1SetShootButton;
 
@@ -33,7 +34,8 @@ public class GameManager : MonoBehaviour
     public GameObject P2TextPlayer;
     public GameObject P2TextBot;
     public GameObject P2TextOff;
-    int P2Team = 1;
+    public int P2Team = 1;
+    public GameObject P2TeamButtonObject;
     public GameObject P2SetRotateButton;
     public GameObject P2SetShootButton;
 
@@ -42,7 +44,8 @@ public class GameManager : MonoBehaviour
     public GameObject P3TextPlayer;
     public GameObject P3TextBot;
     public GameObject P3TextOff;
-    int P3Team = 2;
+    public int P3Team = 2;
+    public GameObject P3TeamButtonObject;
     public GameObject P3SetRotateButton;
     public GameObject P3SetShootButton;
 
@@ -51,7 +54,8 @@ public class GameManager : MonoBehaviour
     public GameObject P4TextPlayer;
     public GameObject P4TextBot;
     public GameObject P4TextOff;
-    int P4Team = 3;
+    public int P4Team = 3;
+    public GameObject P4TeamButtonObject;
     public GameObject P4SetRotateButton;
     public GameObject P4SetShootButton;
 
@@ -165,26 +169,26 @@ public class GameManager : MonoBehaviour
 
     public void P1Button()
     {
-        buttonHelper(P1ShipPlayer, P1ShipBot, P1TextPlayer, P1TextBot, P1TextOff, P1Team, P1SetRotateButton, P1SetShootButton);
+        buttonHelper(P1ShipPlayer, P1ShipBot, P1TextPlayer, P1TextBot, P1TextOff, P1Team, P1TeamButtonObject, P1SetRotateButton, P1SetShootButton);
     }
 
     public void P2Button()
     {
-        buttonHelper(P2ShipPlayer, P2ShipBot, P2TextPlayer, P2TextBot, P2TextOff, P2Team, P2SetRotateButton, P2SetShootButton);
+        buttonHelper(P2ShipPlayer, P2ShipBot, P2TextPlayer, P2TextBot, P2TextOff, P2Team, P2TeamButtonObject, P2SetRotateButton, P2SetShootButton);
     }
 
     public void P3Button()
     {
-        buttonHelper(P3ShipPlayer, P3ShipBot, P3TextPlayer, P3TextBot, P3TextOff, P3Team, P3SetRotateButton, P3SetShootButton);
+        buttonHelper(P3ShipPlayer, P3ShipBot, P3TextPlayer, P3TextBot, P3TextOff, P3Team, P3TeamButtonObject, P3SetRotateButton, P3SetShootButton);
     }
 
     public void P4Button()
     {
-        buttonHelper(P4ShipPlayer, P4ShipBot, P4TextPlayer, P4TextBot, P4TextOff, P4Team, P4SetRotateButton, P4SetShootButton);
+        buttonHelper(P4ShipPlayer, P4ShipBot, P4TextPlayer, P4TextBot, P4TextOff, P4Team, P4TeamButtonObject, P4SetRotateButton, P4SetShootButton);
     }
 
     void buttonHelper(GameObject player, GameObject bot, GameObject textPlayer, GameObject textBot, GameObject textOff,
-        int team, GameObject setRotateButton, GameObject setShootButton)
+        int team, GameObject teamButton, GameObject setRotateButton, GameObject setShootButton)
     {
         List<GameObject> ship = ships[team];
         if (ship.Contains(player))
@@ -201,6 +205,8 @@ public class GameManager : MonoBehaviour
             textBot.SetActive(false);
             textOff.SetActive(true);
             ship.Remove(bot);
+            teamButton.SetActive(false);
+            teamButton.SetActive(false);
         }
         else
         {
@@ -209,73 +215,70 @@ public class GameManager : MonoBehaviour
             ship.Add(player);
             setRotateButton.SetActive(true);
             setShootButton.SetActive(true);
+            teamButton.SetActive(true);
+            teamButton.SetActive(true);
         }
     }
 
     public void P1TeamButton()
     {
         GameObject curr = findShip(P1Team, P1ShipPlayer, P1ShipBot);
-        if (curr != null)
+        
+        ships[P1Team].Remove(curr);
+        P1Team++;
+
+        if (P1Team == 4)
         {
-            ships[P1Team].Remove(curr);
-            P1Team++;
-            if (P1Team == 4)
-            {
-                P1Team = 0;
-            }
-            ships[P1Team].Add(curr);
+            P1Team = 0;
         }
+        ships[P1Team].Add(curr);
     }
 
     public void P2TeamButton()
     {
         GameObject curr = findShip(P2Team, P2ShipPlayer, P2ShipBot);
-        if (curr != null)
+
+        ships[P2Team].Remove(curr);
+        P2Team++;
+
+        if (P2Team == 4)
         {
-            ships[P2Team].Remove(curr);
-            P2Team++;
-            if (P2Team == 4)
-            {
-                P2Team = 0;
-            }
-            ships[P2Team].Add(curr);
+            P2Team = 0;
         }
+        ships[P2Team].Add(curr);
+        
     }
 
     public void P3TeamButton()
     {
         GameObject curr = findShip(P3Team, P3ShipPlayer, P3ShipBot);
-        if (curr != null)
+        
+        ships[P3Team].Remove(curr);
+        P3Team++;
+        if (P3Team == 4)
         {
-            ships[P3Team].Remove(curr);
-            P3Team++;
-            if (P3Team == 4)
-            {
-                P3Team = 0;
-            }
-            ships[P3Team].Add(curr);
+            P3Team = 0;
         }
+        ships[P3Team].Add(curr);
     }
 
     public void P4TeamButton()
     {
         GameObject curr = findShip(P4Team, P4ShipPlayer, P4ShipBot);
-        if (curr != null)
+     
+        ships[P4Team].Remove(curr);
+        P4Team++;
+        if (P4Team == 4)
         {
-            ships[P4Team].Remove(curr);
-            P4Team++;
-            if (P4Team == 4)
-            {
-                P4Team = 0;
-            }
-            ships[P4Team].Add(curr);
+            P4Team = 0;
         }
+        ships[P4Team].Add(curr);   
     }
 
     GameObject findShip(int team, GameObject shipTarget, GameObject bot)
     {
         GameObject ans = null;
-        List<GameObject> ship = ships[P1Team];
+        List<GameObject> ship = ships[team];
         if (ship.Contains(shipTarget))
         {
             ans = shipTarget;
