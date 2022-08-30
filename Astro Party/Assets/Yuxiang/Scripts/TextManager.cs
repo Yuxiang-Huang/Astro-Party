@@ -7,31 +7,19 @@ public class TextManager : MonoBehaviour
 {
     GameManager gameManagerScript;
 
-    public GameObject P1Team1Text;
-    public GameObject P1Team2Text;
-    public GameObject P1Team3Text;
-    public GameObject P1Team4Text;
+    public Text P1TeamText;
     public Text P1RotateText;
     public Text P1ShootText;
 
-    public GameObject P2Team1Text;
-    public GameObject P2Team2Text;
-    public GameObject P2Team3Text;
-    public GameObject P2Team4Text;
+    public Text P2TeamText;
     public Text P2RotateText;
     public Text P2ShootText;
 
-    public GameObject P3Team1Text;
-    public GameObject P3Team2Text;
-    public GameObject P3Team3Text;
-    public GameObject P3Team4Text;
+    public Text P3TeamText;
     public Text P3RotateText;
     public Text P3ShootText;
 
-    public GameObject P4Team1Text;
-    public GameObject P4Team2Text;
-    public GameObject P4Team3Text;
-    public GameObject P4Team4Text;
+    public Text P4TeamText;
     public Text P4RotateText;
     public Text P4ShootText;
 
@@ -49,46 +37,22 @@ public class TextManager : MonoBehaviour
 
     public void P1SwitchTeamText()
     {
-        switchTeamTextHelper(P1Team1Text, P1Team2Text, P1Team3Text, P1Team4Text);
+        P1TeamText.text = (gameManagerScript.P1Team + 1).ToString();
     }
 
     public void P2SwitchTeamText()
     {
-        switchTeamTextHelper(P2Team1Text, P2Team2Text, P2Team3Text, P2Team4Text);
+        P2TeamText.text = (gameManagerScript.P2Team + 1).ToString();
     }
 
     public void P3SwitchTeamText()
     {
-        switchTeamTextHelper(P3Team1Text, P3Team2Text, P3Team3Text, P3Team4Text);
+        P3TeamText.text = (gameManagerScript.P3Team + 1).ToString();
     }
 
     public void P4SwitchTeamText()
     {
-        switchTeamTextHelper(P4Team1Text, P4Team2Text, P4Team3Text, P4Team4Text);
-    }
-
-    void switchTeamTextHelper(GameObject Team1Text, GameObject Team2Text, GameObject Team3Text, GameObject Team4Text)
-    {
-        if (Team1Text.active)
-        {
-            Team1Text.SetActive(false);
-            Team2Text.SetActive(true);
-        }
-        else if (Team2Text.active)
-        {
-            Team2Text.SetActive(false);
-            Team3Text.SetActive(true);
-        }
-        else if (Team3Text.active)
-        {
-            Team3Text.SetActive(false);
-            Team4Text.SetActive(true);
-        }
-        else if (Team4Text.active)
-        {
-            Team4Text.SetActive(false);
-            Team1Text.SetActive(true);
-        }
+        P4TeamText.text = (gameManagerScript.P4Team + 1).ToString();
     }
 
     public void P1SetRotate()
