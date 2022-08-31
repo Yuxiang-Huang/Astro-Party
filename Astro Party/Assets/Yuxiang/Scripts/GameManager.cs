@@ -149,7 +149,7 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < ships.Count; i++)
         {
-            if (ships.Count > 1)
+            if (ships[i].Count > 1)
             {
                 scoreManagerScript.gameMode = "team";
             }

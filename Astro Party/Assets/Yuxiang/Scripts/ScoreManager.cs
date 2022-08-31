@@ -150,7 +150,47 @@ public class ScoreManager : MonoBehaviour
                         break;
                 }
             }
-        }
+            if (gameMode == "solo")
+            {
+                P1WinText.SetActive(false);
+                P2WinText.SetActive(false);
+                P3WinText.SetActive(false);
+                P4WinText.SetActive(false);
+
+                int find = -1;
+
+                if (P1Score == scoreToWin)
+                {
+                    find = 1;
+                }
+                if (P2Score == scoreToWin)
+                {
+                    find = 2;
+                }
+                if (P3Score == scoreToWin)
+                {
+                    find = 3;
+                }
+                if (P4Score == scoreToWin)
+                {
+                    find = 4;
+                }
+                switch (find)
+                {
+                    case 1:
+                        P1WinText.SetActive(true);
+                        break;
+                    case 2:
+                        P2WinText.SetActive(true);
+                        break;
+                    case 3:
+                        P3WinText.SetActive(true);
+                        break;
+                    case 4:
+                        P4WinText.SetActive(true);
+                        break;
+                }
+            }
     }
 
     int findWinningTeam(int shipID)
@@ -194,7 +234,7 @@ public class ScoreManager : MonoBehaviour
         else if (scoreToWin == 5)
         {
             scoreToWin = 7;
-            roundText.text = "Long \n1 WINS";
+            roundText.text = "Long \n7 WINS";
         }
 
         else if(scoreToWin == 7)
