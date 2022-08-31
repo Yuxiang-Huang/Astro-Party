@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    List<List<GameObject>> ships;
+    public List<List<GameObject>> ships;
     public List<List<GameObject>> inGameShips;
     List<Vector3> pos;
     List<Vector3> rot;
 
     ScoreManager scoreManagerScript;
+
+    public string gameMode;
 
     public GameObject nextButton;
 
@@ -145,8 +147,15 @@ public class GameManager : MonoBehaviour
     {
         gameStarted = true;
 
+        gameMode = "solo";
+
         for (int i = 0; i < ships.Count; i++)
         {
+            if (ships.Count > 1)
+            {
+                gameMode = "team";
+            }
+
             for (int j = 0; j < ships[i].Count; j++)
             {
                 int ran = Random.Range(0, pos.Count);
@@ -293,28 +302,32 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < inGameShips.Count; i++)
         {
             List<GameObject> shipList = inGameShips[i];
-            if (shipList.Count > 0)
-            {
-                foreach (GameObject ship in ships[i])
-                {
-                    int id = ship.GetComponent<ID>().id;
 
-                    switch (id)
+            if (gameMode == "team")
+            {
+                if (shipList.Count > 0)
+                {
+                    foreach (GameObject ship in ships[i])
                     {
-                        case 1:
-                            scoreManagerScript.P1Score++;
-                            break;
-                        case 2:
-                            scoreManagerScript.P2Score++;
-                            break;
-                        case 3:
-                            scoreManagerScript.P3Score++;
-                            break;
-                        case 4:
-                            scoreManagerScript.P4Score++;
-                            break;
+                        int id = ship.GetComponent<ID>().id;
+
+                        switch (id)
+                        {
+                            case 1:
+                                scoreManagerScript.P1Score++;
+                                break;
+                            case 2:
+                                scoreManagerScript.P2Score++;
+                                break;
+                            case 3:
+                                scoreManagerScript.P3Score++;
+                                break;
+                            case 4:
+                                scoreManagerScript.P4Score++;
+                                break;
+                        }
                     }
-                }      
+                }
             }
 
             while (shipList.Count > 0)

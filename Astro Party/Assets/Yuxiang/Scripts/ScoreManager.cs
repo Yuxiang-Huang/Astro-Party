@@ -16,6 +16,16 @@ public class ScoreManager : MonoBehaviour
     public int P3Score;
     public int P4Score;
 
+    public GameObject P1WinText;
+    public GameObject P2WinText;
+    public GameObject P3WinText;
+    public GameObject P4WinText;
+
+    public GameObject Team1WinText;
+    public GameObject Team2WinText;
+    public GameObject Team3WinText;
+    public GameObject Team4WinText;
+
     public int scoreToWin = 5;
 
     public GameObject endScreen;
@@ -93,7 +103,64 @@ public class ScoreManager : MonoBehaviour
         else
         {
             endScreen.SetActive(true);
+            if (gameManagerScript.gameMode == "team")
+            {
+                Team1WinText.SetActive(false);
+                Team2WinText.SetActive(false);
+                Team3WinText.SetActive(false);
+                Team4WinText.SetActive(false);
+
+                int find = -1;
+
+                if (P1Score == scoreToWin)
+                {
+                    find = 1;
+                }
+                if (P2Score == scoreToWin)
+                {
+                    find = 2;
+                }
+                if (P3Score == scoreToWin)
+                {
+                    find = 3;
+                }
+                if (P4Score == scoreToWin)
+                {
+                    find = 4;
+                }
+
+                switch (findWinningTeam(find))
+                {
+                    case 1:
+                        Team1WinText.SetActive(true);
+                        break;
+                    case 2:
+                        Team2WinText.SetActive(true);
+                        break;
+                    case 3:
+                        Team3WinText.SetActive(true);
+                        break;
+                    case 4:
+                        Team4WinText.SetActive(true);
+                        break;
+                }
+            }
         }
+    }
+
+    int findWinningTeam(int shipID)
+    {
+        for (int i = 0; i < gameManagerScript.ships.Count; i++)
+        {
+            for (int j = 0; j < gameManagerScript.ships[i].Count; j++)
+            {
+                if (gameManagerScript.ships[i][j].GetComponent<ID>().id == shipID)
+                {
+                    return i + 1;
+                }
+            }
+        }
+        return -1;
     }
 
     bool closeEnough(float one, float two)
