@@ -44,36 +44,46 @@ public class ScoreManager : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
-        while (P1.transform.position.x + relativeOffSet != startPosX + P1Score * lengthOfSquare)
+        while (closeEnough(P1.transform.position.x + relativeOffSet, startPosX + P1Score * lengthOfSquare))
         {
-            yield return new WaitForSeconds(1f);
-            P1.transform.position = new Vector3(P1.transform.position.x + lengthOfSquare, P1.transform.position.y,
+            Debug.Log(P1.transform.position.x + relativeOffSet);
+
+            yield return new WaitForSeconds(2f);
+            P1.transform.position = new Vector3(P1.transform.position.x + lengthOfSquare / 4, P1.transform.position.y,
                 P1.transform.position.z);
         }
 
-        while (P2.transform.position.x + relativeOffSet != startPosX + P2Score * lengthOfSquare)
+        while (closeEnough(P2.transform.position.x + relativeOffSet, startPosX + P2Score * lengthOfSquare))
         {
-            yield return new WaitForSeconds(1f);
-            P2.transform.position = new Vector3(P2.transform.position.x + lengthOfSquare, P2.transform.position.y,
+
+            Debug.Log(P2.transform.position.x + relativeOffSet);
+
+            yield return new WaitForSeconds(2f);
+            P2.transform.position = new Vector3(P2.transform.position.x + lengthOfSquare / 4, P2.transform.position.y,
                 P2.transform.position.z);
         }
 
         while (P3.transform.position.x + relativeOffSet != startPosX + P3Score * lengthOfSquare)
         {
             yield return new WaitForSeconds(1f);
-            P3.transform.position = new Vector3(P3.transform.position.x + lengthOfSquare, P3.transform.position.y,
+            P3.transform.position = new Vector3(P3.transform.position.x + lengthOfSquare / 4, P3.transform.position.y,
                 P3.transform.position.z);
         }
 
         while (P4.transform.position.x + relativeOffSet != startPosX + P4Score * lengthOfSquare)
         {
             yield return new WaitForSeconds(1f);
-            P4.transform.position = new Vector3(P4.transform.position.x + lengthOfSquare, P4.transform.position.y,
+            P4.transform.position = new Vector3(P4.transform.position.x + lengthOfSquare / 4, P4.transform.position.y,
                 P4.transform.position.z);
         }
 
         scoreScreen.SetActive(false);
         gameManagerScript.spawnShips();
+    }
+
+    bool closeEnough(float one, float two)
+    {
+        return (two - one) / two < 0.01;
     }
 
     public void rematch()
