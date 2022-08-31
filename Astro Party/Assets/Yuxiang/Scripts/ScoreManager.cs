@@ -44,32 +44,28 @@ public class ScoreManager : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
-        while (closeEnough(P1.transform.position.x + relativeOffSet, startPosX + P1Score * lengthOfSquare))
+        if (! closeEnough(P1.transform.position.x + relativeOffSet, startPosX + P1Score * lengthOfSquare))
         {
+            Debug.Log(P1.transform.position.x + relativeOffSet);
+            Debug.Log(startPosX + P1Score * lengthOfSquare);
+
             yield return new WaitForSeconds(1f);
-            P1.transform.position = new Vector3(P1.transform.position.x + lengthOfSquare / 2, P1.transform.position.y,
+            P1.transform.position = new Vector3(P1.transform.position.x + lengthOfSquare, P1.transform.position.y,
                 P1.transform.position.z);
+
+            Debug.Log(P1.transform.position.x);
         }
 
-        while (closeEnough(P2.transform.position.x + relativeOffSet, startPosX + P2Score * lengthOfSquare))
+        if (! closeEnough(P2.transform.position.x + relativeOffSet, startPosX + P2Score * lengthOfSquare))
         {
+            Debug.Log(P2.transform.position.x + relativeOffSet);
+            Debug.Log(startPosX + P2Score * lengthOfSquare);
+
             yield return new WaitForSeconds(1f);
-            P2.transform.position = new Vector3(P2.transform.position.x + lengthOfSquare / 2, P2.transform.position.y,
+            P2.transform.position = new Vector3(P2.transform.position.x + lengthOfSquare, P2.transform.position.y,
                 P2.transform.position.z);
-        }
 
-        while (closeEnough(P3.transform.position.x + relativeOffSet, startPosX + P3Score * lengthOfSquare))
-        {
-            yield return new WaitForSeconds(1f);
-            P3.transform.position = new Vector3(P3.transform.position.x + lengthOfSquare / 2, P3.transform.position.y,
-                P3.transform.position.z);
-        }
-
-        while (closeEnough(P4.transform.position.x + relativeOffSet, startPosX + P4Score * lengthOfSquare))
-        {
-            yield return new WaitForSeconds(1f);
-            P4.transform.position = new Vector3(P4.transform.position.x + lengthOfSquare / 2, P4.transform.position.y,
-                P4.transform.position.z);
+            Debug.Log(P2.transform.position.x);
         }
 
         scoreScreen.SetActive(false);
