@@ -290,28 +290,31 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
 
-        foreach (List<GameObject> shipList in inGameShips)
+        for (int i = 0; i < inGameShips.Count; i++)
         {
-            foreach (GameObject ship in shipList)
+            List<GameObject> shipList = inGameShips[i];
+            if (shipList.Count > 0)
             {
-                int id = ship.GetComponent<ID>().id;
+                foreach (GameObject ship in ships[i])
+                {
+                    int id = ship.GetComponent<ID>().id;
 
-                if (id == 1)
-                {
-                    scoreManagerScript.P1Score++;
-                }
-                if (id == 2)
-                {
-                    scoreManagerScript.P2Score++;
-                }
-                if (id == 3)
-                {
-                    scoreManagerScript.P3Score++;
-                }
-                if (id == 4)
-                {
-                    scoreManagerScript.P4Score++;
-                }
+                    switch (id)
+                    {
+                        case 1:
+                            scoreManagerScript.P1Score++;
+                            break;
+                        case 2:
+                            scoreManagerScript.P2Score++;
+                            break;
+                        case 3:
+                            scoreManagerScript.P3Score++;
+                            break;
+                        case 4:
+                            scoreManagerScript.P4Score++;
+                            break;
+                    }
+                }      
             }
 
             while (shipList.Count > 0)
