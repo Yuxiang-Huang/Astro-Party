@@ -314,6 +314,11 @@ public class GameManager : MonoBehaviour
                 }
             }
 
+            Debug.Log(scoreManagerScript.P1Score);
+            Debug.Log(scoreManagerScript.P2Score);
+            Debug.Log(scoreManagerScript.P3Score);
+            Debug.Log(scoreManagerScript.P4Score);
+
             while (shipList.Count > 0)
             {
                 Destroy(shipList[0]);
