@@ -320,7 +320,8 @@ public class GameManager : MonoBehaviour
                 shipList.RemoveAt(0);
             }
 
-            scoreManagerScript.StartCoroutine("scoreUpdate");
         }
+
+        scoreManagerScript.StartCoroutine("scoreUpdate");
     }
 }

@@ -44,10 +44,11 @@ public class ScoreManager : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
+        Debug.Log(P1.transform.position.x + relativeOffSet);
+        Debug.Log(startPosX + P1Score * lengthOfSquare);
+
         if (! closeEnough(P1.transform.position.x + relativeOffSet, startPosX + P1Score * lengthOfSquare))
         {
-            Debug.Log(P1.transform.position.x + relativeOffSet);
-            Debug.Log(startPosX + P1Score * lengthOfSquare);
 
             yield return new WaitForSeconds(1f);
             P1.transform.position = new Vector3(P1.transform.position.x + lengthOfSquare, P1.transform.position.y,
@@ -56,10 +57,11 @@ public class ScoreManager : MonoBehaviour
             Debug.Log(P1.transform.position.x);
         }
 
+        Debug.Log(P2.transform.position.x + relativeOffSet);
+        Debug.Log(startPosX + P2Score * lengthOfSquare);
+
         if (! closeEnough(P2.transform.position.x + relativeOffSet, startPosX + P2Score * lengthOfSquare))
         {
-            Debug.Log(P2.transform.position.x + relativeOffSet);
-            Debug.Log(startPosX + P2Score * lengthOfSquare);
 
             yield return new WaitForSeconds(1f);
             P2.transform.position = new Vector3(P2.transform.position.x + lengthOfSquare, P2.transform.position.y,
@@ -74,7 +76,7 @@ public class ScoreManager : MonoBehaviour
 
     bool closeEnough(float one, float two)
     {
-        return Mathf.Abs(two - one) / two < 0.01;
+        return Mathf.Abs(Mathf.Abs(two - one) / two) < 0.01;
     }
 
     public void rematch()
