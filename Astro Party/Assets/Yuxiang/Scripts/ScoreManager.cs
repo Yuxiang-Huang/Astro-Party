@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -26,7 +27,8 @@ public class ScoreManager : MonoBehaviour
     public GameObject Team3WinText;
     public GameObject Team4WinText;
 
-    public int scoreToWin = 5;
+    int scoreToWin = 3;
+    public Text roundText;
 
     public GameObject endScreen;
     public GameObject scoreScreen;
@@ -38,9 +40,10 @@ public class ScoreManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        endScreen.SetActive(false);
+        scoreScreen.SetActive(false);
 
-        lengthOfSquare = 500 / 5 * 2;
+        gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -176,5 +179,28 @@ public class ScoreManager : MonoBehaviour
     public void endBack()
     {
         endScreen.SetActive(false);
+    }
+
+    public void changeRound()
+    {
+        if (scoreToWin == 3)
+        {
+            scoreToWin = 5;
+            roundText.text = "Long \n5 WINS";
+        }
+
+        else if (scoreToWin == 5)
+        {
+            scoreToWin = 1;
+            roundText.text = "Quick \n1 WINS";
+        }
+
+        else if(scoreToWin == 1)
+        {
+            scoreToWin = 3;
+            roundText.text = "Standard \n3 WINS";
+        }
+
+        lengthOfSquare = 500 / scoreToWin * 2;
     }
 }

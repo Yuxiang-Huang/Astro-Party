@@ -13,6 +13,9 @@ public class ScreenManager : MonoBehaviour
     void Start()
     {
         startScreen.SetActive(true);
+        shipScreen.SetActive(false);
+        lastScreen.SetActive(false);
+        infoScreen.SetActive(false);
     }
 
     // Update is called once per frame
