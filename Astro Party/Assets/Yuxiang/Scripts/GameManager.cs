@@ -11,8 +11,6 @@ public class GameManager : MonoBehaviour
 
     ScoreManager scoreManagerScript;
 
-    public GameObject raceTrackScreen;
-
     public GameObject nextButton;
 
     public GameObject P1ShipPlayer;
@@ -294,10 +292,6 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
 
-        raceTrackScreen.SetActive(true);
-
-        StartCoroutine("raceTrackDisplay");
-
         foreach (List<GameObject> shipList in inGameShips)
         {
             foreach (GameObject ship in shipList)
@@ -325,13 +319,8 @@ public class GameManager : MonoBehaviour
                 Destroy(shipList[0]);
                 shipList.RemoveAt(0);
             }
-        }
-    }
 
-    IEnumerator raceTrackDisplay()
-    {
-        yield return new WaitForSeconds(1.5f);
-        raceTrackScreen.SetActive(false);
-        spawnShips();
+            scoreManagerScript.StartCoroutine("scoreUpdate");
+        }
     }
 }
