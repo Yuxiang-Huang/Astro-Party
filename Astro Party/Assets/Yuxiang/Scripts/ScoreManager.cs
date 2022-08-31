@@ -42,6 +42,8 @@ public class ScoreManager : MonoBehaviour
 
         scoreScreen.SetActive(true);
 
+        yield return new WaitForSeconds(1f);
+
         while (P1.transform.position.x + relativeOffSet != startPosX + P1Score * lengthOfSquare)
         {
             yield return new WaitForSeconds(1f);

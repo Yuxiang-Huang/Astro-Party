@@ -256,6 +256,7 @@ GameObject:
   - component: {fileID: 208211017689914796}
   - component: {fileID: 208211017689914797}
   - component: {fileID: 208211017689914794}
+  - component: {fileID: 4556880618896139168}
   m_Layer: 0
   m_Name: Player Cyan
   m_TagString: Ship
@@ -431,6 +432,19 @@ MonoBehaviour:
   - {fileID: 208211016925343220}
   - {fileID: 208211017445052950}
   - {fileID: 208211017049165592}
+--- !u!114 &4556880618896139168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018621659645993208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6c96b0f9459849a2bcd2b9d080e2213, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 4
 --- !u!1 &1180313239676552090
 GameObject:
   m_ObjectHideFlags: 0

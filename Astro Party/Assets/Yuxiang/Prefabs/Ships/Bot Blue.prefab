@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 250581064030552461}
   - component: {fileID: 250581064030552463}
   - component: {fileID: 250581064030552462}
+  - component: {fileID: 8993119199233830428}
   m_Layer: 0
   m_Name: Bot Blue
   m_TagString: Ship
@@ -202,6 +203,19 @@ MonoBehaviour:
   laser: {fileID: 6509910874384710604, guid: cfea443daa6b1433aa831465e8c8e4da, type: 3}
   bullet: {fileID: 4074745524491351559, guid: 3029e57bd05d644daa79107a6ba55699, type: 3}
   bulletAnimation: []
+--- !u!114 &8993119199233830428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1133596451880189216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6c96b0f9459849a2bcd2b9d080e2213, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 1
 --- !u!1 &1295022749799767618
 GameObject:
   m_ObjectHideFlags: 0

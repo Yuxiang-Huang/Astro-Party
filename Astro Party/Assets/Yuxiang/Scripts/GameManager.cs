@@ -286,8 +286,6 @@ public class GameManager : MonoBehaviour
         return ans;
     }
 
-    
-
     IEnumerator endRound()
     {
         yield return new WaitForSeconds(1.5f);
@@ -296,28 +294,25 @@ public class GameManager : MonoBehaviour
         {
             foreach (GameObject ship in shipList)
             {
-                if (ship == P1ShipPlayer || ship == P1ShipBot)
+                int id = ship.GetComponent<ID>().id;
+
+                if (id == 1)
                 {
                     scoreManagerScript.P1Score++;
                 }
-                if (ship == P2ShipPlayer || ship == P2ShipBot)
+                if (id == 2)
                 {
                     scoreManagerScript.P2Score++;
                 }
-                if (ship == P3ShipPlayer || ship == P3ShipBot)
+                if (id == 3)
                 {
                     scoreManagerScript.P3Score++;
                 }
-                if (ship == P4ShipPlayer || ship == P4ShipBot)
+                if (id == 4)
                 {
                     scoreManagerScript.P4Score++;
                 }
             }
-
-            Debug.Log(scoreManagerScript.P1Score);
-            Debug.Log(scoreManagerScript.P2Score);
-            Debug.Log(scoreManagerScript.P3Score);
-            Debug.Log(scoreManagerScript.P4Score);
 
             while (shipList.Count > 0)
             {

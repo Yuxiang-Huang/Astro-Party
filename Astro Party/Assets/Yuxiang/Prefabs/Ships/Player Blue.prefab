@@ -256,6 +256,7 @@ GameObject:
   - component: {fileID: 5116241216664030344}
   - component: {fileID: 5116241216664030345}
   - component: {fileID: 5116241216664030350}
+  - component: {fileID: 2276104041457300765}
   m_Layer: 0
   m_Name: Player Blue
   m_TagString: Ship
@@ -431,6 +432,19 @@ MonoBehaviour:
   - {fileID: 5116241217560673488}
   - {fileID: 5116241218113667890}
   - {fileID: 5116241217701273148}
+--- !u!114 &2276104041457300765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5458894458688238044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6c96b0f9459849a2bcd2b9d080e2213, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 1
 --- !u!1 &6161606217725547198
 GameObject:
   m_ObjectHideFlags: 0
