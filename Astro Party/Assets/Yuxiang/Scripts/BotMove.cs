@@ -7,6 +7,8 @@ public class BotMove : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent agent;
 
+    int myID;
+
     int speed = 350;
     float rotatingSpeed = 1.5f;
     bool rotating;
@@ -37,6 +39,8 @@ public class BotMove : MonoBehaviour
         gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
 
         shootMode = "laser";
+
+        myID = GetComponent<ID>().id;
     }
 
     // Update is called once per frame
@@ -74,9 +78,10 @@ public class BotMove : MonoBehaviour
             if (shootMode == "laser")
             {
                 //5000 is half the length of laserbeam
-                Instantiate(laser, transform.position +
+                GameObject myLaser = Instantiate(laser, transform.position +
                 new Vector3((bulletDis + 5000) * Mathf.Sin(angle), 0, (bulletDis + 5000) * Mathf.Cos(angle)),
                 transform.rotation);
+                myLaser.GetComponent<Laser>().id = myID;
 
                 playerAudio.PlayOneShot(laserSound);
 
@@ -89,9 +94,10 @@ public class BotMove : MonoBehaviour
 
             if (shootMode == "normal")
             {
-                Instantiate(bullet, transform.position +
+                GameObject myBullet = Instantiate(bullet, transform.position +
                 new Vector3(bulletDis * Mathf.Sin(angle), 0, bulletDis * Mathf.Cos(angle)),
                 transform.rotation);
+                myBullet.GetComponent<BulletMove>().id = myID;
             }
         }
 

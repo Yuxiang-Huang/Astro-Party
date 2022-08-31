@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
+    public string gameMode;
+
     GameManager gameManagerScript;
 
     public GameObject P1;
@@ -27,7 +29,7 @@ public class ScoreManager : MonoBehaviour
     public GameObject Team3WinText;
     public GameObject Team4WinText;
 
-    int scoreToWin = 3;
+    int scoreToWin = 5;
     public Text roundText;
 
     public GameObject endScreen;
@@ -106,7 +108,7 @@ public class ScoreManager : MonoBehaviour
         else
         {
             endScreen.SetActive(true);
-            if (gameManagerScript.gameMode == "team")
+            if (gameMode == "team")
             {
                 Team1WinText.SetActive(false);
                 Team2WinText.SetActive(false);
@@ -186,19 +188,19 @@ public class ScoreManager : MonoBehaviour
         if (scoreToWin == 3)
         {
             scoreToWin = 5;
-            roundText.text = "Long \n5 WINS";
+            roundText.text = "Standard \n5 WINS";
         }
 
         else if (scoreToWin == 5)
         {
-            scoreToWin = 1;
-            roundText.text = "Quick \n1 WINS";
+            scoreToWin = 7;
+            roundText.text = "Long \n1 WINS";
         }
 
-        else if(scoreToWin == 1)
+        else if(scoreToWin == 7)
         {
             scoreToWin = 3;
-            roundText.text = "Standard \n3 WINS";
+            roundText.text = "Quick \n3 WINS";
         }
 
         lengthOfSquare = 500 / scoreToWin * 2;

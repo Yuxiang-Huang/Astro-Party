@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    int myID;
+
     int speed = 350;
     float rotatingSpeed = 1.5f;
     bool rotating;
@@ -35,6 +37,7 @@ public class PlayerController : MonoBehaviour
         ammo = 3;
 
         shootMode = "laser";
+        myID = GetComponent<ID>().id;
     }
 
     // Update is called once per frame
@@ -47,9 +50,10 @@ public class PlayerController : MonoBehaviour
             if (shootMode == "laser")
             {
                 //5000 is half the length of laserbeam
-                Instantiate(laser, transform.position +
+                GameObject myLaser = Instantiate(laser, transform.position +
                 new Vector3((bulletDis + 5000) * Mathf.Sin(angle), 0, (bulletDis + 5000) * Mathf.Cos(angle)),
                 transform.rotation);
+                myLaser.GetComponent<Laser>().id = myID;
 
                 playerAudio.PlayOneShot(laserSound);
 
@@ -70,13 +74,14 @@ public class PlayerController : MonoBehaviour
                 {
                     reloadTime = 2;
                 }
-           
+
                 //Debug.Log(Mathf.Cos(transform.rotation.y));
                 //Debug.Log(Mathf.Sin(transform.rotation.y));
 
-                Instantiate(bullet, transform.position +
+                GameObject myBullet = Instantiate(bullet, transform.position +
                 new Vector3(bulletDis * Mathf.Sin(angle), 0, bulletDis * Mathf.Cos(angle)),
                 transform.rotation);
+                myBullet.GetComponent<BulletMove>().id = myID;
             }  
         }
 

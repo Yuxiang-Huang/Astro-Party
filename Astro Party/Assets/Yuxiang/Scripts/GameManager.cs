@@ -11,8 +11,6 @@ public class GameManager : MonoBehaviour
 
     ScoreManager scoreManagerScript;
 
-    public string gameMode;
-
     public GameObject nextButton;
 
     public GameObject P1ShipPlayer;
@@ -147,13 +145,13 @@ public class GameManager : MonoBehaviour
     {
         gameStarted = true;
 
-        gameMode = "solo";
+        scoreManagerScript.gameMode = "solo";
 
         for (int i = 0; i < ships.Count; i++)
         {
             if (ships.Count > 1)
             {
-                gameMode = "team";
+                scoreManagerScript.gameMode = "team";
             }
 
             for (int j = 0; j < ships[i].Count; j++)
@@ -303,7 +301,7 @@ public class GameManager : MonoBehaviour
         {
             List<GameObject> shipList = inGameShips[i];
 
-            if (gameMode == "team")
+            if (scoreManagerScript.gameMode == "team")
             {
                 if (shipList.Count > 0)
                 {

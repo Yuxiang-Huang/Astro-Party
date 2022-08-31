@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class BulletMove : MonoBehaviour
 {
+    ScoreManager scoreManagerScript;
+
+    public int id;
     Rigidbody Rb;
     int speed = 750;
 
@@ -12,6 +15,7 @@ public class BulletMove : MonoBehaviour
     {
         Rb = GetComponent<Rigidbody>();
         Rb.AddRelativeForce(new Vector3(0, 0, speed), ForceMode.VelocityChange);
+        scoreManagerScript = GameObject.Find("Score Manager").GetComponent<ScoreManager>();
     }
 
     // Update is called once per frame
@@ -24,6 +28,25 @@ public class BulletMove : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ship"))
         {
+            if (scoreManagerScript.gameMode == "solo")
+            {
+                switch (id)
+                {
+                    case 1:
+                        scoreManagerScript.P1Score++;
+                        break;
+                    case 2:
+                        scoreManagerScript.P2Score++;
+                        break;
+                    case 3:
+                        scoreManagerScript.P3Score++;
+                        break;
+                    case 4:
+                        scoreManagerScript.P4Score++;
+                        break;
+                }
+            }
+
             Destroy(collision.gameObject);
         }
 
