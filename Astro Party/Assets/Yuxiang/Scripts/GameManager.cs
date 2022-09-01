@@ -172,26 +172,30 @@ public class GameManager : MonoBehaviour
 
     public void P1Button()
     {
-        buttonHelper(P1ShipPlayer, P1ShipBot, P1TextPlayer, P1TextBot, P1TextOff, P1Team, P1TeamButtonObject, P1SetRotateButton, P1SetShootButton);
+        buttonHelper(P1ShipPlayer, P1ShipBot, P1TextPlayer, P1TextBot, P1TextOff, P1Team, P1TeamButtonObject,
+            P1SetRotateButton, P1SetShootButton, scoreManagerScript.P1);
     }
 
     public void P2Button()
     {
-        buttonHelper(P2ShipPlayer, P2ShipBot, P2TextPlayer, P2TextBot, P2TextOff, P2Team, P2TeamButtonObject, P2SetRotateButton, P2SetShootButton);
+        buttonHelper(P2ShipPlayer, P2ShipBot, P2TextPlayer, P2TextBot, P2TextOff, P2Team, P2TeamButtonObject,
+            P2SetRotateButton, P2SetShootButton, scoreManagerScript.P2);
     }
 
     public void P3Button()
     {
-        buttonHelper(P3ShipPlayer, P3ShipBot, P3TextPlayer, P3TextBot, P3TextOff, P3Team, P3TeamButtonObject, P3SetRotateButton, P3SetShootButton);
+        buttonHelper(P3ShipPlayer, P3ShipBot, P3TextPlayer, P3TextBot, P3TextOff, P3Team, P3TeamButtonObject,
+            P3SetRotateButton, P3SetShootButton, scoreManagerScript.P3);
     }
 
     public void P4Button()
     {
-        buttonHelper(P4ShipPlayer, P4ShipBot, P4TextPlayer, P4TextBot, P4TextOff, P4Team, P4TeamButtonObject, P4SetRotateButton, P4SetShootButton);
+        buttonHelper(P4ShipPlayer, P4ShipBot, P4TextPlayer, P4TextBot, P4TextOff, P4Team, P4TeamButtonObject,
+            P4SetRotateButton, P4SetShootButton, scoreManagerScript.P4);
     }
 
     void buttonHelper(GameObject player, GameObject bot, GameObject textPlayer, GameObject textBot, GameObject textOff,
-        int team, GameObject teamButton, GameObject setRotateButton, GameObject setShootButton)
+        int team, GameObject teamButton, GameObject setRotateButton, GameObject setShootButton, GameObject picture)
     {
         List<GameObject> ship = ships[team];
         if (ship.Contains(player))
@@ -200,6 +204,7 @@ public class GameManager : MonoBehaviour
             textBot.SetActive(true);
             ship.Remove(player);
             ship.Add(bot);
+
             setRotateButton.SetActive(false);
             setShootButton.SetActive(false);
         }
@@ -208,18 +213,22 @@ public class GameManager : MonoBehaviour
             textBot.SetActive(false);
             textOff.SetActive(true);
             ship.Remove(bot);
+
             teamButton.SetActive(false);
             teamButton.SetActive(false);
+            picture.SetActive(true);
         }
         else
         {
             textOff.SetActive(false);
             textPlayer.SetActive(true);
             ship.Add(player);
+
             setRotateButton.SetActive(true);
             setShootButton.SetActive(true);
             teamButton.SetActive(true);
             teamButton.SetActive(true);
+            picture.SetActive(true);
         }
     }
 
