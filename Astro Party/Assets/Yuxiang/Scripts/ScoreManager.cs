@@ -46,6 +46,8 @@ public class ScoreManager : MonoBehaviour
         scoreScreen.SetActive(false);
 
         gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
+
+        lengthOfSquare = lengthOfSquare = 500 / scoreToWin * 2;
     }
 
     // Update is called once per frame
@@ -56,8 +58,13 @@ public class ScoreManager : MonoBehaviour
 
     public IEnumerator scoreUpdate()
     {
-
         scoreScreen.SetActive(true);
+
+        //Debug.Log(P1Score);
+        //Debug.Log(lengthOfSquare);
+        //Debug.Log(P1.transform.position.x + relativeOffSet);
+        //Debug.Log(startPosX + P1Score * lengthOfSquare);
+        //Debug.Log(!closeEnough(P1.transform.position.x + relativeOffSet, startPosX + P1Score * lengthOfSquare));
 
         while (! closeEnough(P1.transform.position.x + relativeOffSet, startPosX + P1Score * lengthOfSquare))
         {
@@ -191,6 +198,7 @@ public class ScoreManager : MonoBehaviour
                         break;
                 }
             }
+        }
     }
 
     int findWinningTeam(int shipID)
