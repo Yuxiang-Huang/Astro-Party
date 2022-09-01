@@ -32,6 +32,9 @@ public class ScoreManager : MonoBehaviour
     int scoreToWin = 5;
     public Text roundText;
 
+    public bool friendlyFire = false;
+    public Text friendlyFireText;
+
     public GameObject endScreen;
     public GameObject scoreScreen;
 
@@ -260,6 +263,8 @@ public class ScoreManager : MonoBehaviour
         return Mathf.Abs(one - two) < 1;
     }
 
+    //Buttons
+
     public void rematch()
     {
         P1Score = 0;
@@ -305,5 +310,19 @@ public class ScoreManager : MonoBehaviour
         }
 
         lengthOfSquare = 500 / scoreToWin * 2;
+    }
+
+    public void setFriendlyFire()
+    {
+        if (friendlyFire)
+        {
+            friendlyFireText.text = "Friendly Fire: Off";
+        }
+        else
+        {
+            friendlyFireText.text = "Friendly Fire: On";
+        }
+
+        friendlyFire = !friendlyFire;
     }
 }

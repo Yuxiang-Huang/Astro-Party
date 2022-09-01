@@ -49,8 +49,11 @@ public class BulletMove : MonoBehaviour
                 }
             }
 
-            if (! team.Contains(collision.gameObject.GetComponent<ID>().id)){
-                Destroy(collision.gameObject);
+            if (! scoreManagerScript.friendlyFire)
+            { 
+                if (!team.Contains(collision.gameObject.GetComponent<ID>().id)) {
+                    Destroy(collision.gameObject);
+                }
             }
         }
 

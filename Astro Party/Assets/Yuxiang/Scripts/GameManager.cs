@@ -57,8 +57,6 @@ public class GameManager : MonoBehaviour
     int spawnZ = 400;
     bool gameStarted;
 
-    public bool friendlyFire;
-
     // Start is called before the first frame update
     void Start()
     {
