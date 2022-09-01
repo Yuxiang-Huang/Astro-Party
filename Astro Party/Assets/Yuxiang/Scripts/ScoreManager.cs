@@ -166,19 +166,19 @@ public class ScoreManager : MonoBehaviour
 
                 int find = -1;
 
-                if (P1Score == scoreToWin)
+                if (P1Score >= scoreToWin)
                 {
                     find = 1;
                 }
-                if (P2Score == scoreToWin)
+                if (P2Score >= scoreToWin)
                 {
                     find = 2;
                 }
-                if (P3Score == scoreToWin)
+                if (P3Score >= scoreToWin)
                 {
                     find = 3;
                 }
-                if (P4Score == scoreToWin)
+                if (P4Score >= scoreToWin)
                 {
                     find = 4;
                 }
@@ -223,6 +223,11 @@ public class ScoreManager : MonoBehaviour
 
     public void rematch()
     {
+        P1Score = 0;
+        P2Score = 0;
+        P3Score = 0;
+        P4Score = 0;
+
         endScreen.SetActive(false);
     }
 
