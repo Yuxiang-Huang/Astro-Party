@@ -10,6 +10,8 @@ public class BulletMove : MonoBehaviour
     Rigidbody Rb;
     int speed = 750;
 
+    public List<int> team;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,7 +49,9 @@ public class BulletMove : MonoBehaviour
                 }
             }
 
-            Destroy(collision.gameObject);
+            if (! team.Contains(collision.gameObject.GetComponent<ID>().id)){
+                Destroy(collision.gameObject);
+            }
         }
 
         if (! collision.gameObject.CompareTag("Floor"))

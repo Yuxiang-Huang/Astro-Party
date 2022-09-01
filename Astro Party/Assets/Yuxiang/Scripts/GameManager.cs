@@ -57,6 +57,8 @@ public class GameManager : MonoBehaviour
     int spawnZ = 400;
     bool gameStarted;
 
+    public bool friendlyFire;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -154,13 +156,22 @@ public class GameManager : MonoBehaviour
                 scoreManagerScript.gameMode = "team";
             }
 
+            List<int> myTeam = new List<int>();
             for (int j = 0; j < ships[i].Count; j++)
             {
+                //spawn one ship
                 int ran = Random.Range(0, pos.Count);
                 inGameShips[i].Add(Instantiate(ships[i][j], pos[ran], ships[i][j].transform.rotation));
                 inGameShips[i][j].transform.Rotate(rot[ran]);
                 pos.RemoveAt(ran);
                 rot.RemoveAt(ran);
+
+                //Friendly Fire adding to team
+                myTeam.Add(inGameShips[i][j].GetComponent<ID>().id);
+            }
+            for (int j = 0; j < ships[i].Count; j++)
+            {
+                inGameShips[i][j].GetComponent<ID>().team = myTeam;
             }
         }
 

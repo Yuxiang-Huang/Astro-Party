@@ -97,7 +97,10 @@ public class BotMove : MonoBehaviour
                 GameObject myBullet = Instantiate(bullet, transform.position +
                 new Vector3(bulletDis * Mathf.Sin(angle), 0, bulletDis * Mathf.Cos(angle)),
                 transform.rotation);
+
+                //setting the script varibles
                 myBullet.GetComponent<BulletMove>().id = myID;
+                myBullet.GetComponent<BulletMove>().team = GetComponent<ID>().team;
             }
         }
 

@@ -53,7 +53,10 @@ public class PlayerController : MonoBehaviour
                 GameObject myLaser = Instantiate(laser, transform.position +
                 new Vector3((bulletDis + 5000) * Mathf.Sin(angle), 0, (bulletDis + 5000) * Mathf.Cos(angle)),
                 transform.rotation);
+
+                //setting the script varibles
                 myLaser.GetComponent<Laser>().id = myID;
+
 
                 playerAudio.PlayOneShot(laserSound);
 
@@ -81,7 +84,10 @@ public class PlayerController : MonoBehaviour
                 GameObject myBullet = Instantiate(bullet, transform.position +
                 new Vector3(bulletDis * Mathf.Sin(angle), 0, bulletDis * Mathf.Cos(angle)),
                 transform.rotation);
+
+                //setting the script varibles
                 myBullet.GetComponent<BulletMove>().id = myID;
+                myBullet.GetComponent<BulletMove>().team = GetComponent<ID>().team;
             }  
         }
 
