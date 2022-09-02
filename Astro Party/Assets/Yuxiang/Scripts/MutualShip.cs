@@ -34,7 +34,9 @@ public class MutualShip : MonoBehaviour
         playerRb = GetComponent<Rigidbody>();
         playerAudio = GetComponent<AudioSource>();
 
-        shootMode = "laser";
+        shootMode = "normal";
+
+        ammo = 3;
 
         gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
         scoreManagerScript = GameObject.Find("Score Manager").GetComponent<ScoreManager>();

@@ -25,7 +25,7 @@ public class BotMove : MonoBehaviour
 
         foreach (List<GameObject> shipList in gameManagerScript.inGameShips)
         {
-            if (! shipList.Contains(this.gameObject))
+            if (!shipList.Contains(this.gameObject))
             {
                 foreach (GameObject ship in shipList)
                 {
@@ -37,7 +37,7 @@ public class BotMove : MonoBehaviour
                         }
                     }
                 }
-            }    
+            }
         }
 
         agent.SetDestination(target.transform.position);
@@ -50,7 +50,7 @@ public class BotMove : MonoBehaviour
 
         if (botReloadTime == 0)
         {
-            botReloadTime = 2;
+            botReloadTime = 1;
             GetComponent<MutualShip>().shoot();
         }
     }
