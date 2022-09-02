@@ -166,8 +166,8 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        pos = new List<Vector3>() { new Vector3(spawnX, 30, spawnZ), new Vector3(-spawnX, 30, spawnZ),
-        new Vector3(spawnX, 30, -spawnZ), new Vector3(-spawnX, 30, -spawnZ)};
+        pos = new List<Vector3>() { new Vector3(spawnX, 10, spawnZ), new Vector3(-spawnX, 10, spawnZ),
+        new Vector3(spawnX, 10, -spawnZ), new Vector3(-spawnX, 10, -spawnZ)};
         rot = new List<Vector3>() {new Vector3(0, 180, 0), new Vector3(0, 90, 0),
         new Vector3(0, -90, 0), new Vector3(0, 0, 0)};
     }
