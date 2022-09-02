@@ -11,6 +11,8 @@ public class BotMove : MonoBehaviour
 
     GameManager gameManagerScript;
 
+    float traceTime;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,9 +42,18 @@ public class BotMove : MonoBehaviour
             }
         }
 
-        Debug.Log(target.transform.position);
+        //Debug.Log(target.transform.position);
 
-        agent.SetDestination(target.transform.position);
+        //Can't trace too frequently
+        if (traceTime <= 0)
+        {
+            agent.SetDestination(target.transform.position);
+            traceTime = 1;
+        }
+        if (traceTime > 0)
+        {
+            traceTime -= Time.deltaTime;
+        }
 
         if (botReloadTime > 0)
         {
