@@ -30,7 +30,7 @@ public class ScoreManager : MonoBehaviour
     public GameObject Team3WinText;
     public GameObject Team4WinText;
 
-    int scoreToWin = 5;
+    int scoreToWin = 1;
     public Text roundText;
 
     public bool friendlyFire = false;
@@ -54,6 +54,10 @@ public class ScoreManager : MonoBehaviour
         scoreScreen.SetActive(true);
 
         startPosX = P1.transform.position.x;
+        Debug.Log(startPosX);
+
+        resetScore();
+
         scale = canvas.scaleFactor;
         lengthOfSquare = 500 / scoreToWin * scale;
 
@@ -73,9 +77,6 @@ public class ScoreManager : MonoBehaviour
     public IEnumerator scoreUpdate()
     {
         scoreScreen.SetActive(true);
-
-        //Debug.Log(lengthOfSquare);
-        //Debug.Log(canvas.scaleFactor);
 
         if (gameMode == "solo")
         {
@@ -277,6 +278,8 @@ public class ScoreManager : MonoBehaviour
         //Debug.Log(P3.transform.position);
         //Debug.Log(P4.transform.position);
 
+        scoreScreen.SetActive(true);
+
         P1.transform.position = new Vector3(startPosX, P1.transform.position.y,
                 P1.transform.position.z);
         P2.transform.position = new Vector3(startPosX, P2.transform.position.y,
@@ -285,6 +288,10 @@ public class ScoreManager : MonoBehaviour
                 P3.transform.position.z);
         P4.transform.position = new Vector3(startPosX, P4.transform.position.y,
                 P4.transform.position.z);
+
+        Debug.Log(P1.transform.position.x);
+
+        scoreScreen.SetActive(false);
 
         endScreen.SetActive(false);
     }
