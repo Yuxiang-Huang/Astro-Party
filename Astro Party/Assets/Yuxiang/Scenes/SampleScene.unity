@@ -5549,8 +5549,8 @@ MonoBehaviour:
   P4TeamButtonObject: {fileID: 2134695412}
   P4SetRotateButton: {fileID: 2015253073}
   P4SetShootButton: {fileID: 1781264985}
-  spawnX: 850
-  spawnZ: 400
+  spawnX: 900
+  spawnZ: 425
 --- !u!1 &1157677923
 GameObject:
   m_ObjectHideFlags: 0
