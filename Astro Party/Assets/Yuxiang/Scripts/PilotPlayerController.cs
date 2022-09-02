@@ -6,7 +6,7 @@ public class PilotPlayerController : MonoBehaviour
 {
     int myID;
 
-    int speed = 100;
+    public int speed = 30;
     float rotatingSpeed = 3f;
     bool rotating;
     bool moving;
@@ -35,7 +35,7 @@ public class PilotPlayerController : MonoBehaviour
         }
         if (moving)
         {
-            playerRb.AddRelativeForce(new Vector3(0, 0, speed), ForceMode.Force);
+            playerRb.AddRelativeForce(new Vector3(0, speed, 0), ForceMode.Force);
         }
 
         if (Input.GetKeyDown(turn))
@@ -50,7 +50,7 @@ public class PilotPlayerController : MonoBehaviour
         if (rotating)
         {
             playerRb.freezeRotation = false;
-            transform.Rotate(0, rotatingSpeed, 0);
+            transform.Rotate(0, 0, rotatingSpeed);
             playerRb.freezeRotation = true;
         }
     }

@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ship
   - Floor
+  - Wall
+  - Pilot
   layers:
   - Default
   - TransparentFX
