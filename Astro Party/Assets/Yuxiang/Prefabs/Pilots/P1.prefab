@@ -509,7 +509,7 @@ GameObject:
   - component: {fileID: 740795140467287023}
   m_Layer: 0
   m_Name: P1
-  m_TagString: Untagged
+  m_TagString: Pilot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -572,6 +572,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a26f06474ce444d688eba21a72681790, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  team: 0
   speed: 75
   turn: 97
   move: 100

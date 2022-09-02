@@ -5,6 +5,7 @@ using UnityEngine;
 public class PilotPlayerController : MonoBehaviour
 {
     int myID;
+    public int team;
 
     public int speed = 30;
     float rotatingSpeed = 3f;
@@ -19,10 +20,13 @@ public class PilotPlayerController : MonoBehaviour
 
     public GameObject ship;
 
+    GameManager gameManagerScript;
+
     // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
+        gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -66,7 +70,11 @@ public class PilotPlayerController : MonoBehaviour
     IEnumerator respawn()
     {
         yield return new WaitForSeconds(3f);
-        Instantiate(ship, transform.position, ship.transform.rotation);
+        GameObject myShip = Instantiate(ship, transform.position, ship.transform.rotation);
+
+        gameManagerScript.inGameShips[GetComponent<ID>().team].Add(myShip);
+        gameManagerScript.inGameShips[GetComponent<ID>().team].Remove(this.gameObject);
+
         Destroy(this.gameObject);
     }
 }

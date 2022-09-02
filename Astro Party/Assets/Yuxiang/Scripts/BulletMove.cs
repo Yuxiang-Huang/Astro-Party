@@ -28,6 +28,23 @@ public class BulletMove : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.CompareTag("Pilot"))
+        {
+            //Friendly Fire 
+            if (!scoreManagerScript.friendlyFire)
+            {
+                if (team != collision.gameObject.GetComponent<ID>().team)
+                {
+                    earnPoint();
+                }
+            }
+            else
+            {
+                earnPoint();
+            }
+        }
+
+
         if (collision.gameObject.CompareTag("Ship"))
         {
             //Friendly Fire 
@@ -44,55 +61,13 @@ public class BulletMove : MonoBehaviour
                         collision.gameObject.GetComponent<BotMove>().spawnPilot(scoreManagerScript.shipMode);
                     }
 
-                    //Add score if solo and ship mode
-                    if (scoreManagerScript.shipMode == "ship")
-                    {
-                        if (scoreManagerScript.gameMode == "solo")
-                        {
-                            switch (id)
-                            {
-                                case 1:
-                                    scoreManagerScript.P1Score++;
-                                    break;
-                                case 2:
-                                    scoreManagerScript.P2Score++;
-                                    break;
-                                case 3:
-                                    scoreManagerScript.P3Score++;
-                                    break;
-                                case 4:
-                                    scoreManagerScript.P4Score++;
-                                    break;
-                            }
-                        }
-                    }
+                    earnPoint();
                 }
             }
             else
             {
-                //Add score if solo and ship mode
-                if (scoreManagerScript.shipMode == "ship")
-                {
-                    if (scoreManagerScript.gameMode == "solo")
-                    {
-                        switch (id)
-                        {
-                            case 1:
-                                scoreManagerScript.P1Score++;
-                                break;
-                            case 2:
-                                scoreManagerScript.P2Score++;
-                                break;
-                            case 3:
-                                scoreManagerScript.P3Score++;
-                                break;
-                            case 4:
-                                scoreManagerScript.P4Score++;
-                                break;
-                        }
-                    }
-                }
-
+                earnPoint();
+     
                 if (collision.gameObject.GetComponent<PlayerController>() != null)
                 {
                     collision.gameObject.GetComponent<PlayerController>().spawnPilot(scoreManagerScript.shipMode);
@@ -104,9 +79,34 @@ public class BulletMove : MonoBehaviour
             }
         }
 
-        if (! collision.gameObject.CompareTag("Floor"))
+        if (!collision.gameObject.CompareTag("Floor"))
         {
             Destroy(gameObject);
+        }
+    }
+
+    void earnPoint()
+    {
+        if (scoreManagerScript.shipMode == "ship")
+        {
+            if (scoreManagerScript.gameMode == "solo")
+            {
+                switch (id)
+                {
+                    case 1:
+                        scoreManagerScript.P1Score++;
+                        break;
+                    case 2:
+                        scoreManagerScript.P2Score++;
+                        break;
+                    case 3:
+                        scoreManagerScript.P3Score++;
+                        break;
+                    case 4:
+                        scoreManagerScript.P4Score++;
+                        break;
+                }
+            }
         }
     }
 }

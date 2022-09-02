@@ -162,9 +162,9 @@ public class PlayerController : MonoBehaviour
         GameObject myPilot = Instantiate(pilot, transform.position, pilot.transform.rotation);
         myPilot.GetComponent<PilotPlayerController>().turn = turn;
         myPilot.GetComponent<PilotPlayerController>().move = shoot;
+        myPilot.GetComponent<PilotPlayerController>().team = GetComponent<ID>().team;
 
         gameManagerScript.inGameShips[GetComponent<ID>().team].Add(myPilot);
-        gameManagerScript.inGameShips[GetComponent<ID>().team].Remove(this.gameObject);
 
         if (mode == "pilot")
         {

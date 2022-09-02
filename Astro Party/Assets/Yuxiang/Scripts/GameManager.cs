@@ -110,17 +110,17 @@ public class GameManager : MonoBehaviour
             nextButton.SetActive(false);
         }
 
-        ////removing killed ships in game
-        //foreach (List<GameObject> ship in inGameShips)
-        //{
-        //    for (int i = ship.Count - 1; i >= 0; i--)
-        //    {
-        //        if (ship[i] == null)
-        //        {
-        //            ship.RemoveAt(i);
-        //        }
-        //    }
-        //}
+        //removing killed ships and pilots in game
+        foreach (List<GameObject> ship in inGameShips)
+        {
+            for (int i = ship.Count - 1; i >= 0; i--)
+            {
+                if (ship[i] == null)
+                {
+                    ship.RemoveAt(i);
+                }
+            }
+        }
 
         //check for ending round
         if (gameStarted)
