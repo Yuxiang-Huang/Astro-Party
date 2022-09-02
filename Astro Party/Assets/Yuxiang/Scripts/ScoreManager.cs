@@ -40,8 +40,7 @@ public class ScoreManager : MonoBehaviour
     public GameObject scoreScreen;
 
     int lengthOfSquare;
-    int startPosX = -300;
-    int relativeOffSet = -300 - 193;
+    float startPosX;
 
     public Text teamModeText;
     public Text soloModeText;
@@ -50,6 +49,8 @@ public class ScoreManager : MonoBehaviour
     void Start()
     {
         lengthOfSquare = lengthOfSquare = 500 / scoreToWin * 2;
+
+        startPosX = P1.transform.position.x;
 
         scoreScreen.SetActive(false);
 
@@ -76,29 +77,32 @@ public class ScoreManager : MonoBehaviour
 
         if (gameMode == "solo")
         {
-            while (!closeEnough(P1.transform.position.x + relativeOffSet, startPosX + P1Score * lengthOfSquare))
+            while (!closeEnough(P1.transform.position.x - startPosX, P1Score * lengthOfSquare))
             {
-
                 yield return new WaitForSeconds(1f);
                 P1.transform.position = new Vector3(P1.transform.position.x + lengthOfSquare, P1.transform.position.y,
                     P1.transform.position.z);
 
-                //Debug.Log(P1.transform.position.x + relativeOffSet);
-                //Debug.Log(startPosX + P1Score * lengthOfSquare);
+                //Debug.Log(startPosX);
+                //Debug.Log(P1.transform.position.x);
+                //Debug.Log(P1.transform.position.x - startPosX);
+                //Debug.Log(P1Score * lengthOfSquare);
             }
 
-            while (!closeEnough(P2.transform.position.x + relativeOffSet, startPosX + P2Score * lengthOfSquare))
+            while (!closeEnough(P2.transform.position.x - startPosX, P2Score * lengthOfSquare))
             {
 
                 yield return new WaitForSeconds(1f);
                 P2.transform.position = new Vector3(P2.transform.position.x + lengthOfSquare, P2.transform.position.y,
                     P2.transform.position.z);
 
-                //Debug.Log(P2.transform.position.x + relativeOffSet);
-                //Debug.Log(startPosX + P2Score * lengthOfSquare);
+                //Debug.Log(startPosX);
+                //Debug.Log(P2.transform.position.x);
+                //Debug.Log(P2.transform.position.x - startPosX);
+                //Debug.Log(P2Score * lengthOfSquare);
             }
 
-            while (!closeEnough(P3.transform.position.x + relativeOffSet, startPosX + P3Score * lengthOfSquare))
+            while (!closeEnough(P3.transform.position.x - startPosX, P3Score * lengthOfSquare))
             {
 
                 yield return new WaitForSeconds(1f);
@@ -106,7 +110,7 @@ public class ScoreManager : MonoBehaviour
                     P3.transform.position.z);
             }
 
-            while (!closeEnough(P4.transform.position.x + relativeOffSet, startPosX + P4Score * lengthOfSquare))
+            while (!closeEnough(P4.transform.position.x - startPosX, P4Score * lengthOfSquare))
             {
 
                 yield return new WaitForSeconds(1f);
@@ -119,7 +123,7 @@ public class ScoreManager : MonoBehaviour
         {
             yield return new WaitForSeconds(1f);
 
-            if (!closeEnough(P1.transform.position.x + relativeOffSet, startPosX + P1Score * lengthOfSquare))
+            if (!closeEnough(P1.transform.position.x - startPosX, P1Score * lengthOfSquare))
             {
                 P1.transform.position = new Vector3(P1.transform.position.x + lengthOfSquare, P1.transform.position.y,
                     P1.transform.position.z);
@@ -128,7 +132,7 @@ public class ScoreManager : MonoBehaviour
                 //Debug.Log(startPosX + P1Score * lengthOfSquare);
             }
 
-            if (!closeEnough(P2.transform.position.x + relativeOffSet, startPosX + P2Score * lengthOfSquare))
+            if (!closeEnough(P2.transform.position.x - startPosX, P2Score * lengthOfSquare))
             {
                 P2.transform.position = new Vector3(P2.transform.position.x + lengthOfSquare, P2.transform.position.y,
                     P2.transform.position.z);
@@ -137,13 +141,13 @@ public class ScoreManager : MonoBehaviour
                 //Debug.Log(startPosX + P2Score * lengthOfSquare);
             }
 
-            if (!closeEnough(P3.transform.position.x + relativeOffSet, startPosX + P3Score * lengthOfSquare))
+            if (!closeEnough(P3.transform.position.x - startPosX, P3Score * lengthOfSquare))
             {
                 P3.transform.position = new Vector3(P3.transform.position.x + lengthOfSquare, P3.transform.position.y,
                     P3.transform.position.z);
             }
 
-            if (!closeEnough(P4.transform.position.x + relativeOffSet, startPosX + P4Score * lengthOfSquare))
+            if (!closeEnough(P4.transform.position.x - startPosX, P4Score * lengthOfSquare))
             {
                 P4.transform.position = new Vector3(P4.transform.position.x + lengthOfSquare, P4.transform.position.y,
                     P4.transform.position.z);
@@ -283,13 +287,13 @@ public class ScoreManager : MonoBehaviour
         //Debug.Log(P4.transform.position);
 
         //472 is starting pos
-        P1.transform.position = new Vector3(472, P1.transform.position.y,
+        P1.transform.position = new Vector3(startPosX, P1.transform.position.y,
                 P1.transform.position.z);
-        P2.transform.position = new Vector3(472, P2.transform.position.y,
+        P2.transform.position = new Vector3(startPosX, P2.transform.position.y,
                 P2.transform.position.z);
-        P3.transform.position = new Vector3(472, P3.transform.position.y,
+        P3.transform.position = new Vector3(startPosX, P3.transform.position.y,
                 P3.transform.position.z);
-        P4.transform.position = new Vector3(472, P4.transform.position.y,
+        P4.transform.position = new Vector3(startPosX, P4.transform.position.y,
                 P4.transform.position.z);
 
         endScreen.SetActive(false);
