@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ScoreManager : MonoBehaviour
 {
     public string gameMode;
+    public string shipMode = "pilot";
 
     GameManager gameManagerScript;
 

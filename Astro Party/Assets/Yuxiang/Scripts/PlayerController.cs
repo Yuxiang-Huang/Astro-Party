@@ -30,7 +30,8 @@ public class PlayerController : MonoBehaviour
     Rigidbody playerRb;
     AudioSource playerAudio;
 
-    ScoreManager scoreManagerScript;
+    GameManager gameManagerScript;
+    public GameObject pilot;
 
     // Start is called before the first frame update
     void Start()
@@ -42,7 +43,7 @@ public class PlayerController : MonoBehaviour
         shootMode = "laser";
         myID = GetComponent<ID>().id;
 
-        scoreManagerScript = GameObject.Find("Score Manager").GetComponent<ScoreManager>();
+        gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -152,5 +153,24 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
         playerRb.constraints = RigidbodyConstraints.None;
         playerRb.AddRelativeForce(new Vector3(0, 0, -speed * 30), ForceMode.Force);
+    }
+
+    public void spawnPilot(string mode)
+    {
+        gameManagerScript.inGameShips[GetComponent<ID>().team].Remove(this.gameObject);
+
+        GameObject myPilot = Instantiate(pilot, transform.position, transform.rotation);
+
+        myPilot.GetComponent<PilotPlayerController>().turn = turn;
+        myPilot.GetComponent<PilotPlayerController>().move = shoot;
+
+        gameManagerScript.inGameShips[GetComponent<ID>().team].Add(myPilot);
+
+        Destroy(this.gameObject);
+
+        if (mode == "pilot")
+        {
+            //respawn
+        }
     }
 }

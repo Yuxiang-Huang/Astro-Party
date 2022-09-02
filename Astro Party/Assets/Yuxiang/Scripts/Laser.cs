@@ -7,7 +7,7 @@ public class Laser : MonoBehaviour
     public int id;
     ScoreManager scoreManagerScript;
 
-    public List<int> team;
+    public int team;
 
     // Start is called before the first frame update
     void Start()
