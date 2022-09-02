@@ -70,6 +70,7 @@ public class PilotPlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         GameObject myShip = Instantiate(ship, transform.position, ship.transform.rotation);
+        myShip.GetComponent<ID>().team = team;
 
         gameManagerScript.inGameShips[team].Add(myShip);
         gameManagerScript.inGameShips[team].Remove(this.gameObject);

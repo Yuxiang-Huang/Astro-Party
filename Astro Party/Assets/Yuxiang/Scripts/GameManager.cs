@@ -154,7 +154,9 @@ public class GameManager : MonoBehaviour
                 int ran = Random.Range(0, pos.Count);
                 inGameShips[i].Add(Instantiate(ships[i][j], pos[ran], ships[i][j].transform.rotation));
                 inGameShips[i][j].transform.Rotate(rot[ran]);
+
                 inGameShips[i][j].GetComponent<ID>().team = i;
+
                 pos.RemoveAt(ran);
                 rot.RemoveAt(ran);
             }

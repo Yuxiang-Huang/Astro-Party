@@ -30,38 +30,41 @@ public class ID : MonoBehaviour
                 if (team != collision.gameObject.GetComponent<PilotPlayerController>().team)
                 {
                     Destroy(collision.gameObject);
-                    earnPoint();
+                    if (scoreManagerScript.shipMode == "pilot")
+                    {
+                        earnPoint();
+                    }
                 }
             }
             else
             {
                 Destroy(collision.gameObject);
-                earnPoint();
+                if (scoreManagerScript.shipMode == "pilot")
+                {
+                    earnPoint();
+                }
             }
         }
     }
 
     void earnPoint()
     {
-        if (scoreManagerScript.shipMode == "ship")
+        if (scoreManagerScript.gameMode == "solo")
         {
-            if (scoreManagerScript.gameMode == "solo")
+            switch (id)
             {
-                switch (id)
-                {
-                    case 1:
-                        scoreManagerScript.P1Score++;
-                        break;
-                    case 2:
-                        scoreManagerScript.P2Score++;
-                        break;
-                    case 3:
-                        scoreManagerScript.P3Score++;
-                        break;
-                    case 4:
-                        scoreManagerScript.P4Score++;
-                        break;
-                }
+                case 1:
+                    scoreManagerScript.P1Score++;
+                    break;
+                case 2:
+                    scoreManagerScript.P2Score++;
+                    break;
+                case 3:
+                    scoreManagerScript.P3Score++;
+                    break;
+                case 4:
+                    scoreManagerScript.P4Score++;
+                    break;
             }
         }
     }
