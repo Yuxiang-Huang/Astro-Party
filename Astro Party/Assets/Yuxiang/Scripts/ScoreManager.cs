@@ -122,18 +122,12 @@ public class ScoreManager : MonoBehaviour
             {
                 P1.transform.position = new Vector3(P1.transform.position.x + lengthOfSquare, P1.transform.position.y,
                     P1.transform.position.z);
-
-                //Debug.Log(P1.transform.position.x + relativeOffSet);
-                //Debug.Log(startPosX + P1Score * lengthOfSquare);
             }
 
             if (!closeEnough(P2.transform.position.x - startPosX, P2Score * lengthOfSquare))
             {
                 P2.transform.position = new Vector3(P2.transform.position.x + lengthOfSquare, P2.transform.position.y,
                     P2.transform.position.z);
-
-                //Debug.Log(P2.transform.position.x + relativeOffSet);
-                //Debug.Log(startPosX + P2Score * lengthOfSquare);
             }
 
             if (!closeEnough(P3.transform.position.x - startPosX, P3Score * lengthOfSquare))
@@ -281,7 +275,6 @@ public class ScoreManager : MonoBehaviour
         //Debug.Log(P3.transform.position);
         //Debug.Log(P4.transform.position);
 
-        //472 is starting pos
         P1.transform.position = new Vector3(startPosX, P1.transform.position.y,
                 P1.transform.position.z);
         P2.transform.position = new Vector3(startPosX, P2.transform.position.y,
@@ -313,6 +306,7 @@ public class ScoreManager : MonoBehaviour
             scoreToWin = 3;
             roundText.text = "Quick \n3 WINS";
         }
+        lengthOfSquare = 500 / scoreToWin * canvas.scaleFactor;
     }
 
     public void setFriendlyFire()
