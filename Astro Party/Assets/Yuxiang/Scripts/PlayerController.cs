@@ -163,14 +163,9 @@ public class PlayerController : MonoBehaviour
         myPilot.GetComponent<PilotPlayerController>().turn = turn;
         myPilot.GetComponent<PilotPlayerController>().move = shoot;
         myPilot.GetComponent<PilotPlayerController>().team = GetComponent<ID>().team;
-
         gameManagerScript.inGameShips[GetComponent<ID>().team].Add(myPilot);
-
-        if (mode == "pilot")
-        {
-            myPilot.GetComponent<PilotPlayerController>().StartCoroutine("respawn");
-        }
-
+        myPilot.GetComponent<PilotPlayerController>().StartCoroutine("respawn");
+        
         Destroy(this.gameObject);
     }
 }

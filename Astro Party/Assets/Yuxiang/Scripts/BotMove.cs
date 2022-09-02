@@ -144,14 +144,8 @@ public class BotMove : MonoBehaviour
     {
         GameObject myPilot = Instantiate(pilot, transform.position, pilot.transform.rotation);
         myPilot.GetComponent<PilotPlayerController>().team = GetComponent<ID>().team;
-
-        gameManagerScript.inGameShips[GetComponent<ID>().team].Add(myPilot);
-
-        if (mode == "pilot")
-        {
-            myPilot.GetComponent<PilotPlayerController>().StartCoroutine("respawn");
-        }
-
+        myPilot.GetComponent<PilotPlayerController>().StartCoroutine("respawn");
+      
         Destroy(this.gameObject);
     }
 }

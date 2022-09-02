@@ -61,18 +61,20 @@ public class BulletMove : MonoBehaviour
             {
                 if (team != collision.gameObject.GetComponent<ID>().team)
                 {
-                    if (collision.gameObject.GetComponent<PlayerController>() != null)
-                    {
-                        collision.gameObject.GetComponent<PlayerController>().spawnPilot(scoreManagerScript.shipMode);
-                    }
-                    else if (collision.gameObject.GetComponent<BotMove>() != null)
-                    {
-                        collision.gameObject.GetComponent<BotMove>().spawnPilot(scoreManagerScript.shipMode);
-                    }
-
                     if (scoreManagerScript.shipMode == "ship")
                     {
                         earnPoint();
+                    }
+                    else if(scoreManagerScript.shipMode == "pilot")
+                    {
+                        if (collision.gameObject.GetComponent<PlayerController>() != null)
+                        {
+                            collision.gameObject.GetComponent<PlayerController>().spawnPilot(scoreManagerScript.shipMode);
+                        }
+                        else if (collision.gameObject.GetComponent<BotMove>() != null)
+                        {
+                            collision.gameObject.GetComponent<BotMove>().spawnPilot(scoreManagerScript.shipMode);
+                        }
                     }
                 }
             }
@@ -82,14 +84,16 @@ public class BulletMove : MonoBehaviour
                 {
                     earnPoint();
                 }
-     
-                if (collision.gameObject.GetComponent<PlayerController>() != null)
+                else if (scoreManagerScript.shipMode == "pilot")
                 {
-                    collision.gameObject.GetComponent<PlayerController>().spawnPilot(scoreManagerScript.shipMode);
-                }
-                else if (collision.gameObject.GetComponent<BotMove>() != null)
-                {
-                    collision.gameObject.GetComponent<BotMove>().spawnPilot(scoreManagerScript.shipMode);
+                    if (collision.gameObject.GetComponent<PlayerController>() != null)
+                    {
+                        collision.gameObject.GetComponent<PlayerController>().spawnPilot(scoreManagerScript.shipMode);
+                    }
+                    else if (collision.gameObject.GetComponent<BotMove>() != null)
+                    {
+                        collision.gameObject.GetComponent<BotMove>().spawnPilot(scoreManagerScript.shipMode);
+                    }
                 }
             }
         }

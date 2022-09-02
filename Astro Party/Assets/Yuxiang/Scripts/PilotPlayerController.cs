@@ -7,7 +7,7 @@ public class PilotPlayerController : MonoBehaviour
     public int team;
 
     public int speed = 30;
-    float rotatingSpeed = 3f;
+    float rotatingSpeed = 2f;
     bool rotating;
     bool moving;
 
