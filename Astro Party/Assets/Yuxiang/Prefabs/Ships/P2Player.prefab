@@ -176,20 +176,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 939abf635d50745c8b2d24c4574cabbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammo: 0
-  reloadTime: 0
-  bulletAnimationPos: 0
-  shootMode: 
-  laserSound: {fileID: 8300000, guid: 94cd1fa4bfb2e4df096fad64c2fd1bc1, type: 3}
   turn: 276
   shoot: 275
-  laser: {fileID: 6509910874384710604, guid: cfea443daa6b1433aa831465e8c8e4da, type: 3}
-  bullet: {fileID: 4074745524491351559, guid: 3029e57bd05d644daa79107a6ba55699, type: 3}
-  bulletAnimation:
-  - {fileID: 7504250905194679304}
-  - {fileID: 7504250904674218986}
-  - {fileID: 7504250905339490020}
-  pilot: {fileID: 3406119802348693458, guid: 9794c877f6b3f4688910e2400adf520e, type: 3}
 --- !u!114 &4005178124118719718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,6 +192,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 2
   team: 0
+  shootMode: 
+  bulletAnimationPos: 0
+  bulletAnimation:
+  - {fileID: 7504250905194679304}
+  - {fileID: 7504250904674218986}
+  - {fileID: 7504250905339490020}
+  reloadTime: 0
+  ammo: 0
+  laserSound: {fileID: 8300000, guid: 94cd1fa4bfb2e4df096fad64c2fd1bc1, type: 3}
+  laser: {fileID: 6509910874384710604, guid: cfea443daa6b1433aa831465e8c8e4da, type: 3}
+  bullet: {fileID: 4074745524491351559, guid: 3029e57bd05d644daa79107a6ba55699, type: 3}
+  pilot: {fileID: 3406119802348693458, guid: 9794c877f6b3f4688910e2400adf520e, type: 3}
 --- !u!1 &7504250904674218986
 GameObject:
   m_ObjectHideFlags: 0
