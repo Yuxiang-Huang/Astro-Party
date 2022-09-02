@@ -145,15 +145,8 @@ public class GameManager : MonoBehaviour
     {
         gameStarted = true;
 
-        scoreManagerScript.gameMode = "solo";
-
         for (int i = 0; i < ships.Count; i++)
         {
-            if (ships[i].Count > 1)
-            {
-                scoreManagerScript.gameMode = "team";
-            }
-
             List<int> myTeam = new List<int>();
             for (int j = 0; j < ships[i].Count; j++)
             {

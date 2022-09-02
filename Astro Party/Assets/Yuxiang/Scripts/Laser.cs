@@ -45,12 +45,17 @@ public class Laser : MonoBehaviour
                 }
             }
 
+            //Friendly Fire 
             if (!scoreManagerScript.friendlyFire)
             {
                 if (!team.Contains(collision.gameObject.GetComponent<ID>().id))
                 {
                     Destroy(collision.gameObject);
                 }
+            }
+            else
+            {
+                Destroy(collision.gameObject);
             }
         }
     }

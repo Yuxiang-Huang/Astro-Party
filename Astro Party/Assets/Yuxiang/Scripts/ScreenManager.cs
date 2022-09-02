@@ -5,6 +5,7 @@ using UnityEngine;
 public class ScreenManager : MonoBehaviour
 {
     ScoreManager scoreManagerScript;
+    GameManager gameManagerScript;
 
     public GameObject startScreen;
     public GameObject shipScreen;
@@ -22,6 +23,8 @@ public class ScreenManager : MonoBehaviour
         infoScreen.SetActive(false);
 
         scoreManagerScript = GameObject.Find("Score Manager").GetComponent<ScoreManager>();
+        gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
+
     }
 
     // Update is called once per frame
@@ -40,6 +43,19 @@ public class ScreenManager : MonoBehaviour
     {
         shipScreen.SetActive(false);
         lastScreen.SetActive(true);
+
+        //determine game mode to be solo or team
+
+        scoreManagerScript.gameMode = "solo";
+
+        for (int i = 0; i < gameManagerScript.ships.Count; i++)
+        {
+            if (gameManagerScript.ships[i].Count > 1)
+            {
+                scoreManagerScript.gameMode = "team";
+            }
+        }
+
         if (scoreManagerScript.gameMode == "team")
         {
             friendlyFireButton.SetActive(true);
