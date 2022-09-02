@@ -102,7 +102,7 @@ public class PlayerController : MonoBehaviour
         playerRb.AddRelativeForce(new Vector3(0, 0, speed), ForceMode.Force);
         if (playerRb.velocity.magnitude > maxVelocity)
         {
-            Debug.Log(playerRb.velocity);
+            //Debug.Log(playerRb.velocity);
             playerRb.velocity = playerRb.velocity.normalized * maxVelocity;
         }
 
@@ -159,7 +159,7 @@ public class PlayerController : MonoBehaviour
     {
         gameManagerScript.inGameShips[GetComponent<ID>().team].Remove(this.gameObject);
 
-        GameObject myPilot = Instantiate(pilot, transform.position, transform.rotation);
+        GameObject myPilot = Instantiate(pilot, transform.position, pilot.transform.rotation);
 
         myPilot.GetComponent<PilotPlayerController>().turn = turn;
         myPilot.GetComponent<PilotPlayerController>().move = shoot;

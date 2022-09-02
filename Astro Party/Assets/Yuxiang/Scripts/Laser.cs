@@ -26,37 +26,83 @@ public class Laser : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ship"))
         {
-            if (scoreManagerScript.gameMode == "solo")
-            {
-                switch (id)
-                {
-                    case 1:
-                        scoreManagerScript.P1Score++;
-                        break;
-                    case 2:
-                        scoreManagerScript.P2Score++;
-                        break;
-                    case 3:
-                        scoreManagerScript.P3Score++;
-                        break;
-                    case 4:
-                        scoreManagerScript.P4Score++;
-                        break;
-                }
-            }
-
             //Friendly Fire 
             if (!scoreManagerScript.friendlyFire)
             {
-                if (!team.Contains(collision.gameObject.GetComponent<ID>().id))
+                if (team != collision.gameObject.GetComponent<ID>().team)
                 {
-                    Destroy(collision.gameObject);
+                    if (collision.gameObject.GetComponent<PlayerController>() != null)
+                    {
+                        collision.gameObject.GetComponent<PlayerController>().spawnPilot(scoreManagerScript.shipMode);
+                    }
+                    else if (collision.gameObject.GetComponent<BotMove>() != null)
+                    {
+                        collision.gameObject.GetComponent<BotMove>().spawnPilot(scoreManagerScript.shipMode);
+                    }
+
+                    //Add score if solo and ship mode
+                    if (scoreManagerScript.shipMode == "ship")
+                    {
+                        if (scoreManagerScript.gameMode == "solo")
+                        {
+                            switch (id)
+                            {
+                                case 1:
+                                    scoreManagerScript.P1Score++;
+                                    break;
+                                case 2:
+                                    scoreManagerScript.P2Score++;
+                                    break;
+                                case 3:
+                                    scoreManagerScript.P3Score++;
+                                    break;
+                                case 4:
+                                    scoreManagerScript.P4Score++;
+                                    break;
+                            }
+                        }
+                    }
                 }
             }
             else
             {
-                Destroy(collision.gameObject);
+                //Add score if solo and ship mode
+                if (scoreManagerScript.shipMode == "ship")
+                {
+                    if (scoreManagerScript.gameMode == "solo")
+                    {
+                        switch (id)
+                        {
+                            case 1:
+                                scoreManagerScript.P1Score++;
+                                break;
+                            case 2:
+                                scoreManagerScript.P2Score++;
+                                break;
+                            case 3:
+                                scoreManagerScript.P3Score++;
+                                break;
+                            case 4:
+                                scoreManagerScript.P4Score++;
+                                break;
+                        }
+                    }
+                }
+
+                if (collision.gameObject.GetComponent<PlayerController>() != null)
+                {
+                    collision.gameObject.GetComponent<PlayerController>().spawnPilot(scoreManagerScript.shipMode);
+                }
+                else if (collision.gameObject.GetComponent<BotMove>() != null)
+                {
+                    collision.gameObject.GetComponent<BotMove>().spawnPilot(scoreManagerScript.shipMode);
+                }
             }
+        }
+
+        if (!collision.gameObject.CompareTag("Floor"))
+        {
+            Destroy(gameObject);
         }
     }
 }

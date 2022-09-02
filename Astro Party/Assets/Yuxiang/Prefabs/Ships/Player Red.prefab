@@ -189,6 +189,7 @@ MonoBehaviour:
   - {fileID: 7504250905194679304}
   - {fileID: 7504250904674218986}
   - {fileID: 7504250905339490020}
+  pilot: {fileID: 3406119802348693458, guid: 9794c877f6b3f4688910e2400adf520e, type: 3}
 --- !u!114 &4005178124118719718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,7 +203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 2
-  team: 
+  team: 0
 --- !u!1 &7504250904674218986
 GameObject:
   m_ObjectHideFlags: 0
