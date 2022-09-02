@@ -132,7 +132,7 @@ public class PlayerController : MonoBehaviour
             reloadTime = 2;
         }
 
-        if (rotating && playerRb.constraints != RigidbodyConstraints.FreezePosition)
+        if (rotating && ! freeze)
         {
             playerRb.freezeRotation = false;
             transform.Rotate(0, rotatingSpeed, 0);

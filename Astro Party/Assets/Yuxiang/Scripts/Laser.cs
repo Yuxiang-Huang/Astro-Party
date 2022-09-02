@@ -29,13 +29,15 @@ public class Laser : MonoBehaviour
             //Friendly Fire 
             if (!scoreManagerScript.friendlyFire)
             {
-                if (team != collision.gameObject.GetComponent<ID>().team)
+                if (team != collision.gameObject.GetComponent<PilotPlayerController>().team)
                 {
+                    Destroy(collision.gameObject);
                     earnPoint();
                 }
             }
             else
             {
+                Destroy(collision.gameObject);
                 earnPoint();
             }
         }
@@ -73,11 +75,6 @@ public class Laser : MonoBehaviour
                     collision.gameObject.GetComponent<BotMove>().spawnPilot(scoreManagerScript.shipMode);
                 }
             }
-        }
-
-        if (!collision.gameObject.CompareTag("Floor"))
-        {
-            Destroy(gameObject);
         }
     }
 

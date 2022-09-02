@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PilotPlayerController : MonoBehaviour
 {
-    int myID;
     public int team;
 
     public int speed = 30;
@@ -72,8 +71,8 @@ public class PilotPlayerController : MonoBehaviour
         yield return new WaitForSeconds(3f);
         GameObject myShip = Instantiate(ship, transform.position, ship.transform.rotation);
 
-        gameManagerScript.inGameShips[GetComponent<ID>().team].Add(myShip);
-        gameManagerScript.inGameShips[GetComponent<ID>().team].Remove(this.gameObject);
+        gameManagerScript.inGameShips[team].Add(myShip);
+        gameManagerScript.inGameShips[team].Remove(this.gameObject);
 
         Destroy(this.gameObject);
     }

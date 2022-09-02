@@ -11,13 +11,13 @@ public class ID : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        scoreManagerScript = GameObject.Find("Score Manager").GetComponent<ScoreManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        scoreManagerScript = GameObject.Find("Score Manager").GetComponent<ScoreManager>();
+        
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -27,13 +27,15 @@ public class ID : MonoBehaviour
             //Friendly Fire 
             if (!scoreManagerScript.friendlyFire)
             {
-                if (team != collision.gameObject.GetComponent<ID>().team)
+                if (team != collision.gameObject.GetComponent<PilotPlayerController>().team)
                 {
+                    Destroy(collision.gameObject);
                     earnPoint();
                 }
             }
             else
             {
+                Destroy(collision.gameObject);
                 earnPoint();
             }
         }
