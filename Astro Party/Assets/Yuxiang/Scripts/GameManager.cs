@@ -147,22 +147,15 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < ships.Count; i++)
         {
-            List<int> myTeam = new List<int>();
             for (int j = 0; j < ships[i].Count; j++)
             {
                 //spawn one ship
                 int ran = Random.Range(0, pos.Count);
                 inGameShips[i].Add(Instantiate(ships[i][j], pos[ran], ships[i][j].transform.rotation));
                 inGameShips[i][j].transform.Rotate(rot[ran]);
+                inGameShips[i][j].GetComponent<ID>().team = i;
                 pos.RemoveAt(ran);
                 rot.RemoveAt(ran);
-
-                //Friendly Fire adding to team
-                myTeam.Add(inGameShips[i][j].GetComponent<ID>().id);
-            }
-            for (int j = 0; j < ships[i].Count; j++)
-            {
-                inGameShips[i][j].GetComponent<ID>().team = myTeam;
             }
         }
 

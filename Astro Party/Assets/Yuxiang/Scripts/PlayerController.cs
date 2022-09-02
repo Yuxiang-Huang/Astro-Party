@@ -30,6 +30,8 @@ public class PlayerController : MonoBehaviour
     Rigidbody playerRb;
     AudioSource playerAudio;
 
+    ScoreManager scoreManagerScript;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +41,8 @@ public class PlayerController : MonoBehaviour
 
         shootMode = "laser";
         myID = GetComponent<ID>().id;
+
+        scoreManagerScript = GameObject.Find("Score Manager").GetComponent<ScoreManager>();
     }
 
     // Update is called once per frame

@@ -5,7 +5,7 @@ using UnityEngine;
 public class ID : MonoBehaviour
 {
     public int id;
-    public List<int> team = new List<int>();
+    public int team;
 
     // Start is called before the first frame update
     void Start()
