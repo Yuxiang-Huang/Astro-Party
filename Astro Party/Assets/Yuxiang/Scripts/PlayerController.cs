@@ -6,7 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     int myID;
 
-    int speed = 350;
+    int speed = 500;
+    int maxVelocity = 350;
     float rotatingSpeed = 1.5f;
     bool rotating;
     int bulletDis = 75;
@@ -93,10 +94,13 @@ public class PlayerController : MonoBehaviour
         }
 
         //if (!rotating)
-        //{
         playerRb.AddRelativeForce(new Vector3(0, 0, speed), ForceMode.Force);
+        if (playerRb.velocity.magnitude > maxVelocity)
+        {
+            Debug.Log(playerRb.velocity);
+            playerRb.velocity = playerRb.velocity.normalized * maxVelocity;
+        }
 
-        
         if (Input.GetKeyDown(turn)){
             rotating = true;
         }

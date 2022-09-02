@@ -15,6 +15,7 @@ public class PilotPlayerController : MonoBehaviour
     public KeyCode move = KeyCode.D;
 
     Rigidbody playerRb;
+    public int maxVelocity = 100;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +37,11 @@ public class PilotPlayerController : MonoBehaviour
         if (moving)
         {
             playerRb.AddRelativeForce(new Vector3(0, speed, 0), ForceMode.Force);
+        }
+        if (playerRb.velocity.magnitude > maxVelocity)
+        {
+            //Debug.Log(playerRb.velocity);
+            playerRb.velocity = playerRb.velocity.normalized * maxVelocity;
         }
 
         if (Input.GetKeyDown(turn))
