@@ -49,13 +49,12 @@ public class Laser : MonoBehaviour
             }
         }
 
-
         if (collision.gameObject.CompareTag("Ship"))
         {
             //Friendly Fire 
             if (!scoreManagerScript.friendlyFire)
             {
-                if (team != collision.gameObject.GetComponent<ID>().team)
+                if (team != collision.gameObject.GetComponent<MutualShip>().team)
                 {
                     if (scoreManagerScript.shipMode == "ship")
                     {
@@ -64,14 +63,7 @@ public class Laser : MonoBehaviour
                     }
                     else if (scoreManagerScript.shipMode == "pilot")
                     {
-                        if (collision.gameObject.GetComponent<PlayerController>() != null)
-                        {
-                            collision.gameObject.GetComponent<PlayerController>().spawnPilot(scoreManagerScript.shipMode);
-                        }
-                        else if (collision.gameObject.GetComponent<BotMove>() != null)
-                        {
-                            collision.gameObject.GetComponent<BotMove>().spawnPilot(scoreManagerScript.shipMode);
-                        }
+                       collision.gameObject.GetComponent<MutualShip>().spawnPilot(scoreManagerScript.shipMode);                  
                     }
                 }
             }
@@ -84,14 +76,7 @@ public class Laser : MonoBehaviour
                 }
                 else if (scoreManagerScript.shipMode == "pilot")
                 {
-                    if (collision.gameObject.GetComponent<PlayerController>() != null)
-                    {
-                        collision.gameObject.GetComponent<PlayerController>().spawnPilot(scoreManagerScript.shipMode);
-                    }
-                    else if (collision.gameObject.GetComponent<BotMove>() != null)
-                    {
-                        collision.gameObject.GetComponent<BotMove>().spawnPilot(scoreManagerScript.shipMode);
-                    }
+                    collision.gameObject.GetComponent<MutualShip>().spawnPilot(scoreManagerScript.shipMode);                  
                 }
             }
         }

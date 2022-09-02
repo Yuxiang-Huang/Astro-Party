@@ -155,7 +155,7 @@ public class GameManager : MonoBehaviour
                 inGameShips[i].Add(Instantiate(ships[i][j], pos[ran], ships[i][j].transform.rotation));
                 inGameShips[i][j].transform.Rotate(rot[ran]);
 
-                inGameShips[i][j].GetComponent<ID>().team = i;
+                inGameShips[i][j].GetComponent<MutualShip>().team = i;
 
                 pos.RemoveAt(ran);
                 rot.RemoveAt(ran);
@@ -314,7 +314,7 @@ public class GameManager : MonoBehaviour
                 {
                     foreach (GameObject ship in ships[i])
                     {
-                        int id = ship.GetComponent<ID>().id;
+                        int id = ship.GetComponent<MutualShip>().id;
 
                         switch (id)
                         {

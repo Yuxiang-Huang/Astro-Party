@@ -254,7 +254,7 @@ public class ScoreManager : MonoBehaviour
         {
             for (int j = 0; j < gameManagerScript.ships[i].Count; j++)
             {
-                if (gameManagerScript.ships[i][j].GetComponent<ID>().id == shipID)
+                if (gameManagerScript.ships[i][j].GetComponent<MutualShip>().id == shipID)
                 {
                     return i + 1;
                 }
