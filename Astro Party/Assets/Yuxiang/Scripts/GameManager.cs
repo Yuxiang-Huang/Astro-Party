@@ -53,8 +53,8 @@ public class GameManager : MonoBehaviour
     public GameObject P4SetRotateButton;
     public GameObject P4SetShootButton;
 
-    int spawnX = 850;
-    int spawnZ = 400;
+    public int spawnX = 850;
+    public int spawnZ = 400;
     bool gameStarted;
 
     // Start is called before the first frame update
