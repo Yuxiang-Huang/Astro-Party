@@ -7,6 +7,8 @@ public class Laser : MonoBehaviour
     public int id;
     ScoreManager scoreManagerScript;
 
+    public List<int> team;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,7 +44,14 @@ public class Laser : MonoBehaviour
                         break;
                 }
             }
-            Destroy(collision.gameObject);
+
+            if (!scoreManagerScript.friendlyFire)
+            {
+                if (!team.Contains(collision.gameObject.GetComponent<ID>().id))
+                {
+                    Destroy(collision.gameObject);
+                }
+            }
         }
     }
 }

@@ -6748,6 +6748,7 @@ MonoBehaviour:
   shipScreen: {fileID: 1387656203}
   lastScreen: {fileID: 1932785077}
   infoScreen: {fileID: 1881487748}
+  friendlyFireButton: {fileID: 401574323}
 --- !u!1 &1556642925
 GameObject:
   m_ObjectHideFlags: 0

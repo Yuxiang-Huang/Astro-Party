@@ -56,12 +56,13 @@ public class PlayerController : MonoBehaviour
 
                 //setting the script varibles
                 myLaser.GetComponent<Laser>().id = myID;
+                myLaser.GetComponent<Laser>().team = GetComponent<ID>().team;
 
-
+                //Sound effect
                 playerAudio.PlayOneShot(laserSound);
 
+                //Freeze after using laser
                 playerRb.constraints = RigidbodyConstraints.FreezePosition;
-
                 StartCoroutine("ableToMove");
 
                 shootMode = "normal";

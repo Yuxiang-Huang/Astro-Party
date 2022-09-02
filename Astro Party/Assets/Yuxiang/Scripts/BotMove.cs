@@ -81,12 +81,16 @@ public class BotMove : MonoBehaviour
                 GameObject myLaser = Instantiate(laser, transform.position +
                 new Vector3((bulletDis + 5000) * Mathf.Sin(angle), 0, (bulletDis + 5000) * Mathf.Cos(angle)),
                 transform.rotation);
-                myLaser.GetComponent<Laser>().id = myID;
 
+                //setting the script varibles
+                myLaser.GetComponent<Laser>().id = myID;
+                myLaser.GetComponent<Laser>().team = GetComponent<ID>().team;
+
+                //Sound effect
                 playerAudio.PlayOneShot(laserSound);
 
+                //Freeze after using laser
                 playerRb.constraints = RigidbodyConstraints.FreezePosition;
-
                 StartCoroutine("ableToMove");
 
                 shootMode = "normal";

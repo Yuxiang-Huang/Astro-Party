@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class ScreenManager : MonoBehaviour
 {
+    ScoreManager scoreManagerScript;
+
     public GameObject startScreen;
     public GameObject shipScreen;
     public GameObject lastScreen;
     public GameObject infoScreen;
+
+    public GameObject friendlyFireButton;
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +20,8 @@ public class ScreenManager : MonoBehaviour
         shipScreen.SetActive(false);
         lastScreen.SetActive(false);
         infoScreen.SetActive(false);
+
+        scoreManagerScript = GameObject.Find("Score Manager").GetComponent<ScoreManager>();
     }
 
     // Update is called once per frame
@@ -34,6 +40,14 @@ public class ScreenManager : MonoBehaviour
     {
         shipScreen.SetActive(false);
         lastScreen.SetActive(true);
+        if (scoreManagerScript.gameMode == "team")
+        {
+            friendlyFireButton.SetActive(true);
+        }
+        else
+        {
+            friendlyFireButton.SetActive(false);
+        }
     }
 
     public void nextToInfo()
