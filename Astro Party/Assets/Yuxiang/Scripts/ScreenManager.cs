@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ScreenManager : MonoBehaviour
 {
@@ -13,11 +14,13 @@ public class ScreenManager : MonoBehaviour
     public GameObject infoScreen;
 
     public GameObject friendlyFireButton;
+    public GameObject teamModeText;
+    public GameObject soloModeText;
 
     // Start is called before the first frame update
     void Start()
     {
-        //startScreen.SetActive(true);
+        startScreen.SetActive(true);
         shipScreen.SetActive(false);
         lastScreen.SetActive(false);
         infoScreen.SetActive(false);
@@ -59,10 +62,14 @@ public class ScreenManager : MonoBehaviour
         if (scoreManagerScript.gameMode == "team")
         {
             friendlyFireButton.SetActive(true);
+            teamModeText.SetActive(true);
+            soloModeText.SetActive(false);
         }
         else
         {
             friendlyFireButton.SetActive(false);
+            soloModeText.SetActive(true);
+            teamModeText.SetActive(false);
         }
     }
 

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ScoreManager : MonoBehaviour
 {
     public string gameMode;
-    public string shipMode = "pilot";
+    public string shipMode;
 
     GameManager gameManagerScript;
 
@@ -43,6 +43,9 @@ public class ScoreManager : MonoBehaviour
     int startPosX = -300;
     int relativeOffSet = -300 - 193;
 
+    public Text teamModeText;
+    public Text soloModeText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,6 +54,8 @@ public class ScoreManager : MonoBehaviour
         scoreScreen.SetActive(false);
 
         gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
+
+        shipMode = "ship";
     }
 
     // Update is called once per frame
@@ -149,6 +154,7 @@ public class ScoreManager : MonoBehaviour
 
         scoreScreen.SetActive(false);
 
+        //Check for winner
         if (P1Score < scoreToWin && P2Score < scoreToWin && P3Score < scoreToWin && P4Score < scoreToWin)
         {
             gameManagerScript.spawnShips();
@@ -334,5 +340,21 @@ public class ScoreManager : MonoBehaviour
         }
 
         friendlyFire = !friendlyFire;
+    }
+
+    public void setShipMode()
+    {
+        if (shipMode == "ship")
+        {
+            shipMode = "pilot";
+            teamModeText.text = "Team Pilot Hunter";
+            soloModeText.text = "Solo Pilot Hunter";
+        }
+        else if (shipMode == "pilot")
+        {
+            shipMode = "ship";
+            teamModeText.text = "Team Ship Hunter";
+            soloModeText.text = "Solo Ship Hunter";
+        }
     }
 }
