@@ -17,6 +17,8 @@ public class PilotPlayerController : MonoBehaviour
     Rigidbody playerRb;
     public int maxVelocity = 100;
 
+    public GameObject ship;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -59,5 +61,12 @@ public class PilotPlayerController : MonoBehaviour
             transform.Rotate(0, 0, rotatingSpeed);
             playerRb.freezeRotation = true;
         }
+    }
+
+    IEnumerator respawn()
+    {
+        yield return new WaitForSeconds(3f);
+        Instantiate(ship, transform.position, ship.transform.rotation);
+        Destroy(this.gameObject);
     }
 }

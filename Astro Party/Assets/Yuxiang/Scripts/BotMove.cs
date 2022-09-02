@@ -32,6 +32,8 @@ public class BotMove : MonoBehaviour
 
     public GameObject pilot;
 
+    bool freeze;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -92,7 +94,7 @@ public class BotMove : MonoBehaviour
                 playerAudio.PlayOneShot(laserSound);
 
                 //Freeze after using laser
-                playerRb.constraints = RigidbodyConstraints.FreezePosition;
+                freeze = true;
                 StartCoroutine("ableToMove");
 
                 shootMode = "normal";
@@ -134,7 +136,7 @@ public class BotMove : MonoBehaviour
     IEnumerator ableToMove()
     {
         yield return new WaitForSeconds(0.3f);
-        playerRb.constraints = RigidbodyConstraints.None;
+        freeze = false;
         playerRb.AddRelativeForce(new Vector3(0, 0, -speed * 30), ForceMode.Force);
     }
 
@@ -150,7 +152,7 @@ public class BotMove : MonoBehaviour
 
         if (mode == "pilot")
         {
-            //respawn
+            //StartCoroutine("respawn");
         }
     }
 }

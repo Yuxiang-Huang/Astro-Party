@@ -33,6 +33,8 @@ public class PlayerController : MonoBehaviour
     GameManager gameManagerScript;
     public GameObject pilot;
 
+    bool freeze;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -68,7 +70,7 @@ public class PlayerController : MonoBehaviour
                 playerAudio.PlayOneShot(laserSound);
 
                 //Freeze after using laser
-                playerRb.constraints = RigidbodyConstraints.FreezePosition;
+                freeze = true;
                 StartCoroutine("ableToMove");
 
                 shootMode = "normal";
@@ -151,26 +153,24 @@ public class PlayerController : MonoBehaviour
     IEnumerator ableToMove()
     {
         yield return new WaitForSeconds(0.3f);
-        playerRb.constraints = RigidbodyConstraints.None;
+        freeze = false;
         playerRb.AddRelativeForce(new Vector3(0, 0, -speed * 30), ForceMode.Force);
     }
 
     public void spawnPilot(string mode)
     {
-        gameManagerScript.inGameShips[GetComponent<ID>().team].Remove(this.gameObject);
-
         GameObject myPilot = Instantiate(pilot, transform.position, pilot.transform.rotation);
-
         myPilot.GetComponent<PilotPlayerController>().turn = turn;
         myPilot.GetComponent<PilotPlayerController>().move = shoot;
 
         gameManagerScript.inGameShips[GetComponent<ID>().team].Add(myPilot);
-
-        Destroy(this.gameObject);
+        gameManagerScript.inGameShips[GetComponent<ID>().team].Remove(this.gameObject);
 
         if (mode == "pilot")
         {
-            //respawn
+            myPilot.GetComponent<PilotPlayerController>().StartCoroutine("respawn");
         }
+
+        Destroy(this.gameObject);
     }
 }
