@@ -53,8 +53,8 @@ public class GameManager : MonoBehaviour
     public GameObject P4SetRotateButton;
     public GameObject P4SetShootButton;
 
-    public int spawnX = 850;
-    public int spawnZ = 400;
+    public int spawnX = 900;
+    public int spawnZ = 420;
     bool gameStarted;
 
     // Start is called before the first frame update
@@ -118,6 +118,14 @@ public class GameManager : MonoBehaviour
                 if (ship[i] == null)
                 {
                     ship.RemoveAt(i);
+                }
+                else
+                {
+                    //prevent out of bound
+                    ship[i].transform.position = new Vector3(Mathf.Max(ship[i].transform.position.x, -spawnX),
+                        ship[i].transform.position.y, Mathf.Max(ship[i].transform.position.z, -spawnZ));
+                    ship[i].transform.position = new Vector3(Mathf.Min(ship[i].transform.position.x, spawnX),
+                        ship[i].transform.position.y, Mathf.Min(ship[i].transform.position.z, spawnZ));
                 }
             }
         }

@@ -61,7 +61,7 @@ public class PilotPlayerController : MonoBehaviour
         if (rotating)
         {
             playerRb.freezeRotation = false;
-            transform.Rotate(0, 0, rotatingSpeed);
+            transform.Rotate(0, 0, -rotatingSpeed);
             playerRb.freezeRotation = true;
         }
     }

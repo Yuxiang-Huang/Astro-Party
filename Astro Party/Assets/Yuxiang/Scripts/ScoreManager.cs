@@ -270,7 +270,7 @@ public class ScoreManager : MonoBehaviour
 
     //Buttons
 
-    public void rematch()
+    public void resetScore()
     {
         P1Score = 0;
         P2Score = 0;
@@ -292,11 +292,6 @@ public class ScoreManager : MonoBehaviour
         P4.transform.position = new Vector3(472, P4.transform.position.y,
                 P4.transform.position.z);
 
-        endScreen.SetActive(false);
-    }
-
-    public void endBack()
-    {
         endScreen.SetActive(false);
     }
 
