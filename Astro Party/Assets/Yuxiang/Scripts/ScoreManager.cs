@@ -46,6 +46,7 @@ public class ScoreManager : MonoBehaviour
     public Text soloModeText;
 
     public Canvas canvas;
+    public float scale;
 
     // Start is called before the first frame update
     void Start()
@@ -53,7 +54,8 @@ public class ScoreManager : MonoBehaviour
         scoreScreen.SetActive(true);
 
         startPosX = P1.transform.position.x;
-        lengthOfSquare = 500 / scoreToWin * canvas.scaleFactor;
+        scale = canvas.scaleFactor;
+        lengthOfSquare = 500 / scoreToWin * scale;
 
         scoreScreen.SetActive(false);
 
@@ -306,7 +308,8 @@ public class ScoreManager : MonoBehaviour
             scoreToWin = 3;
             roundText.text = "Quick \n3 WINS";
         }
-        lengthOfSquare = 500 / scoreToWin * canvas.scaleFactor;
+
+        lengthOfSquare = 500 / scoreToWin * scale;
     }
 
     public void setFriendlyFire()
