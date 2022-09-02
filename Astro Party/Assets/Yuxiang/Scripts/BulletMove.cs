@@ -64,6 +64,7 @@ public class BulletMove : MonoBehaviour
                     if (scoreManagerScript.shipMode == "ship")
                     {
                         earnPoint();
+                        Destroy(collision.gameObject);
                     }
                     else if(scoreManagerScript.shipMode == "pilot")
                     {
@@ -83,6 +84,7 @@ public class BulletMove : MonoBehaviour
                 if (scoreManagerScript.shipMode == "ship")
                 {
                     earnPoint();
+                    Destroy(collision.gameObject);
                 }
                 else if (scoreManagerScript.shipMode == "pilot")
                 {

@@ -277,10 +277,10 @@ public class ScoreManager : MonoBehaviour
         P3Score = 0;
         P4Score = 0;
 
-        Debug.Log(P1.transform.position);
-        Debug.Log(P2.transform.position);
-        Debug.Log(P3.transform.position);
-        Debug.Log(P4.transform.position);
+        //Debug.Log(P1.transform.position);
+        //Debug.Log(P2.transform.position);
+        //Debug.Log(P3.transform.position);
+        //Debug.Log(P4.transform.position);
 
         //472 is starting pos
         P1.transform.position = new Vector3(472, P1.transform.position.y,
@@ -291,11 +291,6 @@ public class ScoreManager : MonoBehaviour
                 P3.transform.position.z);
         P4.transform.position = new Vector3(472, P4.transform.position.y,
                 P4.transform.position.z);
-
-        Debug.Log(P1.transform.position);
-        Debug.Log(P2.transform.position);
-        Debug.Log(P3.transform.position);
-        Debug.Log(P4.transform.position);
 
         endScreen.SetActive(false);
     }

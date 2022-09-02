@@ -112,7 +112,6 @@ public class BotMove : MonoBehaviour
             }
         }
 
-
         if (reloadTime > 0)
         {
             reloadTime -= Time.deltaTime;
@@ -142,7 +141,8 @@ public class BotMove : MonoBehaviour
 
     public void spawnPilot(string mode)
     {
-        GameObject myPilot = Instantiate(pilot, transform.position, pilot.transform.rotation);
+        GameObject myPilot = Instantiate(pilot, transform.position, transform.rotation);
+        myPilot.transform.Rotate(90, 0, 0);
         myPilot.GetComponent<PilotPlayerController>().team = GetComponent<ID>().team;
         myPilot.GetComponent<PilotPlayerController>().StartCoroutine("respawn");
       

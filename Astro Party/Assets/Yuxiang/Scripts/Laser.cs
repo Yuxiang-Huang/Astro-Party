@@ -60,6 +60,7 @@ public class Laser : MonoBehaviour
                     if (scoreManagerScript.shipMode == "ship")
                     {
                         earnPoint();
+                        Destroy(collision.gameObject);
                     }
                     else if (scoreManagerScript.shipMode == "pilot")
                     {
@@ -79,6 +80,7 @@ public class Laser : MonoBehaviour
                 if (scoreManagerScript.shipMode == "ship")
                 {
                     earnPoint();
+                    Destroy(collision.gameObject);
                 }
                 else if (scoreManagerScript.shipMode == "pilot")
                 {
