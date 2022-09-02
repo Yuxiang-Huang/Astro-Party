@@ -45,13 +45,11 @@ public class ScoreManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rematch();
+        lengthOfSquare = lengthOfSquare = 500 / scoreToWin * 2;
 
         scoreScreen.SetActive(false);
 
         gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
-
-        lengthOfSquare = lengthOfSquare = 500 / scoreToWin * 2;
     }
 
     // Update is called once per frame
@@ -272,14 +270,25 @@ public class ScoreManager : MonoBehaviour
         P3Score = 0;
         P4Score = 0;
 
-        P1.transform.position = new Vector3(startPosX - relativeOffSet, P1.transform.position.y,
+        Debug.Log(P1.transform.position);
+        Debug.Log(P2.transform.position);
+        Debug.Log(P3.transform.position);
+        Debug.Log(P4.transform.position);
+
+        //472 is starting pos
+        P1.transform.position = new Vector3(472, P1.transform.position.y,
                 P1.transform.position.z);
-        P2.transform.position = new Vector3(startPosX - relativeOffSet, P2.transform.position.y,
+        P2.transform.position = new Vector3(472, P2.transform.position.y,
                 P2.transform.position.z);
-        P3.transform.position = new Vector3(startPosX - relativeOffSet, P3.transform.position.y,
+        P3.transform.position = new Vector3(472, P3.transform.position.y,
                 P3.transform.position.z);
-        P4.transform.position = new Vector3(startPosX - relativeOffSet, P4.transform.position.y,
+        P4.transform.position = new Vector3(472, P4.transform.position.y,
                 P4.transform.position.z);
+
+        Debug.Log(P1.transform.position);
+        Debug.Log(P2.transform.position);
+        Debug.Log(P3.transform.position);
+        Debug.Log(P4.transform.position);
 
         endScreen.SetActive(false);
     }

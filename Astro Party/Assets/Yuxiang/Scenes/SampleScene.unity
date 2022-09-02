@@ -2358,6 +2358,7 @@ GameObject:
   - component: {fileID: 523128618}
   - component: {fileID: 523128617}
   - component: {fileID: 523128616}
+  - component: {fileID: 523128620}
   m_Layer: 0
   m_Name: Wall Down
   m_TagString: Untagged
@@ -2441,6 +2442,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!208 &523128620
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 523128615}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.25, y: 0.5, z: 0.25}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &532638219
 GameObject:
   m_ObjectHideFlags: 0
@@ -3082,6 +3099,7 @@ GameObject:
   - component: {fileID: 662086941}
   - component: {fileID: 662086940}
   - component: {fileID: 662086939}
+  - component: {fileID: 662086943}
   m_Layer: 0
   m_Name: Wall Left
   m_TagString: Untagged
@@ -3165,6 +3183,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!208 &662086943
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 662086938}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.25, y: 0.5, z: 0.25}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &676046881
 GameObject:
   m_ObjectHideFlags: 0
@@ -6761,6 +6795,7 @@ GameObject:
   - component: {fileID: 1556642928}
   - component: {fileID: 1556642927}
   - component: {fileID: 1556642926}
+  - component: {fileID: 1556642930}
   m_Layer: 0
   m_Name: Wall Up
   m_TagString: Untagged
@@ -6844,6 +6879,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!208 &1556642930
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1556642925}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.25, y: 0.5, z: 0.25}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1625408421
 GameObject:
   m_ObjectHideFlags: 0
@@ -7777,6 +7828,7 @@ GameObject:
   - component: {fileID: 1813965137}
   - component: {fileID: 1813965136}
   - component: {fileID: 1813965135}
+  - component: {fileID: 1813965139}
   m_Layer: 0
   m_Name: Wall Right
   m_TagString: Untagged
@@ -7860,6 +7912,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!208 &1813965139
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1813965134}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.25, y: 0.5, z: 0.25}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1820791695
 GameObject:
   m_ObjectHideFlags: 0
@@ -8701,7 +8769,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1932785078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9605,7 +9673,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2039008834
 MonoBehaviour:
   m_ObjectHideFlags: 0

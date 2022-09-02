@@ -38,7 +38,7 @@ public class BotMove : MonoBehaviour
 
         gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
 
-        shootMode = "laser";
+        shootMode = "normal";
 
         myID = GetComponent<ID>().id;
     }
