@@ -6,7 +6,8 @@ public class PilotPlayerController : MonoBehaviour
 {
     public int team;
 
-    public int speed = 30;
+    public int speed = 75;
+    public int maxVelocity = 100;
     float rotatingSpeed = 2f;
     bool rotating;
     bool moving;
@@ -14,8 +15,7 @@ public class PilotPlayerController : MonoBehaviour
     public KeyCode turn = KeyCode.A;
     public KeyCode move = KeyCode.D;
 
-    Rigidbody playerRb;
-    public int maxVelocity = 100;
+    public Rigidbody playerRb;
 
     public GameObject ship;
 
@@ -24,8 +24,8 @@ public class PilotPlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerRb = GetComponent<Rigidbody>();
         gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        playerRb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -68,8 +68,9 @@ public class PilotPlayerController : MonoBehaviour
 
     IEnumerator respawn()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(7f);
         GameObject myShip = Instantiate(ship, transform.position, transform.rotation);
+        myShip.transform.Rotate(-90, 0, 0);
         myShip.GetComponent<MutualShip>().team = team;
 
         gameManagerScript.inGameShips[team].Add(myShip);
