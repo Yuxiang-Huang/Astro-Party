@@ -39,18 +39,21 @@ public class ScoreManager : MonoBehaviour
     public GameObject endScreen;
     public GameObject scoreScreen;
 
-    int lengthOfSquare;
+    float lengthOfSquare;
     float startPosX;
 
     public Text teamModeText;
     public Text soloModeText;
 
+    public Canvas canvas;
+
     // Start is called before the first frame update
     void Start()
     {
-        lengthOfSquare = lengthOfSquare = 500 / scoreToWin * 2;
+        scoreScreen.SetActive(true);
 
         startPosX = P1.transform.position.x;
+        lengthOfSquare = 500 / scoreToWin * canvas.scaleFactor;
 
         scoreScreen.SetActive(false);
 
@@ -62,18 +65,15 @@ public class ScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public IEnumerator scoreUpdate()
     {
         scoreScreen.SetActive(true);
 
-        //Debug.Log(P1Score);
         //Debug.Log(lengthOfSquare);
-        //Debug.Log(P1.transform.position.x + relativeOffSet);
-        //Debug.Log(startPosX + P1Score * lengthOfSquare);
-        //Debug.Log(!closeEnough(P1.transform.position.x + relativeOffSet, startPosX + P1Score * lengthOfSquare));
+        //Debug.Log(canvas.scaleFactor);
 
         if (gameMode == "solo")
         {
@@ -95,11 +95,6 @@ public class ScoreManager : MonoBehaviour
                 yield return new WaitForSeconds(1f);
                 P2.transform.position = new Vector3(P2.transform.position.x + lengthOfSquare, P2.transform.position.y,
                     P2.transform.position.z);
-
-                //Debug.Log(startPosX);
-                //Debug.Log(P2.transform.position.x);
-                //Debug.Log(P2.transform.position.x - startPosX);
-                //Debug.Log(P2Score * lengthOfSquare);
             }
 
             while (!closeEnough(P3.transform.position.x - startPosX, P3Score * lengthOfSquare))
@@ -318,8 +313,6 @@ public class ScoreManager : MonoBehaviour
             scoreToWin = 3;
             roundText.text = "Quick \n3 WINS";
         }
-
-        lengthOfSquare = 500 / scoreToWin * 2;
     }
 
     public void setFriendlyFire()
