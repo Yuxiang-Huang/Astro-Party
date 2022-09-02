@@ -82,7 +82,7 @@ public class MutualShip : MonoBehaviour
 
             //setting the script varibles
             myLaser.GetComponent<Laser>().id = id;
-            myLaser.GetComponent<Laser>().team = GetComponent<ID>().team;
+            myLaser.GetComponent<Laser>().team = team;
 
             //Sound effect
             playerAudio.PlayOneShot(laserSound);
@@ -114,10 +114,9 @@ public class MutualShip : MonoBehaviour
 
             //setting the script varibles
             myBullet.GetComponent<BulletMove>().id = id;
-            myBullet.GetComponent<BulletMove>().team = GetComponent<ID>().team;
+            myBullet.GetComponent<BulletMove>().team = team;
         }
     }
-
 
     IEnumerator ableToMove()
     {
@@ -130,11 +129,14 @@ public class MutualShip : MonoBehaviour
     {
         GameObject myPilot = Instantiate(pilot, transform.position, transform.rotation);
         myPilot.transform.Rotate(90, 0, 0);
-        myPilot.GetComponent<PilotPlayerController>().turn = turn;
-        myPilot.GetComponent<PilotPlayerController>().move = shoot;
+        if (myPilot.GetComponent<PilotPlayerController>() != null)
+        {
+            myPilot.GetComponent<PilotPlayerController>().turn = GetComponent<PlayerController>().turn;
+            myPilot.GetComponent<PilotPlayerController>().move = GetComponent<PlayerController>().shoot;
+        }
 
-        myPilot.GetComponent<PilotPlayerController>().team = GetComponent<ID>().team;
-        gameManagerScript.inGameShips[GetComponent<ID>().team].Add(myPilot);
+        myPilot.GetComponent<PilotPlayerController>().team = team;
+        gameManagerScript.inGameShips[team].Add(myPilot);
         myPilot.GetComponent<PilotPlayerController>().StartCoroutine("respawn");
 
         Destroy(this.gameObject);
