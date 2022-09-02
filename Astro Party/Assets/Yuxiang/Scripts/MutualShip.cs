@@ -135,11 +135,16 @@ public class MutualShip : MonoBehaviour
         {
             myPilot.GetComponent<PilotPlayerController>().turn = GetComponent<PlayerController>().turn;
             myPilot.GetComponent<PilotPlayerController>().move = GetComponent<PlayerController>().shoot;
+            myPilot.GetComponent<PilotPlayerController>().StartCoroutine("respawn");
+            myPilot.GetComponent<PilotPlayerController>().team = team;
+        } else if (myPilot.GetComponent<BotPilotMove>() != null)
+        {
+            myPilot.GetComponent<BotPilotMove>().StartCoroutine("respawn");
+            myPilot.GetComponent<BotPilotMove>().team = team;
         }
 
-        myPilot.GetComponent<PilotPlayerController>().team = team;
         gameManagerScript.inGameShips[team].Add(myPilot);
-        myPilot.GetComponent<PilotPlayerController>().StartCoroutine("respawn");
+        
 
         Destroy(this.gameObject);
     }
@@ -151,12 +156,27 @@ public class MutualShip : MonoBehaviour
             //Friendly Fire 
             if (!scoreManagerScript.friendlyFire)
             {
-                if (team != collision.gameObject.GetComponent<PilotPlayerController>().team)
+                if(collision.gameObject.GetComponent<PilotPlayerController>() != null)
                 {
-                    Destroy(collision.gameObject);
-                    if (scoreManagerScript.shipMode == "pilot")
+                    if (team != collision.gameObject.GetComponent<PilotPlayerController>().team)
                     {
-                        earnPoint();
+                        Destroy(collision.gameObject);
+                        if (scoreManagerScript.shipMode == "pilot")
+                        {
+                            earnPoint();
+                        }
+                    }
+                }
+
+                else if (collision.gameObject.GetComponent<BotPilotMove>() != null)
+                {
+                    if (team != collision.gameObject.GetComponent<BotPilotMove>().team)
+                    {
+                        Destroy(collision.gameObject);
+                        if (scoreManagerScript.shipMode == "pilot")
+                        {
+                            earnPoint();
+                        }
                     }
                 }
             }

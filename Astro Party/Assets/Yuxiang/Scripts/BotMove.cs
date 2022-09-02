@@ -40,6 +40,8 @@ public class BotMove : MonoBehaviour
             }
         }
 
+        Debug.Log(target.transform.position);
+
         agent.SetDestination(target.transform.position);
 
         if (botReloadTime > 0)

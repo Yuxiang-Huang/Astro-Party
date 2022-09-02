@@ -33,12 +33,27 @@ public class BulletMove : MonoBehaviour
             //Friendly Fire 
             if (!scoreManagerScript.friendlyFire)
             {
-                if (team != collision.gameObject.GetComponent<PilotPlayerController>().team)
+                if (collision.gameObject.GetComponent<PilotPlayerController>() != null)
                 {
-                    Destroy(collision.gameObject);
-                    if (scoreManagerScript.shipMode == "pilot")
+                    if (team != collision.gameObject.GetComponent<PilotPlayerController>().team)
                     {
-                        earnPoint();
+                        Destroy(collision.gameObject);
+                        if (scoreManagerScript.shipMode == "pilot")
+                        {
+                            earnPoint();
+                        }
+                    }
+                }
+
+                else if (collision.gameObject.GetComponent<BotPilotMove>() != null)
+                {
+                    if (team != collision.gameObject.GetComponent<BotPilotMove>().team)
+                    {
+                        Destroy(collision.gameObject);
+                        if (scoreManagerScript.shipMode == "pilot")
+                        {
+                            earnPoint();
+                        }
                     }
                 }
             }

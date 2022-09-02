@@ -388,7 +388,7 @@ MonoBehaviour:
   laserSound: {fileID: 8300000, guid: 94cd1fa4bfb2e4df096fad64c2fd1bc1, type: 3}
   laser: {fileID: 6509910874384710604, guid: cfea443daa6b1433aa831465e8c8e4da, type: 3}
   bullet: {fileID: 4074745524491351559, guid: 3029e57bd05d644daa79107a6ba55699, type: 3}
-  pilot: {fileID: 0}
+  pilot: {fileID: 1564404634502157423, guid: 37170977f95c34a509c9ce8d0f521cfb, type: 3}
 --- !u!1 &6033337317130370738
 GameObject:
   m_ObjectHideFlags: 0

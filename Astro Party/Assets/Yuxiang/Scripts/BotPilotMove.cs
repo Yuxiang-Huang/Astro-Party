@@ -9,6 +9,10 @@ public class BotPilotMove : MonoBehaviour
 
     GameManager gameManagerScript;
 
+    public GameObject ship;
+
+    public int team;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,28 +32,28 @@ public class BotPilotMove : MonoBehaviour
                 {
                     if (ship != this.gameObject)
                     {
-                        if (ship.transform.position.x > gameManagerScript.spawnX / 2)
+                        if (ship.transform.position.x > 0)
                         {
-                            if (ship.transform.position.z > gameManagerScript.spawnZ / 2)
+                            if (ship.transform.position.z > 0)
                             {
                                 corners[0]++;
                             }
                             else
                             {
-                                corners[4]++;
+                                corners[3]++;
                             }
                         }
                         else
                         {
-                            if (ship.transform.position.x > gameManagerScript.spawnX / 2)
+                            if (ship.transform.position.x > 0)
                             {
-                                if (ship.transform.position.z > gameManagerScript.spawnZ / 2)
+                                if (ship.transform.position.z > 0)
                                 {
-                                    corners[2]++;
+                                    corners[1]++;
                                 }
                                 else
                                 {
-                                    corners[3]++;
+                                    corners[2]++;
                                 }
                             }
                         }
@@ -80,7 +84,22 @@ public class BotPilotMove : MonoBehaviour
             target = new Vector3(gameManagerScript.spawnX, transform.position.y, -gameManagerScript.spawnZ);
         }
 
-        Debug.Log(target);
+        //Debug.Log(target);
+        transform.rotation = Quaternion.Euler(90, 0, 0);
+
         agent.SetDestination(target);
+    }
+
+    IEnumerator respawn()
+    {
+        yield return new WaitForSeconds(7f);
+        GameObject myShip = Instantiate(ship, transform.position, transform.rotation);
+        myShip.transform.Rotate(-90, 0, 0);
+        myShip.GetComponent<MutualShip>().team = team;
+
+        gameManagerScript.inGameShips[team].Add(myShip);
+        gameManagerScript.inGameShips[team].Remove(this.gameObject);
+
+        Destroy(this.gameObject);
     }
 }
