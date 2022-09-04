@@ -6,6 +6,8 @@ public class PowerUpManager : MonoBehaviour
 {
     public List<GameObject> indicators = new List<GameObject>();
 
+    public AudioClip shipExplode;
+
     public AudioClip laserSound;
     public GameObject laser;
 

@@ -113,7 +113,7 @@ public class MutualShip : MonoBehaviour
             transform.rotation);
 
             //Sound effect
-            playerAudio.PlayOneShot(powerUpManagerScript.laserSound);
+            playerAudio.PlayOneShot(powerUpManagerScript.bulletSound);
 
             //setting the script varibles
             myBullet.GetComponent<BulletMove>().id = id;
@@ -130,6 +130,8 @@ public class MutualShip : MonoBehaviour
 
     public void spawnPilot(string mode)
     {
+        playerAudio.PlayOneShot(powerUpManagerScript.shipExplode);
+
         GameObject myPilot = Instantiate(pilot, transform.position, transform.rotation);
         myPilot.transform.Rotate(90, 0, 0);
         if (myPilot.GetComponent<PilotPlayerController>() != null)
