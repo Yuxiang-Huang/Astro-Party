@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -58,6 +59,7 @@ public class GameManager : MonoBehaviour
     bool gameStarted;
 
     bool fixedSpawn;
+    public Text fixedSpawnText;
 
     // Start is called before the first frame update
     void Start()
@@ -166,18 +168,31 @@ public class GameManager : MonoBehaviour
                 else
                 {
                     ran = Random.Range(0, pos.Count);
-                }  
+                    pos.RemoveAt(ran);
+                    rot.RemoveAt(ran);
+                }
+
                 inGameShips[i].Add(Instantiate(ships[i][j], pos[ran], ships[i][j].transform.rotation));
                 inGameShips[i][j].transform.Rotate(rot[ran]);
 
                 inGameShips[i][j].GetComponent<MutualShip>().team = i;
-
-                pos.RemoveAt(ran);
-                rot.RemoveAt(ran);
             }
         }
 
         resetPosRot();
+    }
+
+    public void setFixedSpawn()
+    {
+        if (fixedSpawn)
+        {
+            fixedSpawnText.text = "Fixed Spawn: Off";
+        }
+        else
+        {
+            fixedSpawnText.text = "Fixed Spawn: On";
+        }
+        fixedSpawn = !fixedSpawn;
     }
 
     public void P1Button()
@@ -361,8 +376,8 @@ public class GameManager : MonoBehaviour
     void resetPosRot()
     {
         pos = new List<Vector3>() { new Vector3(spawnX, 10, spawnZ), new Vector3(-spawnX, 10, spawnZ),
-        new Vector3(spawnX, 10, -spawnZ), new Vector3(-spawnX, 10, -spawnZ)};
+        new Vector3(-spawnX, 10, -spawnZ), new Vector3(spawnX, 10, -spawnZ)};
         rot = new List<Vector3>() {new Vector3(0, 180, 0), new Vector3(0, 90, 0),
-        new Vector3(0, -90, 0), new Vector3(0, 0, 0)};
+        new Vector3(0, 0, 0), new Vector3(0, -90, 0)};
     }
 }
