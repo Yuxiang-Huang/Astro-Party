@@ -17,12 +17,18 @@ public class PowerUpManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Instantiate(indicators[0], new Vector3(0, 0, 0), indicators[0].transform.rotation);
+
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void spawnPowerUp()
+    {
+        int ran = Random.Range(0, indicators.Count);
+        Instantiate(indicators[ran], new Vector3(0, 0, 0), indicators[ran].transform.rotation);
     }
 }

@@ -130,8 +130,6 @@ public class MutualShip : MonoBehaviour
 
     public void spawnPilot(string mode)
     {
-        playerAudio.PlayOneShot(powerUpManagerScript.shipExplode);
-
         GameObject myPilot = Instantiate(pilot, transform.position, transform.rotation);
         myPilot.transform.Rotate(90, 0, 0);
         if (myPilot.GetComponent<PilotPlayerController>() != null)
