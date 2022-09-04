@@ -57,14 +57,13 @@ public class GameManager : MonoBehaviour
     public int spawnZ = 420;
     bool gameStarted;
 
+    bool fixedSpawn;
+
     // Start is called before the first frame update
     void Start()
     {
         nextButton.SetActive(false);
-        pos = new List<Vector3>() { new Vector3(spawnX, 10, spawnZ), new Vector3(-spawnX, 10, spawnZ),
-        new Vector3(spawnX, 10, -spawnZ), new Vector3(-spawnX, 10, -spawnZ)};
-        rot = new List<Vector3>() {new Vector3(0, 180, 0), new Vector3(0, 90, 0),
-        new Vector3(0, -90, 0), new Vector3(0, 0, 0)};
+        resetPosRot();
 
         ships = new List<List<GameObject>>();
         ships.Add(new List<GameObject>());
@@ -158,8 +157,16 @@ public class GameManager : MonoBehaviour
         {
             for (int j = 0; j < ships[i].Count; j++)
             {
+                int ran;
                 //spawn one ship
-                int ran = Random.Range(0, pos.Count);
+                if (fixedSpawn)
+                {
+                    ran = ships[i][j].GetComponent<MutualShip>().id - 1;
+                }
+                else
+                {
+                    ran = Random.Range(0, pos.Count);
+                }  
                 inGameShips[i].Add(Instantiate(ships[i][j], pos[ran], ships[i][j].transform.rotation));
                 inGameShips[i][j].transform.Rotate(rot[ran]);
 
@@ -170,10 +177,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        pos = new List<Vector3>() { new Vector3(spawnX, 10, spawnZ), new Vector3(-spawnX, 10, spawnZ),
-        new Vector3(spawnX, 10, -spawnZ), new Vector3(-spawnX, 10, -spawnZ)};
-        rot = new List<Vector3>() {new Vector3(0, 180, 0), new Vector3(0, 90, 0),
-        new Vector3(0, -90, 0), new Vector3(0, 0, 0)};
+        resetPosRot();
     }
 
     public void P1Button()
@@ -352,5 +356,13 @@ public class GameManager : MonoBehaviour
         }
 
         scoreManagerScript.StartCoroutine("scoreUpdate");
+    }
+
+    void resetPosRot()
+    {
+        pos = new List<Vector3>() { new Vector3(spawnX, 10, spawnZ), new Vector3(-spawnX, 10, spawnZ),
+        new Vector3(spawnX, 10, -spawnZ), new Vector3(-spawnX, 10, -spawnZ)};
+        rot = new List<Vector3>() {new Vector3(0, 180, 0), new Vector3(0, 90, 0),
+        new Vector3(0, -90, 0), new Vector3(0, 0, 0)};
     }
 }
