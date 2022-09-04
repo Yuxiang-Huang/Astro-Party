@@ -1344,7 +1344,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1543047252}
         m_TargetAssemblyTypeName: ScreenManager, Assembly-CSharp
-        m_MethodName: backToStart
+        m_MethodName: backToLast
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1949,7 +1949,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &357895753
 GameObject:
@@ -3188,7 +3188,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &467599362
 MonoBehaviour:
@@ -3202,14 +3202,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81b43397ca52b403d82a8d2cab13eef6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Map1:
-  - {fileID: 1112501225}
-  Map2:
-  - {fileID: 1311088787}
-  - {fileID: 203261864}
-  - {fileID: 1249357464}
-  - {fileID: 1147624957}
-  - {fileID: 1642827276}
+  backButton: {fileID: 205580504}
+  Map1: {fileID: 1112501225}
+  Map1Text: {fileID: 1277827305}
+  Map1Objects: []
+  Map2: {fileID: 1642827276}
+  Map2Text: {fileID: 1597959728}
+  Map2Objects: []
 --- !u!1 &474399339
 GameObject:
   m_ObjectHideFlags: 0
@@ -6864,7 +6863,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1119772336
 MonoBehaviour:
@@ -6934,7 +6933,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1139138461
 MonoBehaviour:
@@ -7162,8 +7161,8 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 0.64705884, b: 0, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 1, g: 0.64705884, b: 0, a: 1}
+    m_SelectedColor: {r: 1, g: 0.64705884, b: 0, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -7183,9 +7182,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1543047252}
-        m_TargetAssemblyTypeName: ScreenManager, Assembly-CSharp
-        m_MethodName: backToStart
+      - m_Target: {fileID: 467599362}
+        m_TargetAssemblyTypeName: MapManager, Assembly-CSharp
+        m_MethodName: Map2OnOff
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8778,7 +8777,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1430251426
 GameObject:
@@ -9118,7 +9117,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1543047252
 MonoBehaviour:
@@ -11476,7 +11475,7 @@ RectTransform:
   - {fileID: 2053347467}
   - {fileID: 1156903241}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -13051,8 +13050,8 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 0.64705884, b: 0, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 1, g: 0.64705884, b: 0, a: 1}
+    m_SelectedColor: {r: 1, g: 0.64705884, b: 0, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -13072,9 +13071,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1543047252}
-        m_TargetAssemblyTypeName: ScreenManager, Assembly-CSharp
-        m_MethodName: backToStart
+      - m_Target: {fileID: 467599362}
+        m_TargetAssemblyTypeName: MapManager, Assembly-CSharp
+        m_MethodName: Map1OnOff
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

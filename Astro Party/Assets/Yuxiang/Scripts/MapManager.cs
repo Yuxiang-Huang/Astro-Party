@@ -5,9 +5,11 @@ using UnityEngine.UI;
 
 public class MapManager : MonoBehaviour
 {
-    public List<GameObject> allMaps;
+    List<GameObject> allMaps = new List<GameObject>();
 
     int mapId;
+
+    public GameObject backButton;
 
     public GameObject Map1;
     public Text Map1Text;
@@ -20,7 +22,20 @@ public class MapManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        allMaps.Add(Map1);
+        allMaps.Add(Map2);
+    }
+
+    void Update()
+    {
+        if (allMaps.Count == 0)
+        {
+            backButton.SetActive(false);
+        }
+        else
+        {
+            backButton.SetActive(true);
+        }
     }
 
     public void resetMap()
@@ -74,6 +89,11 @@ public class MapManager : MonoBehaviour
     public void Map1OnOff()
     {
         MapOnOffHelper(Map1, Map1Text);
+    }
+
+    public void Map2OnOff()
+    {
+        MapOnOffHelper(Map2, Map2Text);
     }
 
     void MapOnOffHelper(GameObject map, Text mapText)
