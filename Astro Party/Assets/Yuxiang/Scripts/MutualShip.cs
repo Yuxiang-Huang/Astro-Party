@@ -212,4 +212,14 @@ public class MutualShip : MonoBehaviour
             }
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("PowerUp"))
+        {
+            shootMode = other.gameObject.GetComponent<PowerUp>().powerUpName;
+        }
+
+        Destroy(other.gameObject);
+    }
 }
