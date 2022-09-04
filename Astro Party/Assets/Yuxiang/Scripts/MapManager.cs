@@ -61,6 +61,7 @@ public class MapManager : MonoBehaviour
             mapId = 2;
         }
 
+        //Debug.Log(map);
         //Debug.Log(mapId);
 
         switch (mapId)
@@ -76,6 +77,7 @@ public class MapManager : MonoBehaviour
         {
             curr.SetActive(status);
         }
+        Map1.SetActive(status);
     }
 
     void resetMap2(bool status)
@@ -84,6 +86,7 @@ public class MapManager : MonoBehaviour
         {
             curr.SetActive(status);
         }
+        Map2.SetActive(status);
     }
 
     public void Map1OnOff()

@@ -3208,7 +3208,11 @@ MonoBehaviour:
   Map1Objects: []
   Map2: {fileID: 1642827276}
   Map2Text: {fileID: 1597959728}
-  Map2Objects: []
+  Map2Objects:
+  - {fileID: 1311088787}
+  - {fileID: 203261864}
+  - {fileID: 1249357464}
+  - {fileID: 1147624957}
 --- !u!1 &474399339
 GameObject:
   m_ObjectHideFlags: 0
