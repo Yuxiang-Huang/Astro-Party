@@ -1,14 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MapManager : MonoBehaviour
 {
-    int mapId;
-    int maxMapId = 2;
+    public List<GameObject> allMaps;
 
-    public List<GameObject> Map1;
-    public List<GameObject> Map2;
+    int mapId;
+
+    public GameObject Map1;
+    public Text Map1Text;
+    public List<GameObject> Map1Objects;
+
+    public GameObject Map2;
+    public Text Map2Text;
+    public List<GameObject> Map2Objects;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +34,18 @@ public class MapManager : MonoBehaviour
             }
         }
 
-        mapId = Random.Range(1, maxMapId + 1);
+        GameObject map = allMaps[Random.Range(0, allMaps.Count)];
+
+        if (map == Map1)
+        {
+            mapId = 1;
+        }
+
+        if (map == Map2)
+        {
+            mapId = 2;
+        }
+
         //Debug.Log(mapId);
 
         switch (mapId)
@@ -39,7 +57,7 @@ public class MapManager : MonoBehaviour
 
     void resetMap1(bool status)
     {
-        foreach (GameObject curr in Map1)
+        foreach (GameObject curr in Map1Objects)
         {
             curr.SetActive(status);
         }
@@ -47,9 +65,28 @@ public class MapManager : MonoBehaviour
 
     void resetMap2(bool status)
     {
-        foreach (GameObject curr in Map2)
+        foreach (GameObject curr in Map2Objects)
         {
             curr.SetActive(status);
+        }
+    }
+
+    public void Map1OnOff()
+    {
+        MapOnOffHelper(Map1, Map1Text);
+    }
+
+    void MapOnOffHelper(GameObject map, Text mapText)
+    {
+        if (allMaps.Contains(map))
+        {
+            allMaps.Remove(map);
+            mapText.text = "Off";
+        }
+        else
+        {
+            allMaps.Add(map);
+            mapText.text = "On";
         }
     }
 }
