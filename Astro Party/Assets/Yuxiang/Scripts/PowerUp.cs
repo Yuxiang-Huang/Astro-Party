@@ -25,10 +25,13 @@ public class PowerUp : MonoBehaviour
         {
             foreach (GameObject ship in shipList)
             {
-                if (distance(ship, this.gameObject) <= attractDist)
+                if (ship.GetComponent<MutualShip>() != null)
                 {
-                    transform.position += (transform.position - ship.transform.position).normalized * attracSpeed;
-                }
+                    if (distance(ship, this.gameObject) <= attractDist)
+                    {
+                        transform.position += (ship.transform.position - transform.position).normalized * attracSpeed;
+                    }
+                } 
             }
         }
     }
