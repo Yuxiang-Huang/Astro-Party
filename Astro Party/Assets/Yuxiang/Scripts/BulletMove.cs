@@ -28,7 +28,12 @@ public class BulletMove : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Pilot"))
+        if (collision.gameObject.CompareTag("Breakable"))
+        {
+            collision.gameObject.SetActive(false);
+        }
+
+            if (collision.gameObject.CompareTag("Pilot"))
         {
             //Friendly Fire 
             if (!scoreManagerScript.friendlyFire)
