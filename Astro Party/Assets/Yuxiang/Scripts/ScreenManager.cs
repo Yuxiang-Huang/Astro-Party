@@ -12,6 +12,7 @@ public class ScreenManager : MonoBehaviour
     public GameObject shipScreen;
     public GameObject lastScreen;
     public GameObject infoScreen;
+    public GameObject mapScreen;
 
     public GameObject friendlyFireButton;
     public GameObject teamModeText;
@@ -24,6 +25,7 @@ public class ScreenManager : MonoBehaviour
         shipScreen.SetActive(false);
         lastScreen.SetActive(false);
         infoScreen.SetActive(false);
+        mapScreen.SetActive(false);
 
         scoreManagerScript = GameObject.Find("Score Manager").GetComponent<ScoreManager>();
         gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
@@ -94,5 +96,17 @@ public class ScreenManager : MonoBehaviour
     public void play()
     {
         lastScreen.SetActive(false);
+    }
+
+    public void backToLast()
+    {
+        mapScreen.SetActive(false);
+        lastScreen.SetActive(true);
+    }
+
+    public void nextToMap()
+    {
+        lastScreen.SetActive(false);
+        mapScreen.SetActive(true);
     }
 }
