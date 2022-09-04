@@ -1932,7 +1932,7 @@ GameObject:
   - component: {fileID: 344083647}
   - component: {fileID: 344083648}
   m_Layer: 0
-  m_Name: Spawn Manager
+  m_Name: PowerUp Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1961,11 +1961,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 344083646}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 513f273f4f7b94a9da2a5e5023f464ac, type: 3}
+  m_Script: {fileID: 11500000, guid: fb257d5cb8b4c44f78ce806ac5beb1a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   indicators:
   - {fileID: 8667850671334641019, guid: 958da0f093d824256859aff34cd571fa, type: 3}
+  laserSound: {fileID: 8300000, guid: 94cd1fa4bfb2e4df096fad64c2fd1bc1, type: 3}
+  laser: {fileID: 6509910874384710604, guid: cfea443daa6b1433aa831465e8c8e4da, type: 3}
+  bulletSound: {fileID: 0}
+  bullet: {fileID: 4074745524491351559, guid: 3029e57bd05d644daa79107a6ba55699, type: 3}
 --- !u!1 &357895753
 GameObject:
   m_ObjectHideFlags: 0
@@ -6833,7 +6837,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1112501226
 Transform:
   m_ObjectHideFlags: 0

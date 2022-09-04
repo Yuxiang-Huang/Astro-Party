@@ -17,15 +17,12 @@ public class MutualShip : MonoBehaviour
     public float reloadTime;
     public int ammo;
 
-    public AudioClip laserSound;
-
-    public GameObject laser;
-    public GameObject bullet;
-
     Rigidbody playerRb;
     AudioSource playerAudio;
 
     GameManager gameManagerScript;
+    PowerUpManager powerUpManagerScript;
+
     public GameObject pilot;
 
     // Start is called before the first frame update
@@ -40,6 +37,7 @@ public class MutualShip : MonoBehaviour
 
         gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
         scoreManagerScript = GameObject.Find("Score Manager").GetComponent<ScoreManager>();
+        powerUpManagerScript = GameObject.Find("PowerUp Manager").GetComponent<PowerUpManager>();
     }
 
     // Update is called once per frame
@@ -78,7 +76,7 @@ public class MutualShip : MonoBehaviour
         if (shootMode == "laser")
         {
             //5000 is half the length of laserbeam
-            GameObject myLaser = Instantiate(laser, transform.position +
+            GameObject myLaser = Instantiate(powerUpManagerScript.laser, transform.position +
             new Vector3((bulletDis + 5000) * Mathf.Sin(angle), 0, (bulletDis + 5000) * Mathf.Cos(angle)),
             transform.rotation);
 
@@ -87,7 +85,7 @@ public class MutualShip : MonoBehaviour
             myLaser.GetComponent<Laser>().team = team;
 
             //Sound effect
-            playerAudio.PlayOneShot(laserSound);
+            playerAudio.PlayOneShot(powerUpManagerScript.laserSound);
 
             //Freeze after using laser
             playerRb.constraints = RigidbodyConstraints.FreezePosition;
@@ -110,9 +108,12 @@ public class MutualShip : MonoBehaviour
             //Debug.Log(Mathf.Cos(transform.rotation.y));
             //Debug.Log(Mathf.Sin(transform.rotation.y));
 
-            GameObject myBullet = Instantiate(bullet, transform.position +
+            GameObject myBullet = Instantiate(powerUpManagerScript.bullet, transform.position +
             new Vector3(bulletDis * Mathf.Sin(angle), 0, bulletDis * Mathf.Cos(angle)),
             transform.rotation);
+
+            //Sound effect
+            playerAudio.PlayOneShot(powerUpManagerScript.laserSound);
 
             //setting the script varibles
             myBullet.GetComponent<BulletMove>().id = id;
