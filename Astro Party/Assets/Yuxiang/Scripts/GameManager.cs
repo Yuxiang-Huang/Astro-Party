@@ -155,6 +155,8 @@ public class GameManager : MonoBehaviour
 
     public void spawnShips()
     {
+        mapManagerScript.resetMap();
+
         gameStarted = true;
 
         for (int i = 0; i < ships.Count; i++)
@@ -186,8 +188,6 @@ public class GameManager : MonoBehaviour
         }
 
         resetPosRot();
-
-        mapManagerScript.resetMap();
     }
 
     public void setFixedSpawn()

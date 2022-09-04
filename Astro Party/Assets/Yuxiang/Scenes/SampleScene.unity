@@ -2857,11 +2857,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81b43397ca52b403d82a8d2cab13eef6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Map1:
+  - {fileID: 1112501225}
   Map2:
   - {fileID: 1311088787}
   - {fileID: 203261864}
   - {fileID: 1249357464}
   - {fileID: 1147624957}
+  - {fileID: 1642827276}
 --- !u!1 &474399339
 GameObject:
   m_ObjectHideFlags: 0
@@ -8634,7 +8637,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1642827277
 Transform:
   m_ObjectHideFlags: 0
