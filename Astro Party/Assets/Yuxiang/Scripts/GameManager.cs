@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     List<Vector3> rot;
 
     ScoreManager scoreManagerScript;
+    MapManager mapManagerScript;
 
     public GameObject nextButton;
 
@@ -80,6 +81,7 @@ public class GameManager : MonoBehaviour
         inGameShips.Add(new List<GameObject>());
 
         scoreManagerScript = GameObject.Find("Score Manager").GetComponent<ScoreManager>();
+        mapManagerScript = GameObject.Find("Map Manager").GetComponent<MapManager>();
     }
 
     // Update is called once per frame
@@ -184,6 +186,8 @@ public class GameManager : MonoBehaviour
         }
 
         resetPosRot();
+
+        mapManagerScript.resetMap();
     }
 
     public void setFixedSpawn()
