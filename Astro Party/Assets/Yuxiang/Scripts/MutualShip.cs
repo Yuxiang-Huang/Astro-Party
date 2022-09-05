@@ -31,7 +31,17 @@ public class MutualShip : MonoBehaviour
         playerRb = GetComponent<Rigidbody>();
         playerAudio = GetComponent<AudioSource>();
 
-        shootMode = "normal";
+        if (shootMode == "")
+        {
+            shootMode = "normal";
+        }
+        else
+        {
+            foreach (GameObject curr in bulletAnimation)
+            {
+                curr.SetActive(false);
+            }
+        }
 
         ammo = 3;
 

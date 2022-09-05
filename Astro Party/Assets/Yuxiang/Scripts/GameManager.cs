@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEditor;
 
 public class GameManager : MonoBehaviour
 {
@@ -86,15 +85,15 @@ public class GameManager : MonoBehaviour
         mapManagerScript = GameObject.Find("Map Manager").GetComponent<MapManager>();
         powerUpManagerScript = GameObject.Find("PowerUp Manager").GetComponent<PowerUpManager>();
 
-        P1ShipBot = PrefabUtility.InstantiatePrefab(P1ShipBot.gameObject as GameObject) as GameObject;
-        P2ShipBot = PrefabUtility.InstantiatePrefab(P2ShipBot.gameObject as GameObject) as GameObject;
-        P3ShipBot = PrefabUtility.InstantiatePrefab(P3ShipBot.gameObject as GameObject) as GameObject;
-        P4ShipBot = PrefabUtility.InstantiatePrefab(P4ShipBot.gameObject as GameObject) as GameObject;
+        P1ShipBot = Instantiate(P1ShipBot, new Vector3(0, 0, 0), P1ShipBot.transform.rotation);
+        P2ShipBot = Instantiate(P1ShipBot, new Vector3(0, 0, 0), P2ShipBot.transform.rotation);
+        P3ShipBot = Instantiate(P1ShipBot, new Vector3(0, 0, 0), P3ShipBot.transform.rotation);
+        P4ShipBot = Instantiate(P1ShipBot, new Vector3(0, 0, 0), P4ShipBot.transform.rotation);
 
-        P1ShipPlayer = PrefabUtility.InstantiatePrefab(P1ShipPlayer.gameObject as GameObject) as GameObject;
-        P2ShipPlayer = PrefabUtility.InstantiatePrefab(P2ShipPlayer.gameObject as GameObject) as GameObject;
-        P3ShipPlayer = PrefabUtility.InstantiatePrefab(P3ShipPlayer.gameObject as GameObject) as GameObject;
-        P4ShipPlayer = PrefabUtility.InstantiatePrefab(P4ShipPlayer.gameObject as GameObject) as GameObject;
+        P1ShipPlayer = Instantiate(P1ShipPlayer, new Vector3(0, 0, 0), P1ShipPlayer.transform.rotation);
+        P2ShipPlayer = Instantiate(P2ShipPlayer, new Vector3(0, 0, 0), P2ShipPlayer.transform.rotation);
+        P3ShipPlayer = Instantiate(P3ShipPlayer, new Vector3(0, 0, 0), P3ShipPlayer.transform.rotation);
+        P4ShipPlayer = Instantiate(P4ShipPlayer, new Vector3(0, 0, 0), P4ShipPlayer.transform.rotation);
 
         P1ShipBot.SetActive(false);
         P2ShipBot.SetActive(false);
@@ -203,7 +202,7 @@ public class GameManager : MonoBehaviour
 
                 inGameShips[i][j].GetComponent<MutualShip>().team = i;
 
-                //inGameShips[i][j].SetActive(true);
+                inGameShips[i][j].SetActive(true);
 
                 if (!fixedSpawn)
                 {
