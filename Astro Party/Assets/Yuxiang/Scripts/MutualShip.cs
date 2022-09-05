@@ -92,6 +92,11 @@ public class MutualShip : MonoBehaviour
             StartCoroutine("ableToMove");
 
             shootMode = "normal";
+
+            foreach (GameObject curr in bulletAnimation)
+            {
+                curr.SetActive(true);
+            }
         }
 
         else if (shootMode == "normal" && ammo > 0)
@@ -219,6 +224,11 @@ public class MutualShip : MonoBehaviour
         if (other.gameObject.CompareTag("PowerUp"))
         {
             shootMode = other.gameObject.GetComponent<PowerUp>().powerUpName;
+
+            foreach (GameObject curr in bulletAnimation)
+            {
+                curr.SetActive(false);
+            }
         }
 
         Destroy(other.gameObject);
