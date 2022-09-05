@@ -38,7 +38,9 @@ public class ScreenManager : MonoBehaviour
         mapScreen.SetActive(false);
         powerUpScreen.SetActive(false);
         P1PowerUpScreen.SetActive(false);
-
+        P2PowerUpScreen.SetActive(false);
+        P3PowerUpScreen.SetActive(false);
+        P4PowerUpScreen.SetActive(false);
 
         scoreManagerScript = GameObject.Find("Score Manager").GetComponent<ScoreManager>();
         gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
