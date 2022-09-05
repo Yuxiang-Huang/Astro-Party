@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEditor;
 
 public class GameManager : MonoBehaviour
 {
@@ -84,6 +85,26 @@ public class GameManager : MonoBehaviour
         scoreManagerScript = GameObject.Find("Score Manager").GetComponent<ScoreManager>();
         mapManagerScript = GameObject.Find("Map Manager").GetComponent<MapManager>();
         powerUpManagerScript = GameObject.Find("PowerUp Manager").GetComponent<PowerUpManager>();
+
+        P1ShipBot = PrefabUtility.InstantiatePrefab(P1ShipBot.gameObject as GameObject) as GameObject;
+        P2ShipBot = PrefabUtility.InstantiatePrefab(P2ShipBot.gameObject as GameObject) as GameObject;
+        P3ShipBot = PrefabUtility.InstantiatePrefab(P3ShipBot.gameObject as GameObject) as GameObject;
+        P4ShipBot = PrefabUtility.InstantiatePrefab(P4ShipBot.gameObject as GameObject) as GameObject;
+
+        P1ShipPlayer = PrefabUtility.InstantiatePrefab(P1ShipPlayer.gameObject as GameObject) as GameObject;
+        P2ShipPlayer = PrefabUtility.InstantiatePrefab(P2ShipPlayer.gameObject as GameObject) as GameObject;
+        P3ShipPlayer = PrefabUtility.InstantiatePrefab(P3ShipPlayer.gameObject as GameObject) as GameObject;
+        P4ShipPlayer = PrefabUtility.InstantiatePrefab(P4ShipPlayer.gameObject as GameObject) as GameObject;
+
+        P1ShipBot.SetActive(false);
+        P2ShipBot.SetActive(false);
+        P3ShipBot.SetActive(false);
+        P4ShipBot.SetActive(false);
+
+        P1ShipPlayer.SetActive(false);
+        P2ShipPlayer.SetActive(false);
+        P3ShipPlayer.SetActive(false);
+        P4ShipPlayer.SetActive(false);
     }
 
     // Update is called once per frame
@@ -181,6 +202,8 @@ public class GameManager : MonoBehaviour
                 inGameShips[i][j].transform.Rotate(rot[ran]);
 
                 inGameShips[i][j].GetComponent<MutualShip>().team = i;
+
+                //inGameShips[i][j].SetActive(true);
 
                 if (!fixedSpawn)
                 {
