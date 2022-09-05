@@ -63,9 +63,11 @@ public class PowerUpManager : MonoBehaviour
     {
         if (script.shootMode != "normal")
         {
-            if (script.shootMode == "Laser Beam")
+            switch (script.shootMode)
             {
-                Instantiate(laserIndicator, script.transform.position, laserIndicator.transform.rotation);
+                case "Laser Beam":
+                    Instantiate(laserIndicator, script.transform.position, laserIndicator.transform.rotation);
+                    break;
             }
         }
     }
