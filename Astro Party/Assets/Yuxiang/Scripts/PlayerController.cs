@@ -33,8 +33,16 @@ public class PlayerController : MonoBehaviour
             rotating = true;
             if (dash)
             {
-                transform.Rotate(0, 0, 90);
-                playerRb.velocity = new Vector3(-playerRb.velocity.z, playerRb.velocity.y, playerRb.velocity.x);
+                transform.Rotate(0, 90, 0);
+                //change velocity
+                playerRb.velocity = new Vector3(playerRb.velocity.z, playerRb.velocity.y, -playerRb.velocity.x);
+
+                //translate
+                float angle = transform.rotation.ToEulerAngles().y;
+                transform.position = new Vector3(transform.position.x + 100 * Mathf.Sin(angle),
+                    transform.position.y, transform.position.z + 100 * Mathf.Cos(angle));
+
+                dash = false;
             }
             else
             {
