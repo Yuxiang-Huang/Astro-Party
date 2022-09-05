@@ -35,37 +35,33 @@ public class BulletMove : MonoBehaviour
             collision.gameObject.SetActive(false);
         }
 
-            if (collision.gameObject.CompareTag("Pilot"))
+        if (collision.gameObject.CompareTag("Pilot"))
         {
+            bool toKill = true;
             //Friendly Fire 
             if (!scoreManagerScript.friendlyFire)
             {
                 if (collision.gameObject.GetComponent<PilotPlayerController>() != null)
                 {
-                    if (team != collision.gameObject.GetComponent<PilotPlayerController>().team)
+                    if (team == collision.gameObject.GetComponent<PilotPlayerController>().team)
                     {
-                        Destroy(collision.gameObject);
-                        if (scoreManagerScript.shipMode == "pilot")
-                        {
-                            earnPoint();
-                        }
+                        toKill = false;
                     }
                 }
 
                 else if (collision.gameObject.GetComponent<BotPilotMove>() != null)
                 {
-                    if (team != collision.gameObject.GetComponent<BotPilotMove>().team)
+                    if (team == collision.gameObject.GetComponent<BotPilotMove>().team)
                     {
-                        Destroy(collision.gameObject);
-                        if (scoreManagerScript.shipMode == "pilot")
-                        {
-                            earnPoint();
-                        }
+                        toKill = false;
                     }
                 }
             }
-            else
+            if (toKill)
             {
+                //sound effect
+                powerUpManagerScript.generalAudio.PlayOneShot(powerUpManagerScript.pilotDeath);
+
                 Destroy(collision.gameObject);
 
                 if (scoreManagerScript.shipMode == "pilot")
@@ -77,26 +73,21 @@ public class BulletMove : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Ship"))
         {
+            bool toKill = true;
             //Friendly Fire 
             if (!scoreManagerScript.friendlyFire)
             {
-                if (team != collision.gameObject.GetComponent<MutualShip>().team)
+                if (team == collision.gameObject.GetComponent<MutualShip>().team)
                 {
-                    powerUpManagerScript.dropItem(collision.gameObject.GetComponent<MutualShip>());
-
-                    if (scoreManagerScript.shipMode == "ship")
-                    {
-                        earnPoint();
-                        Destroy(collision.gameObject);
-                    }
-                    else if(scoreManagerScript.shipMode == "pilot")
-                    {
-                        collision.gameObject.GetComponent<MutualShip>().spawnPilot(scoreManagerScript.shipMode);
-                    }
+                    toKill = false;
                 }
             }
-            else
+
+            if (toKill)
             {
+                //ship explode sound effect
+                powerUpManagerScript.generalAudio.PlayOneShot(powerUpManagerScript.shipExplode);
+
                 powerUpManagerScript.dropItem(collision.gameObject.GetComponent<MutualShip>());
 
                 if (scoreManagerScript.shipMode == "ship")
