@@ -84,7 +84,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 0
+    m_EnableMouseInput: 1
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -251,13 +251,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.23125638, y: 0.091095194, z: -0.02087642, w: -0.9684961}
+    m_Target: {x: -0.31128123, y: 0.043563783, z: -0.01339611, w: -0.9493293}
     speed: 2
-    m_Value: {x: -0.23123345, y: 0.09108616, z: -0.02087435, w: -0.96840006}
+    m_Value: {x: -0.3112502, y: 0.043559443, z: -0.013394776, w: -0.9492347}
   m_Size:
-    m_Target: 161.77078
+    m_Target: 889.21857
     speed: 2
-    m_Value: 161.77078
+    m_Value: 889.21857
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -332,7 +332,7 @@ MonoBehaviour:
   m_MinSize: {x: 232, y: 492}
   m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
-  controlID: 3810
+  controlID: 7166
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -386,10 +386,10 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 142}
-      m_SelectedIDs: 70dfffff
-      m_LastClickedID: -8336
-      m_ExpandedIDs: c8e9ffff6cfbffff12450000
+      scrollPos: {x: 0, y: 23}
+      m_SelectedIDs: 6062ffff
+      m_LastClickedID: -40352
+      m_ExpandedIDs: 6062ffff6462ffff6cfbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -477,7 +477,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Yuxiang/Course Library/_Source_Files/Pictures
+    - Assets/Yuxiang/Prefabs/Weapons
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 0
@@ -491,34 +491,6 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 0c580000
     m_LastClickedID: 22540
-    m_ExpandedIDs: ffffffff0000000000530000025300000453000006530000085300000a5300000c5300000e53000010530000125300001453000016530000185300001a5300001c5300001e5300002053000022530000
-    m_RenameOverlay:
-      m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
-      m_EditFieldRect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 0
-        height: 0
-      m_UserData: 0
-      m_IsWaitingForDelay: 0
-      m_IsRenaming: 0
-      m_OriginalEventType: 11
-      m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 0}
-    m_SearchString: 
-    m_CreateAssetUtility:
-      m_EndAction: {fileID: 0}
-      m_InstanceID: 0
-      m_Path: 
-      m_Icon: {fileID: 0}
-      m_ResourceFile: 
-  m_AssetTreeState:
-    scrollPos: {x: 0, y: 132}
-    m_SelectedIDs: 70dfffff
-    m_LastClickedID: 0
     m_ExpandedIDs: ffffffff0000000000530000025300000453000006530000085300000a5300000c5300000e53000010530000125300001453000016530000185300001a5300001e530000205300002253000054530000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -543,9 +515,37 @@ MonoBehaviour:
       m_Path: 
       m_Icon: {fileID: 0}
       m_ResourceFile: 
+  m_AssetTreeState:
+    scrollPos: {x: 0, y: 422.9953}
+    m_SelectedIDs: 6062ffff
+    m_LastClickedID: 0
+    m_ExpandedIDs: ffffffff0000000000530000025300000453000006530000085300000a5300000c5300000e53000010530000125300001453000016530000185300001a5300001c5300001e530000205300002253000054530000
+    m_RenameOverlay:
+      m_UserAcceptedRename: 0
+      m_Name: 
+      m_OriginalName: 
+      m_EditFieldRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      m_UserData: 0
+      m_IsWaitingForDelay: 0
+      m_IsRenaming: 0
+      m_OriginalEventType: 11
+      m_IsRenamingFilename: 1
+      m_ClientGUIView: {fileID: 0}
+    m_SearchString: 
+    m_CreateAssetUtility:
+      m_EndAction: {fileID: 0}
+      m_InstanceID: 0
+      m_Path: 
+      m_Icon: {fileID: 0}
+      m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 70dfffff
-    m_LastClickedInstanceID: -8336
+    m_SelectedInstanceIDs: 6062ffff
+    m_LastClickedInstanceID: -40352
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000
     m_RenameOverlay:
@@ -594,8 +594,8 @@ MonoBehaviour:
     y: 0
     width: 301
     height: 760
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}
@@ -633,7 +633,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 213
+  m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_LockTracker:
     m_IsLocked: 0

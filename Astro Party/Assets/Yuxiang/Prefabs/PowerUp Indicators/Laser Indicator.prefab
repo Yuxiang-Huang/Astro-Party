@@ -190,4 +190,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f22e6fcfa2624ebd85c2909e7f40647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUpName: laser
+  powerUpName: Laser Beam
+  attractDist: 100
+  attracSpeed: 10

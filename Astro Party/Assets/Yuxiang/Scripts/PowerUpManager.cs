@@ -63,7 +63,7 @@ public class PowerUpManager : MonoBehaviour
     {
         if (script.shootMode != "normal")
         {
-            if (script.shootMode == "laser")
+            if (script.shootMode == "Laser Beam")
             {
                 Instantiate(laserIndicator, script.transform.position, laserIndicator.transform.rotation);
             }
@@ -74,12 +74,12 @@ public class PowerUpManager : MonoBehaviour
 
     public void setLaserP1()
     {
-        setHelper("laser", P1LaserText, 1);
+        setHelper("Laser Beam", P1LaserText, 1);
     }
 
     void setHelper(string modeString, Text modeText, int id)
     {
-        foreach (List<GameObject> shipList in gameManagerScript.inGameShips)
+        foreach (List<GameObject> shipList in gameManagerScript.ships)
         {
             foreach (GameObject ship in shipList)
             {

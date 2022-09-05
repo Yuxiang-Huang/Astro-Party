@@ -26,12 +26,17 @@ public class Laser : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.CompareTag("Breakable"))
+        {
+            collision.gameObject.SetActive(false);
+        }
+
         if (collision.gameObject.CompareTag("Pilot"))
         {
             //Friendly Fire 
             if (!scoreManagerScript.friendlyFire)
             {
-                if(collision.gameObject.GetComponent<PilotPlayerController>() != null)
+                if (collision.gameObject.GetComponent<PilotPlayerController>() != null)
                 {
                     if (team != collision.gameObject.GetComponent<PilotPlayerController>().team)
                     {
@@ -73,6 +78,8 @@ public class Laser : MonoBehaviour
             {
                 if (team != collision.gameObject.GetComponent<MutualShip>().team)
                 {
+                    powerUpManagerScript.dropItem(collision.gameObject.GetComponent<MutualShip>());
+
                     if (scoreManagerScript.shipMode == "ship")
                     {
                         earnPoint();
@@ -80,12 +87,14 @@ public class Laser : MonoBehaviour
                     }
                     else if (scoreManagerScript.shipMode == "pilot")
                     {
-                       collision.gameObject.GetComponent<MutualShip>().spawnPilot(scoreManagerScript.shipMode);                  
+                        collision.gameObject.GetComponent<MutualShip>().spawnPilot(scoreManagerScript.shipMode);
                     }
                 }
             }
             else
             {
+                powerUpManagerScript.dropItem(collision.gameObject.GetComponent<MutualShip>());
+
                 if (scoreManagerScript.shipMode == "ship")
                 {
                     earnPoint();
@@ -93,7 +102,7 @@ public class Laser : MonoBehaviour
                 }
                 else if (scoreManagerScript.shipMode == "pilot")
                 {
-                    collision.gameObject.GetComponent<MutualShip>().spawnPilot(scoreManagerScript.shipMode);                  
+                    collision.gameObject.GetComponent<MutualShip>().spawnPilot(scoreManagerScript.shipMode);
                 }
             }
         }

@@ -73,7 +73,7 @@ public class MutualShip : MonoBehaviour
     {
         float angle = transform.rotation.ToEulerAngles().y;
 
-        if (shootMode == "laser")
+        if (shootMode == "Laser Beam")
         {
             //5000 is half the length of laserbeam
             GameObject myLaser = Instantiate(powerUpManagerScript.laser, transform.position +

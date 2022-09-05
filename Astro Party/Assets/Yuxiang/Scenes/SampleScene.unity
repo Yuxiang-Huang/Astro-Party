@@ -2530,6 +2530,7 @@ MonoBehaviour:
   laserIndicator: {fileID: 8667850671334641019, guid: 958da0f093d824256859aff34cd571fa, type: 3}
   laserButtonOn: {fileID: 1491527868}
   laserButtonOff: {fileID: 631149433}
+  P1LaserText: {fileID: 1737803094}
 --- !u!1 &357895753
 GameObject:
   m_ObjectHideFlags: 0
@@ -5363,7 +5364,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 344083648}
         m_TargetAssemblyTypeName: PowerUpManager, Assembly-CSharp
-        m_MethodName: setLaserOff
+        m_MethodName: setLaserP1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13344,7 +13345,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Laser Beam: On'
+  m_Text: 'Laser Beam: Off'
 --- !u!222 &1737803095
 CanvasRenderer:
   m_ObjectHideFlags: 0
