@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody playerRb;
 
+    bool dash;
+
     private void Start()
     {
         playerRb = GetComponent<Rigidbody>();
@@ -29,6 +31,15 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(turn))
         {
             rotating = true;
+            if (dash)
+            {
+                transform.Rotate(0, 0, 90);
+                playerRb.velocity = new Vector3(-playerRb.velocity.z, playerRb.velocity.y, playerRb.velocity.x);
+            }
+            else
+            {
+                StartCoroutine("dashCountDown");
+            }
         }
         if (Input.GetKeyUp(turn))
         {
@@ -50,5 +61,12 @@ public class PlayerController : MonoBehaviour
             //Debug.Log(playerRb.velocity);
             playerRb.velocity = playerRb.velocity.normalized * maxVelocity;
         }
+    }
+
+    IEnumerator dashCountDown()
+    {
+        dash = true;
+        yield return new WaitForSeconds(1.0f);
+        dash = false;
     }
 }
