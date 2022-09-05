@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
 
     ScoreManager scoreManagerScript;
     MapManager mapManagerScript;
+    PowerUpManager powerUpManagerScript;
 
     public GameObject nextButton;
 
@@ -82,6 +83,7 @@ public class GameManager : MonoBehaviour
 
         scoreManagerScript = GameObject.Find("Score Manager").GetComponent<ScoreManager>();
         mapManagerScript = GameObject.Find("Map Manager").GetComponent<MapManager>();
+        powerUpManagerScript = GameObject.Find("PowerUp Manager").GetComponent<PowerUpManager>();
     }
 
     // Update is called once per frame
@@ -153,8 +155,9 @@ public class GameManager : MonoBehaviour
         }  
     }
 
-    public void spawnShips()
+    public void startRound()
     {
+        powerUpManagerScript.spawnPowerUp();
         mapManagerScript.resetMap();
 
         gameStarted = true;

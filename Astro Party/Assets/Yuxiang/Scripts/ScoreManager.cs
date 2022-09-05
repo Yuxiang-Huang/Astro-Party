@@ -152,7 +152,7 @@ public class ScoreManager : MonoBehaviour
         //Check for winner
         if (P1Score < scoreToWin && P2Score < scoreToWin && P3Score < scoreToWin && P4Score < scoreToWin)
         {
-            gameManagerScript.spawnShips();
+            gameManagerScript.startRound();
         }
         else
         {

@@ -106,6 +106,7 @@ public class ScreenManager : MonoBehaviour
 
     public void backToLast()
     {
+        powerUpScreen.SetActive(false);
         mapScreen.SetActive(false);
         lastScreen.SetActive(true);
     }

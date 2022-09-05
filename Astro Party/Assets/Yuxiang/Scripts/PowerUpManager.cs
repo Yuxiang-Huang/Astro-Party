@@ -13,13 +13,14 @@ public class PowerUpManager : MonoBehaviour
 
     public AudioClip laserSound;
     public GameObject laser;
+    public GameObject laserIndicator;
     public GameObject laserButtonOn;
     public GameObject laserButtonOff;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        indicators.Add(laserIndicator);
     }
 
     // Update is called once per frame
@@ -30,20 +31,23 @@ public class PowerUpManager : MonoBehaviour
 
     public void spawnPowerUp()
     {
-        int ran = Random.Range(0, indicators.Count);
-        Instantiate(indicators[ran], new Vector3(0, 0, 0), indicators[ran].transform.rotation);
+        if (indicators.Count > 0)
+        {
+            int ran = Random.Range(0, indicators.Count);
+            Instantiate(indicators[ran], new Vector3(0, 0, 0), indicators[ran].transform.rotation);
+        }
     }
 
     public void setLaserOn()
     {
-        indicators.Add(laser);
+        indicators.Add(laserIndicator);
         laserButtonOff.SetActive(false);
         laserButtonOn.SetActive(true);
     }
 
     public void setLaserOff()
     {
-        indicators.Remove(laser);
+        indicators.Remove(laserIndicator);
         laserButtonOn.SetActive(false);
         laserButtonOff.SetActive(true);
     }
