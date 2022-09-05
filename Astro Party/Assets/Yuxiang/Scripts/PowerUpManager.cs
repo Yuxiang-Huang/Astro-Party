@@ -19,6 +19,9 @@ public class PowerUpManager : MonoBehaviour
     public GameObject laserButtonOff;
 
     public Text P1LaserText;
+    public Text P2LaserText;
+    public Text P3LaserText;
+    public Text P4LaserText;
 
     GameManager gameManagerScript;
 
@@ -77,6 +80,21 @@ public class PowerUpManager : MonoBehaviour
     public void setLaserP1()
     {
         setHelper("Laser Beam", P1LaserText, 1);
+    }
+
+    public void setLaserP2()
+    {
+        setHelper("Laser Beam", P2LaserText, 2);
+    }
+
+    public void setLaserP3()
+    {
+        setHelper("Laser Beam", P3LaserText, 3);
+    }
+
+    public void setLaserP4()
+    {
+        setHelper("Laser Beam", P4LaserText, 4);
     }
 
     void setHelper(string modeString, Text modeText, int id)

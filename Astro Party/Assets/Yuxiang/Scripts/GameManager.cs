@@ -86,9 +86,9 @@ public class GameManager : MonoBehaviour
         powerUpManagerScript = GameObject.Find("PowerUp Manager").GetComponent<PowerUpManager>();
 
         P1ShipBot = Instantiate(P1ShipBot, new Vector3(0, 0, 0), P1ShipBot.transform.rotation);
-        P2ShipBot = Instantiate(P1ShipBot, new Vector3(0, 0, 0), P2ShipBot.transform.rotation);
-        P3ShipBot = Instantiate(P1ShipBot, new Vector3(0, 0, 0), P3ShipBot.transform.rotation);
-        P4ShipBot = Instantiate(P1ShipBot, new Vector3(0, 0, 0), P4ShipBot.transform.rotation);
+        P2ShipBot = Instantiate(P2ShipBot, new Vector3(0, 0, 0), P2ShipBot.transform.rotation);
+        P3ShipBot = Instantiate(P3ShipBot, new Vector3(0, 0, 0), P3ShipBot.transform.rotation);
+        P4ShipBot = Instantiate(P4ShipBot, new Vector3(0, 0, 0), P4ShipBot.transform.rotation);
 
         P1ShipPlayer = Instantiate(P1ShipPlayer, new Vector3(0, 0, 0), P1ShipPlayer.transform.rotation);
         P2ShipPlayer = Instantiate(P2ShipPlayer, new Vector3(0, 0, 0), P2ShipPlayer.transform.rotation);

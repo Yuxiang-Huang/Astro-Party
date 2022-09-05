@@ -18,6 +18,9 @@ public class ScreenManager : MonoBehaviour
     public GameObject powerUpScreen;
 
     public GameObject P1PowerUpScreen;
+    public GameObject P2PowerUpScreen;
+    public GameObject P3PowerUpScreen;
+    public GameObject P4PowerUpScreen;
 
     public GameObject friendlyFireButton;
     public GameObject teamModeText;
@@ -157,9 +160,30 @@ public class ScreenManager : MonoBehaviour
         P1PowerUpScreen.SetActive(true);
     }
 
+    public void nextToP2PowerUp()
+    {
+        powerUpScreen.SetActive(false);
+        P2PowerUpScreen.SetActive(true);
+    }
+
+    public void nextToP3PowerUp()
+    {
+        powerUpScreen.SetActive(false);
+        P3PowerUpScreen.SetActive(true);
+    }
+
+    public void nextToP4PowerUp()
+    {
+        powerUpScreen.SetActive(false);
+        P4PowerUpScreen.SetActive(true);
+    }
+
     public void backToPowerUp()
     {
         P1PowerUpScreen.SetActive(false);
+        P2PowerUpScreen.SetActive(false);
+        P3PowerUpScreen.SetActive(false);
+        P4PowerUpScreen.SetActive(false);
         powerUpScreen.SetActive(true);
     }
 }
