@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PowerUpManager : MonoBehaviour
 {
@@ -17,10 +18,16 @@ public class PowerUpManager : MonoBehaviour
     public GameObject laserButtonOn;
     public GameObject laserButtonOff;
 
+    public Text P1LaserText;
+
+    GameManager gameManagerScript;
+
     // Start is called before the first frame update
     void Start()
     {
         indicators.Add(laserIndicator);
+        gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
+
     }
 
     // Update is called once per frame
@@ -67,6 +74,30 @@ public class PowerUpManager : MonoBehaviour
 
     public void setLaserP1()
     {
+        setHelper("laser", P1LaserText, 1);
+    }
 
+    void setHelper(string modeString, Text modeText, int id)
+    {
+        foreach (List<GameObject> shipList in gameManagerScript.inGameShips)
+        {
+            foreach (GameObject ship in shipList)
+            {
+                MutualShip script = ship.GetComponent<MutualShip>();
+                if (script.id == id)
+                {
+                    if (script.shootMode == modeString)
+                    {
+                        script.shootMode = "normal";
+                        modeText.text = modeString + ": Off";
+                    }
+                    else
+                    {
+                        script.shootMode = modeString;
+                        modeText.text = modeString + ": On";
+                    }
+                }
+            }
+        }
     }
 }
