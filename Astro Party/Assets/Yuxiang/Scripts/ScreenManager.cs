@@ -17,6 +17,8 @@ public class ScreenManager : MonoBehaviour
     public GameObject mapScreen;
     public GameObject powerUpScreen;
 
+    public GameObject P1PowerUpScreen;
+
     public GameObject friendlyFireButton;
     public GameObject teamModeText;
     public GameObject soloModeText;
@@ -145,5 +147,17 @@ public class ScreenManager : MonoBehaviour
     {
         infoScreen2.SetActive(false);
         infoScreen1.SetActive(true);
+    }
+
+    public void nextToP1PowerUp()
+    {
+        powerUpScreen.SetActive(false);
+        P1PowerUpScreen.SetActive(true);
+    }
+
+    public void backToPowerUp()
+    {
+        P1PowerUpScreen.SetActive(false);
+        powerUpScreen.SetActive(true);
     }
 }

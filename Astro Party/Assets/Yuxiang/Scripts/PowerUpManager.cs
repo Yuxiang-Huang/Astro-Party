@@ -62,4 +62,11 @@ public class PowerUpManager : MonoBehaviour
             }
         }
     }
+
+    //Players
+
+    public void setLaserP1()
+    {
+
+    }
 }
