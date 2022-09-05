@@ -6,12 +6,14 @@ public class Laser : MonoBehaviour
 {
     public int id;
     ScoreManager scoreManagerScript;
+    PowerUpManager powerUpManagerScript;
 
     public int team;
 
     // Start is called before the first frame update
     void Start()
     {
+        powerUpManagerScript = GameObject.Find("PowerUp Manager").GetComponent<PowerUpManager>();
         scoreManagerScript = GameObject.Find("Score Manager").GetComponent<ScoreManager>();
         StartCoroutine("selfDestruct");
     }

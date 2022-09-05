@@ -5,6 +5,7 @@ using UnityEngine;
 public class BulletMove : MonoBehaviour
 {
     ScoreManager scoreManagerScript;
+    PowerUpManager powerUpManagerScript;
 
     public int id;
     Rigidbody Rb;
@@ -18,6 +19,7 @@ public class BulletMove : MonoBehaviour
         Rb = GetComponent<Rigidbody>();
         Rb.AddRelativeForce(new Vector3(0, 0, speed), ForceMode.VelocityChange);
         scoreManagerScript = GameObject.Find("Score Manager").GetComponent<ScoreManager>();
+        powerUpManagerScript = GameObject.Find("PowerUp Manager").GetComponent<PowerUpManager>();
     }
 
     // Update is called once per frame
@@ -80,6 +82,8 @@ public class BulletMove : MonoBehaviour
             {
                 if (team != collision.gameObject.GetComponent<MutualShip>().team)
                 {
+                    powerUpManagerScript.dropItem(collision.gameObject.GetComponent<MutualShip>());
+
                     if (scoreManagerScript.shipMode == "ship")
                     {
                         earnPoint();
@@ -93,6 +97,8 @@ public class BulletMove : MonoBehaviour
             }
             else
             {
+                powerUpManagerScript.dropItem(collision.gameObject.GetComponent<MutualShip>());
+
                 if (scoreManagerScript.shipMode == "ship")
                 {
                     earnPoint();

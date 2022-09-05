@@ -6,7 +6,6 @@ public class MutualShip : MonoBehaviour
 {
     public int id;
     public int team;
-    ScoreManager scoreManagerScript;
 
     public string shootMode;
 
@@ -20,6 +19,7 @@ public class MutualShip : MonoBehaviour
     Rigidbody playerRb;
     AudioSource playerAudio;
 
+    ScoreManager scoreManagerScript;
     GameManager gameManagerScript;
     PowerUpManager powerUpManagerScript;
 

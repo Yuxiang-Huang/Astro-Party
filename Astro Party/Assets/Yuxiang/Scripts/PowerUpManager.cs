@@ -51,4 +51,15 @@ public class PowerUpManager : MonoBehaviour
         laserButtonOn.SetActive(false);
         laserButtonOff.SetActive(true);
     }
+
+    public void dropItem(MutualShip script)
+    {
+        if (script.shootMode != "normal")
+        {
+            if (script.shootMode == "laser")
+            {
+                Instantiate(laserIndicator, script.transform.position, laserIndicator.transform.rotation);
+            }
+        }
+    }
 }
