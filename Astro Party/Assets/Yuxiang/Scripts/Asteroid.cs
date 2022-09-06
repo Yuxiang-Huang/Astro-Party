@@ -39,10 +39,11 @@ public class Asteroid : MonoBehaviour
         {
             gameManagerScript.inGameAsteroids.Remove(gameObject);
             Destroy(gameObject);
-        }
-        if (type == "powerUp")
-        {
-            Instantiate(powerUp, transform.position, powerUp.transform.rotation);
+
+            if (type == "powerUp")
+            {
+                Instantiate(powerUp, transform.position, powerUp.transform.rotation);
+            }
         }
     }
 }

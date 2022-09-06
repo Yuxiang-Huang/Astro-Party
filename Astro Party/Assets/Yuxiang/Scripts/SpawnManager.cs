@@ -14,6 +14,8 @@ public class SpawnManager : MonoBehaviour
 
     public bool startSpawn;
 
+    int space = 100;
+     
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +26,17 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (startSpawn && gameManagerScript.inGameAsteroids.Count == 0)
+        int powerUpA = 0;
+
+        foreach (GameObject asteroid in gameManagerScript.inGameAsteroids)
+        {
+            if (asteroid.GetComponent<Asteroid>().type  == "powerUp")
+            {
+                powerUpA++;
+            }
+        }
+
+        if (startSpawn && powerUpA == 0)
         {
             spawnAsteroids();
         }
@@ -52,6 +64,23 @@ public class SpawnManager : MonoBehaviour
                 Vector3 ranPos = new Vector3(Random.Range(-gameManagerScript.spawnX, gameManagerScript.spawnX), 0,
            Random.Range(-gameManagerScript.spawnZ, gameManagerScript.spawnZ));
 
+                //asteroid distance
+                bool flag = true;
+                while (flag)
+                {
+                    flag = false;
+                    foreach (List<GameObject> shipList2 in gameManagerScript.inGameShips)
+                    {
+                        foreach (GameObject ship2 in shipList)
+                        {
+                            if (distance(ship2.transform.position, ranPos) > space)
+                            {
+                                flag = true;
+                            }
+                        }
+                    }
+                }
+
                 GameObject asteroid = PowerUpAsteroid;
 
                 int ran = Random.Range(0, 4);
@@ -69,5 +98,10 @@ public class SpawnManager : MonoBehaviour
                 gameManagerScript.inGameAsteroids.Add(asteroidClone);
             }
         }
+    }
+
+    float distance(Vector3 ship1, Vector3 ship2)
+    {
+        return Mathf.Sqrt(Mathf.Pow((ship1.x - ship2.x), 2) + Mathf.Pow((ship1.z - ship2.z), 2));
     }
 }

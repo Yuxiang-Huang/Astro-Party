@@ -42,6 +42,9 @@ public class PlayerController : MonoBehaviour
                 transform.position = new Vector3(transform.position.x + 100 * Mathf.Sin(angle),
                     transform.position.y, transform.position.z + 100 * Mathf.Cos(angle));
 
+                //add impulse
+                //playerRb.AddRelativeForce(new Vector3(0, 0, 3 * speed), ForceMode.Force);
+
                 dash = 0;
             }
             else
