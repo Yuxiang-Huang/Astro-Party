@@ -14,7 +14,7 @@ public class SpawnManager : MonoBehaviour
 
     public bool startSpawn;
 
-    int space = 500;
+    int space = 100;
      
     // Start is called before the first frame update
     void Start()
@@ -47,8 +47,10 @@ public class SpawnManager : MonoBehaviour
         if (powerUpManagerScript.indicators.Count > 0)
         {
             int ran = Random.Range(0, powerUpManagerScript.indicators.Count);
-            Instantiate(powerUpManagerScript.indicators[ran], new Vector3(0, 0, 0),
+            GameObject powerUp = Instantiate(powerUpManagerScript.indicators[ran], new Vector3(0, 0, 0),
                 powerUpManagerScript.indicators[ran].transform.rotation);
+
+            gameManagerScript.inGameIndicators.Add(powerUp);
 
             startSpawn = true;
         }
