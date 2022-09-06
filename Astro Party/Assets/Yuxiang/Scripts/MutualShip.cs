@@ -150,7 +150,7 @@ public class MutualShip : MonoBehaviour
     IEnumerator beginFreeze()
     {
         playerRb.constraints = RigidbodyConstraints.FreezePosition;
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
         playerRb.constraints = RigidbodyConstraints.FreezePositionY;
     }
 

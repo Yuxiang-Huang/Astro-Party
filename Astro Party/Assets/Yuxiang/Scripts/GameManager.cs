@@ -420,17 +420,17 @@ public class GameManager : MonoBehaviour
             }
 
             //destroy powerUps
-            foreach (GameObject indicator in inGameIndicators)
+            while (inGameIndicators.Count > 0)
             {
-                Destroy(indicator);
-                inGameIndicators.Remove(indicator);
+                Destroy(inGameIndicators[0]);
+                inGameIndicators.Remove(inGameIndicators[0]);
             }
 
             //destroy Asteroids
-            foreach (GameObject asteroid in inGameAsteroids)
+            while (inGameAsteroids.Count > 0)
             {
-                Destroy(asteroid);
-                inGameAsteroids.Remove(asteroid);
+                Destroy(inGameAsteroids[0]);
+                inGameAsteroids.Remove(inGameAsteroids[0]);
             }
         }
 

@@ -10626,7 +10626,7 @@ MonoBehaviour:
   generalAudio: {fileID: 0}
   shipExplode: {fileID: 8300000, guid: 168ee7bcbe1a1402f9a6ddbfc6be5ae9, type: 3}
   pilotDeath: {fileID: 8300000, guid: aec50f253930d48f18535b73dad3e518, type: 3}
-  ready: {fileID: 8300000, guid: fe55dbded083e4dce9973de9f1973da9, type: 3}
+  ready: {fileID: 8300000, guid: 784188fbbdae34918bc888bb3d3424da, type: 3}
   bulletSound: {fileID: 8300000, guid: a448eaa9f9588436caaea7224bf3954e, type: 3}
   laserSound: {fileID: 8300000, guid: 94cd1fa4bfb2e4df096fad64c2fd1bc1, type: 3}
 --- !u!1 &1080884256
