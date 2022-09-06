@@ -30,7 +30,7 @@ public class Laser : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Asteroid"))
         {
-            collision.gameObject.GetComponent<Asteroid>().health--;
+            collision.gameObject.GetComponent<Asteroid>().health = 0;
         }
 
         if (collision.gameObject.CompareTag("Breakable"))

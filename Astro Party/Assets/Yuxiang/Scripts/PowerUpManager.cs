@@ -55,7 +55,8 @@ public class PowerUpManager : MonoBehaviour
             switch (script.shootMode)
             {
                 case "Laser Beam":
-                    Instantiate(laserIndicator, script.transform.position, laserIndicator.transform.rotation);
+                    GameObject toAdd = Instantiate(laserIndicator, transform.position, laserIndicator.transform.rotation);
+                    gameManagerScript.inGameIndicators.Add(toAdd);
                     break;
             }
         }

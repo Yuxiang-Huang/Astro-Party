@@ -37,13 +37,13 @@ public class PlayerController : MonoBehaviour
                 //change velocity
                 playerRb.velocity = new Vector3(playerRb.velocity.z, playerRb.velocity.y, -playerRb.velocity.x);
 
-                //translate
-                float angle = transform.rotation.ToEulerAngles().y;
-                transform.position = new Vector3(transform.position.x + 100 * Mathf.Sin(angle),
-                    transform.position.y, transform.position.z + 100 * Mathf.Cos(angle));
+                ////translate
+                //float angle = transform.rotation.ToEulerAngles().y;
+                //transform.position = new Vector3(transform.position.x + 100 * Mathf.Sin(angle),
+                //    transform.position.y, transform.position.z + 100 * Mathf.Cos(angle));
 
                 //add impulse
-                //playerRb.AddRelativeForce(new Vector3(0, 0, 3 * speed), ForceMode.Force);
+                playerRb.AddRelativeForce(new Vector3(0, 0,  2 * speed), ForceMode.Force);
 
                 dash = 0;
             }

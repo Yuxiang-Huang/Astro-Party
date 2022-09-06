@@ -144,7 +144,12 @@ public class MutualShip : MonoBehaviour
         playerRb.constraints = RigidbodyConstraints.FreezePosition;
         yield return new WaitForSeconds(0.3f);
         playerRb.constraints = RigidbodyConstraints.FreezePositionY;
-        playerRb.AddRelativeForce(new Vector3(0, 0, -speed * 30), ForceMode.Force);
+
+        //not for bot
+        if (GetComponent<PlayerController>() != null)
+        {
+            playerRb.AddRelativeForce(new Vector3(0, 0, -speed * 30), ForceMode.Force);
+        }
     }
 
     IEnumerator beginFreeze()
