@@ -14,7 +14,7 @@ public class SpawnManager : MonoBehaviour
 
     public bool startSpawn;
 
-    int space = 100;
+    int space = 500;
      
     // Start is called before the first frame update
     void Start()
@@ -61,26 +61,6 @@ public class SpawnManager : MonoBehaviour
         {
             foreach (GameObject ship in shipList)
             {
-                Vector3 ranPos = new Vector3(Random.Range(-gameManagerScript.spawnX, gameManagerScript.spawnX), 0,
-           Random.Range(-gameManagerScript.spawnZ, gameManagerScript.spawnZ));
-
-                //asteroid distance
-                bool flag = true;
-                while (flag)
-                {
-                    flag = false;
-                    foreach (List<GameObject> shipList2 in gameManagerScript.inGameShips)
-                    {
-                        foreach (GameObject ship2 in shipList)
-                        {
-                            if (distance(ship2.transform.position, ranPos) > space)
-                            {
-                                flag = true;
-                            }
-                        }
-                    }
-                }
-
                 GameObject asteroid = PowerUpAsteroid;
 
                 int ran = Random.Range(0, 4);
@@ -93,15 +73,43 @@ public class SpawnManager : MonoBehaviour
                     case 3: asteroid = PowerUpAsteroid; break;
                 }
 
-                GameObject asteroidClone = Instantiate(asteroid, ranPos, PowerUpAsteroid.transform.rotation);
+                GameObject asteroidClone = Instantiate(asteroid, generateRanPos(), PowerUpAsteroid.transform.rotation);
 
                 gameManagerScript.inGameAsteroids.Add(asteroidClone);
             }
         }
+
+        GameObject asteroidClone2 = Instantiate(PowerUpAsteroid, generateRanPos(), PowerUpAsteroid.transform.rotation);
+
+        gameManagerScript.inGameAsteroids.Add(asteroidClone2);
     }
 
     float distance(Vector3 ship1, Vector3 ship2)
     {
         return Mathf.Sqrt(Mathf.Pow((ship1.x - ship2.x), 2) + Mathf.Pow((ship1.z - ship2.z), 2));
+    }
+
+    Vector3 generateRanPos()
+    {
+        Vector3 ranPos = new Vector3(Random.Range(-gameManagerScript.spawnX, gameManagerScript.spawnX), 0,
+          Random.Range(-gameManagerScript.spawnZ, gameManagerScript.spawnZ));
+
+        //asteroid distance
+        bool flag = true;
+        while (flag)
+        {
+            flag = false;
+            foreach (List<GameObject> shipList in gameManagerScript.inGameShips)
+            {
+                foreach (GameObject ship in shipList)
+                {
+                    if (distance(ship.transform.position, ranPos) < space)
+                    {
+                        flag = true;
+                    }
+                }
+            }
+        }
+        return ranPos;
     }
 }
