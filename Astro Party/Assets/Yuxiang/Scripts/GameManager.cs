@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     MapManager mapManagerScript;
     PowerUpManager powerUpManagerScript;
     SEManager SEManagerScript;
+    SpawnManager spawnManagerScript;
 
     public GameObject nextButton;
 
@@ -86,6 +87,7 @@ public class GameManager : MonoBehaviour
         mapManagerScript = GameObject.Find("Map Manager").GetComponent<MapManager>();
         powerUpManagerScript = GameObject.Find("PowerUp Manager").GetComponent<PowerUpManager>();
         SEManagerScript = GameObject.Find("SoundEffect Manager").GetComponent<SEManager>();
+        spawnManagerScript = GameObject.Find("Spawn Manager").GetComponent<SpawnManager>();
 
         P1ShipBot = Instantiate(P1ShipBot, new Vector3(0, 0, 0), P1ShipBot.transform.rotation);
         P2ShipBot = Instantiate(P2ShipBot, new Vector3(0, 0, 0), P2ShipBot.transform.rotation);
@@ -181,7 +183,7 @@ public class GameManager : MonoBehaviour
     {
         SEManagerScript.generalAudio.PlayOneShot(SEManagerScript.ready);
 
-        powerUpManagerScript.spawnPowerUp();
+        spawnManagerScript.RoundSpawn();
         mapManagerScript.resetMap();
 
         gameStarted = true;

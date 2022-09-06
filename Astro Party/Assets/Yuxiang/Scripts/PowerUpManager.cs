@@ -34,15 +34,6 @@ public class PowerUpManager : MonoBehaviour
         
     }
 
-    public void spawnPowerUp()
-    {
-        if (indicators.Count > 0)
-        {
-            int ran = Random.Range(0, indicators.Count);
-            Instantiate(indicators[ran], new Vector3(0, 0, 0), indicators[ran].transform.rotation);
-        }
-    }
-
     public void setLaserOn()
     {
         indicators.Add(laserIndicator);
