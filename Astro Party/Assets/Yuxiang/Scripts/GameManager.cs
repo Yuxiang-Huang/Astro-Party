@@ -425,6 +425,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        spawnManagerScript.startSpawn = false;
         scoreManagerScript.StartCoroutine("scoreUpdate");
     }
 
