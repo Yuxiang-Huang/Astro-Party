@@ -8,7 +8,7 @@ public class Asteroid : MonoBehaviour
 
     PowerUpManager powerUpManagerScript;
 
-    int health;
+    public int health;
 
     GameObject powerUp;
 
@@ -28,6 +28,18 @@ public class Asteroid : MonoBehaviour
             case "powerUp": health = 1;
                 powerUp = powerUpManagerScript.indicators[Random.Range(0, powerUpManagerScript.indicators.Count)];
                 break;
+        }
+    }
+
+    private void Update()
+    {
+        if (health == 0)
+        {
+            Destroy(gameObject);
+        }
+        if (type == "powerUp")
+        {
+            Instantiate(powerUp, transform.position, powerUp.transform.rotation);
         }
     }
 }

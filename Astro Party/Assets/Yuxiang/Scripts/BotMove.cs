@@ -83,8 +83,8 @@ public class BotMove : MonoBehaviour
 
     IEnumerator beginDisable()
     {
-        disable = false;
-        yield return new WaitForSeconds(2.5f);
         disable = true;
+        yield return new WaitForSeconds(2.5f);
+        disable = false;
     }
 }

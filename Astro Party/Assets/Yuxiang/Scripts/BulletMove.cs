@@ -32,6 +32,11 @@ public class BulletMove : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.CompareTag("Asteroid"))
+        {
+            collision.gameObject.GetComponent<Asteroid>().health--;
+        }
+
         if (collision.gameObject.CompareTag("Breakable"))
         {
             collision.gameObject.SetActive(false);

@@ -7,6 +7,7 @@ public class Laser : MonoBehaviour
     public int id;
     ScoreManager scoreManagerScript;
     PowerUpManager powerUpManagerScript;
+    SEManager SEManagerScript;
 
     public int team;
 
@@ -16,6 +17,7 @@ public class Laser : MonoBehaviour
         powerUpManagerScript = GameObject.Find("PowerUp Manager").GetComponent<PowerUpManager>();
         scoreManagerScript = GameObject.Find("Score Manager").GetComponent<ScoreManager>();
         StartCoroutine("selfDestruct");
+        SEManagerScript = GameObject.Find("SoundEffect Manager").GetComponent<SEManager>();
     }
 
     IEnumerator selfDestruct()
@@ -26,6 +28,11 @@ public class Laser : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.CompareTag("Asteroid"))
+        {
+            collision.gameObject.GetComponent<Asteroid>().health--;
+        }
+
         if (collision.gameObject.CompareTag("Breakable"))
         {
             collision.gameObject.SetActive(false);
@@ -33,35 +40,31 @@ public class Laser : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Pilot"))
         {
+            bool toKill = true;
             //Friendly Fire 
             if (!scoreManagerScript.friendlyFire)
             {
                 if (collision.gameObject.GetComponent<PilotPlayerController>() != null)
                 {
-                    if (team != collision.gameObject.GetComponent<PilotPlayerController>().team)
+                    if (team == collision.gameObject.GetComponent<PilotPlayerController>().team)
                     {
-                        Destroy(collision.gameObject);
-                        if (scoreManagerScript.shipMode == "pilot")
-                        {
-                            earnPoint();
-                        }
+                        toKill = false;
                     }
                 }
 
                 else if (collision.gameObject.GetComponent<BotPilotMove>() != null)
                 {
-                    if (team != collision.gameObject.GetComponent<BotPilotMove>().team)
+                    if (team == collision.gameObject.GetComponent<BotPilotMove>().team)
                     {
-                        Destroy(collision.gameObject);
-                        if (scoreManagerScript.shipMode == "pilot")
-                        {
-                            earnPoint();
-                        }
+                        toKill = false;
                     }
                 }
             }
-            else
+            if (toKill)
             {
+                //sound effect
+                SEManagerScript.generalAudio.PlayOneShot(SEManagerScript.pilotDeath);
+
                 Destroy(collision.gameObject);
 
                 if (scoreManagerScript.shipMode == "pilot")
@@ -73,26 +76,21 @@ public class Laser : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Ship"))
         {
+            bool toKill = true;
             //Friendly Fire 
             if (!scoreManagerScript.friendlyFire)
             {
-                if (team != collision.gameObject.GetComponent<MutualShip>().team)
+                if (team == collision.gameObject.GetComponent<MutualShip>().team)
                 {
-                    powerUpManagerScript.dropItem(collision.gameObject.GetComponent<MutualShip>());
-
-                    if (scoreManagerScript.shipMode == "ship")
-                    {
-                        earnPoint();
-                        Destroy(collision.gameObject);
-                    }
-                    else if (scoreManagerScript.shipMode == "pilot")
-                    {
-                        collision.gameObject.GetComponent<MutualShip>().spawnPilot();
-                    }
+                    toKill = false;
                 }
             }
-            else
+
+            if (toKill)
             {
+                //ship explode sound effect
+                SEManagerScript.generalAudio.PlayOneShot(SEManagerScript.shipExplode);
+
                 powerUpManagerScript.dropItem(collision.gameObject.GetComponent<MutualShip>());
 
                 if (scoreManagerScript.shipMode == "ship")
