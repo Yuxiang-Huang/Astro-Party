@@ -5057,7 +5057,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: beff6563f0fac4427b1ea866d94e22ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  smallAsteroid: {fileID: 151664, guid: fa49e460baf435b4780da7196c2ab473, type: 3}
+  mediumpAsteroid: {fileID: 141316, guid: 84cc3cd234dfc9d4d9d2e92c0eb0af75, type: 3}
+  largeAsteroid: {fileID: 130102, guid: 04d0bf4be9447154188d86f6e3b8dce9, type: 3}
   PowerUpAsteroid: {fileID: 5322739378493429008, guid: c5366d594c08943d9b71714aa51af74a, type: 3}
+  startSpawn: 0
 --- !u!1 &523128615
 GameObject:
   m_ObjectHideFlags: 0
@@ -11040,6 +11044,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1825dd4e2df5479783b49cfaa86347f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inGameIndicators: []
+  inGameAsteroids: []
   nextButton: {fileID: 846400692}
   P1ShipPlayer: {fileID: 5458894458688238044, guid: 7c0419a36677d4cb6886c0454ffb6615, type: 3}
   P1ShipBot: {fileID: 1133596451880189216, guid: ab8e0b32f0a374f799dfc66ac9162a6f, type: 3}

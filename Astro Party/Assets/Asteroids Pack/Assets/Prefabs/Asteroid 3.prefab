@@ -73,6 +73,7 @@ GameObject:
   - component: {fileID: 5428902}
   - component: {fileID: 11467940}
   - component: {fileID: 7021745425343228746}
+  - component: {fileID: 5691111034834537301}
   m_Layer: 0
   m_Name: Asteroid 3
   m_TagString: Asteroid
@@ -137,6 +138,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: large
+--- !u!135 &5691111034834537301
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 130102}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.7326439
+  m_Center: {x: -0.011140728, y: 0, z: 0}
 --- !u!1 &153142
 GameObject:
   m_ObjectHideFlags: 0

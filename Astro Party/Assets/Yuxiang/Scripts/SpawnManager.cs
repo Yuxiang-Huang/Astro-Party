@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
+    public GameObject smallAsteroid;
+    public GameObject mediumpAsteroid;
+    public GameObject largeAsteroid;
     public GameObject PowerUpAsteroid;
 
     PowerUpManager powerUpManagerScript;
@@ -48,7 +51,22 @@ public class SpawnManager : MonoBehaviour
             {
                 Vector3 ranPos = new Vector3(Random.Range(-gameManagerScript.spawnX, gameManagerScript.spawnX), 0,
            Random.Range(-gameManagerScript.spawnZ, gameManagerScript.spawnZ));
-                Instantiate(PowerUpAsteroid, ranPos, PowerUpAsteroid.transform.rotation);
+
+                GameObject asteroid = PowerUpAsteroid;
+
+                int ran = Random.Range(0, 4);
+
+                switch (ran)
+                {
+                    case 0: asteroid = smallAsteroid; break;
+                    case 1: asteroid = mediumpAsteroid; break;
+                    case 2: asteroid = largeAsteroid; break;
+                    case 3: asteroid = PowerUpAsteroid; break;
+                }
+
+                Instantiate(asteroid, ranPos, PowerUpAsteroid.transform.rotation);
+
+                gameManagerScript.inGameAsteroids.Add(asteroid);
             }
         }
     }

@@ -10,6 +10,7 @@ TagManager:
   - Pilot
   - Breakable
   - PowerUp
+  - Asteroid
   layers:
   - Default
   - TransparentFX

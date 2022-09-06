@@ -13,6 +13,8 @@ public class BotMove : MonoBehaviour
 
     float traceTime;
 
+    bool disable;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,52 +26,52 @@ public class BotMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GameObject target = this.gameObject;
-        float minDistance = 10000;
-
-        foreach (List<GameObject> shipList in gameManagerScript.inGameShips)
+        if (!disable)
         {
-            if (!shipList.Contains(this.gameObject))
+            GameObject target = this.gameObject;
+            float minDistance = 10000;
+
+            foreach (List<GameObject> shipList in gameManagerScript.inGameShips)
             {
-                foreach (GameObject ship in shipList)
+                if (!shipList.Contains(this.gameObject))
                 {
-                    if (ship != this.gameObject)
+                    foreach (GameObject ship in shipList)
                     {
-                        if (distance(ship, this.gameObject) < minDistance)
+                        if (ship != this.gameObject)
                         {
-                            target = ship;
+                            if (distance(ship, this.gameObject) < minDistance)
+                            {
+                                target = ship;
+                            }
                         }
                     }
                 }
             }
-        }
 
-        //Debug.Log(target.transform.position);
+            //Debug.Log(target.transform.position);
 
-        //Can't trace too frequently
-        if (traceTime <= 0)
-        {
-            if (agent.enabled == true)
+            //Can't trace too frequently
+            if (traceTime <= 0)
             {
                 agent.SetDestination(target.transform.position);
+                traceTime = 1;
             }
-            traceTime = 1;
-        }
-        if (traceTime > 0)
-        {
-            traceTime -= Time.deltaTime;
-        }
+            if (traceTime > 0)
+            {
+                traceTime -= Time.deltaTime;
+            }
 
-        if (botReloadTime > 0)
-        {
-            botReloadTime -= Time.deltaTime;
-            botReloadTime = Mathf.Max(botReloadTime, 0);
-        }
+            if (botReloadTime > 0)
+            {
+                botReloadTime -= Time.deltaTime;
+                botReloadTime = Mathf.Max(botReloadTime, 0);
+            }
 
-        if (botReloadTime == 0)
-        {
-            botReloadTime = 1;
-            GetComponent<MutualShip>().shoot();
+            if (botReloadTime == 0)
+            {
+                botReloadTime = 1;
+                GetComponent<MutualShip>().shoot();
+            }
         }
     }
 
@@ -81,8 +83,8 @@ public class BotMove : MonoBehaviour
 
     IEnumerator beginDisable()
     {
-        agent.enabled = false;
+        disable = false;
         yield return new WaitForSeconds(2.5f);
-        agent.enabled = true;
+        disable = true;
     }
 }
