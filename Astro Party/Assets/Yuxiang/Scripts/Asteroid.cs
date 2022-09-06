@@ -43,12 +43,16 @@ public class Asteroid : MonoBehaviour
     {
         if (health == 0)
         {
-            SEManagerScript.generalAudio.PlayOneShot(SEManagerScript.shipExplode);
+            //SEManagerScript.generalAudio.PlayOneShot(SEManagerScript.shipExplode);
 
             switch (type)
             {
-                case "large": spawnTwoAsteroids(spawnManagerScript.mediumpAsteroid); break;
-                case "medium": spawnTwoAsteroids(spawnManagerScript.smallAsteroid); break;
+                case "large":
+                    spawnTwoAsteroids(spawnManagerScript.mediumpAsteroid, spawnManagerScript.PowerUpAsteroid);
+                    break;
+                case "medium":
+                    spawnTwoAsteroids(spawnManagerScript.smallAsteroid, spawnManagerScript.smallAsteroid);
+                    break;
             }
 
             gameManagerScript.inGameAsteroids.Remove(gameObject);
@@ -63,9 +67,11 @@ public class Asteroid : MonoBehaviour
         }
     }
 
-    void spawnTwoAsteroids(GameObject asteroid)
+    void spawnTwoAsteroids(GameObject asteroid1, GameObject asteroid2)
     {
-        Instantiate(asteroid, transform.position, asteroid.transform.rotation);
-        Instantiate(asteroid, transform.position, asteroid.transform.rotation);
+        GameObject toAdd1 = Instantiate(asteroid1, transform.position, asteroid1.transform.rotation);
+        GameObject toAdd2 = Instantiate(asteroid2, transform.position, asteroid2.transform.rotation);
+        gameManagerScript.inGameAsteroids.Add(toAdd1);
+        gameManagerScript.inGameAsteroids.Add(toAdd2);
     }
 }
