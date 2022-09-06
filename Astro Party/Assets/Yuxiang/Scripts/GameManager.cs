@@ -7,12 +7,14 @@ public class GameManager : MonoBehaviour
 {
     public List<List<GameObject>> ships;
     public List<List<GameObject>> inGameShips;
+    public List<GameObject> inGameIndicators;
+    public List<GameObject> inGameAsteroids;
+
     List<Vector3> pos;
     List<Vector3> rot;
 
     ScoreManager scoreManagerScript;
     MapManager mapManagerScript;
-    PowerUpManager powerUpManagerScript;
     SEManager SEManagerScript;
     SpawnManager spawnManagerScript;
 
@@ -85,7 +87,6 @@ public class GameManager : MonoBehaviour
 
         scoreManagerScript = GameObject.Find("Score Manager").GetComponent<ScoreManager>();
         mapManagerScript = GameObject.Find("Map Manager").GetComponent<MapManager>();
-        powerUpManagerScript = GameObject.Find("PowerUp Manager").GetComponent<PowerUpManager>();
         SEManagerScript = GameObject.Find("SoundEffect Manager").GetComponent<SEManager>();
         spawnManagerScript = GameObject.Find("Spawn Manager").GetComponent<SpawnManager>();
 
@@ -374,6 +375,7 @@ public class GameManager : MonoBehaviour
         {
             List<GameObject> shipList = inGameShips[i];
 
+            //reward for team winner
             if (scoreManagerScript.gameMode == "team")
             {
                 if (shipList.Count > 0)
@@ -401,12 +403,26 @@ public class GameManager : MonoBehaviour
                 }
             }
 
+            //destroy ships
             while (shipList.Count > 0)
             {
                 Destroy(shipList[0]);
                 shipList.RemoveAt(0);
             }
 
+            //destroy powerUps
+            foreach (GameObject indicator in inGameIndicators)
+            {
+                Destroy(indicator);
+                inGameIndicators.Remove(indicator);
+            }
+
+            //destroy Asteroids
+            foreach (GameObject asteroid in inGameAsteroids)
+            {
+                Destroy(asteroid);
+                inGameAsteroids.Remove(asteroid);
+            }
         }
 
         scoreManagerScript.StartCoroutine("scoreUpdate");
