@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody playerRb;
 
-    bool dash;
+    int dash;
 
     private void Start()
     {
@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(turn))
         {
             rotating = true;
-            if (dash)
+            if (dash > 0)
             {
                 transform.Rotate(0, 90, 0);
                 //change velocity
@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
                 transform.position = new Vector3(transform.position.x + 100 * Mathf.Sin(angle),
                     transform.position.y, transform.position.z + 100 * Mathf.Cos(angle));
 
-                dash = false;
+                dash = 0;
             }
             else
             {
@@ -73,8 +73,9 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator dashCountDown()
     {
-        dash = true;
-        yield return new WaitForSeconds(1.0f);
-        dash = false;
+        dash ++;
+        yield return new WaitForSeconds(0.5f);
+        dash --;
+        dash = Mathf.Max(0, dash);
     }
 }
