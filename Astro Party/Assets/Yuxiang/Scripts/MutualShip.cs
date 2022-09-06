@@ -50,6 +50,8 @@ public class MutualShip : MonoBehaviour
         scoreManagerScript = GameObject.Find("Score Manager").GetComponent<ScoreManager>();
         powerUpManagerScript = GameObject.Find("PowerUp Manager").GetComponent<PowerUpManager>();
         SEManagerScript = GameObject.Find("SoundEffect Manager").GetComponent<SEManager>();
+
+        StartCoroutine("beginFreeze");
     }
 
     // Update is called once per frame
@@ -100,8 +102,7 @@ public class MutualShip : MonoBehaviour
             playerAudio.PlayOneShot(SEManagerScript.laserSound);
 
             //Freeze after using laser
-            playerRb.constraints = RigidbodyConstraints.FreezePosition;
-            StartCoroutine("ableToMove");
+            StartCoroutine("laserFreeze");
 
             shootMode = "normal";
 
@@ -138,14 +139,22 @@ public class MutualShip : MonoBehaviour
         }
     }
 
-    IEnumerator ableToMove()
+    IEnumerator laserFreeze()
     {
+        playerRb.constraints = RigidbodyConstraints.FreezePosition;
         yield return new WaitForSeconds(0.3f);
         playerRb.constraints = RigidbodyConstraints.FreezePositionY;
         playerRb.AddRelativeForce(new Vector3(0, 0, -speed * 30), ForceMode.Force);
     }
 
-    public void spawnPilot(string mode)
+    IEnumerator beginFreeze()
+    {
+        playerRb.constraints = RigidbodyConstraints.FreezePosition;
+        yield return new WaitForSeconds(3f);
+        playerRb.constraints = RigidbodyConstraints.FreezePositionY;
+    }
+
+    public void spawnPilot()
     {
         GameObject myPilot = Instantiate(pilot, transform.position, transform.rotation);
         myPilot.transform.Rotate(90, 0, 0);

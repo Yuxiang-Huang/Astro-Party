@@ -17,6 +17,8 @@ public class BotMove : MonoBehaviour
     void Start()
     {
         gameManagerScript = gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
+
+        StartCoroutine("beginDisable");
     }
 
     // Update is called once per frame
@@ -47,7 +49,10 @@ public class BotMove : MonoBehaviour
         //Can't trace too frequently
         if (traceTime <= 0)
         {
-            agent.SetDestination(target.transform.position);
+            if (agent.enabled == true)
+            {
+                agent.SetDestination(target.transform.position);
+            }
             traceTime = 1;
         }
         if (traceTime > 0)
@@ -72,5 +77,12 @@ public class BotMove : MonoBehaviour
     {
         return Mathf.Sqrt(Mathf.Pow((ship1.transform.position.x - ship2.transform.position.x), 2) +
             Mathf.Pow((ship1.transform.position.z - ship2.transform.position.z), 2));
+    }
+
+    IEnumerator beginDisable()
+    {
+        agent.enabled = false;
+        yield return new WaitForSeconds(2.5f);
+        agent.enabled = true;
     }
 }

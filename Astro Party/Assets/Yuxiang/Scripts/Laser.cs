@@ -87,7 +87,7 @@ public class Laser : MonoBehaviour
                     }
                     else if (scoreManagerScript.shipMode == "pilot")
                     {
-                        collision.gameObject.GetComponent<MutualShip>().spawnPilot(scoreManagerScript.shipMode);
+                        collision.gameObject.GetComponent<MutualShip>().spawnPilot();
                     }
                 }
             }
@@ -102,7 +102,7 @@ public class Laser : MonoBehaviour
                 }
                 else if (scoreManagerScript.shipMode == "pilot")
                 {
-                    collision.gameObject.GetComponent<MutualShip>().spawnPilot(scoreManagerScript.shipMode);
+                    collision.gameObject.GetComponent<MutualShip>().spawnPilot();
                 }
             }
         }
