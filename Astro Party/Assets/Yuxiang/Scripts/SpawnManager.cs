@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SpawnManager : MonoBehaviour
 {
+    public string mode;
+    public Text modeText; 
+
     public GameObject smallAsteroid;
     public GameObject mediumpAsteroid;
     public GameObject largeAsteroid;
@@ -21,6 +25,8 @@ public class SpawnManager : MonoBehaviour
     {
         powerUpManagerScript = GameObject.Find("PowerUp Manager").GetComponent<PowerUpManager>();
         gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
+
+        mode = "some";
     }
 
     // Update is called once per frame
@@ -115,5 +121,16 @@ public class SpawnManager : MonoBehaviour
             }
         }
         return ranPos;
+    }
+
+    public void changeMode()
+    {
+        switch (mode)
+        {
+            case "some": mode = "many"; modeText.text = "Asteroids: Many"; break;
+            case "many": mode = "none"; modeText.text = "Asteroids: None"; break;
+            case "none": mode = "few"; modeText.text = "Asteroids: Few"; break;
+            case "few": mode = "some"; modeText.text = "Asteroids: Some"; break;
+        }
     }
 }
