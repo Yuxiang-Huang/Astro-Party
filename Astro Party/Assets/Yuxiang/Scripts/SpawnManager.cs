@@ -64,9 +64,9 @@ public class SpawnManager : MonoBehaviour
                     case 3: asteroid = PowerUpAsteroid; break;
                 }
 
-                Instantiate(asteroid, ranPos, PowerUpAsteroid.transform.rotation);
+                GameObject asteroidClone = Instantiate(asteroid, ranPos, PowerUpAsteroid.transform.rotation);
 
-                gameManagerScript.inGameAsteroids.Add(asteroid);
+                gameManagerScript.inGameAsteroids.Add(asteroidClone);
             }
         }
     }
