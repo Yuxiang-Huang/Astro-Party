@@ -91,7 +91,7 @@ public class MutualShip : MonoBehaviour
         {
             //5000 is half the length of laserbeam
             GameObject myLaser = Instantiate(powerUpManagerScript.laser, transform.position +
-            new Vector3((bulletDis + 5000) * Mathf.Sin(angle), -10, (bulletDis + 5000) * Mathf.Cos(angle)),
+            new Vector3((bulletDis + 5000) * Mathf.Sin(angle), -5, (bulletDis + 5000) * Mathf.Cos(angle)),
             transform.rotation);
 
             //setting the script varibles

@@ -11,6 +11,7 @@ TagManager:
   - Breakable
   - PowerUp
   - Asteroid
+  - Jouster
   layers:
   - Default
   - TransparentFX
