@@ -248,6 +248,7 @@ public class MutualShip : MonoBehaviour
             }
         }
 
+        gameManagerScript.inGameIndicators.Remove(other.gameObject);
         Destroy(other.gameObject);
     }
 }

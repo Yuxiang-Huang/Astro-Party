@@ -7,6 +7,7 @@ public class Asteroid : MonoBehaviour
     public string type;
 
     PowerUpManager powerUpManagerScript;
+    GameManager gameManagerScript;
 
     public int health;
 
@@ -16,6 +17,7 @@ public class Asteroid : MonoBehaviour
     void Start()
     {
         powerUpManagerScript = GameObject.Find("PowerUp Manager").GetComponent<PowerUpManager>();
+        gameManagerScript = gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
 
         switch (type)
         {
@@ -35,6 +37,7 @@ public class Asteroid : MonoBehaviour
     {
         if (health == 0)
         {
+            gameManagerScript.inGameAsteroids.Remove(gameObject);
             Destroy(gameObject);
         }
         if (type == "powerUp")

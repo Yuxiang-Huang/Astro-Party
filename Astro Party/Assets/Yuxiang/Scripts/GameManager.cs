@@ -160,15 +160,6 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        //remove killed asteroid
-        for (int i = inGameAsteroids.Count - 1; i >= 0; i--)
-        {
-            if (inGameAsteroids[i] == null)
-            {
-                inGameAsteroids.RemoveAt(i);
-            }
-        }
-
         //remove killed indicators
         for (int i = inGameIndicators.Count - 1; i >= 0; i--)
         {
