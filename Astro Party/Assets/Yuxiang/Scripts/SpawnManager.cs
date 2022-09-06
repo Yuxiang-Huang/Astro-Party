@@ -95,7 +95,7 @@ public class SpawnManager : MonoBehaviour
 
     Vector3 generateRanPos()
     {
-        Vector3 ranPos = new Vector3(Random.Range(-gameManagerScript.spawnX, gameManagerScript.spawnX), 0,
+        Vector3 ranPos = new Vector3(Random.Range(-gameManagerScript.spawnX, gameManagerScript.spawnX), -10,
           Random.Range(-gameManagerScript.spawnZ, gameManagerScript.spawnZ));
 
         //asteroid distance
