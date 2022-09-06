@@ -8,6 +8,7 @@ public class Asteroid : MonoBehaviour
 
     PowerUpManager powerUpManagerScript;
     GameManager gameManagerScript;
+    SEManager SEManagerScript;
 
     public int health;
 
@@ -15,7 +16,9 @@ public class Asteroid : MonoBehaviour
 
     GameObject powerUp;
 
-    SEManager SEManagerScript;
+    Rigidbody rb;
+
+    int force = 100;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +27,8 @@ public class Asteroid : MonoBehaviour
         gameManagerScript = gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
         spawnManagerScript = GameObject.Find("Spawn Manager").GetComponent<SpawnManager>();
         SEManagerScript = GameObject.Find("SoundEffect Manager").GetComponent<SEManager>();
+
+        rb = GetComponent<Rigidbody>();
 
         switch (type)
         {
@@ -37,6 +42,8 @@ public class Asteroid : MonoBehaviour
                 powerUp = powerUpManagerScript.indicators[Random.Range(0, powerUpManagerScript.indicators.Count)];
                 break;
         }
+
+        rb.AddForce(new Vector3(Random.Range(-force, force), 0, Random.Range(-force, force)), ForceMode.VelocityChange);
     }
 
     private void Update()
