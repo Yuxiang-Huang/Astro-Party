@@ -6,6 +6,7 @@ public class BulletMove : MonoBehaviour
 {
     ScoreManager scoreManagerScript;
     PowerUpManager powerUpManagerScript;
+    SEManager SEManagerScript;
 
     public int id;
     Rigidbody Rb;
@@ -20,6 +21,7 @@ public class BulletMove : MonoBehaviour
         Rb.AddRelativeForce(new Vector3(0, 0, speed), ForceMode.VelocityChange);
         scoreManagerScript = GameObject.Find("Score Manager").GetComponent<ScoreManager>();
         powerUpManagerScript = GameObject.Find("PowerUp Manager").GetComponent<PowerUpManager>();
+        SEManagerScript = GameObject.Find("SoundEffect Manager").GetComponent<SEManager>();
     }
 
     // Update is called once per frame
@@ -60,7 +62,7 @@ public class BulletMove : MonoBehaviour
             if (toKill)
             {
                 //sound effect
-                powerUpManagerScript.generalAudio.PlayOneShot(powerUpManagerScript.pilotDeath);
+                SEManagerScript.generalAudio.PlayOneShot(SEManagerScript.pilotDeath);
 
                 Destroy(collision.gameObject);
 
@@ -86,7 +88,7 @@ public class BulletMove : MonoBehaviour
             if (toKill)
             {
                 //ship explode sound effect
-                powerUpManagerScript.generalAudio.PlayOneShot(powerUpManagerScript.shipExplode);
+                SEManagerScript.generalAudio.PlayOneShot(SEManagerScript.shipExplode);
 
                 powerUpManagerScript.dropItem(collision.gameObject.GetComponent<MutualShip>());
 

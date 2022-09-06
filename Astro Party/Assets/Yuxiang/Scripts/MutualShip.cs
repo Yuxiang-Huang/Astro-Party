@@ -22,6 +22,7 @@ public class MutualShip : MonoBehaviour
     ScoreManager scoreManagerScript;
     GameManager gameManagerScript;
     PowerUpManager powerUpManagerScript;
+    SEManager SEManagerScript;
 
     public GameObject pilot;
 
@@ -48,6 +49,7 @@ public class MutualShip : MonoBehaviour
         gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
         scoreManagerScript = GameObject.Find("Score Manager").GetComponent<ScoreManager>();
         powerUpManagerScript = GameObject.Find("PowerUp Manager").GetComponent<PowerUpManager>();
+        SEManagerScript = GameObject.Find("SoundEffect Manager").GetComponent<SEManager>();
     }
 
     // Update is called once per frame
@@ -95,7 +97,7 @@ public class MutualShip : MonoBehaviour
             myLaser.GetComponent<Laser>().team = team;
 
             //Sound effect
-            playerAudio.PlayOneShot(powerUpManagerScript.laserSound);
+            playerAudio.PlayOneShot(SEManagerScript.laserSound);
 
             //Freeze after using laser
             playerRb.constraints = RigidbodyConstraints.FreezePosition;
@@ -128,7 +130,7 @@ public class MutualShip : MonoBehaviour
             transform.rotation);
 
             //Sound effect
-            playerAudio.PlayOneShot(powerUpManagerScript.bulletSound);
+            playerAudio.PlayOneShot(SEManagerScript.bulletSound);
 
             //setting the script varibles
             myBullet.GetComponent<BulletMove>().id = id;
@@ -192,7 +194,7 @@ public class MutualShip : MonoBehaviour
             }
             if (toKill)
             {
-                powerUpManagerScript.generalAudio.PlayOneShot(powerUpManagerScript.pilotDeath);
+                SEManagerScript.generalAudio.PlayOneShot(SEManagerScript.pilotDeath);
 
                 Destroy(collision.gameObject);
                 if (scoreManagerScript.shipMode == "pilot")

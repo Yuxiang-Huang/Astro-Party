@@ -7,14 +7,8 @@ public class PowerUpManager : MonoBehaviour
 {
     public List<GameObject> indicators = new List<GameObject>();
 
-    public AudioClip shipExplode;
-    public AudioClip pilotDeath;
-    public AudioClip ready;
-
-    public AudioClip bulletSound;
     public GameObject bullet;
 
-    public AudioClip laserSound;
     public GameObject laser;
     public GameObject laserIndicator;
     public GameObject laserButtonOn;
@@ -27,14 +21,11 @@ public class PowerUpManager : MonoBehaviour
 
     GameManager gameManagerScript;
 
-    public AudioSource generalAudio;
-
     // Start is called before the first frame update
     void Start()
     {
         indicators.Add(laserIndicator);
         gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
-        generalAudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
