@@ -66,32 +66,50 @@ public class SpawnManager : MonoBehaviour
     {
         //definitely a powerUp asteroid
 
-        GameObject asteroidClone2 = Instantiate(PowerUpAsteroid, generateRanPos(), PowerUpAsteroid.transform.rotation);
+        if (mode != "none")
+        {
+            GameObject asteroidClone2 = Instantiate(PowerUpAsteroid, generateRanPos(), PowerUpAsteroid.transform.rotation);
 
-        gameManagerScript.inGameAsteroids.Add(asteroidClone2);
+            gameManagerScript.inGameAsteroids.Add(asteroidClone2);
+        }
+
+        int shipNum = 0;
 
         //spawn number of asteroids = number of ships
         foreach (List<GameObject> shipList in gameManagerScript.inGameShips)
         {
             foreach (GameObject ship in shipList)
             {
-                GameObject asteroid = PowerUpAsteroid;
-
-                int ran = Random.Range(0, 4);
-
-                switch (ran)
-                {
-                    case 0: asteroid = smallAsteroid; break;
-                    case 1: asteroid = mediumpAsteroid; break;
-                    case 2: asteroid = largeAsteroid; break;
-                    case 3: asteroid = PowerUpAsteroid; break;
-                }
-
-                GameObject asteroidClone = Instantiate(asteroid, generateRanPos(), PowerUpAsteroid.transform.rotation);
-
-                gameManagerScript.inGameAsteroids.Add(asteroidClone);
+                shipNum++;
             }
         }
+
+        switch (mode)
+        {
+            case "none": shipNum = 0; break;
+            case "few": shipNum = shipNum / 2; break;
+            case "some": shipNum = shipNum; break;
+            case "many": shipNum = shipNum * 2; break;
+        }
+
+        for (int i = 0; i < shipNum; i++)
+        {
+            GameObject asteroid = PowerUpAsteroid;
+
+            int ran = Random.Range(0, 4);
+
+            switch (ran)
+            {
+                case 0: asteroid = smallAsteroid; break;
+                case 1: asteroid = mediumpAsteroid; break;
+                case 2: asteroid = largeAsteroid; break;
+                case 3: asteroid = PowerUpAsteroid; break;
+            }
+
+            GameObject asteroidClone = Instantiate(asteroid, generateRanPos(), PowerUpAsteroid.transform.rotation);
+
+            gameManagerScript.inGameAsteroids.Add(asteroidClone);
+        }  
     }
 
     float distance(Vector3 ship1, Vector3 ship2)
