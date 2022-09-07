@@ -54,6 +54,9 @@ public class MutualShip : MonoBehaviour
         powerUpManagerScript = GameObject.Find("PowerUp Manager").GetComponent<PowerUpManager>();
         SEManagerScript = GameObject.Find("SoundEffect Manager").GetComponent<SEManager>();
 
+        jousters.SetActive(false);
+        sideCannons.SetActive(false);
+
         StartCoroutine("beginFreeze");
     }
 
