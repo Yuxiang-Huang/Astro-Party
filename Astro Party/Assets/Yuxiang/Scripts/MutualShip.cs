@@ -8,6 +8,7 @@ public class MutualShip : MonoBehaviour
     public int team;
 
     public string shootMode;
+    public bool tripleShot;
 
     int speed = 500;
     int bulletDis = 75;
@@ -55,7 +56,15 @@ public class MutualShip : MonoBehaviour
         SEManagerScript = GameObject.Find("SoundEffect Manager").GetComponent<SEManager>();
 
         jousters.SetActive(false);
-        sideCannons.SetActive(false);
+
+        if (tripleShot)
+        {
+            sideCannons.SetActive(true);
+        }
+        else
+        {
+            sideCannons.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -105,16 +114,36 @@ public class MutualShip : MonoBehaviour
             //Debug.Log(Mathf.Cos(transform.rotation.y));
             //Debug.Log(Mathf.Sin(transform.rotation.y));
 
+            if (tripleShot)
+            {
+                GameObject sideBullet1 = Instantiate(powerUpManagerScript.bullet, transform.position +
+            new Vector3(bulletDis * Mathf.Sin(angle + 1), 20, bulletDis * Mathf.Cos(angle + 1)),
+            transform.rotation);
+
+                //setting the script varibles
+                sideBullet1.GetComponent<BulletMove>().id = id;
+                sideBullet1.GetComponent<BulletMove>().team = team;
+
+                GameObject sideBullet2 = Instantiate(powerUpManagerScript.bullet, transform.position +
+            new Vector3(bulletDis * Mathf.Sin(angle - 1), 20, bulletDis * Mathf.Cos(angle - 1)),
+            transform.rotation);
+
+                //setting the script varibles
+                sideBullet2.GetComponent<BulletMove>().id = id;
+                sideBullet2.GetComponent<BulletMove>().team = team;
+            }
+
             GameObject myBullet = Instantiate(powerUpManagerScript.bullet, transform.position +
             new Vector3(bulletDis * Mathf.Sin(angle), 20, bulletDis * Mathf.Cos(angle)),
             transform.rotation);
 
-            //Sound effect
-            playerAudio.PlayOneShot(SEManagerScript.bulletSound);
-
             //setting the script varibles
             myBullet.GetComponent<BulletMove>().id = id;
             myBullet.GetComponent<BulletMove>().team = team;
+            
+
+            //Sound effect
+            playerAudio.PlayOneShot(SEManagerScript.bulletSound);
         }
         else if (shootMode == "Laser Beam")
         {
