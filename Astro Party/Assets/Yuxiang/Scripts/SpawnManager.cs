@@ -34,9 +34,7 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(shipNum);
-
-        if (startSpawn && gameManagerScript.inGameAsteroids.Count < shipNum)
+        if (startSpawn && gameManagerScript.inGameAsteroids.Count <= shipNum)
         {
             spawnAsteroids();
         }
@@ -64,7 +62,6 @@ public class SpawnManager : MonoBehaviour
         }
 
         startSpawn = true;
-        spawnAsteroids();
     }
 
     void spawnAsteroids()
