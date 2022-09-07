@@ -90,6 +90,7 @@ public class PlayerController : MonoBehaviour
         playerRb = GetComponent<Rigidbody>();
         playerRb.constraints = RigidbodyConstraints.FreezeAll;
         yield return new WaitForSeconds(2f);
-        playerRb.constraints = RigidbodyConstraints.FreezeRotation;           
+        playerRb.constraints = RigidbodyConstraints.FreezeRotation;
+        gameObject.GetComponent<MutualShip>().freezed.SetActive(false);
     }
 }

@@ -85,5 +85,6 @@ public class BotMove : MonoBehaviour
         disable = true;
         yield return new WaitForSeconds(2f);
         disable = false;
+        gameObject.GetComponent<MutualShip>().freezed.SetActive(false);
     }
 }

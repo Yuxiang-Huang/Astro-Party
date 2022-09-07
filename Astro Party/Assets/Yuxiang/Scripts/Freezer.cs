@@ -52,6 +52,7 @@ public class Freezer : MonoBehaviour
                 {
                     collision.gameObject.GetComponent<BotMove>().StartCoroutine("beginDisable");
                 }
+                collision.gameObject.GetComponent<MutualShip>().freezed.SetActive(true);
             }
         }
 

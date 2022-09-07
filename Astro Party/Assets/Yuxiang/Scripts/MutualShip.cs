@@ -29,6 +29,7 @@ public class MutualShip : MonoBehaviour
 
     public GameObject jousters;
     public GameObject sideCannons;
+    public GameObject freezed;
 
     // Start is called before the first frame update
     void Start()
@@ -65,6 +66,8 @@ public class MutualShip : MonoBehaviour
         {
             sideCannons.SetActive(false);
         }
+
+        freezed.SetActive(false);
     }
 
     // Update is called once per frame
