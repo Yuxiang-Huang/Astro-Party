@@ -586,7 +586,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6c96b0f9459849a2bcd2b9d080e2213, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 1
+  id: 4
   team: 0
   shootMode: 
   bulletAnimationPos: 0

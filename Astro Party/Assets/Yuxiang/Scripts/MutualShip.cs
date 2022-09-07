@@ -37,7 +37,7 @@ public class MutualShip : MonoBehaviour
 
         if (shootMode == "")
         {
-            shootMode = "normal";
+            shootMode = "Scatter Shot";
         }
         else
         {
@@ -142,6 +142,27 @@ public class MutualShip : MonoBehaviour
             //setting the script varibles
             myBullet.GetComponent<BulletMove>().id = id;
             myBullet.GetComponent<BulletMove>().team = team;
+        }
+        else if (shootMode == "Scatter Shot")
+        {
+            int numOfShots = 12;
+
+            for (int i = 0; i < numOfShots; i++)
+            {
+                float angleNow = transform.rotation.ToEulerAngles().y;
+
+                GameObject myBullet = Instantiate(powerUpManagerScript.bullet, transform.position +
+            new Vector3(bulletDis * Mathf.Sin(angleNow), 20, bulletDis * Mathf.Cos(angleNow)), transform.rotation);
+
+                transform.Rotate(0, 360 / numOfShots, 0);
+
+                //Sound effect
+                playerAudio.PlayOneShot(SEManagerScript.bulletSound);
+
+                //setting the script varibles
+                myBullet.GetComponent<BulletMove>().id = id;
+                myBullet.GetComponent<BulletMove>().team = team;
+            }
         }
     }
 
