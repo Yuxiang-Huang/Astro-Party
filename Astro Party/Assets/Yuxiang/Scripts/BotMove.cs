@@ -19,8 +19,6 @@ public class BotMove : MonoBehaviour
     void Start()
     {
         gameManagerScript = gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
-
-        StartCoroutine("beginDisable");
     }
 
     // Update is called once per frame
@@ -81,7 +79,7 @@ public class BotMove : MonoBehaviour
             Mathf.Pow((ship1.transform.position.z - ship2.transform.position.z), 2));
     }
 
-    IEnumerator beginDisable()
+    public IEnumerator beginDisable()
     {
         disable = true;
         yield return new WaitForSeconds(2f);

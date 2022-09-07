@@ -48,7 +48,7 @@ public class Asteroid : MonoBehaviour
 
     private void Update()
     {
-        if (health == 0)
+        if (health <= 0)
         {
             //SEManagerScript.generalAudio.PlayOneShot(SEManagerScript.shipExplode);
 

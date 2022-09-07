@@ -220,6 +220,15 @@ public class GameManager : MonoBehaviour
 
                 inGameShips[i][j].SetActive(true);
 
+                if (inGameShips[i][j].GetComponent<BotMove>() != null)
+                {
+                    inGameShips[i][j].GetComponent<BotMove>().StartCoroutine("beginDisable");
+                }
+                else if (inGameShips[i][j].GetComponent<PlayerController>() != null)
+                {
+                    inGameShips[i][j].GetComponent<PlayerController>().StartCoroutine("beginFreeze");
+                }
+
                 if (!fixedSpawn)
                 {
                     pos.RemoveAt(ran);

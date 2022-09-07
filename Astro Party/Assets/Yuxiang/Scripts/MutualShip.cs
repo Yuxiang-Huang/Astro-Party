@@ -56,8 +56,6 @@ public class MutualShip : MonoBehaviour
 
         jousters.SetActive(false);
         sideCannons.SetActive(false);
-
-        StartCoroutine("beginFreeze");
     }
 
     // Update is called once per frame
@@ -183,13 +181,6 @@ public class MutualShip : MonoBehaviour
         {
             playerRb.AddRelativeForce(new Vector3(0, 0, -speed * 30), ForceMode.Force);
         }
-    }
-
-    IEnumerator beginFreeze()
-    {
-        playerRb.constraints = RigidbodyConstraints.FreezePosition;
-        yield return new WaitForSeconds(2f);
-        playerRb.constraints = RigidbodyConstraints.FreezePositionY;
     }
 
     public void spawnPilot()

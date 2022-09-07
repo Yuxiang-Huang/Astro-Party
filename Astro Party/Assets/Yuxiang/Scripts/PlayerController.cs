@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        playerRb = GetComponent<Rigidbody>();
+
     }
 
     private void Update()
@@ -80,5 +80,13 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         dash --;
         dash = Mathf.Max(0, dash);
+    }
+
+    public IEnumerator beginFreeze()
+    {
+        playerRb = GetComponent<Rigidbody>();
+        playerRb.constraints = RigidbodyConstraints.FreezeAll;
+        yield return new WaitForSeconds(2f);
+        playerRb.constraints = RigidbodyConstraints.FreezePositionY;
     }
 }
