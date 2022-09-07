@@ -38,6 +38,7 @@ public class PowerUpManager : MonoBehaviour
 
     public GameObject freezer;
     public GameObject freezerIndicator;
+    public Text freezerText;
 
     GameManager gameManagerScript;
 
@@ -100,6 +101,20 @@ public class PowerUpManager : MonoBehaviour
         }
     }
 
+    public void setFreezer()
+    {
+        if (indicators.Contains(freezerIndicator))
+        {
+            indicators.Remove(freezerIndicator);
+            freezerText.text = "Freezer: Off";
+        }
+        else
+        {
+            indicators.Add(freezerIndicator);
+            freezerText.text = "Freezer: On";
+        }
+    }
+
     public void dropItem(MutualShip script)
     {
         if (script.shootMode != "normal")
@@ -113,6 +128,10 @@ public class PowerUpManager : MonoBehaviour
                 case "Scatter Shot":
                     GameObject toAdd1 = Instantiate(scatterIndicator, transform.position, scatterIndicator.transform.rotation);
                     gameManagerScript.inGameIndicators.Add(toAdd1);
+                    break;
+                case "Freezer":
+                    GameObject toAdd2 = Instantiate(freezerIndicator, transform.position, freezerIndicator.transform.rotation);
+                    gameManagerScript.inGameIndicators.Add(toAdd2);
                     break;
             }
         }
