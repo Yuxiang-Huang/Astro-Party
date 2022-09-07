@@ -9,6 +9,11 @@ public class PowerUpManager : MonoBehaviour
 
     public GameObject bullet;
 
+    public Text P1CurrText;
+    public Text P2CurrText;
+    public Text P3CurrText;
+    public Text P4CurrText;
+
     public GameObject laser;
     public GameObject laserIndicator;
     public Text laserText;
@@ -79,12 +84,16 @@ public class PowerUpManager : MonoBehaviour
                     GameObject toAdd = Instantiate(laserIndicator, transform.position, laserIndicator.transform.rotation);
                     gameManagerScript.inGameIndicators.Add(toAdd);
                     break;
+                case "Scatter Shot":
+                    GameObject toAdd1 = Instantiate(scatterIndicator, transform.position, scatterIndicator.transform.rotation);
+                    gameManagerScript.inGameIndicators.Add(toAdd1);
+                    break;
             }
         }
     }
 
     //Players
-
+    //Laser Beam
     public void setLaserP1()
     {
         setHelper("Laser Beam", P1LaserText, 1);
@@ -105,6 +114,28 @@ public class PowerUpManager : MonoBehaviour
         setHelper("Laser Beam", P4LaserText, 4);
     }
 
+    //Scatter Shot
+
+    public void setScatterP1()
+    {
+        setHelper("Scatter Shot", P1scatterText, 1);
+    }
+
+    public void setScatterP2()
+    {
+        setHelper("Scatter Shot", P2scatterText, 2);
+    }
+
+    public void setScatterP3()
+    {
+        setHelper("Scatter Shot", P3scatterText, 3);
+    }
+
+    public void setScatterP4()
+    {
+        setHelper("Scatter Shot", P4scatterText, 4);
+    }
+
     void setHelper(string modeString, Text modeText, int id)
     {
         foreach (List<GameObject> shipList in gameManagerScript.ships)
@@ -121,8 +152,20 @@ public class PowerUpManager : MonoBehaviour
                     }
                     else
                     {
+                        if (modeText != null)
+                        {
+                            modeText.text = script.shootMode + ": Off";
+                        }
+
                         script.shootMode = modeString;
                         modeText.text = modeString + ": On";
+                        switch (id)
+                        {
+                            case 1: P1CurrText = modeText; break;
+                            case 2: P2CurrText = modeText; break;
+                            case 3: P3CurrText = modeText; break;
+                            case 4: P4CurrText = modeText; break;
+                        }
                     }
                 }
             }
