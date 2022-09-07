@@ -39,6 +39,10 @@ public class PowerUpManager : MonoBehaviour
     public GameObject freezer;
     public GameObject freezerIndicator;
     public Text freezerText;
+    public Text P1FreezerText;
+    public Text P2FreezerText;
+    public Text P3FreezerText;
+    public Text P4FreezerText;
 
     GameManager gameManagerScript;
 
@@ -179,6 +183,28 @@ public class PowerUpManager : MonoBehaviour
     public void setScatterP4()
     {
         setHelper("Scatter Shot", P4scatterText, 4);
+    }
+
+    //Freezer
+
+    public void setFreezerP1()
+    {
+        setHelper("Freezer", P1FreezerText, 1);
+    }
+
+    public void setFreezerP2()
+    {
+        setHelper("Freezer", P2FreezerText, 2);
+    }
+
+    public void setFreezerP3()
+    {
+        setHelper("Freezer", P3FreezerText, 3);
+    }
+
+    public void setFreezerP4()
+    {
+        setHelper("Freezer", P4FreezerText, 4);
     }
 
     void setHelper(string modeString, Text modeText, int id)
