@@ -11,16 +11,14 @@ public class PowerUpManager : MonoBehaviour
 
     public GameObject laser;
     public GameObject laserIndicator;
-    public GameObject laserButtonOn;
-    public GameObject laserButtonOff;
+    public Text laserText;
     public Text P1LaserText;
     public Text P2LaserText;
     public Text P3LaserText;
     public Text P4LaserText;
 
     public GameObject scatterIndicator;
-    public GameObject scatterButtonOn;
-    public GameObject scatterButtonOff;
+    public Text scatterText;
     public Text P1scatterText;
     public Text P2scatterText;
     public Text P3scatterText;
@@ -43,18 +41,32 @@ public class PowerUpManager : MonoBehaviour
         
     }
 
-    public void setLaserOn()
+    public void setLaser()
     {
-        indicators.Add(laserIndicator);
-        laserButtonOff.SetActive(false);
-        laserButtonOn.SetActive(true);
+        if (indicators.Contains(laserIndicator))
+        {
+            indicators.Remove(laserIndicator);
+            laserText.text = "Laser Beam: Off";
+        }
+        else
+        {
+            indicators.Add(laserIndicator);
+            laserText.text = "Laser Beam: On";
+        }
     }
 
-    public void setLaserOff()
+    public void setScatterShot()
     {
-        indicators.Remove(laserIndicator);
-        laserButtonOn.SetActive(false);
-        laserButtonOff.SetActive(true);
+        if (indicators.Contains(scatterIndicator))
+        {
+            indicators.Remove(scatterIndicator);
+            scatterText.text = "Scatter Shot: Off";
+        }
+        else
+        {
+            indicators.Add(scatterIndicator);
+            scatterText.text = "Scatter Shot: On";
+        }
     }
 
     public void dropItem(MutualShip script)
