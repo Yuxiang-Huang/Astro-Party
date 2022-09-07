@@ -37,7 +37,7 @@ public class MutualShip : MonoBehaviour
 
         if (shootMode == "")
         {
-            shootMode = "Scatter Shot";
+            shootMode = "normal";
         }
         else
         {
@@ -93,32 +93,7 @@ public class MutualShip : MonoBehaviour
     {
         float angle = transform.rotation.ToEulerAngles().y;
 
-        if (shootMode == "Laser Beam")
-        {
-            //5000 is half the length of laserbeam
-            GameObject myLaser = Instantiate(powerUpManagerScript.laser, transform.position +
-            new Vector3((bulletDis + 1000) * Mathf.Sin(angle), 10, (bulletDis + 1000) * Mathf.Cos(angle)),
-            transform.rotation);
-
-            //setting the script varibles
-            myLaser.GetComponent<Laser>().id = id;
-            myLaser.GetComponent<Laser>().team = team;
-
-            //Sound effect
-            playerAudio.PlayOneShot(SEManagerScript.laserSound);
-
-            //Freeze after using laser
-            StartCoroutine("laserFreeze");
-
-            shootMode = "normal";
-
-            foreach (GameObject curr in bulletAnimation)
-            {
-                curr.SetActive(true);
-            }
-        }
-
-        else if (shootMode == "normal" && ammo > 0)
+        if (shootMode == "normal" && ammo > 0)
         {
             ammo--;
 
@@ -143,6 +118,30 @@ public class MutualShip : MonoBehaviour
             myBullet.GetComponent<BulletMove>().id = id;
             myBullet.GetComponent<BulletMove>().team = team;
         }
+        else if (shootMode == "Laser Beam")
+        {
+            //5000 is half the length of laserbeam
+            GameObject myLaser = Instantiate(powerUpManagerScript.laser, transform.position +
+            new Vector3((bulletDis + 1000) * Mathf.Sin(angle), 10, (bulletDis + 1000) * Mathf.Cos(angle)),
+            transform.rotation);
+
+            //setting the script varibles
+            myLaser.GetComponent<Laser>().id = id;
+            myLaser.GetComponent<Laser>().team = team;
+
+            //Sound effect
+            playerAudio.PlayOneShot(SEManagerScript.laserSound);
+
+            //Freeze after using laser
+            StartCoroutine("laserFreeze");
+
+            shootMode = "normal";
+
+            foreach (GameObject curr in bulletAnimation)
+            {
+                curr.SetActive(true);
+            }
+        }
         else if (shootMode == "Scatter Shot")
         {
             int numOfShots = 16;
@@ -162,6 +161,13 @@ public class MutualShip : MonoBehaviour
                 //setting the script varibles
                 myBullet.GetComponent<BulletMove>().id = id;
                 myBullet.GetComponent<BulletMove>().team = team;
+            }
+
+            shootMode = "normal";
+
+            foreach (GameObject curr in bulletAnimation)
+            {
+                curr.SetActive(true);
             }
         }
     }
