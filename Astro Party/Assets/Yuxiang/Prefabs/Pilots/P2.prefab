@@ -921,7 +921,7 @@ MonoBehaviour:
   turn: 97
   move: 100
   playerRb: {fileID: 0}
-  ship: {fileID: 7270249754344800516, guid: 6d194bc238ff84e8990a688d5912c153, type: 3}
+  ship: {fileID: 7619673429396755364, guid: 6d194bc238ff84e8990a688d5912c153, type: 3}
 --- !u!1 &3476493530309811065
 GameObject:
   m_ObjectHideFlags: 0

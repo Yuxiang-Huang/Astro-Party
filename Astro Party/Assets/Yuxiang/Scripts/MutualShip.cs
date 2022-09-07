@@ -26,6 +26,9 @@ public class MutualShip : MonoBehaviour
 
     public GameObject pilot;
 
+    public GameObject jousters;
+    public GameObject sideCannons;
+
     // Start is called before the first frame update
     void Start()
     {

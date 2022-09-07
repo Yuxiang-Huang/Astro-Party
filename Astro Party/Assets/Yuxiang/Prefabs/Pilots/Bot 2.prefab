@@ -481,7 +481,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 6868707346174096208}
-  ship: {fileID: 5618583518423719376, guid: 4124268ea448744838d6dedeeac151be, type: 3}
+  ship: {fileID: 7851862193004846502, guid: 4124268ea448744838d6dedeeac151be, type: 3}
   team: 0
 --- !u!195 &6868707346174096208
 NavMeshAgent:

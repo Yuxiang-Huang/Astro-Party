@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 2114281270595429875}
-  ship: {fileID: 7280473301515485181, guid: d739a3cd91b544e718266678dcc0554f, type: 3}
+  ship: {fileID: 1474804491264375267, guid: d739a3cd91b544e718266678dcc0554f, type: 3}
   team: 0
 --- !u!195 &2114281270595429875
 NavMeshAgent:
