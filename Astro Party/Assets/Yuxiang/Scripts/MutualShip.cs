@@ -197,6 +197,23 @@ public class MutualShip : MonoBehaviour
                 curr.SetActive(true);
             }
         }
+        else if (shootMode == "Freezer")
+        {
+            GameObject myFreezer = Instantiate(powerUpManagerScript.freezer, transform.position, transform.rotation);   
+
+            //Sound effect
+            //playerAudio.PlayOneShot(SEManagerScript.bulletSound);
+
+            //setting the script varibles
+            myFreezer.GetComponent<Freezer>().team = team;
+
+            shootMode = "normal";
+
+            foreach (GameObject curr in bulletAnimation)
+            {
+                curr.SetActive(true);
+            }
+        }
     }
 
     IEnumerator laserFreeze()

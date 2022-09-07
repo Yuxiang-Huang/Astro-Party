@@ -6558,3 +6558,129 @@ Received Import Request.
   path: Assets/Yuxiang/Scripts/Freezer.cs
   artifactKey: Guid(950ac47eee0244a9d87af9cd05a5d700) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Yuxiang/Scripts/Freezer.cs using Guid(950ac47eee0244a9d87af9cd05a5d700) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a8c501fb3ae451614a89657e22492295') in 0.016027 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001875 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.50 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.625 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1628ms)
+		BeginReloadAssembly (264ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (10ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (144ms)
+		EndReloadAssembly (1247ms)
+			LoadAssemblies (107ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (428ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (57ms)
+			SetupLoadedEditorAssemblies (502ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (7ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (215ms)
+				ProcessInitializeOnLoadAttributes (251ms)
+				ProcessInitializeOnLoadMethodAttributes (27ms)
+				AfterProcessingInitializeOnLoad (2ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (4ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.53 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1943 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 252.7 MB.
+System memory in use after: 252.8 MB.
+
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 2805.
+Total: 3.354522 ms (FindLiveObjects: 0.254018 ms CreateObjectMapping: 0.092639 ms MarkObjects: 2.849848 ms  DeleteObjects: 0.156960 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:framework-osx-AVFoundation: b23960f63f64bdc6ff669e2cdcee2391 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 137.198851 seconds.
+  path: Assets/Yuxiang/Scripts/Freezer.cs
+  artifactKey: Guid(950ac47eee0244a9d87af9cd05a5d700) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Yuxiang/Scripts/Freezer.cs using Guid(950ac47eee0244a9d87af9cd05a5d700) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ff48471bec128dac441754e78a837100') in 0.018291 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002082 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.45 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.540 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1544ms)
+		BeginReloadAssembly (305ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (10ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (161ms)
+		EndReloadAssembly (1154ms)
+			LoadAssemblies (130ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (415ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (62ms)
+			SetupLoadedEditorAssemblies (422ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (6ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (0ms)
+				BeforeProcessingInitializeOnLoad (148ms)
+				ProcessInitializeOnLoadAttributes (251ms)
+				ProcessInitializeOnLoadMethodAttributes (15ms)
+				AfterProcessingInitializeOnLoad (1ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (2ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.51 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1943 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 252.8 MB.
+System memory in use after: 253.0 MB.
+
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 2808.
+Total: 4.078117 ms (FindLiveObjects: 0.242281 ms CreateObjectMapping: 0.079504 ms MarkObjects: 3.475537 ms  DeleteObjects: 0.279353 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:framework-osx-AVFoundation: b23960f63f64bdc6ff669e2cdcee2391 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 222.805728 seconds.
+  path: Assets/Yuxiang/Scripts/Freezer.cs
+  artifactKey: Guid(950ac47eee0244a9d87af9cd05a5d700) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Yuxiang/Scripts/Freezer.cs using Guid(950ac47eee0244a9d87af9cd05a5d700) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f11faa3d73653f1c255af6a43565f256') in 0.025288 seconds 

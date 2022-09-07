@@ -36,6 +36,8 @@ public class PowerUpManager : MonoBehaviour
     public Text P3TripleText;
     public Text P4TripleText;
 
+    public GameObject freezer;
+
     GameManager gameManagerScript;
 
     // Start is called before the first frame update

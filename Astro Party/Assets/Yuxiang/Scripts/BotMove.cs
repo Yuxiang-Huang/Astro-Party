@@ -81,6 +81,7 @@ public class BotMove : MonoBehaviour
 
     public IEnumerator beginDisable()
     {
+        agent.SetDestination(transform.position);
         disable = true;
         yield return new WaitForSeconds(2f);
         disable = false;

@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Freezer : MonoBehaviour
 {
-    int team;
+    public int id;
+
+    public int team;
 
     ScoreManager scoreManagerScript;
 
@@ -34,9 +36,22 @@ public class Freezer : MonoBehaviour
                 }
             }
 
+            //don't freeze yourself
+            if (id == collision.gameObject.GetComponent<MutualShip>().id)
+            {
+                toFreeze = false;
+            }
+
             if (toFreeze)
             {
-                
+                if (collision.gameObject.GetComponent<PlayerController>() != null)
+                {
+                    collision.gameObject.GetComponent<PlayerController>().StartCoroutine("beginFreeze");
+                }
+                else if (collision.gameObject.GetComponent<BotMove>() != null)
+                {
+                    collision.gameObject.GetComponent<BotMove>().StartCoroutine("beginDisable");
+                }
             }
         }
 
