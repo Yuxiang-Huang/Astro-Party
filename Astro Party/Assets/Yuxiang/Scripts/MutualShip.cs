@@ -8,7 +8,7 @@ public class MutualShip : MonoBehaviour
     public int team;
 
     public string shootMode;
-    public bool tripleShot;
+    bool tripleShot;
 
     int speed = 500;
     int bulletDis = 75;
@@ -298,11 +298,20 @@ public class MutualShip : MonoBehaviour
     {
         if (other.gameObject.CompareTag("PowerUp"))
         {
-            shootMode = other.gameObject.GetComponent<PowerUp>().powerUpName;
-
-            foreach (GameObject curr in bulletAnimation)
+            string powerUpName = other.gameObject.GetComponent<PowerUp>().powerUpName;
+            if (powerUpName == "Triple Shot")
             {
-                curr.SetActive(false);
+                tripleShot = true;
+                sideCannons.SetActive(true);
+            }
+            else
+            {
+                shootMode = powerUpName;
+
+                foreach (GameObject curr in bulletAnimation)
+                {
+                    curr.SetActive(false);
+                }
             }
         }
 
