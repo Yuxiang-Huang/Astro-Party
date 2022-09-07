@@ -8,7 +8,7 @@ public class PowerUp : MonoBehaviour
 
     GameManager gameManagerScript;
 
-    public int attractDist = 100;
+    public int attractDist = 150;
 
     public int attracSpeed = 10;
 
