@@ -261,8 +261,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 939abf635d50745c8b2d24c4574cabbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turn: 97
-  shoot: 100
+  turn: 106
+  shoot: 108
 --- !u!114 &8352094872616796815
 MonoBehaviour:
   m_ObjectHideFlags: 0

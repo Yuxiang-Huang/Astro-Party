@@ -18,11 +18,14 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-
+        playerRb = GetComponent<Rigidbody>();
     }
 
     private void Update()
     {
+        //keep y the same
+        transform.position = new Vector3(transform.position.x, 10, transform.position.z);
+
         if (Input.GetKeyDown(shoot))
         {
             GetComponent<MutualShip>().shoot();
@@ -87,6 +90,6 @@ public class PlayerController : MonoBehaviour
         playerRb = GetComponent<Rigidbody>();
         playerRb.constraints = RigidbodyConstraints.FreezeAll;
         yield return new WaitForSeconds(2f);
-        playerRb.constraints = RigidbodyConstraints.FreezePositionY;
+        playerRb.constraints = RigidbodyConstraints.FreezeRotation;           
     }
 }
