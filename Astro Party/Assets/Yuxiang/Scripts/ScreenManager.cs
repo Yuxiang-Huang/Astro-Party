@@ -29,7 +29,7 @@ public class ScreenManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        startScreen.SetActive(true);
+        //startScreen.SetActive(true);
         shipScreen.SetActive(false);
         lastScreen.SetActive(false);
         infoScreen.SetActive(false);
