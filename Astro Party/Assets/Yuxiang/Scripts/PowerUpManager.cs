@@ -31,6 +31,10 @@ public class PowerUpManager : MonoBehaviour
 
     public GameObject tripleShotIndicator;
     public Text tripleText;
+    public Text P1TripleText;
+    public Text P2TripleText;
+    public Text P3TripleText;
+    public Text P4TripleText;
 
     GameManager gameManagerScript;
 
@@ -207,6 +211,7 @@ public class PowerUpManager : MonoBehaviour
 
                         script.shootMode = modeString;
                         modeText.text = modeString + ": On";
+
                         switch (id)
                         {
                             case 1: P1CurrText = modeText; break;
@@ -214,6 +219,52 @@ public class PowerUpManager : MonoBehaviour
                             case 3: P3CurrText = modeText; break;
                             case 4: P4CurrText = modeText; break;
                         }
+                    }
+                }
+            }
+        }
+    }
+
+    //Triple Shot
+
+    public void setTripleP1()
+    {
+        setTripleHelper(1, P1TripleText);
+    }
+
+    public void setTripleP2()
+    {
+        setTripleHelper(2, P2TripleText);
+    }
+
+    public void setTripleP3()
+    {
+        setTripleHelper(3, P3TripleText);
+    }
+
+    public void setTripleP4()
+    {
+        setTripleHelper(4, P4TripleText);
+    }
+
+    void setTripleHelper(int id, Text modeText)
+    {
+        foreach (List<GameObject> shipList in gameManagerScript.ships)
+        {
+            foreach (GameObject ship in shipList)
+            {
+                MutualShip script = ship.GetComponent<MutualShip>();
+                if (script.id == id)
+                {
+                    if (script.tripleShot)
+                    {
+                        script.tripleShot = false;
+                        modeText.text = "Triple Shot: Off";
+                    }
+                    else
+                    {
+                        script.tripleShot = true;
+                        modeText.text = "Triple Shot: On";
                     }
                 }
             }

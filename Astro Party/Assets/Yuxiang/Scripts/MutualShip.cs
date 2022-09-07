@@ -8,7 +8,7 @@ public class MutualShip : MonoBehaviour
     public int team;
 
     public string shootMode;
-    bool tripleShot;
+    public bool tripleShot;
 
     int speed = 500;
     int bulletDis = 75;
