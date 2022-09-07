@@ -13,11 +13,18 @@ public class PowerUpManager : MonoBehaviour
     public GameObject laserIndicator;
     public GameObject laserButtonOn;
     public GameObject laserButtonOff;
-
     public Text P1LaserText;
     public Text P2LaserText;
     public Text P3LaserText;
     public Text P4LaserText;
+
+    public GameObject scatterIndicator;
+    public GameObject scatterButtonOn;
+    public GameObject scatterButtonOff;
+    public Text P1scatterText;
+    public Text P2scatterText;
+    public Text P3scatterText;
+    public Text P4scatterText;
 
     GameManager gameManagerScript;
 
@@ -25,6 +32,8 @@ public class PowerUpManager : MonoBehaviour
     void Start()
     {
         indicators.Add(laserIndicator);
+        indicators.Add(scatterIndicator);
+
         gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 

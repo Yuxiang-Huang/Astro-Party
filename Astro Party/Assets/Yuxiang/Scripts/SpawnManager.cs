@@ -53,6 +53,7 @@ public class SpawnManager : MonoBehaviour
         if (powerUpManagerScript.indicators.Count > 0)
         {
             int ran = Random.Range(0, powerUpManagerScript.indicators.Count);
+
             GameObject powerUp = Instantiate(powerUpManagerScript.indicators[ran], new Vector3(0, 0, 0),
                 powerUpManagerScript.indicators[ran].transform.rotation);
 
