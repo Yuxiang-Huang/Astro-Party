@@ -29,6 +29,9 @@ public class PowerUpManager : MonoBehaviour
     public Text P3scatterText;
     public Text P4scatterText;
 
+    public GameObject tripleShotIndicator;
+    public Text tripleText;
+
     GameManager gameManagerScript;
 
     // Start is called before the first frame update
@@ -36,6 +39,7 @@ public class PowerUpManager : MonoBehaviour
     {
         indicators.Add(laserIndicator);
         indicators.Add(scatterIndicator);
+        indicators.Add(tripleShotIndicator);
 
         gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
@@ -71,6 +75,20 @@ public class PowerUpManager : MonoBehaviour
         {
             indicators.Add(scatterIndicator);
             scatterText.text = "Scatter Shot: On";
+        }
+    }
+
+    public void setTripleShot()
+    {
+        if (indicators.Contains(tripleShotIndicator))
+        {
+            indicators.Remove(tripleShotIndicator);
+            tripleText.text = "Triple Shot: Off";
+        }
+        else
+        {
+            indicators.Add(tripleShotIndicator);
+            tripleText.text = "Triple Shot: On";
         }
     }
 
