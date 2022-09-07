@@ -111,7 +111,19 @@ public class BulletMove : MonoBehaviour
 
         if (!collision.gameObject.CompareTag("Floor"))
         {
-            Destroy(gameObject);
+            bool destroy = true;
+            if (collision.gameObject.CompareTag("Bullet"))
+            {
+                if (collision.gameObject.GetComponent<BulletMove>().id == id)
+                {
+                    destroy = false;
+                }
+            }
+
+            if (destroy)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 

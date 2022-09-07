@@ -145,7 +145,7 @@ public class MutualShip : MonoBehaviour
         }
         else if (shootMode == "Scatter Shot")
         {
-            int numOfShots = 12;
+            int numOfShots = 16;
 
             for (int i = 0; i < numOfShots; i++)
             {
