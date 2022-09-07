@@ -151,10 +151,25 @@ public class PowerUpManager : MonoBehaviour
                         modeText.text = modeString + ": Off";
                     }
                     else
-                    {
-                        if (modeText != null)
+                    { 
+                        switch (id)
                         {
-                            modeText.text = script.shootMode + ": Off";
+                            case 1:
+                                if (P1CurrText != null)
+                                    P1CurrText.text = script.shootMode + ": Off";
+                                break;
+                            case 2:
+                                if (P2CurrText != null)
+                                    P2CurrText.text = script.shootMode + ": Off";
+                                break;
+                            case 3:
+                                if (P3CurrText != null)
+                                    P3CurrText.text = script.shootMode + ": Off";
+                                break;
+                            case 4:
+                                if (P4CurrText != null)
+                                    P4CurrText.text = script.shootMode + ": Off";
+                                break;
                         }
 
                         script.shootMode = modeString;
