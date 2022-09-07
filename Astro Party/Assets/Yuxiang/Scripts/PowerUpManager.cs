@@ -37,6 +37,7 @@ public class PowerUpManager : MonoBehaviour
     public Text P4TripleText;
 
     public GameObject freezer;
+    public GameObject freezerIndicator;
 
     GameManager gameManagerScript;
 
@@ -46,6 +47,7 @@ public class PowerUpManager : MonoBehaviour
         indicators.Add(laserIndicator);
         indicators.Add(scatterIndicator);
         indicators.Add(tripleShotIndicator);
+        indicators.Add(freezerIndicator);
 
         gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }

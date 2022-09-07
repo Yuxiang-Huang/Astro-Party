@@ -205,7 +205,7 @@ public class MutualShip : MonoBehaviour
             GameObject myFreezer = Instantiate(powerUpManagerScript.freezer, transform.position, transform.rotation);   
 
             //Sound effect
-            //playerAudio.PlayOneShot(SEManagerScript.bulletSound);
+            playerAudio.PlayOneShot(SEManagerScript.freezerSound);
 
             //setting the script varibles
             myFreezer.GetComponent<Freezer>().team = team;
