@@ -149,6 +149,21 @@ public class PowerUpManager : MonoBehaviour
                     {
                         script.shootMode = "normal";
                         modeText.text = modeString + ": Off";
+                        switch (id)
+                        {
+                            case 1:
+                                P1CurrText = null;
+                                break;
+                            case 2:
+                                P2CurrText = null;
+                                break;
+                            case 3:
+                                P3CurrText = null;
+                                break;
+                            case 4:
+                                P4CurrText = null;
+                                break;
+                        }
                     }
                     else
                     { 
