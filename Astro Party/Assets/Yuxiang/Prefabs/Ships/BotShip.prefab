@@ -217,6 +217,12 @@ MonoBehaviour:
   jousters: {fileID: 1123638784640753275}
   sideCannons: {fileID: 2923404064119867279}
   freezed: {fileID: 7045849389965426325}
+  rend: {fileID: 8561839422940763994}
+  blue1: {fileID: 2100000, guid: aee1eda5f1062490492bde072ef0f2f7, type: 2}
+  red2: {fileID: 2100000, guid: 329078c58a0c04150bb7949cfde893ca, type: 2}
+  yellow3: {fileID: 2100000, guid: 90dc638151335479185544a45af3f6ec, type: 2}
+  cyan4: {fileID: 2100000, guid: 766cb1bc9d98e4bf9b48150d9f39940b, type: 2}
+  green5: {fileID: 2100000, guid: c59522cafbf944136839f49263b32d74, type: 2}
 --- !u!1 &1123638784640753275
 GameObject:
   m_ObjectHideFlags: 0

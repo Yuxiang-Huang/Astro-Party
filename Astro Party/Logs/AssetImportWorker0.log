@@ -921,3 +921,120 @@ AssetImportParameters requested are different than current active one (requested
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 652.710820 seconds.
+  path: Assets/Yuxiang/Prefabs/Ships Old/P2Bot.prefab
+  artifactKey: Guid(4c3af77862a4d46c2bbd90141514c287) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Yuxiang/Prefabs/Ships Old/P2Bot.prefab using Guid(4c3af77862a4d46c2bbd90141514c287) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f90e9e946a3baab4d8d1257d30d54acf') in 0.116210 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.585026 seconds.
+  path: Assets/Yuxiang/Prefabs/Ships/P2Bot.prefab
+  artifactKey: Guid(4124268ea448744838d6dedeeac151be) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Yuxiang/Prefabs/Ships/P2Bot.prefab using Guid(4124268ea448744838d6dedeeac151be) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4558b42a7bab186507a7607db09b535a') in 0.019538 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.657105 seconds.
+  path: Assets/Yuxiang/Prefabs/Ships/P2Player.prefab
+  artifactKey: Guid(6d194bc238ff84e8990a688d5912c153) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Yuxiang/Prefabs/Ships/P2Player.prefab using Guid(6d194bc238ff84e8990a688d5912c153) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '42c0b6dbb9fa10650f6c9cb8eb831dbe') in 0.016345 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 8.766945 seconds.
+  path: Assets/Yuxiang/Prefabs/Ships/P3Bot.prefab
+  artifactKey: Guid(d739a3cd91b544e718266678dcc0554f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Yuxiang/Prefabs/Ships/P3Bot.prefab using Guid(d739a3cd91b544e718266678dcc0554f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9182ec8c872da79609189c9c047a1560') in 0.051630 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 16.689877 seconds.
+  path: Assets/Yuxiang/Prefabs/Ships/P4Player.prefab
+  artifactKey: Guid(b3448684f93bb4604827064a2c4b4612) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Yuxiang/Prefabs/Ships/P4Player.prefab using Guid(b3448684f93bb4604827064a2c4b4612) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b4467e5f960ff2b773ed66e6e40034e8') in 0.079428 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.875669 seconds.
+  path: Assets/Yuxiang/Prefabs/Ships/PlayerShip.prefab
+  artifactKey: Guid(7c0419a36677d4cb6886c0454ffb6615) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Yuxiang/Prefabs/Ships/PlayerShip.prefab using Guid(7c0419a36677d4cb6886c0454ffb6615) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ba5573cd0539f3be101b38bfc5b7b6b5') in 0.026695 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 34.652881 seconds.
+  path: Assets/Yuxiang/Prefabs/Ships Old/Old Ships 2
+  artifactKey: Guid(8fb0f30ff71f4478db99780f7dfce297) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Yuxiang/Prefabs/Ships Old/Old Ships 2 using Guid(8fb0f30ff71f4478db99780f7dfce297) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '34fd8582d0032dd5ced8e7fb2078ba85') in 0.002637 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 14.574472 seconds.
+  path: Assets/Yuxiang/Prefabs/Old Ships
+  artifactKey: Guid(b44f43723886a4910be475f1138d95f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Yuxiang/Prefabs/Old Ships using Guid(b44f43723886a4910be475f1138d95f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '49e9516cd61c2a46e10103d7faf8dbb5') in 0.002025 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 18.294425 seconds.
+  path: Assets/Yuxiang/Prefabs/Ships/BotShip.prefab
+  artifactKey: Guid(ab8e0b32f0a374f799dfc66ac9162a6f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Yuxiang/Prefabs/Ships/BotShip.prefab using Guid(ab8e0b32f0a374f799dfc66ac9162a6f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd2d4e9fb58004f33541b3cdab450e5d2') in 0.047951 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 33.744870 seconds.
+  path: Assets/Yuxiang/Prefabs/Ships/BotShip.prefab
+  artifactKey: Guid(ab8e0b32f0a374f799dfc66ac9162a6f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Yuxiang/Prefabs/Ships/BotShip.prefab using Guid(ab8e0b32f0a374f799dfc66ac9162a6f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '48f875e3face0c007a1e6fdcbb13b35e') in 0.084488 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002444 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.51 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.739 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1743ms)
+		BeginReloadAssembly (302ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (11ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (179ms)
+		EndReloadAssembly (1323ms)
+			LoadAssemblies (194ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (488ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (70ms)
+			SetupLoadedEditorAssemblies (444ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (6ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (159ms)
+				ProcessInitializeOnLoadAttributes (261ms)
+				ProcessInitializeOnLoadMethodAttributes (15ms)
+				AfterProcessingInitializeOnLoad (1ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (2ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.13 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1943 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 209.6 MB.
+System memory in use after: 209.7 MB.
+
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2509.
+Total: 3.018148 ms (FindLiveObjects: 0.175308 ms CreateObjectMapping: 0.067144 ms MarkObjects: 2.639190 ms  DeleteObjects: 0.135721 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:framework-osx-AVFoundation: b23960f63f64bdc6ff669e2cdcee2391 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 

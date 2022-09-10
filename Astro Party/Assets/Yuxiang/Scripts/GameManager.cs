@@ -93,10 +93,24 @@ public class GameManager : MonoBehaviour
         SEManagerScript = GameObject.Find("SoundEffect Manager").GetComponent<SEManager>();
         spawnManagerScript = GameObject.Find("Spawn Manager").GetComponent<SpawnManager>();
 
-        P1ShipBot = Instantiate(P1ShipBot, new Vector3(0, 0, 0), P1ShipBot.transform.rotation);
-        P2ShipBot = Instantiate(P2ShipBot, new Vector3(0, 0, 0), P2ShipBot.transform.rotation);
-        P3ShipBot = Instantiate(P3ShipBot, new Vector3(0, 0, 0), P3ShipBot.transform.rotation);
-        P4ShipBot = Instantiate(P4ShipBot, new Vector3(0, 0, 0), P4ShipBot.transform.rotation);
+
+        //Creating ships
+        P1ShipBot = Instantiate(botShip, new Vector3(0, 0, 0), P1ShipBot.transform.rotation);
+        P1ShipBot.GetComponent<MutualShip>().id = 1;
+
+        P2ShipBot = Instantiate(botShip, new Vector3(0, 0, 0), P2ShipBot.transform.rotation);
+        P1ShipBot.GetComponent<MutualShip>().id = 2;
+
+        P3ShipBot = Instantiate(botShip, new Vector3(0, 0, 0), P3ShipBot.transform.rotation);
+        P1ShipBot.GetComponent<MutualShip>().id = 3;
+
+        P4ShipBot = Instantiate(botShip, new Vector3(0, 0, 0), P4ShipBot.transform.rotation);
+        P1ShipBot.GetComponent<MutualShip>().id = 4;
+
+        P1ShipBot.SetActive(false);
+        P2ShipBot.SetActive(false);
+        P3ShipBot.SetActive(false);
+        P4ShipBot.SetActive(false);
 
         P1ShipPlayer = Instantiate(playerShip, new Vector3(0, 0, 0), P1ShipPlayer.transform.rotation);
         P1ShipPlayer.GetComponent<MutualShip>().id = 1;
@@ -110,15 +124,10 @@ public class GameManager : MonoBehaviour
         P4ShipPlayer = Instantiate(playerShip, new Vector3(0, 0, 0), P4ShipPlayer.transform.rotation);
         P4ShipPlayer.GetComponent<MutualShip>().id = 4;
 
-        P1ShipBot.SetActive(false);
-        P2ShipBot.SetActive(false);
-        P3ShipBot.SetActive(false);
-        P4ShipBot.SetActive(false);
-
-        //P1ShipPlayer.SetActive(false);
-        //P2ShipPlayer.SetActive(false);
-        //P3ShipPlayer.SetActive(false);
-        //P4ShipPlayer.SetActive(false);
+        P1ShipPlayer.SetActive(false);
+        P2ShipPlayer.SetActive(false);
+        P3ShipPlayer.SetActive(false);
+        P4ShipPlayer.SetActive(false);
     }
 
     // Update is called once per frame
