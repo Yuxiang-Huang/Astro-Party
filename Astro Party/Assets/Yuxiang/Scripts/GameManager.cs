@@ -63,6 +63,16 @@ public class GameManager : MonoBehaviour
     public GameObject P4SetRotateButton;
     public GameObject P4SetShootButton;
 
+    public GameObject P5ShipPlayer;
+    public GameObject P5ShipBot;
+    public GameObject P5TextPlayer;
+    public GameObject P5TextBot;
+    public GameObject P5TextOff;
+    public int P5Team = 4;
+    public GameObject P5TeamButtonObject;
+    public GameObject P5SetRotateButton;
+    public GameObject P5SetShootButton;
+
     public int spawnX = 900;
     public int spawnZ = 420;
     bool gameStarted;
@@ -76,17 +86,11 @@ public class GameManager : MonoBehaviour
         nextButton.SetActive(false);
         resetPosRot();
 
-        ships = new List<List<GameObject>>();
-        ships.Add(new List<GameObject>());
-        ships.Add(new List<GameObject>());
-        ships.Add(new List<GameObject>());
-        ships.Add(new List<GameObject>());
+        ships = new List<List<GameObject>>() {new List<GameObject>(), new List<GameObject>(), new List<GameObject>(),
+        new List<GameObject>(), new List<GameObject>()};
 
-        inGameShips = new List<List<GameObject>>();
-        inGameShips.Add(new List<GameObject>());
-        inGameShips.Add(new List<GameObject>());
-        inGameShips.Add(new List<GameObject>());
-        inGameShips.Add(new List<GameObject>());
+        inGameShips = ships = new List<List<GameObject>>() {new List<GameObject>(), new List<GameObject>(), new List<GameObject>(),
+        new List<GameObject>(), new List<GameObject>()};
 
         scoreManagerScript = GameObject.Find("Score Manager").GetComponent<ScoreManager>();
         mapManagerScript = GameObject.Find("Map Manager").GetComponent<MapManager>();
@@ -107,10 +111,14 @@ public class GameManager : MonoBehaviour
         P4ShipBot = Instantiate(botShip, new Vector3(0, 0, 0), P4ShipBot.transform.rotation);
         P4ShipBot.GetComponent<MutualShip>().id = 4;
 
+        P5ShipBot = Instantiate(botShip, new Vector3(0, 0, 0), P4ShipBot.transform.rotation);
+        P5ShipBot.GetComponent<MutualShip>().id = 5;
+
         P1ShipBot.SetActive(false);
         P2ShipBot.SetActive(false);
         P3ShipBot.SetActive(false);
         P4ShipBot.SetActive(false);
+        P5ShipBot.SetActive(false);
 
         P1ShipPlayer = Instantiate(playerShip, new Vector3(0, 0, 0), P1ShipPlayer.transform.rotation);
         P1ShipPlayer.GetComponent<MutualShip>().id = 1;
@@ -124,10 +132,14 @@ public class GameManager : MonoBehaviour
         P4ShipPlayer = Instantiate(playerShip, new Vector3(0, 0, 0), P4ShipPlayer.transform.rotation);
         P4ShipPlayer.GetComponent<MutualShip>().id = 4;
 
+        P5ShipPlayer = Instantiate(playerShip, new Vector3(0, 0, 0), P5ShipPlayer.transform.rotation);
+        P5ShipPlayer.GetComponent<MutualShip>().id = 5;
+
         P1ShipPlayer.SetActive(false);
         P2ShipPlayer.SetActive(false);
         P3ShipPlayer.SetActive(false);
         P4ShipPlayer.SetActive(false);
+        P5ShipPlayer.SetActive(false);
     }
 
     // Update is called once per frame
@@ -296,6 +308,12 @@ public class GameManager : MonoBehaviour
             P4SetRotateButton, P4SetShootButton, scoreManagerScript.P4);
     }
 
+    public void P5Button()
+    {
+        buttonHelper(P5ShipPlayer, P5ShipBot, P5TextPlayer, P5TextBot, P5TextOff, P5Team, P5TeamButtonObject,
+            P5SetRotateButton, P5SetShootButton, scoreManagerScript.P5);
+    }
+
     void buttonHelper(GameObject player, GameObject bot, GameObject textPlayer, GameObject textBot, GameObject textOff,
         int team, GameObject teamButton, GameObject setRotateButton, GameObject setShootButton, GameObject picture)
     {
@@ -341,7 +359,7 @@ public class GameManager : MonoBehaviour
         ships[P1Team].Remove(curr);
         P1Team++;
 
-        if (P1Team == 4)
+        if (P1Team == 5)
         {
             P1Team = 0;
         }
@@ -355,7 +373,7 @@ public class GameManager : MonoBehaviour
         ships[P2Team].Remove(curr);
         P2Team++;
 
-        if (P2Team == 4)
+        if (P2Team == 5)
         {
             P2Team = 0;
         }
@@ -369,7 +387,7 @@ public class GameManager : MonoBehaviour
         
         ships[P3Team].Remove(curr);
         P3Team++;
-        if (P3Team == 4)
+        if (P3Team == 5)
         {
             P3Team = 0;
         }
@@ -382,11 +400,24 @@ public class GameManager : MonoBehaviour
      
         ships[P4Team].Remove(curr);
         P4Team++;
-        if (P4Team == 4)
+        if (P4Team == 5)
         {
             P4Team = 0;
         }
         ships[P4Team].Add(curr);   
+    }
+
+    public void P5TeamButton()
+    {
+        GameObject curr = findShip(P5Team, P5ShipPlayer, P5ShipBot);
+
+        ships[P5Team].Remove(curr);
+        P5Team++;
+        if (P5Team == 5)
+        {
+            P5Team = 0;
+        }
+        ships[P5Team].Add(curr);
     }
 
     GameObject findShip(int team, GameObject shipTarget, GameObject bot)
@@ -434,6 +465,9 @@ public class GameManager : MonoBehaviour
                                 break;
                             case 4:
                                 scoreManagerScript.P4Score++;
+                                break;
+                            case 5:
+                                scoreManagerScript.P5Score++;
                                 break;
                         }
                     }
