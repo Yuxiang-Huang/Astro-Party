@@ -31,6 +31,12 @@ public class MutualShip : MonoBehaviour
     public GameObject sideCannons;
     public GameObject freezed;
 
+    public Material blue1;
+    public Material red2;
+    public Material yellow3;
+    public Material cyan4;
+    public Material green5;
+
     // Start is called before the first frame update
     void Start()
     {
