@@ -21,6 +21,7 @@ public class ScreenManager : MonoBehaviour
     public GameObject P2PowerUpScreen;
     public GameObject P3PowerUpScreen;
     public GameObject P4PowerUpScreen;
+    public GameObject P5PowerUpScreen;
 
     public GameObject friendlyFireButton;
     public GameObject teamModeText;
@@ -41,6 +42,7 @@ public class ScreenManager : MonoBehaviour
         P2PowerUpScreen.SetActive(false);
         P3PowerUpScreen.SetActive(false);
         P4PowerUpScreen.SetActive(false);
+        P5PowerUpScreen.SetActive(false);
 
         scoreManagerScript = GameObject.Find("Score Manager").GetComponent<ScoreManager>();
         gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
@@ -181,12 +183,19 @@ public class ScreenManager : MonoBehaviour
         P4PowerUpScreen.SetActive(true);
     }
 
+    public void nextToP5PowerUp()
+    {
+        powerUpScreen.SetActive(false);
+        P5PowerUpScreen.SetActive(true);
+    }
+
     public void backToPowerUp()
     {
         P1PowerUpScreen.SetActive(false);
         P2PowerUpScreen.SetActive(false);
         P3PowerUpScreen.SetActive(false);
         P4PowerUpScreen.SetActive(false);
+        P5PowerUpScreen.SetActive(false);
         powerUpScreen.SetActive(true);
     }
 }

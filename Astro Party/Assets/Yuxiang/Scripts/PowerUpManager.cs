@@ -13,6 +13,7 @@ public class PowerUpManager : MonoBehaviour
     public Text P2CurrText;
     public Text P3CurrText;
     public Text P4CurrText;
+    public Text P5CurrText;
 
     public GameObject laser;
     public GameObject laserIndicator;
@@ -21,6 +22,7 @@ public class PowerUpManager : MonoBehaviour
     public Text P2LaserText;
     public Text P3LaserText;
     public Text P4LaserText;
+    public Text P5LaserText;
 
     public GameObject scatterIndicator;
     public Text scatterText;
@@ -28,6 +30,7 @@ public class PowerUpManager : MonoBehaviour
     public Text P2scatterText;
     public Text P3scatterText;
     public Text P4scatterText;
+    public Text P5scatterText;
 
     public GameObject tripleShotIndicator;
     public Text tripleText;
@@ -35,6 +38,7 @@ public class PowerUpManager : MonoBehaviour
     public Text P2TripleText;
     public Text P3TripleText;
     public Text P4TripleText;
+    public Text P5TripleText;
 
     public GameObject freezer;
     public GameObject freezerIndicator;
@@ -43,6 +47,7 @@ public class PowerUpManager : MonoBehaviour
     public Text P2FreezerText;
     public Text P3FreezerText;
     public Text P4FreezerText;
+    public Text P5FreezerText;
 
     GameManager gameManagerScript;
 
@@ -163,6 +168,11 @@ public class PowerUpManager : MonoBehaviour
         setHelper("Laser Beam", P4LaserText, 4);
     }
 
+    public void setLaserP5()
+    {
+        setHelper("Laser Beam", P5LaserText, 5);
+    }
+
     //Scatter Shot
 
     public void setScatterP1()
@@ -183,6 +193,11 @@ public class PowerUpManager : MonoBehaviour
     public void setScatterP4()
     {
         setHelper("Scatter Shot", P4scatterText, 4);
+    }
+
+    public void setScatterP5()
+    {
+        setHelper("Scatter Shot", P5scatterText, 5);
     }
 
     //Freezer
@@ -207,6 +222,11 @@ public class PowerUpManager : MonoBehaviour
         setHelper("Freezer", P4FreezerText, 4);
     }
 
+    public void setFreezerP5()
+    {
+        setHelper("Freezer", P5FreezerText, 5);
+    }
+
     void setHelper(string modeString, Text modeText, int id)
     {
         foreach (List<GameObject> shipList in gameManagerScript.ships)
@@ -216,6 +236,8 @@ public class PowerUpManager : MonoBehaviour
                 MutualShip script = ship.GetComponent<MutualShip>();
                 if (script.id == id)
                 {
+                    //to set last powerUpText off
+
                     if (script.shootMode == modeString)
                     {
                         script.shootMode = "normal";
@@ -233,6 +255,9 @@ public class PowerUpManager : MonoBehaviour
                                 break;
                             case 4:
                                 P4CurrText = null;
+                                break;
+                            case 5:
+                                P5CurrText = null;
                                 break;
                         }
                     }
@@ -256,6 +281,10 @@ public class PowerUpManager : MonoBehaviour
                                 if (P4CurrText != null)
                                     P4CurrText.text = script.shootMode + ": Off";
                                 break;
+                            case 5:
+                                if (P5CurrText != null)
+                                    P5CurrText.text = script.shootMode + ": Off";
+                                break;
                         }
 
                         script.shootMode = modeString;
@@ -267,6 +296,7 @@ public class PowerUpManager : MonoBehaviour
                             case 2: P2CurrText = modeText; break;
                             case 3: P3CurrText = modeText; break;
                             case 4: P4CurrText = modeText; break;
+                            case 5: P5CurrText = modeText; break;
                         }
                     }
                 }
@@ -294,6 +324,11 @@ public class PowerUpManager : MonoBehaviour
     public void setTripleP4()
     {
         setTripleHelper(4, P4TripleText);
+    }
+
+    public void setTripleP5()
+    {
+        setTripleHelper(5, P5TripleText);
     }
 
     void setTripleHelper(int id, Text modeText)
