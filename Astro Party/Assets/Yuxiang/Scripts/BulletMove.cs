@@ -145,6 +145,9 @@ public class BulletMove : MonoBehaviour
                 case 4:
                     scoreManagerScript.P4Score++;
                     break;
+                case 5:
+                    scoreManagerScript.P5Score++;
+                    break;
             }
         }
     }
