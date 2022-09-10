@@ -118,6 +118,14 @@ public class ScoreManager : MonoBehaviour
                 P4.transform.position = new Vector3(P4.transform.position.x + lengthOfSquare, P4.transform.position.y,
                     P4.transform.position.z);
             }
+
+            while (!closeEnough(P5.transform.position.x - startPosX, P5Score * lengthOfSquare))
+            {
+
+                yield return new WaitForSeconds(1f);
+                P5.transform.position = new Vector3(P5.transform.position.x + lengthOfSquare, P5.transform.position.y,
+                    P5.transform.position.z);
+            }
         }
 
         else if (gameMode == "team")
@@ -147,6 +155,12 @@ public class ScoreManager : MonoBehaviour
                 P4.transform.position = new Vector3(P4.transform.position.x + lengthOfSquare, P4.transform.position.y,
                     P4.transform.position.z);
             }
+
+            if (!closeEnough(P5.transform.position.x - startPosX, P5Score * lengthOfSquare))
+            {
+                P5.transform.position = new Vector3(P5.transform.position.x + lengthOfSquare, P5.transform.position.y,
+                    P5.transform.position.z);
+            }
         }
 
         yield return new WaitForSeconds(2f);
@@ -154,7 +168,7 @@ public class ScoreManager : MonoBehaviour
         scoreScreen.SetActive(false);
 
         //Check for winner
-        if (P1Score < scoreToWin && P2Score < scoreToWin && P3Score < scoreToWin && P4Score < scoreToWin)
+        if (P1Score < scoreToWin && P2Score < scoreToWin && P3Score < scoreToWin && P4Score < scoreToWin && P5Score < scoreToWin)
         {
             gameManagerScript.startRound();
         }
@@ -167,6 +181,7 @@ public class ScoreManager : MonoBehaviour
                 Team2WinText.SetActive(false);
                 Team3WinText.SetActive(false);
                 Team4WinText.SetActive(false);
+                Team5WinText.SetActive(false);
 
                 int find = -1;
 
@@ -186,6 +201,10 @@ public class ScoreManager : MonoBehaviour
                 {
                     find = 4;
                 }
+                if (P5Score == scoreToWin)
+                {
+                    find = 5;
+                }
 
                 switch (findWinningTeam(find))
                 {
@@ -201,6 +220,9 @@ public class ScoreManager : MonoBehaviour
                     case 4:
                         Team4WinText.SetActive(true);
                         break;
+                    case 5:
+                        Team4WinText.SetActive(true);
+                        break;
                 }
             }
             if (gameMode == "solo")
@@ -209,6 +231,7 @@ public class ScoreManager : MonoBehaviour
                 P2WinText.SetActive(false);
                 P3WinText.SetActive(false);
                 P4WinText.SetActive(false);
+                P5WinText.SetActive(false);
 
                 int find = -1;
 
@@ -228,6 +251,10 @@ public class ScoreManager : MonoBehaviour
                 {
                     find = 4;
                 }
+                if (P5Score >= scoreToWin)
+                {
+                    find = 5;
+                }
                 switch (find)
                 {
                     case 1:
@@ -241,6 +268,9 @@ public class ScoreManager : MonoBehaviour
                         break;
                     case 4:
                         P4WinText.SetActive(true);
+                        break;
+                    case 5:
+                        P5WinText.SetActive(true);
                         break;
                 }
             }
@@ -275,6 +305,7 @@ public class ScoreManager : MonoBehaviour
         P2Score = 0;
         P3Score = 0;
         P4Score = 0;
+        P5Score = 0;
 
         //Debug.Log(P1.transform.position);
         //Debug.Log(P2.transform.position);
@@ -291,6 +322,8 @@ public class ScoreManager : MonoBehaviour
                 P3.transform.position.z);
         P4.transform.position = new Vector3(startPosX, P4.transform.position.y,
                 P4.transform.position.z);
+        P5.transform.position = new Vector3(startPosX, P5.transform.position.y,
+                P5.transform.position.z);
 
         scoreScreen.SetActive(false);
 
