@@ -76,14 +76,49 @@ public class MutualShip : MonoBehaviour
 
         freezed.SetActive(false);
 
-        //setColor
+        //setColor and control
         switch (id)
         {
-            case 1: rend.material = blue1; break;
-            case 2: rend.material = red2; break;
-            case 3: rend.material = yellow3; break;
-            case 4: rend.material = cyan4; break;
-            case 5: rend.material = green5; break;
+            case 1:
+                rend.material = blue1;
+                if (GetComponent<PlayerController>() != null)
+                {
+                    GetComponent<PlayerController>().turn = KeyCode.BackQuote;
+                    GetComponent<PlayerController>().turn = KeyCode.Tab;
+                }
+                break;
+            case 2:
+                rend.material = red2;
+                if (GetComponent<PlayerController>() != null)
+                {
+                    GetComponent<PlayerController>().turn = KeyCode.Z;
+                    GetComponent<PlayerController>().turn = KeyCode.X;
+                }
+                break;
+            case 3:
+                rend.material = yellow3;
+                if (GetComponent<PlayerController>() != null)
+                {
+                    GetComponent<PlayerController>().turn = KeyCode.T;
+                    GetComponent<PlayerController>().turn = KeyCode.Y;
+                }
+                break;
+            case 4:
+                rend.material = cyan4;
+                if (GetComponent<PlayerController>() != null)
+                {
+                    GetComponent<PlayerController>().turn = KeyCode.O;
+                    GetComponent<PlayerController>().turn = KeyCode.P;
+                }
+                break;
+            case 5:
+                rend.material = green5;
+                if (GetComponent<PlayerController>() != null)
+                {
+                    GetComponent<PlayerController>().turn = KeyCode.UpArrow;
+                    GetComponent<PlayerController>().turn = KeyCode.DownArrow;
+                }
+                break;
         }
     }
 

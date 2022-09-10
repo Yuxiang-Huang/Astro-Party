@@ -14,21 +14,25 @@ public class ScoreManager : MonoBehaviour
     public GameObject P2;
     public GameObject P3;
     public GameObject P4;
+    public GameObject P5;
 
     public int P1Score;
     public int P2Score;
     public int P3Score;
     public int P4Score;
+    public int P5Score;
 
     public GameObject P1WinText;
     public GameObject P2WinText;
     public GameObject P3WinText;
     public GameObject P4WinText;
+    public GameObject P5WinText;
 
     public GameObject Team1WinText;
     public GameObject Team2WinText;
     public GameObject Team3WinText;
     public GameObject Team4WinText;
+    public GameObject Team5WinText;
 
     int scoreToWin = 5;
     public Text roundText;
