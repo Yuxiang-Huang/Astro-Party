@@ -128,6 +128,7 @@ public class MutualShip : MonoBehaviour
         //keep y the same
         transform.position = new Vector3(transform.position.x, 10, transform.position.z);
 
+        //regenerate ammo
         if (reloadTime > 0)
         {
             reloadTime -= Time.deltaTime;
@@ -135,7 +136,10 @@ public class MutualShip : MonoBehaviour
             if (reloadTime == 0)
             {
                 ammo++;
-                bulletAnimation[ammo - 1].SetActive(true);
+                if (shootMode == "normal")
+                {
+                    bulletAnimation[ammo - 1].SetActive(true);
+                }
             }
         }
 
@@ -222,6 +226,8 @@ public class MutualShip : MonoBehaviour
 
             shootMode = "normal";
 
+            ammo = 3;
+
             foreach (GameObject curr in bulletAnimation)
             {
                 curr.SetActive(true);
@@ -250,6 +256,8 @@ public class MutualShip : MonoBehaviour
 
             shootMode = "normal";
 
+            ammo = 3;
+
             foreach (GameObject curr in bulletAnimation)
             {
                 curr.SetActive(true);
@@ -267,6 +275,8 @@ public class MutualShip : MonoBehaviour
             myFreezer.GetComponent<Freezer>().team = team;
 
             shootMode = "normal";
+
+            ammo = 3;
 
             foreach (GameObject curr in bulletAnimation)
             {
