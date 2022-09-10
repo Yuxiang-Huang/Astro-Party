@@ -20,6 +20,9 @@ public class GameManager : MonoBehaviour
 
     public GameObject nextButton;
 
+    public GameObject playerShip;
+    public GameObject botShip;
+
     public GameObject P1ShipPlayer;
     public GameObject P1ShipBot;
     public GameObject P1TextPlayer;
@@ -95,20 +98,27 @@ public class GameManager : MonoBehaviour
         P3ShipBot = Instantiate(P3ShipBot, new Vector3(0, 0, 0), P3ShipBot.transform.rotation);
         P4ShipBot = Instantiate(P4ShipBot, new Vector3(0, 0, 0), P4ShipBot.transform.rotation);
 
-        P1ShipPlayer = Instantiate(P1ShipPlayer, new Vector3(0, 0, 0), P1ShipPlayer.transform.rotation);
-        P2ShipPlayer = Instantiate(P2ShipPlayer, new Vector3(0, 0, 0), P2ShipPlayer.transform.rotation);
-        P3ShipPlayer = Instantiate(P3ShipPlayer, new Vector3(0, 0, 0), P3ShipPlayer.transform.rotation);
-        P4ShipPlayer = Instantiate(P4ShipPlayer, new Vector3(0, 0, 0), P4ShipPlayer.transform.rotation);
+        P1ShipPlayer = Instantiate(playerShip, new Vector3(0, 0, 0), P1ShipPlayer.transform.rotation);
+        P1ShipPlayer.GetComponent<MutualShip>().id = 1;
+
+        P2ShipPlayer = Instantiate(playerShip, new Vector3(0, 0, 0), P2ShipPlayer.transform.rotation);
+        P2ShipPlayer.GetComponent<MutualShip>().id = 2;
+
+        P3ShipPlayer = Instantiate(playerShip, new Vector3(0, 0, 0), P3ShipPlayer.transform.rotation);
+        P3ShipPlayer.GetComponent<MutualShip>().id = 3;
+
+        P4ShipPlayer = Instantiate(playerShip, new Vector3(0, 0, 0), P4ShipPlayer.transform.rotation);
+        P4ShipPlayer.GetComponent<MutualShip>().id = 4;
 
         P1ShipBot.SetActive(false);
         P2ShipBot.SetActive(false);
         P3ShipBot.SetActive(false);
         P4ShipBot.SetActive(false);
 
-        P1ShipPlayer.SetActive(false);
-        P2ShipPlayer.SetActive(false);
-        P3ShipPlayer.SetActive(false);
-        P4ShipPlayer.SetActive(false);
+        //P1ShipPlayer.SetActive(false);
+        //P2ShipPlayer.SetActive(false);
+        //P3ShipPlayer.SetActive(false);
+        //P4ShipPlayer.SetActive(false);
     }
 
     // Update is called once per frame

@@ -12584,7 +12584,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1112501226
 Transform:
   m_ObjectHideFlags: 0
@@ -12853,6 +12853,8 @@ MonoBehaviour:
   inGameIndicators: []
   inGameAsteroids: []
   nextButton: {fileID: 846400692}
+  playerShip: {fileID: 6525305646514065557, guid: 7c0419a36677d4cb6886c0454ffb6615, type: 3}
+  botShip: {fileID: 929155996236426145, guid: ab8e0b32f0a374f799dfc66ac9162a6f, type: 3}
   P1ShipPlayer: {fileID: 6525305646514065557, guid: 7c0419a36677d4cb6886c0454ffb6615, type: 3}
   P1ShipBot: {fileID: 929155996236426145, guid: ab8e0b32f0a374f799dfc66ac9162a6f, type: 3}
   P1TextPlayer: {fileID: 364083805}

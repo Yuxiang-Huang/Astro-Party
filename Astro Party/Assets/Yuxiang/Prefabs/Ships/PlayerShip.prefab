@@ -788,6 +788,7 @@ MonoBehaviour:
   jousters: {fileID: 775769462498974479}
   sideCannons: {fileID: 3947802593197462750}
   freezed: {fileID: 5088078409450587797}
+  rend: {fileID: 7173906870070017056}
   blue1: {fileID: 2100000, guid: aee1eda5f1062490492bde072ef0f2f7, type: 2}
   red2: {fileID: 2100000, guid: 329078c58a0c04150bb7949cfde893ca, type: 2}
   yellow3: {fileID: 2100000, guid: 90dc638151335479185544a45af3f6ec, type: 2}
