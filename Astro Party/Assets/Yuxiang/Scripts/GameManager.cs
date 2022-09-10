@@ -94,7 +94,7 @@ public class GameManager : MonoBehaviour
         ships = new List<List<GameObject>>() {new List<GameObject>(), new List<GameObject>(), new List<GameObject>(),
         new List<GameObject>(), new List<GameObject>()};
 
-        inGameShips = ships = new List<List<GameObject>>() {new List<GameObject>(), new List<GameObject>(), new List<GameObject>(),
+        inGameShips = new List<List<GameObject>>() {new List<GameObject>(), new List<GameObject>(), new List<GameObject>(),
         new List<GameObject>(), new List<GameObject>()};
 
         scoreManagerScript = GameObject.Find("Score Manager").GetComponent<ScoreManager>();
@@ -227,19 +227,21 @@ public class GameManager : MonoBehaviour
 
     public void startRound()
     {
+        //sound effect
         SEManagerScript.generalAudio.PlayOneShot(SEManagerScript.ready);
 
+        //call other scripts
         spawnManagerScript.RoundSpawn();
         mapManagerScript.resetMap();
 
         gameStarted = true;
 
+        //spawn ships
         for (int i = 0; i < ships.Count; i++)
         {
             for (int j = 0; j < ships[i].Count; j++)
             {
                 int ran;
-                //spawn one ship
                 if (fixedSpawn)
                 {
                     ran = ships[i][j].GetComponent<MutualShip>().id - 1;
@@ -511,8 +513,8 @@ public class GameManager : MonoBehaviour
     void resetPosRot()
     {
         pos = new List<Vector3>() { new Vector3(spawnX, 15, spawnZ), new Vector3(-spawnX, 15, spawnZ),
-        new Vector3(-spawnX, 15, -spawnZ), new Vector3(spawnX, 15, -spawnZ)};
+        new Vector3(-spawnX, 15, -spawnZ), new Vector3(spawnX, 15, -spawnZ), new Vector3(0, 15, 0)};
         rot = new List<Vector3>() {new Vector3(0, 180, 0), new Vector3(0, 90, 0),
-        new Vector3(0, 0, 0), new Vector3(0, -90, 0)};
+        new Vector3(0, 0, 0), new Vector3(0, -90, 0), new Vector3(0, -45, 0)};
     }
 }

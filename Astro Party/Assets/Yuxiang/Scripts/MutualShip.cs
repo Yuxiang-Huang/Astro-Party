@@ -84,7 +84,7 @@ public class MutualShip : MonoBehaviour
                 if (GetComponent<PlayerController>() != null)
                 {
                     GetComponent<PlayerController>().turn = KeyCode.BackQuote;
-                    GetComponent<PlayerController>().turn = KeyCode.Tab;
+                    GetComponent<PlayerController>().shoot = KeyCode.Tab;
                 }
                 break;
             case 2:
@@ -92,7 +92,7 @@ public class MutualShip : MonoBehaviour
                 if (GetComponent<PlayerController>() != null)
                 {
                     GetComponent<PlayerController>().turn = KeyCode.Z;
-                    GetComponent<PlayerController>().turn = KeyCode.X;
+                    GetComponent<PlayerController>().shoot = KeyCode.X;
                 }
                 break;
             case 3:
@@ -100,7 +100,7 @@ public class MutualShip : MonoBehaviour
                 if (GetComponent<PlayerController>() != null)
                 {
                     GetComponent<PlayerController>().turn = KeyCode.T;
-                    GetComponent<PlayerController>().turn = KeyCode.Y;
+                    GetComponent<PlayerController>().shoot = KeyCode.Y;
                 }
                 break;
             case 4:
@@ -108,7 +108,7 @@ public class MutualShip : MonoBehaviour
                 if (GetComponent<PlayerController>() != null)
                 {
                     GetComponent<PlayerController>().turn = KeyCode.O;
-                    GetComponent<PlayerController>().turn = KeyCode.P;
+                    GetComponent<PlayerController>().shoot = KeyCode.P;
                 }
                 break;
             case 5:
@@ -116,7 +116,7 @@ public class MutualShip : MonoBehaviour
                 if (GetComponent<PlayerController>() != null)
                 {
                     GetComponent<PlayerController>().turn = KeyCode.UpArrow;
-                    GetComponent<PlayerController>().turn = KeyCode.DownArrow;
+                    GetComponent<PlayerController>().shoot = KeyCode.DownArrow;
                 }
                 break;
         }
@@ -136,6 +136,8 @@ public class MutualShip : MonoBehaviour
             if (reloadTime == 0)
             {
                 ammo++;
+                ammo = Mathf.Max(ammo, 3);
+
                 if (shootMode == "normal")
                 {
                     bulletAnimation[ammo - 1].SetActive(true);
