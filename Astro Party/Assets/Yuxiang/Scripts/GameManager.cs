@@ -99,13 +99,13 @@ public class GameManager : MonoBehaviour
         P1ShipBot.GetComponent<MutualShip>().id = 1;
 
         P2ShipBot = Instantiate(botShip, new Vector3(0, 0, 0), P2ShipBot.transform.rotation);
-        P1ShipBot.GetComponent<MutualShip>().id = 2;
+        P2ShipBot.GetComponent<MutualShip>().id = 2;
 
         P3ShipBot = Instantiate(botShip, new Vector3(0, 0, 0), P3ShipBot.transform.rotation);
-        P1ShipBot.GetComponent<MutualShip>().id = 3;
+        P3ShipBot.GetComponent<MutualShip>().id = 3;
 
         P4ShipBot = Instantiate(botShip, new Vector3(0, 0, 0), P4ShipBot.transform.rotation);
-        P1ShipBot.GetComponent<MutualShip>().id = 4;
+        P4ShipBot.GetComponent<MutualShip>().id = 4;
 
         P1ShipBot.SetActive(false);
         P2ShipBot.SetActive(false);

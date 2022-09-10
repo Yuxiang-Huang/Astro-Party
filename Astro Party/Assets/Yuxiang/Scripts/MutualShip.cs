@@ -76,8 +76,6 @@ public class MutualShip : MonoBehaviour
 
         freezed.SetActive(false);
 
-        Debug.Log(id);
-
         //setColor
         switch (id)
         {
