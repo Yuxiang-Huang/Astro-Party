@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     public GameObject P1TeamButtonObject;
     public GameObject P1SetRotateButton;
     public GameObject P1SetShootButton;
+    public GameObject P1StartingPowerUpButton;
 
     public GameObject P2ShipPlayer;
     public GameObject P2ShipBot;
@@ -42,6 +43,7 @@ public class GameManager : MonoBehaviour
     public GameObject P2TeamButtonObject;
     public GameObject P2SetRotateButton;
     public GameObject P2SetShootButton;
+    public GameObject P2StartingPowerUpButton;
 
     public GameObject P3ShipPlayer;
     public GameObject P3ShipBot;
@@ -52,6 +54,7 @@ public class GameManager : MonoBehaviour
     public GameObject P3TeamButtonObject;
     public GameObject P3SetRotateButton;
     public GameObject P3SetShootButton;
+    public GameObject P3StartingPowerUpButton;
 
     public GameObject P4ShipPlayer;
     public GameObject P4ShipBot;
@@ -62,6 +65,7 @@ public class GameManager : MonoBehaviour
     public GameObject P4TeamButtonObject;
     public GameObject P4SetRotateButton;
     public GameObject P4SetShootButton;
+    public GameObject P4StartingPowerUpButton;
 
     public GameObject P5ShipPlayer;
     public GameObject P5ShipBot;
@@ -72,6 +76,7 @@ public class GameManager : MonoBehaviour
     public GameObject P5TeamButtonObject;
     public GameObject P5SetRotateButton;
     public GameObject P5SetShootButton;
+    public GameObject P5StartingPowerUpButton;
 
     public int spawnX = 900;
     public int spawnZ = 420;
@@ -287,35 +292,36 @@ public class GameManager : MonoBehaviour
     public void P1Button()
     {
         buttonHelper(P1ShipPlayer, P1ShipBot, P1TextPlayer, P1TextBot, P1TextOff, P1Team, P1TeamButtonObject,
-            P1SetRotateButton, P1SetShootButton, scoreManagerScript.P1);
+            P1SetRotateButton, P1SetShootButton, scoreManagerScript.P1, P1StartingPowerUpButton);
     }
 
     public void P2Button()
     {
         buttonHelper(P2ShipPlayer, P2ShipBot, P2TextPlayer, P2TextBot, P2TextOff, P2Team, P2TeamButtonObject,
-            P2SetRotateButton, P2SetShootButton, scoreManagerScript.P2);
+            P2SetRotateButton, P2SetShootButton, scoreManagerScript.P2, P2StartingPowerUpButton);
     }
 
     public void P3Button()
     {
         buttonHelper(P3ShipPlayer, P3ShipBot, P3TextPlayer, P3TextBot, P3TextOff, P3Team, P3TeamButtonObject,
-            P3SetRotateButton, P3SetShootButton, scoreManagerScript.P3);
+            P3SetRotateButton, P3SetShootButton, scoreManagerScript.P3, P3StartingPowerUpButton);
     }
 
     public void P4Button()
     {
         buttonHelper(P4ShipPlayer, P4ShipBot, P4TextPlayer, P4TextBot, P4TextOff, P4Team, P4TeamButtonObject,
-            P4SetRotateButton, P4SetShootButton, scoreManagerScript.P4);
+            P4SetRotateButton, P4SetShootButton, scoreManagerScript.P4, P4StartingPowerUpButton);
     }
 
     public void P5Button()
     {
         buttonHelper(P5ShipPlayer, P5ShipBot, P5TextPlayer, P5TextBot, P5TextOff, P5Team, P5TeamButtonObject,
-            P5SetRotateButton, P5SetShootButton, scoreManagerScript.P5);
+            P5SetRotateButton, P5SetShootButton, scoreManagerScript.P5, P5StartingPowerUpButton);
     }
 
     void buttonHelper(GameObject player, GameObject bot, GameObject textPlayer, GameObject textBot, GameObject textOff,
-        int team, GameObject teamButton, GameObject setRotateButton, GameObject setShootButton, GameObject picture)
+        int team, GameObject teamButton, GameObject setRotateButton, GameObject setShootButton, GameObject picture,
+            GameObject startingPowerUpButton)
     {
         List<GameObject> ship = ships[team];
         if (ship.Contains(player))
@@ -336,7 +342,8 @@ public class GameManager : MonoBehaviour
 
             teamButton.SetActive(false);
             teamButton.SetActive(false);
-            picture.SetActive(true);
+            picture.SetActive(false);
+            startingPowerUpButton.SetActive(false);
         }
         else
         {
@@ -349,6 +356,7 @@ public class GameManager : MonoBehaviour
             teamButton.SetActive(true);
             teamButton.SetActive(true);
             picture.SetActive(true);
+            startingPowerUpButton.SetActive(true);
         }
     }
 
