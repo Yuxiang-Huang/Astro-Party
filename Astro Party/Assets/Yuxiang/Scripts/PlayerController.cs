@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     int speed = 2000;
     int maxVelocity = 700;
-    float rotatingSpeed = 10f;
+    float rotatingSpeed = 7f;
     bool rotating;
 
     public KeyCode turn;
