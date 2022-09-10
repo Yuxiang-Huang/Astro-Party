@@ -25,9 +25,6 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        //keep y the same
-        transform.position = new Vector3(transform.position.x, 10, transform.position.z);
-
         if (Input.GetKeyDown(shoot) && !shootDisable)
         {
             GetComponent<MutualShip>().shoot();
@@ -36,7 +33,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(turn))
         {
             rotating = true;
-            if (dash > 0)
+            if (dash > 0 && playerRb.constraints != RigidbodyConstraints.FreezeAll)
             {
                 transform.Rotate(0, 90, 0);
                 //change velocity
@@ -62,7 +59,7 @@ public class PlayerController : MonoBehaviour
             rotating = false;
         }
 
-        if (rotating && playerRb.constraints != RigidbodyConstraints.FreezePosition)
+        if (rotating && playerRb.constraints != RigidbodyConstraints.FreezeAll)
         {
             playerRb.freezeRotation = false;
             transform.Rotate(0, rotatingSpeed, 0);
@@ -82,7 +79,7 @@ public class PlayerController : MonoBehaviour
     IEnumerator dashCountDown()
     {
         dash ++;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.25f);
         dash --;
         dash = Mathf.Max(0, dash);
     }

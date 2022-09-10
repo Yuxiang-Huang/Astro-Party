@@ -73,6 +73,9 @@ public class MutualShip : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //keep y the same
+        transform.position = new Vector3(transform.position.x, 10, transform.position.z);
+
         if (reloadTime > 0)
         {
             reloadTime -= Time.deltaTime;
@@ -221,9 +224,9 @@ public class MutualShip : MonoBehaviour
 
     IEnumerator laserFreeze()
     {
-        playerRb.constraints = RigidbodyConstraints.FreezePosition;
+        playerRb.constraints = RigidbodyConstraints.FreezeAll;
         yield return new WaitForSeconds(0.3f);
-        playerRb.constraints = RigidbodyConstraints.FreezePositionY;
+        playerRb.constraints = RigidbodyConstraints.FreezeRotation;
 
         //not for bot
         if (GetComponent<PlayerController>() != null)
