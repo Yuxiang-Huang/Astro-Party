@@ -136,7 +136,7 @@ public class MutualShip : MonoBehaviour
             if (reloadTime == 0)
             {
                 ammo++;
-                ammo = Mathf.Max(ammo, 3);
+                ammo = Mathf.Min(ammo, 3);
 
                 if (shootMode == "normal")
                 {
@@ -377,6 +377,9 @@ public class MutualShip : MonoBehaviour
                     break;
                 case 4:
                     scoreManagerScript.P4Score++;
+                    break;
+                case 5:
+                    scoreManagerScript.P5Score++;
                     break;
             }
         }
