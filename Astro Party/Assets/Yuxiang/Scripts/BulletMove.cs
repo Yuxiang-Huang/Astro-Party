@@ -10,7 +10,7 @@ public class BulletMove : MonoBehaviour
 
     public int id;
     Rigidbody Rb;
-    int speed = 750;
+    int speed = 1000;
 
     public int team;
 

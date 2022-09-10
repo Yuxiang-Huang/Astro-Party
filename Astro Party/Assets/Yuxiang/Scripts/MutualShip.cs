@@ -211,6 +211,7 @@ public class MutualShip : MonoBehaviour
             playerAudio.PlayOneShot(SEManagerScript.freezerSound);
 
             //setting the script varibles
+            myFreezer.GetComponent<Freezer>().id = id;
             myFreezer.GetComponent<Freezer>().team = team;
 
             shootMode = "normal";
