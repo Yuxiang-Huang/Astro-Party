@@ -580,7 +580,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1428168329}
         m_TargetAssemblyTypeName: TextManager, Assembly-CSharp
-        m_MethodName: P1SetRotate
+        m_MethodName: P5SetRotate
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13037,7 +13037,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1428168329}
         m_TargetAssemblyTypeName: TextManager, Assembly-CSharp
-        m_MethodName: P1SwitchTeamText
+        m_MethodName: P4SwitchTeamText
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13547,13 +13547,13 @@ MonoBehaviour:
   P4SetShootButton: {fileID: 1781264985}
   P5ShipPlayer: {fileID: 0}
   P5ShipBot: {fileID: 0}
-  P5TextPlayer: {fileID: 0}
-  P5TextBot: {fileID: 0}
-  P5TextOff: {fileID: 0}
+  P5TextPlayer: {fileID: 1555059995}
+  P5TextBot: {fileID: 1317098518}
+  P5TextOff: {fileID: 508712465}
   P5Team: 4
-  P5TeamButtonObject: {fileID: 0}
-  P5SetRotateButton: {fileID: 0}
-  P5SetShootButton: {fileID: 0}
+  P5TeamButtonObject: {fileID: 1074943875}
+  P5SetRotateButton: {fileID: 84637714}
+  P5SetShootButton: {fileID: 1387378155}
   spawnX: 925
   spawnZ: 425
   fixedSpawnText: {fileID: 1842794820}
@@ -16694,7 +16694,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1428168329}
         m_TargetAssemblyTypeName: TextManager, Assembly-CSharp
-        m_MethodName: P1SetShoot
+        m_MethodName: P5SetShoot
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -18237,7 +18237,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'P1
+  m_Text: 'P5
 
 '
 --- !u!222 &1555059998
