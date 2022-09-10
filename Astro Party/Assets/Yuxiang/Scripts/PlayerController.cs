@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    int speed = 500;
-    int maxVelocity = 350;
-    float rotatingSpeed = 1.5f;
+    int speed = 2000;
+    int maxVelocity = 700;
+    float rotatingSpeed = 10f;
     bool rotating;
 
     public KeyCode turn;
@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
                 //    transform.position.y, transform.position.z + 100 * Mathf.Cos(angle));
 
                 //add impulse
-                playerRb.AddRelativeForce(new Vector3(0, 0,  2 * speed), ForceMode.Force);
+                playerRb.AddRelativeForce(new Vector3(0, 0, speed), ForceMode.Force);
 
                 dash = 0;
             }

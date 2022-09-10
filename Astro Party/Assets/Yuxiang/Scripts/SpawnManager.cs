@@ -18,7 +18,7 @@ public class SpawnManager : MonoBehaviour
 
     public bool startSpawn;
 
-    int space = 100;
+    int space = 50;
 
     int shipNum;
      
@@ -122,22 +122,22 @@ public class SpawnManager : MonoBehaviour
         Vector3 ranPos = new Vector3(Random.Range(-gameManagerScript.spawnX, gameManagerScript.spawnX), -10,
           Random.Range(-gameManagerScript.spawnZ, gameManagerScript.spawnZ));
 
-        //asteroid distance
-        bool flag = true;
-        while (flag)
-        {
-            flag = false;
-            foreach (List<GameObject> shipList in gameManagerScript.inGameShips)
-            {
-                foreach (GameObject ship in shipList)
-                {
-                    if (distance(ship.transform.position, ranPos) < space)
-                    {
-                        flag = true;
-                    }
-                }
-            }
-        }
+        ////asteroid distance
+        //bool flag = true;
+        //while (flag)
+        //{
+        //    flag = false;
+        //    foreach (List<GameObject> shipList in gameManagerScript.inGameShips)
+        //    {
+        //        foreach (GameObject ship in shipList)
+        //        {
+        //            if (distance(ship.transform.position, ranPos) < space)
+        //            {
+        //                flag = true;
+        //            }
+        //        }
+        //    }
+        //}
         return ranPos;
     }
 
