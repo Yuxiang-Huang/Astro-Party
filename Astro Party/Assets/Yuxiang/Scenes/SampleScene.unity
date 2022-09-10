@@ -8575,7 +8575,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1139138461}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: P1Button
+        m_MethodName: P5Button
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13025,7 +13025,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1139138461}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: P1TeamButton
+        m_MethodName: P5TeamButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13234,7 +13234,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1112501226
 Transform:
   m_ObjectHideFlags: 0
@@ -17171,6 +17171,9 @@ MonoBehaviour:
   P4TeamText: {fileID: 1232908734}
   P4RotateText: {fileID: 1714714255}
   P4ShootText: {fileID: 1684400034}
+  P5TeamText: {fileID: 144325768}
+  P5RotateText: {fileID: 818728544}
+  P5ShootText: {fileID: 1970355242}
 --- !u!4 &1428168330
 Transform:
   m_ObjectHideFlags: 0

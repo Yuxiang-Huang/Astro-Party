@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//this is text for ship screen
 public class TextManager : MonoBehaviour
 {
     GameManager gameManagerScript;
@@ -22,6 +23,10 @@ public class TextManager : MonoBehaviour
     public Text P4TeamText;
     public Text P4RotateText;
     public Text P4ShootText;
+
+    public Text P5TeamText;
+    public Text P5RotateText;
+    public Text P5ShootText;
 
     // Start is called before the first frame update
     void Start()
@@ -53,6 +58,11 @@ public class TextManager : MonoBehaviour
     public void P4SwitchTeamText()
     {
         P4TeamText.text = (gameManagerScript.P4Team + 1).ToString();
+    }
+
+    public void P5SwitchTeamText()
+    {
+        P5TeamText.text = (gameManagerScript.P5Team + 1).ToString();
     }
 
     public void P1SetRotate()
@@ -101,6 +111,18 @@ public class TextManager : MonoBehaviour
     {
         PlayerController script = gameManagerScript.P4ShipPlayer.GetComponent<PlayerController>();
         setShootHelper(script, P4ShootText);
+    }
+
+    public void P5SetRotate()
+    {
+        PlayerController script = gameManagerScript.P5ShipPlayer.GetComponent<PlayerController>();
+        setRotateHelper(script, P5RotateText);
+    }
+
+    public void P5SetShoot()
+    {
+        PlayerController script = gameManagerScript.P5ShipPlayer.GetComponent<PlayerController>();
+        setShootHelper(script, P5ShootText);
     }
 
     void setRotateHelper(PlayerController script, Text changeText)
