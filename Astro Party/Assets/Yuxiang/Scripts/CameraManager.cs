@@ -39,19 +39,19 @@ public class CameraManager : MonoBehaviour
 
         float lenZ = (maxZ - minZ) / 2;
 
-        Debug.Log("minX before: " + minX);
+        //Debug.Log("minX before: " + minX);
 
-        minX = Mathf.Max(minX - lenX, -gameManagerScript.spawnX);
-        maxX = Mathf.Min(maxX + lenX, gameManagerScript.spawnX);
+        minX = Mathf.Max(minX - lenX, -gameManagerScript.spawnX - 100);
+        maxX = Mathf.Min(maxX + lenX, gameManagerScript.spawnX + 100);
 
-        minZ = Mathf.Max(minZ - lenZ, -gameManagerScript.spawnZ);
-        maxZ = Mathf.Min(maxZ + lenZ, gameManagerScript.spawnZ);
+        minZ = Mathf.Max(minZ - lenZ, -gameManagerScript.spawnZ - 100);
+        maxZ = Mathf.Min(maxZ + lenZ, gameManagerScript.spawnZ + 100);
 
-        myCamera.orthographicSize = Mathf.Max(1000, Mathf.Max( (maxX - minX) / 2, (maxZ - minZ) / 2)) / 2;
+        myCamera.orthographicSize = Mathf.Max(500, Mathf.Max((maxX - minX) / 2, (maxZ - minZ))) / 2;
 
         transform.position = new Vector3((minX + maxX) / 2, transform.position.y, (minZ + maxZ) / 2);
 
-        Debug.Log("minX after: " + minX);
+        //Debug.Log("minX after: " + minX);
         //Debug.Log("minZ: " + minZ);
         //Debug.Log("maxX: " + maxX);
         //Debug.Log("maxZ: " + maxZ);
