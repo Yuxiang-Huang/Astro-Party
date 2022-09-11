@@ -918,7 +918,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 3737828804014017813}
   ship: {fileID: 929155996236426145, guid: ab8e0b32f0a374f799dfc66ac9162a6f, type: 3}
+  id: 0
   team: 0
+  bodyRend: {fileID: 8873608326355731424}
+  headRend: {fileID: 7093542009220693596}
+  blue1: {fileID: 2100000, guid: aee1eda5f1062490492bde072ef0f2f7, type: 2}
+  red2: {fileID: 2100000, guid: 329078c58a0c04150bb7949cfde893ca, type: 2}
+  yellow3: {fileID: 2100000, guid: 90dc638151335479185544a45af3f6ec, type: 2}
+  cyan4: {fileID: 2100000, guid: 766cb1bc9d98e4bf9b48150d9f39940b, type: 2}
+  green5: {fileID: 2100000, guid: c59522cafbf944136839f49263b32d74, type: 2}
 --- !u!195 &3737828804014017813
 NavMeshAgent:
   m_ObjectHideFlags: 0

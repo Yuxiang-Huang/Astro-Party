@@ -313,10 +313,12 @@ public class MutualShip : MonoBehaviour
             myPilot.GetComponent<PilotPlayerController>().move = GetComponent<PlayerController>().shoot;
             myPilot.GetComponent<PilotPlayerController>().StartCoroutine("respawn");
             myPilot.GetComponent<PilotPlayerController>().team = team;
+            myPilot.GetComponent<PilotPlayerController>().id = id;
         } else if (myPilot.GetComponent<BotPilotMove>() != null)
         {
             myPilot.GetComponent<BotPilotMove>().StartCoroutine("respawn");
             myPilot.GetComponent<BotPilotMove>().team = team;
+            myPilot.GetComponent<BotPilotMove>().id = id;
         }
 
         gameManagerScript.inGameShips[team].Add(myPilot);

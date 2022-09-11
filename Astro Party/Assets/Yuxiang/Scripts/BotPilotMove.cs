@@ -11,12 +11,45 @@ public class BotPilotMove : MonoBehaviour
 
     public GameObject ship;
 
+    public int id;
     public int team;
+
+    public Renderer bodyRend;
+    public Renderer headRend;
+    public Material blue1;
+    public Material red2;
+    public Material yellow3;
+    public Material cyan4;
+    public Material green5;
 
     // Start is called before the first frame update
     void Start()
     {
         gameManagerScript = gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
+
+        switch (id)
+        {
+            case 1:
+                bodyRend.material = blue1;
+                headRend.material = blue1;
+                break;
+            case 2:
+                bodyRend.material = red2;
+                headRend.material = red2;
+                break;
+            case 3:
+                bodyRend.material = yellow3;
+                headRend.material = yellow3;
+                break;
+            case 4:
+                bodyRend.material = cyan4;
+                headRend.material = cyan4;
+                break;
+            case 5:
+                bodyRend.material = green5;
+                headRend.material = green5;
+                break;
+        }
     }
 
     // Update is called once per frame

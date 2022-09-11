@@ -572,6 +572,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a26f06474ce444d688eba21a72681790, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 0
   team: 0
   speed: 300
   maxVelocity: 150
@@ -579,6 +580,13 @@ MonoBehaviour:
   move: 100
   playerRb: {fileID: 0}
   ship: {fileID: 6525305646514065557, guid: 7c0419a36677d4cb6886c0454ffb6615, type: 3}
+  bodyRend: {fileID: 5258529518214926064}
+  headRend: {fileID: 5885709526943036236}
+  blue1: {fileID: 2100000, guid: aee1eda5f1062490492bde072ef0f2f7, type: 2}
+  red2: {fileID: 2100000, guid: 329078c58a0c04150bb7949cfde893ca, type: 2}
+  yellow3: {fileID: 2100000, guid: 90dc638151335479185544a45af3f6ec, type: 2}
+  cyan4: {fileID: 2100000, guid: 766cb1bc9d98e4bf9b48150d9f39940b, type: 2}
+  green5: {fileID: 2100000, guid: c59522cafbf944136839f49263b32d74, type: 2}
 --- !u!1 &2226970142738383252
 GameObject:
   m_ObjectHideFlags: 0
