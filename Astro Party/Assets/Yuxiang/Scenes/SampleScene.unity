@@ -14841,8 +14841,8 @@ MonoBehaviour:
   P5SetRotateButton: {fileID: 84637714}
   P5SetShootButton: {fileID: 1387378155}
   P5StartingPowerUpButton: {fileID: 909216946}
-  spawnX: 925
-  spawnZ: 425
+  spawnX: 950
+  spawnZ: 450
   fixedSpawnText: {fileID: 1842794820}
 --- !u!1 &1146320633
 GameObject:
