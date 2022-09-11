@@ -77,46 +77,49 @@ public class MutualShip : MonoBehaviour
         freezed.SetActive(false);
 
         //setColor and control
+
+        PlayerController script = GetComponent<PlayerController>();
+
         switch (id)
         {
             case 1:
                 rend.material = blue1;
-                if (GetComponent<PlayerController>() != null)
+                if (script != null && script.turn == KeyCode.Space && script.shoot == KeyCode.Space)
                 {
-                    GetComponent<PlayerController>().turn = KeyCode.BackQuote;
-                    GetComponent<PlayerController>().shoot = KeyCode.Tab;
+                    script.turn = KeyCode.BackQuote;
+                    script.shoot = KeyCode.Tab;
                 }
                 break;
             case 2:
                 rend.material = red2;
-                if (GetComponent<PlayerController>() != null)
+                if (script != null && script.turn == KeyCode.Space && script.shoot == KeyCode.Space)
                 {
-                    GetComponent<PlayerController>().turn = KeyCode.Z;
-                    GetComponent<PlayerController>().shoot = KeyCode.X;
+                    script.turn = KeyCode.Z;
+                    script.shoot = KeyCode.X;
                 }
                 break;
             case 3:
                 rend.material = yellow3;
-                if (GetComponent<PlayerController>() != null)
+                if (script != null && script.turn == KeyCode.Space && script.shoot == KeyCode.Space)
                 {
-                    GetComponent<PlayerController>().turn = KeyCode.T;
-                    GetComponent<PlayerController>().shoot = KeyCode.Y;
+                    script.turn = KeyCode.T;
+                    script.shoot = KeyCode.Y;
                 }
                 break;
             case 4:
                 rend.material = cyan4;
-                if (GetComponent<PlayerController>() != null)
+                if (script != null && script.turn == KeyCode.Space && script.shoot == KeyCode.Space)
                 {
-                    GetComponent<PlayerController>().turn = KeyCode.O;
-                    GetComponent<PlayerController>().shoot = KeyCode.P;
+                    script.turn = KeyCode.O;
+                    script.shoot = KeyCode.P;
                 }
                 break;
             case 5:
                 rend.material = green5;
-                if (GetComponent<PlayerController>() != null)
+                if (script != null && script.turn == KeyCode.Space && script.shoot == KeyCode.Space)
                 {
-                    GetComponent<PlayerController>().turn = KeyCode.UpArrow;
-                    GetComponent<PlayerController>().shoot = KeyCode.DownArrow;
+                    script.turn = KeyCode.UpArrow;
+                    script.shoot = KeyCode.DownArrow;
                 }
                 break;
         }

@@ -221,7 +221,7 @@ public class ScoreManager : MonoBehaviour
                         Team4WinText.SetActive(true);
                         break;
                     case 5:
-                        Team4WinText.SetActive(true);
+                        Team5WinText.SetActive(true);
                         break;
                 }
             }
