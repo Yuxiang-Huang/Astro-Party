@@ -78,8 +78,8 @@ public class GameManager : MonoBehaviour
     public GameObject P5SetShootButton;
     public GameObject P5StartingPowerUpButton;
 
-    public int spawnX = 900;
-    public int spawnZ = 420;
+    public int spawnX = 1000;
+    public int spawnZ = 450;
     bool gameStarted;
 
     bool fixedSpawn;

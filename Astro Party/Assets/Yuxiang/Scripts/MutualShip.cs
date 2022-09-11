@@ -11,7 +11,7 @@ public class MutualShip : MonoBehaviour
     public bool tripleShot;
 
     int speed = 500;
-    int bulletDis = 75;
+    int bulletDis = 50;
     public float bulletAnimationPos;
     public GameObject[] bulletAnimation;
     public float reloadTime;
