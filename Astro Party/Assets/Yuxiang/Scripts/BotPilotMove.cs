@@ -9,8 +9,6 @@ public class BotPilotMove : MonoBehaviour
 
     GameManager gameManagerScript;
 
-    public GameObject ship;
-
     public int id;
     public int team;
 
@@ -126,9 +124,25 @@ public class BotPilotMove : MonoBehaviour
     IEnumerator respawn()
     {
         yield return new WaitForSeconds(7f);
-        GameObject myShip = Instantiate(ship, transform.position, transform.rotation);
+
+        GameObject targetShip = null;
+
+        foreach (List<GameObject> shipList in gameManagerScript.ships)
+        {
+            foreach (GameObject ship in shipList)
+            {
+                if (ship.GetComponent<MutualShip>().id == id)
+                {
+                    targetShip = ship;
+                }
+            }
+        }
+
+        GameObject myShip = Instantiate(targetShip, transform.position, transform.rotation);
+        myShip.SetActive(true);
         myShip.transform.Rotate(-90, 0, 0);
         myShip.GetComponent<MutualShip>().team = team;
+        myShip.GetComponent<MutualShip>().id = id;
 
         gameManagerScript.inGameShips[team].Add(myShip);
         gameManagerScript.inGameShips[team].Remove(this.gameObject);
