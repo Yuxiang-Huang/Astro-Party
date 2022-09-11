@@ -33,9 +33,23 @@ public class CameraManager : MonoBehaviour
             }
         }
 
-        Debug.Log(minX);
-        Debug.Log(minZ);
-        Debug.Log(maxX);
-        Debug.Log(maxZ);
+        float lenX = (maxX - minX) / 2;
+
+        float lenZ = (maxZ - minZ) / 2;
+
+        minX = Mathf.Max(minX - lenX, -gameManagerScript.spawnX);
+        maxX = Mathf.Min(maxX + lenX, gameManagerScript.spawnX);
+
+        minZ = Mathf.Max(minZ - lenZ, -gameManagerScript.spawnZ);
+        maxZ = Mathf.Min(maxZ + lenZ, gameManagerScript.spawnZ);
+
+        myCamera.orthographicSize = maxX - minX;
+
+        transform.position = new Vector3((minX + maxX) / 2, transform.y, (minZ + maxZ) / 2);
+
+        //Debug.Log(minX);
+        //Debug.Log(minZ);
+        //Debug.Log(maxX);
+        //Debug.Log(maxZ);
     }
 }
