@@ -523,7 +523,7 @@ Transform:
   m_GameObject: {fileID: 2067998936253723459}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 15, y: 15, z: 15}
+  m_LocalScale: {x: 10, y: 10, z: 15}
   m_Children:
   - {fileID: 7730437475060054375}
   - {fileID: 2899469571527272228}
@@ -579,7 +579,6 @@ MonoBehaviour:
   turn: 97
   move: 100
   playerRb: {fileID: 0}
-  ship: {fileID: 6525305646514065557, guid: 7c0419a36677d4cb6886c0454ffb6615, type: 3}
   bodyRend: {fileID: 5258529518214926064}
   headRend: {fileID: 5885709526943036236}
   blue1: {fileID: 2100000, guid: aee1eda5f1062490492bde072ef0f2f7, type: 2}
