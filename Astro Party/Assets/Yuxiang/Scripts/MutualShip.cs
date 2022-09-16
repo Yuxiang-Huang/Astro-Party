@@ -76,6 +76,15 @@ public class MutualShip : MonoBehaviour
             sideCannons.SetActive(false);
         }
 
+        if (hasShield)
+        {
+            shield.SetActive(true);
+        }
+        else
+        {
+            shield.SetActive(false);
+        }
+
         freezed.SetActive(false);
 
         //setColor and control

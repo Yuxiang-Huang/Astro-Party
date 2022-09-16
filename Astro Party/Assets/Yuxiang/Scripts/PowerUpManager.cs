@@ -49,6 +49,8 @@ public class PowerUpManager : MonoBehaviour
     public Text P4FreezerText;
     public Text P5FreezerText;
 
+    public GameObject shieldIndicator;
+
     GameManager gameManagerScript;
 
     // Start is called before the first frame update
@@ -58,6 +60,7 @@ public class PowerUpManager : MonoBehaviour
         indicators.Add(scatterIndicator);
         indicators.Add(tripleShotIndicator);
         indicators.Add(freezerIndicator);
+        indicators.Add(shieldIndicator);
 
         gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }

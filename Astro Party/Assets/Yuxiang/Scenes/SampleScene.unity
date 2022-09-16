@@ -4747,6 +4747,7 @@ MonoBehaviour:
   P3FreezerText: {fileID: 2040647607}
   P4FreezerText: {fileID: 2019685348}
   P5FreezerText: {fileID: 1809726862}
+  shieldIndicator: {fileID: 9126492650289031536, guid: df33b325e11064914950dc7ecd516e75, type: 3}
 --- !u!82 &344083649
 AudioSource:
   m_ObjectHideFlags: 0
