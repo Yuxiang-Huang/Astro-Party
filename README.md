@@ -21,3 +21,5 @@ This is a recreation of the game Astro Party. I am not using it for commercial p
     
     *  (09-10-2022): Today I started by fixing the bugs I found when I play tested the game with my friends. Then I realized that I can apply material with code and merged all the ship prefabs into a player ship and a bot ship. With that, I started to add a fifth ship to the game and worked extensively with the scripts.
     *  (09-11-2022): Today I started by also mergeing the pilots like the ships. Then I worked on the display by changing the font. Lastly, I resized the map to be five times larger and adding the camera shrinking and expanding feature depending on where the ships are.
+    
+    *  (09-15-2022): Today I reworked the damage system in such a way that the powerUps can just call the function in mutualShip script and really reduce the code in the powerUp scripts. Then, using this new damage system, I added a new powerUp shield to the game.
