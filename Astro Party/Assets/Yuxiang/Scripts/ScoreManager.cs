@@ -307,12 +307,24 @@ public class ScoreManager : MonoBehaviour
         P4Score = 0;
         P5Score = 0;
 
-        //Debug.Log(P1.transform.position);
-        //Debug.Log(P2.transform.position);
-        //Debug.Log(P3.transform.position);
-        //Debug.Log(P4.transform.position);
+        P1WinText.SetActive(false);
+        P2WinText.SetActive(false);
+        P3WinText.SetActive(false);
+        P4WinText.SetActive(false);
+        P5WinText.SetActive(false);
 
-        scoreScreen.SetActive(true);
+        Team1WinText.SetActive(false);
+        Team2WinText.SetActive(false);
+        Team3WinText.SetActive(false);
+        Team4WinText.SetActive(false);
+        Team5WinText.SetActive(false);
+
+    //Debug.Log(P1.transform.position);
+    //Debug.Log(P2.transform.position);
+    //Debug.Log(P3.transform.position);
+    //Debug.Log(P4.transform.position);
+
+    scoreScreen.SetActive(true);
 
         P1.transform.position = new Vector3(startPosX, P1.transform.position.y,
                 P1.transform.position.z);

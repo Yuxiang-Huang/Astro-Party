@@ -7,8 +7,8 @@ public class PilotPlayerController : MonoBehaviour
     public int id;
     public int team;
 
-    public int speed = 75;
-    public int maxVelocity = 100;
+    int speed = 500;
+    int maxVelocity = 300;
     float rotatingSpeed = 2f;
     bool rotating;
     bool moving;
