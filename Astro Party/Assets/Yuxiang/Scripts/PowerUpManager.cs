@@ -50,6 +50,7 @@ public class PowerUpManager : MonoBehaviour
     public Text P5FreezerText;
 
     public GameObject shieldIndicator;
+    public Text shieldText;
 
     GameManager gameManagerScript;
 
@@ -124,6 +125,20 @@ public class PowerUpManager : MonoBehaviour
         {
             indicators.Add(freezerIndicator);
             freezerText.text = "Freezer: On";
+        }
+    }
+
+    public void setShield()
+    {
+        if (indicators.Contains(shieldIndicator))
+        {
+            indicators.Remove(shieldIndicator);
+            shieldText.text = "Shield: Off";
+        }
+        else
+        {
+            indicators.Add(shieldIndicator);
+            shieldText.text = "Shield: On";
         }
     }
 
