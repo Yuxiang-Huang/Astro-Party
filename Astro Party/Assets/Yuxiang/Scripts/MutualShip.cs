@@ -9,6 +9,7 @@ public class MutualShip : MonoBehaviour
 
     public string shootMode;
     public bool tripleShot;
+    public bool hasShield;
 
     int speed = 500;
     int bulletDis = 50;
@@ -29,6 +30,7 @@ public class MutualShip : MonoBehaviour
 
     public GameObject jousters;
     public GameObject sideCannons;
+    public GameObject shield;
     public GameObject freezed;
 
     public Renderer rend;
@@ -315,6 +317,13 @@ public class MutualShip : MonoBehaviour
             }
         }
 
+        if (toKill && hasShield)
+        {
+            hasShield = false;
+            shield.SetActive(false);
+            toKill = false;
+        }
+
         if (toKill)
         {
             //ship explode sound effect
@@ -431,6 +440,12 @@ public class MutualShip : MonoBehaviour
                 tripleShot = true;
                 sideCannons.SetActive(true);
             }
+            else if (powerUpName == "Shield")
+            {
+                hasShield = true;
+                shield.SetActive(true);
+            }
+
             else
             {
                 shootMode = powerUpName;
