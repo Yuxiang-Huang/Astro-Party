@@ -80,33 +80,7 @@ public class BulletMove : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Ship"))
         {
-            bool toKill = true;
-            //Friendly Fire 
-            if (!scoreManagerScript.friendlyFire)
-            {
-                if (team == collision.gameObject.GetComponent<MutualShip>().team)
-                {
-                    toKill = false;
-                }
-            }
-
-            if (toKill)
-            {
-                //ship explode sound effect
-                SEManagerScript.generalAudio.PlayOneShot(SEManagerScript.shipExplode);
-
-                powerUpManagerScript.dropItem(collision.gameObject.GetComponent<MutualShip>());
-
-                if (scoreManagerScript.shipMode == "ship")
-                {
-                    earnPoint();
-                    Destroy(collision.gameObject);
-                }
-                else if (scoreManagerScript.shipMode == "pilot")
-                {
-                    collision.gameObject.GetComponent<MutualShip>().spawnPilot();
-                }
-            }
+            collision.gameObject.GetComponent<MutualShip>().damage(id, team);
         }
 
         if (!collision.gameObject.CompareTag("Floor"))

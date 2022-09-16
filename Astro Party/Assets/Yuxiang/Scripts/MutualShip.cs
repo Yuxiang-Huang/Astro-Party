@@ -303,7 +303,38 @@ public class MutualShip : MonoBehaviour
         }
     }
 
-    public void spawnPilot()
+    public void damage(int otherID, int otherTeam)
+    {
+        bool toKill = true;
+        //Friendly Fire 
+        if (!scoreManagerScript.friendlyFire)
+        {
+            if (otherTeam == team)
+            {
+                toKill = false;
+            }
+        }
+
+        if (toKill)
+        {
+            //ship explode sound effect
+            SEManagerScript.generalAudio.PlayOneShot(SEManagerScript.shipExplode);
+
+            powerUpManagerScript.dropItem(this);
+
+            if (scoreManagerScript.shipMode == "ship")
+            {
+                earnPoint(otherID);
+                Destroy(this.gameObject);
+            }
+            else if (scoreManagerScript.shipMode == "pilot")
+            {
+                spawnPilot();
+            }
+        }
+    }
+
+    void spawnPilot()
     {
         GameObject myPilot = Instantiate(pilot, transform.position, transform.rotation);
         myPilot.transform.Rotate(90, 0, 0);
@@ -359,17 +390,17 @@ public class MutualShip : MonoBehaviour
                 Destroy(collision.gameObject);
                 if (scoreManagerScript.shipMode == "pilot")
                 {
-                    earnPoint();
+                    earnPoint(id);
                 }
             }
         }
     }
 
-    void earnPoint()
+    void earnPoint(int ID)
     {
         if (scoreManagerScript.gameMode == "solo")
         {
-            switch (id)
+            switch (ID)
             {
                 case 1:
                     scoreManagerScript.P1Score++;
