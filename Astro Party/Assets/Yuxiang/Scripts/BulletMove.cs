@@ -5,8 +5,6 @@ using UnityEngine;
 public class BulletMove : MonoBehaviour
 {
     ScoreManager scoreManagerScript;
-    PowerUpManager powerUpManagerScript;
-    SEManager SEManagerScript;
 
     public int id;
     Rigidbody Rb;
@@ -20,8 +18,6 @@ public class BulletMove : MonoBehaviour
         Rb = GetComponent<Rigidbody>();
         Rb.AddRelativeForce(new Vector3(0, 0, speed), ForceMode.VelocityChange);
         scoreManagerScript = GameObject.Find("Score Manager").GetComponent<ScoreManager>();
-        powerUpManagerScript = GameObject.Find("PowerUp Manager").GetComponent<PowerUpManager>();
-        SEManagerScript = GameObject.Find("SoundEffect Manager").GetComponent<SEManager>();
     }
 
     // Update is called once per frame
@@ -44,37 +40,13 @@ public class BulletMove : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Pilot"))
         {
-            bool toKill = true;
-            //Friendly Fire 
-            if (!scoreManagerScript.friendlyFire)
+            if (collision.gameObject.GetComponent<PilotPlayerController>() != null)
             {
-                if (collision.gameObject.GetComponent<PilotPlayerController>() != null)
-                {
-                    if (team == collision.gameObject.GetComponent<PilotPlayerController>().team)
-                    {
-                        toKill = false;
-                    }
-                }
-
-                else if (collision.gameObject.GetComponent<BotPilotMove>() != null)
-                {
-                    if (team == collision.gameObject.GetComponent<BotPilotMove>().team)
-                    {
-                        toKill = false;
-                    }
-                }
+                collision.gameObject.GetComponent<PilotPlayerController>().kill(id, team);
             }
-            if (toKill)
+            else
             {
-                //sound effect
-                SEManagerScript.generalAudio.PlayOneShot(SEManagerScript.pilotDeath);
-
-                Destroy(collision.gameObject);
-
-                if (scoreManagerScript.shipMode == "pilot")
-                {
-                    earnPoint();
-                }
+                collision.gameObject.GetComponent<BotPilotMove>().kill(id, team);
             }
         }
 

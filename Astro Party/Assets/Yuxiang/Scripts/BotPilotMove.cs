@@ -8,6 +8,8 @@ public class BotPilotMove : MonoBehaviour
     [SerializeField] private NavMeshAgent agent;
 
     GameManager gameManagerScript;
+    ScoreManager scoreManagerScript;
+    SEManager SEManagerScript;
 
     public int id;
     public int team;
@@ -24,6 +26,8 @@ public class BotPilotMove : MonoBehaviour
     void Start()
     {
         gameManagerScript = gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        scoreManagerScript = GameObject.Find("Score Manager").GetComponent<ScoreManager>();
+        SEManagerScript = GameObject.Find("SoundEffect Manager").GetComponent<SEManager>();
 
         switch (id)
         {
@@ -148,5 +152,55 @@ public class BotPilotMove : MonoBehaviour
         gameManagerScript.inGameShips[team].Remove(this.gameObject);
 
         Destroy(this.gameObject);
+    }
+
+    public void kill(int otherID, int otherTeam)
+    {
+        bool toKill = true;
+        //Friendly Fire 
+        if (!scoreManagerScript.friendlyFire)
+        {
+            if (team == otherTeam)
+            {
+                toKill = false;
+            }
+        }
+        if (toKill)
+        {
+            //sound effect
+            SEManagerScript.generalAudio.PlayOneShot(SEManagerScript.pilotDeath);
+
+            Destroy(this.gameObject);
+
+            if (scoreManagerScript.shipMode == "pilot")
+            {
+                earnPoint(otherID);
+            }
+        }
+    }
+
+    void earnPoint(int ID)
+    {
+        if (scoreManagerScript.gameMode == "solo")
+        {
+            switch (ID)
+            {
+                case 1:
+                    scoreManagerScript.P1Score++;
+                    break;
+                case 2:
+                    scoreManagerScript.P2Score++;
+                    break;
+                case 3:
+                    scoreManagerScript.P3Score++;
+                    break;
+                case 4:
+                    scoreManagerScript.P4Score++;
+                    break;
+                case 5:
+                    scoreManagerScript.P5Score++;
+                    break;
+            }
+        }
     }
 }

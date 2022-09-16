@@ -19,6 +19,8 @@ public class PilotPlayerController : MonoBehaviour
     public Rigidbody playerRb;
 
     GameManager gameManagerScript;
+    ScoreManager scoreManagerScript;
+    SEManager SEManagerScript;
 
     public Renderer bodyRend;
     public Renderer headRend;
@@ -32,6 +34,9 @@ public class PilotPlayerController : MonoBehaviour
     void Start()
     {
         gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        scoreManagerScript = GameObject.Find("Score Manager").GetComponent<ScoreManager>();
+        SEManagerScript = GameObject.Find("SoundEffect Manager").GetComponent<SEManager>();
+
         playerRb = GetComponent<Rigidbody>();
 
         switch (id)
@@ -124,5 +129,55 @@ public class PilotPlayerController : MonoBehaviour
         gameManagerScript.inGameShips[team].Remove(this.gameObject);
 
         Destroy(this.gameObject);
+    }
+
+    public void kill(int otherID, int otherTeam)
+    {
+        bool toKill = true;
+        //Friendly Fire 
+        if (!scoreManagerScript.friendlyFire)
+        {
+            if (team == otherTeam)
+            {
+                toKill = false;
+            }
+        }
+        if (toKill)
+        {
+            //sound effect
+            SEManagerScript.generalAudio.PlayOneShot(SEManagerScript.pilotDeath);
+
+            Destroy(this.gameObject);
+
+            if (scoreManagerScript.shipMode == "pilot")
+            {
+                earnPoint(otherID);
+            }
+        }
+    }
+
+    void earnPoint(int ID)
+    {
+        if (scoreManagerScript.gameMode == "solo")
+        {
+            switch (ID)
+            {
+                case 1:
+                    scoreManagerScript.P1Score++;
+                    break;
+                case 2:
+                    scoreManagerScript.P2Score++;
+                    break;
+                case 3:
+                    scoreManagerScript.P3Score++;
+                    break;
+                case 4:
+                    scoreManagerScript.P4Score++;
+                    break;
+                case 5:
+                    scoreManagerScript.P5Score++;
+                    break;
+            }
+        }
     }
 }
