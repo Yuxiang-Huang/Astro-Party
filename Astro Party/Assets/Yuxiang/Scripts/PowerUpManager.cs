@@ -51,6 +51,11 @@ public class PowerUpManager : MonoBehaviour
 
     public GameObject shieldIndicator;
     public Text shieldText;
+    public Text P1ShieldText;
+    public Text P2ShieldText;
+    public Text P3ShieldText;
+    public Text P4ShieldText;
+    public Text P5ShieldText;
 
     GameManager gameManagerScript;
 
@@ -367,6 +372,57 @@ public class PowerUpManager : MonoBehaviour
                     {
                         script.tripleShot = true;
                         modeText.text = "Triple Shot: On";
+                    }
+                }
+            }
+        }
+    }
+
+    //Shield
+
+    public void setShieldP1()
+    {
+        setShiledHelper(1, P1ShieldText);
+    }
+
+    public void setShieldP2()
+    {
+        setShiledHelper(2, P2ShieldText);
+    }
+
+    public void setShieldP3()
+    {
+        setShiledHelper(3, P3ShieldText);
+    }
+
+    public void setShieldP4()
+    {
+        setShiledHelper(4, P4ShieldText);
+    }
+
+    public void setShieldP5()
+    {
+        setShiledHelper(5, P5ShieldText);
+    }
+
+    void setShiledHelper(int id, Text modeText)
+    {
+        foreach (List<GameObject> shipList in gameManagerScript.ships)
+        {
+            foreach (GameObject ship in shipList)
+            {
+                MutualShip script = ship.GetComponent<MutualShip>();
+                if (script.id == id)
+                {
+                    if (script.hasShield)
+                    {
+                        script.hasShield = false;
+                        modeText.text = "Shield: Off";
+                    }
+                    else
+                    {
+                        script.hasShield = true;
+                        modeText.text = "Shield: On";
                     }
                 }
             }
