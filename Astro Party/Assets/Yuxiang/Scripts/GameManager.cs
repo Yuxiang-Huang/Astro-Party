@@ -295,6 +295,8 @@ public class GameManager : MonoBehaviour
                     rot.RemoveAt(ran);
                 }
             }
+
+            powerUpManagerScript.autoBalance();
         }
 
         resetPosRot();

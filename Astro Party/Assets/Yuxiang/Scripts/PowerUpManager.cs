@@ -75,6 +75,7 @@ public class PowerUpManager : MonoBehaviour
     public Text P5ShieldText;
 
     GameManager gameManagerScript;
+    ScoreManager scoreManagerScript;
 
     // Start is called before the first frame update
     void Start()
@@ -90,6 +91,7 @@ public class PowerUpManager : MonoBehaviour
         SPU.Add("Freezer");
 
         gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        scoreManagerScript = GameObject.Find("Score Manager").GetComponent<ScoreManager>();
     }
 
     // Update is called once per frame
@@ -110,6 +112,52 @@ public class PowerUpManager : MonoBehaviour
             autoBalanceText.text = "Auto Balance: On";
         }
         isAutoBalance = !isAutoBalance;
+    }
+
+    public void autoBalance()
+    {
+        int maxScore = scoreManagerScript.P1Score;
+        maxScore = Mathf.Max(maxScore, scoreManagerScript.P2Score);
+        maxScore = Mathf.Max(maxScore, scoreManagerScript.P3Score);
+        maxScore = Mathf.Max(maxScore, scoreManagerScript.P4Score);
+        maxScore = Mathf.Max(maxScore, scoreManagerScript.P5Score);
+
+        foreach (List<GameObject> shipList in gameManagerScript.inGameShips)
+        {
+            foreach (GameObject ship in shipList)
+            {
+                switch (ship.GetComponent<MutualShip>().id)
+                {
+                    case 1:
+                        getPowerUp(scoreManagerScript.P1Score, maxScore, ship.GetComponent<MutualShip>());
+                        break;
+                    case 2:
+                        getPowerUp(scoreManagerScript.P2Score, maxScore, ship.GetComponent<MutualShip>());
+                        break;
+                    case 3:
+                        getPowerUp(scoreManagerScript.P3Score, maxScore, ship.GetComponent<MutualShip>());
+                        break;
+                    case 4:
+                        getPowerUp(scoreManagerScript.P4Score, maxScore, ship.GetComponent<MutualShip>());
+                        break;
+                    case 5:
+                        getPowerUp(scoreManagerScript.P5Score, maxScore, ship.GetComponent<MutualShip>());
+                        break;
+                }
+            }
+        }
+    }
+
+    void getPowerUp(int score, int maxScore, MutualShip script)
+    {
+        if (score < maxScore - 1)
+        {
+            script.hasShield = true;
+        }
+        if (score < maxScore - 2)
+        {
+            script.tripleShot = true;
+        }
     }
 
     //Starting Power Up
