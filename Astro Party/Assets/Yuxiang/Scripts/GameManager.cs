@@ -234,9 +234,11 @@ public class GameManager : MonoBehaviour
     {
         //Starting PowerUP
         string startingPowerUp = "normal";
+        bool hasSPU = false;
 
         if (powerUpManagerScript.allRandomSPU)
         {
+            hasSPU = true;
             startingPowerUp = powerUpManagerScript.SPU[Random.Range(0, powerUpManagerScript.SPU.Count)];
         }
 
@@ -275,6 +277,13 @@ public class GameManager : MonoBehaviour
                     inGameShips[i][j].GetComponent<MutualShip>().shootMode = startingPowerUp;
                 }
 
+                if (inGameShips[i][j].GetComponent<MutualShip>().shootMode == "Random Starting PowerUp")
+                {
+                    hasSPU = true;
+                    inGameShips[i][j].GetComponent<MutualShip>().shootMode =
+                        powerUpManagerScript.SPU[Random.Range(0, powerUpManagerScript.SPU.Count)]; ;
+                }
+
                 inGameShips[i][j].SetActive(true);
 
                 //begin freeze
@@ -290,7 +299,7 @@ public class GameManager : MonoBehaviour
 
         resetPosRot();
 
-        if (powerUpManagerScript.allRandomSPU)
+        if (hasSPU)
         {
             screenManagerScript.StartCoroutine("startingPowerUp");
         }

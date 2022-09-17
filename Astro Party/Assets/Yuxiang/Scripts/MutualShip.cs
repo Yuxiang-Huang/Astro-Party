@@ -8,7 +8,7 @@ public class MutualShip : MonoBehaviour
     public int team;
 
     bool died;
-    public string shootMode;
+    public string shootMode = "normal";
     public bool tripleShot;
     public bool hasShield;
 
@@ -51,11 +51,7 @@ public class MutualShip : MonoBehaviour
         playerRb = GetComponent<Rigidbody>();
         playerAudio = GetComponent<AudioSource>();
 
-        if (shootMode == "")
-        {
-            shootMode = "normal";
-        }
-        else
+        if (shootMode != "normal")
         {
             foreach (GameObject curr in bulletAnimation)
             {

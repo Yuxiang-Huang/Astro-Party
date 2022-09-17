@@ -113,8 +113,6 @@ public class PowerUpManager : MonoBehaviour
             allRandomSPUText.text = "Random Starting PowerUp: On";
         }
 
-
-
         allRandomSPU = !allRandomSPU;
     }
 
