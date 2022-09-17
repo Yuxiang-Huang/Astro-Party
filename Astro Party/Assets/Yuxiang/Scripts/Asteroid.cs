@@ -67,7 +67,9 @@ public class Asteroid : MonoBehaviour
 
             if (type == "powerUp")
             {
-                GameObject toAdd = Instantiate(powerUp, transform.position, powerUp.transform.rotation);
+                GameObject toAdd = Instantiate(powerUp,
+                    new Vector3(transform.position.x, powerUpManagerScript.powerUpyValue, transform.position.z),
+                    powerUp.transform.rotation);
 
                 gameManagerScript.inGameIndicators.Add(toAdd);
             }

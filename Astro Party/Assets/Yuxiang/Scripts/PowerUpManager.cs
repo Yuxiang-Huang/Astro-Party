@@ -7,6 +7,8 @@ public class PowerUpManager : MonoBehaviour
 {
     public List<GameObject> indicators = new List<GameObject>();
 
+    public int powerUpyValue = 30;
+
     public GameObject bullet;
 
     public Text P1CurrText;
@@ -154,15 +156,21 @@ public class PowerUpManager : MonoBehaviour
             switch (script.shootMode)
             {
                 case "Laser Beam":
-                    GameObject toAdd = Instantiate(laserIndicator, transform.position, laserIndicator.transform.rotation);
+                    GameObject toAdd = Instantiate(laserIndicator,
+                        new Vector3(transform.position.x, powerUpyValue, transform.position.z),
+                        laserIndicator.transform.rotation);
                     gameManagerScript.inGameIndicators.Add(toAdd);
                     break;
                 case "Scatter Shot":
-                    GameObject toAdd1 = Instantiate(scatterIndicator, transform.position, scatterIndicator.transform.rotation);
+                    GameObject toAdd1 = Instantiate(scatterIndicator,
+                        new Vector3(transform.position.x, powerUpyValue, transform.position.z),
+                        scatterIndicator.transform.rotation);
                     gameManagerScript.inGameIndicators.Add(toAdd1);
                     break;
                 case "Freezer":
-                    GameObject toAdd2 = Instantiate(freezerIndicator, transform.position, freezerIndicator.transform.rotation);
+                    GameObject toAdd2 = Instantiate(freezerIndicator,
+                        new Vector3(transform.position.x, powerUpyValue, transform.position.z),
+                        freezerIndicator.transform.rotation);
                     gameManagerScript.inGameIndicators.Add(toAdd2);
                     break;
             }

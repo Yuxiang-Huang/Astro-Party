@@ -46,7 +46,8 @@ public class SpawnManager : MonoBehaviour
         {
             int ran = Random.Range(0, powerUpManagerScript.indicators.Count);
 
-            GameObject powerUp = Instantiate(powerUpManagerScript.indicators[ran], new Vector3(0, 0, 0),
+            GameObject powerUp = Instantiate(powerUpManagerScript.indicators[ran],
+                new Vector3(0, powerUpManagerScript.powerUpyValue, 0),
                 powerUpManagerScript.indicators[ran].transform.rotation);
 
             gameManagerScript.inGameIndicators.Add(powerUp);
