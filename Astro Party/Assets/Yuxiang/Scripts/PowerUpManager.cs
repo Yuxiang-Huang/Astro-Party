@@ -157,19 +157,19 @@ public class PowerUpManager : MonoBehaviour
             {
                 case "Laser Beam":
                     GameObject toAdd = Instantiate(laserIndicator,
-                        new Vector3(transform.position.x, powerUpyValue, transform.position.z),
+                        new Vector3(script.transform.position.x, powerUpyValue, script.transform.position.z),
                         laserIndicator.transform.rotation);
                     gameManagerScript.inGameIndicators.Add(toAdd);
                     break;
                 case "Scatter Shot":
                     GameObject toAdd1 = Instantiate(scatterIndicator,
-                        new Vector3(transform.position.x, powerUpyValue, transform.position.z),
+                        new Vector3(script.transform.position.x, powerUpyValue, script.transform.position.z),
                         scatterIndicator.transform.rotation);
                     gameManagerScript.inGameIndicators.Add(toAdd1);
                     break;
                 case "Freezer":
                     GameObject toAdd2 = Instantiate(freezerIndicator,
-                        new Vector3(transform.position.x, powerUpyValue, transform.position.z),
+                        new Vector3(script.transform.position.x, powerUpyValue, script.transform.position.z),
                         freezerIndicator.transform.rotation);
                     gameManagerScript.inGameIndicators.Add(toAdd2);
                     break;
