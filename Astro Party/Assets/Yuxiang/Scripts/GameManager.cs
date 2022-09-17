@@ -302,6 +302,13 @@ public class GameManager : MonoBehaviour
         if (hasSPU)
         {
             screenManagerScript.StartCoroutine("startingPowerUp");
+            for (int i = 0; i < ships.Count; i++)
+            {
+                for (int j = 0; j < ships[i].Count; j++)
+                {
+                    inGameShips[i][j].GetComponent<MutualShip>().freezeTime += 1.0f;
+                }
+            }
         }
     }
 

@@ -242,7 +242,7 @@ public class ScreenManager : MonoBehaviour
 
         SPUScreen.SetActive(true);
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2.0f);
 
         SPUScreen.SetActive(false);
         P1SPUText.gameObject.SetActive(false);
