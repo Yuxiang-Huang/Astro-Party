@@ -102,7 +102,7 @@ public class PowerUpManager : MonoBehaviour
 
     //Starting Power Up
 
-    public void setAllRandomSUP()
+    public void setRandomSPUAll()
     {
         if (allRandomSPU)
         {
@@ -112,8 +112,41 @@ public class PowerUpManager : MonoBehaviour
         {
             allRandomSPUText.text = "Random Starting PowerUp: On";
         }
+
+
+
         allRandomSPU = !allRandomSPU;
     }
+
+    public void setRandomSPUP1()
+    {
+        setHelper("Random Starting PowerUp", P1RandomSPUText, 1);
+        P1RandomSPU = !P1RandomSPU;
+    }
+
+    //public void setRandomSPUP2()
+    //{
+    //    setRandomSPUHelper(P2RandomSPU, P2RandomSPUText);
+    //    P2RandomSPU = !P2RandomSPU;
+    //}
+
+    //public void setRandomSPUP3()
+    //{
+    //    setRandomSPUHelper(P3RandomSPU, P3RandomSPUText);
+    //    P3RandomSPU = !P3RandomSPU;
+    //}
+
+    //public void setRandomSPUP4()
+    //{
+    //    setRandomSPUHelper(P4RandomSPU, P4RandomSPUText);
+    //    P4RandomSPU = !P4RandomSPU;
+    //}
+
+    //public void setRandomSPUP5()
+    //{
+    //    setRandomSPUHelper(P5RandomSPU, P5RandomSPUText);
+    //    P5RandomSPU = !P5RandomSPU;
+    //}
 
     //PowerUP
 

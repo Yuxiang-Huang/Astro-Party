@@ -269,7 +269,11 @@ public class GameManager : MonoBehaviour
                 inGameShips[i][j].transform.Rotate(rot[ran]);
 
                 inGameShips[i][j].GetComponent<MutualShip>().team = i;
-                inGameShips[i][j].GetComponent<MutualShip>().shootMode = startingPowerUp;
+
+                if (inGameShips[i][j].GetComponent<MutualShip>().shootMode == "normal")
+                {
+                    inGameShips[i][j].GetComponent<MutualShip>().shootMode = startingPowerUp;
+                }
 
                 inGameShips[i][j].SetActive(true);
 
