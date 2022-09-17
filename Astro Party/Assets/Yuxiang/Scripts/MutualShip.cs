@@ -18,6 +18,8 @@ public class MutualShip : MonoBehaviour
     public GameObject[] bulletAnimation;
     public float reloadTime;
     public int ammo;
+    public int maxPowerUp = 3;
+    int powerUpUsed;
 
     Rigidbody playerRb;
     AudioSource playerAudio;
@@ -219,85 +221,77 @@ public class MutualShip : MonoBehaviour
             //setting the script varibles
             myBullet.GetComponent<BulletMove>().id = id;
             myBullet.GetComponent<BulletMove>().team = team;
-            
+
 
             //Sound effect
             playerAudio.PlayOneShot(SEManagerScript.bulletSound);
         }
-        else if (shootMode == "Laser Beam")
+        else
         {
-            //5000 is half the length of laserbeam
-            GameObject myLaser = Instantiate(powerUpManagerScript.laser, transform.position +
-            new Vector3((bulletDis + 1000) * Mathf.Sin(angle), 10, (bulletDis + 1000) * Mathf.Cos(angle)),
-            transform.rotation);
-
-            //setting the script varibles
-            myLaser.GetComponent<Laser>().id = id;
-            myLaser.GetComponent<Laser>().team = team;
-
-            //Sound effect
-            playerAudio.PlayOneShot(SEManagerScript.laserSound);
-
-            //Freeze after using laser
-            StartCoroutine("laserFreeze");
-
-            shootMode = "normal";
-
-            ammo = 3;
-
-            foreach (GameObject curr in bulletAnimation)
+            if (shootMode == "Laser Beam")
             {
-                curr.SetActive(true);
-            }
-        }
-        else if (shootMode == "Scatter Shot")
-        {
-            int numOfShots = 16;
-
-            for (int i = 0; i < numOfShots; i++)
-            {
-                float angleNow = transform.rotation.ToEulerAngles().y;
-
-                GameObject myBullet = Instantiate(powerUpManagerScript.bullet, transform.position +
-            new Vector3(bulletDis * Mathf.Sin(angleNow), 20, bulletDis * Mathf.Cos(angleNow)), transform.rotation);
-
-                transform.Rotate(0, 360 / numOfShots, 0);
-
-                //Sound effect
-                playerAudio.PlayOneShot(SEManagerScript.bulletSound);
+                //5000 is half the length of laserbeam
+                GameObject myLaser = Instantiate(powerUpManagerScript.laser, transform.position +
+                new Vector3((bulletDis + 1000) * Mathf.Sin(angle), 10, (bulletDis + 1000) * Mathf.Cos(angle)),
+                transform.rotation);
 
                 //setting the script varibles
-                myBullet.GetComponent<BulletMove>().id = id;
-                myBullet.GetComponent<BulletMove>().team = team;
+                myLaser.GetComponent<Laser>().id = id;
+                myLaser.GetComponent<Laser>().team = team;
+
+                //Sound effect
+                playerAudio.PlayOneShot(SEManagerScript.laserSound);
+
+                //Freeze after using laser
+                StartCoroutine("laserFreeze");
+            }
+            else if (shootMode == "Scatter Shot")
+            {
+                int numOfShots = 16;
+
+                for (int i = 0; i < numOfShots; i++)
+                {
+                    float angleNow = transform.rotation.ToEulerAngles().y;
+
+                    GameObject myBullet = Instantiate(powerUpManagerScript.bullet, transform.position +
+                new Vector3(bulletDis * Mathf.Sin(angleNow), 20, bulletDis * Mathf.Cos(angleNow)), transform.rotation);
+
+                    transform.Rotate(0, 360 / numOfShots, 0);
+
+                    //Sound effect
+                    playerAudio.PlayOneShot(SEManagerScript.bulletSound);
+
+                    //setting the script varibles
+                    myBullet.GetComponent<BulletMove>().id = id;
+                    myBullet.GetComponent<BulletMove>().team = team;
+                }
+            }
+            else if (shootMode == "Freezer")
+            {
+                GameObject myFreezer = Instantiate(powerUpManagerScript.freezer, transform.position, transform.rotation);
+
+                //Sound effect
+                playerAudio.PlayOneShot(SEManagerScript.freezerSound);
+
+                //setting the script varibles
+                myFreezer.GetComponent<Freezer>().id = id;
+                myFreezer.GetComponent<Freezer>().team = team;
             }
 
-            shootMode = "normal";
+            powerUpUsed++;
 
-            ammo = 3;
-
-            foreach (GameObject curr in bulletAnimation)
+            if (powerUpUsed == maxPowerUp)
             {
-                curr.SetActive(true);
-            }
-        }
-        else if (shootMode == "Freezer")
-        {
-            GameObject myFreezer = Instantiate(powerUpManagerScript.freezer, transform.position, transform.rotation);   
+                shootMode = "normal";
 
-            //Sound effect
-            playerAudio.PlayOneShot(SEManagerScript.freezerSound);
+                ammo = 3;
 
-            //setting the script varibles
-            myFreezer.GetComponent<Freezer>().id = id;
-            myFreezer.GetComponent<Freezer>().team = team;
+                foreach (GameObject curr in bulletAnimation)
+                {
+                    curr.SetActive(true);
+                }
 
-            shootMode = "normal";
-
-            ammo = 3;
-
-            foreach (GameObject curr in bulletAnimation)
-            {
-                curr.SetActive(true);
+                powerUpUsed = 0;
             }
         }
     }
