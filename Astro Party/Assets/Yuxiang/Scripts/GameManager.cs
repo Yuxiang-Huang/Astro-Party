@@ -84,6 +84,8 @@ public class GameManager : MonoBehaviour
 
     bool fixedSpawn;
     public Text fixedSpawnText;
+    public bool bulletCancel;
+    public Text bulletCancelText;
 
     // Start is called before the first frame update
     void Start()
@@ -271,19 +273,6 @@ public class GameManager : MonoBehaviour
         }
 
         resetPosRot();
-    }
-
-    public void setFixedSpawn()
-    {
-        if (fixedSpawn)
-        {
-            fixedSpawnText.text = "Fixed Spawn: Off";
-        }
-        else
-        {
-            fixedSpawnText.text = "Fixed Spawn: On";
-        }
-        fixedSpawn = !fixedSpawn;
     }
 
     public void P1Button()
@@ -513,5 +502,31 @@ public class GameManager : MonoBehaviour
         rot = new List<Vector3>() {new Vector3(0, 180, 0), new Vector3(0, 90, 0),
         new Vector3(0, 0, 0), new Vector3(0, -90, 0),
             new Vector3(0, -45, 0)};
+    }
+
+    public void setFixedSpawn()
+    {
+        if (fixedSpawn)
+        {
+            fixedSpawnText.text = "Fixed Spawn: Off";
+        }
+        else
+        {
+            fixedSpawnText.text = "Fixed Spawn: On";
+        }
+        fixedSpawn = !fixedSpawn;
+    }
+
+    public void setBulletCancel()
+    {
+        if (bulletCancel)
+        {
+            bulletCancelText.text = "Bullet Cancel: Off";
+        }
+        else
+        {
+            bulletCancelText.text = "Bullet Cancel: On";
+        }
+        bulletCancel = !bulletCancel;
     }
 }
