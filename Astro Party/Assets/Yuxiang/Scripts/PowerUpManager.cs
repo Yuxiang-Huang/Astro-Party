@@ -14,6 +14,19 @@ public class PowerUpManager : MonoBehaviour
     public int maxPowerUp = 1;
     public Text maxPowerUpText;
 
+    bool allRandomSPU;
+    public Text allRandomSPUText;
+    bool P1RandomSPU;
+    public Text P1RandomSPUText;
+    bool P2RandomSPU;
+    public Text P2RandomSPUText;
+    bool P3RandomSPU;
+    public Text P3RandomSPUText;
+    bool P4RandomSPU;
+    public Text P4RandomSPUText;
+    bool P5RandomSPU;
+    public Text P5RandomSPUText;
+
     public Text P1CurrText;
     public Text P2CurrText;
     public Text P3CurrText;
@@ -81,6 +94,25 @@ public class PowerUpManager : MonoBehaviour
     {
         
     }
+
+    //Starting Power Up
+
+    public void setAllRandomSUP()
+    {
+        if (allRandomSPU)
+        {
+            allRandomSPUText.text = "Random Starting PowerUp: Off";
+        }
+        else
+        {
+            allRandomSPUText.text = "Random Starting PowerUp: On";
+        }
+        allRandomSPU = !allRandomSPU;
+    }
+
+
+
+    //PowerUP
 
     public void setTriplePowerUp()
     {
