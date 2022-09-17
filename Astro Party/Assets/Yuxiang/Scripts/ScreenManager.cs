@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ScreenManager : MonoBehaviour
 {
@@ -16,6 +17,13 @@ public class ScreenManager : MonoBehaviour
     public GameObject infoScreen2;
     public GameObject mapScreen;
     public GameObject powerUpScreen;
+
+    public GameObject SPUScreen;
+    public TextMeshProUGUI P1SPUText;
+    public TextMeshProUGUI P2SPUText;
+    public TextMeshProUGUI P3SPUText;
+    public TextMeshProUGUI P4SPUText;
+    public TextMeshProUGUI P5SPUText;
 
     public GameObject P1PowerUpScreen;
     public GameObject P2PowerUpScreen;
@@ -43,6 +51,7 @@ public class ScreenManager : MonoBehaviour
         P3PowerUpScreen.SetActive(false);
         P4PowerUpScreen.SetActive(false);
         P5PowerUpScreen.SetActive(false);
+        SPUScreen.SetActive(false);
 
         scoreManagerScript = GameObject.Find("Score Manager").GetComponent<ScoreManager>();
         gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
@@ -197,5 +206,30 @@ public class ScreenManager : MonoBehaviour
         P4PowerUpScreen.SetActive(false);
         P5PowerUpScreen.SetActive(false);
         powerUpScreen.SetActive(true);
+    }
+
+    IEnumerator startingPowerUp()
+    {
+        foreach (List<GameObject> shipList in gameManagerScript.inGameShips)
+        {
+            foreach (GameObject ship in shipList)
+            {
+                switch (ship.GetComponent<MutualShip>().id)
+                {
+                    
+                }
+            }
+        }
+
+        SPUScreen.SetActive(true);
+
+        yield return new WaitForSeconds(1);
+
+        SPUScreen.SetActive(true);
+        P1SPUText.gameObject.SetActive(false);
+        P2SPUText.gameObject.SetActive(false);
+        P3SPUText.gameObject.SetActive(false);
+        P4SPUText.gameObject.SetActive(false);
+        P5SPUText.gameObject.SetActive(false);
     }
 }

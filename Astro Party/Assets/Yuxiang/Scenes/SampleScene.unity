@@ -5138,15 +5138,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   indicators: []
+  SPU: []
   powerUpyValue: 30
   bullet: {fileID: 4074745524491351559, guid: 3029e57bd05d644daa79107a6ba55699, type: 3}
   maxPowerUp: 1
   maxPowerUpText: {fileID: 2090219938}
+  allRandomSPU: 0
   allRandomSPUText: {fileID: 224960066}
+  P1RandomSPU: 0
   P1RandomSPUText: {fileID: 0}
+  P2RandomSPU: 0
   P2RandomSPUText: {fileID: 0}
+  P3RandomSPU: 0
   P3RandomSPUText: {fileID: 0}
+  P4RandomSPU: 0
   P4RandomSPUText: {fileID: 0}
+  P5RandomSPU: 0
   P5RandomSPUText: {fileID: 0}
   P1CurrText: {fileID: 0}
   P2CurrText: {fileID: 0}
@@ -22547,6 +22554,12 @@ MonoBehaviour:
   infoScreen2: {fileID: 1453480421}
   mapScreen: {fileID: 1892979923}
   powerUpScreen: {fileID: 1859962656}
+  SPUScreen: {fileID: 466708193}
+  P1SPUText: {fileID: 590924024}
+  P2SPUText: {fileID: 683415214}
+  P3SPUText: {fileID: 205308575}
+  P4SPUText: {fileID: 116282507}
+  P5SPUText: {fileID: 771887945}
   P1PowerUpScreen: {fileID: 1172546300}
   P2PowerUpScreen: {fileID: 256333000}
   P3PowerUpScreen: {fileID: 1976059161}

@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     SEManager SEManagerScript;
     SpawnManager spawnManagerScript;
     PowerUpManager powerUpManagerScript;
+    ScreenManager screenManagerScript;
 
     public GameObject nextButton;
 
@@ -105,6 +106,7 @@ public class GameManager : MonoBehaviour
         SEManagerScript = GameObject.Find("SoundEffect Manager").GetComponent<SEManager>();
         spawnManagerScript = GameObject.Find("Spawn Manager").GetComponent<SpawnManager>();
         powerUpManagerScript = GameObject.Find("PowerUp Manager").GetComponent<PowerUpManager>();
+        screenManagerScript = GameObject.Find("Screen Manager").GetComponent<ScreenManager>();
 
         //Creating ships
         P1ShipBot = Instantiate(botShip, new Vector3(0, 0, 0), playerShip.transform.rotation);
@@ -283,7 +285,14 @@ public class GameManager : MonoBehaviour
         }
 
         resetPosRot();
+
+        if (powerUpManagerScript.allRandomSPU)
+        {
+            screenManagerScript.StartCoroutine("startingPowerUp");
+        }
     }
+
+    //Buttons
 
     public void P1Button()
     {
