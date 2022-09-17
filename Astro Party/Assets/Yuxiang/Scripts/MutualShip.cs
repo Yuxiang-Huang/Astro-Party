@@ -20,6 +20,9 @@ public class MutualShip : MonoBehaviour
     public int ammo;
     public int powerUpUsed;
 
+    public float freezeTime;
+    bool freezed;
+
     Rigidbody playerRb;
     AudioSource playerAudio;
 
@@ -33,7 +36,7 @@ public class MutualShip : MonoBehaviour
     public GameObject jousters;
     public GameObject sideCannons;
     public GameObject shield;
-    public GameObject freezed;
+    public GameObject freezeCube;
 
     public Renderer rend;
     public Material blue1;
@@ -87,7 +90,7 @@ public class MutualShip : MonoBehaviour
             shield.SetActive(false);
         }
 
-        freezed.SetActive(false);
+        freezeCube.SetActive(false);
 
         //setColor and control
 
@@ -141,6 +144,46 @@ public class MutualShip : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //freezed
+        if (freezeTime > 0)
+        {
+            freezeTime -= Time.deltaTime;
+            freezeTime = Mathf.Max(0, freezeTime);
+        }
+        //freeze
+        if (!freezed && freezeTime > 0)
+        {
+            if (GetComponent<PlayerController>() != null)
+            {
+                GetComponent<PlayerController>().shootDisable = true;
+                playerRb.constraints = RigidbodyConstraints.FreezeAll;
+            }
+            else
+            {
+                GetComponent<BotMove>().agent.SetDestination(transform.position);
+                GetComponent<BotMove>().disable = true;
+            }
+
+            freezeCube.SetActive(true);
+            freezed = true;
+        }
+
+        if (freezed && freezeTime == 0)
+        {
+            if (GetComponent<PlayerController>() != null)
+            {
+                playerRb.constraints = RigidbodyConstraints.FreezeRotation;
+                GetComponent<PlayerController>().shootDisable = false;
+            }
+            else
+            {
+                GetComponent<BotMove>().disable = false;
+            }
+
+            freezeCube.SetActive(false);
+            freezed = false;
+        }
+
         //keep y the same
         transform.position = new Vector3(transform.position.x, 10, transform.position.z);
 

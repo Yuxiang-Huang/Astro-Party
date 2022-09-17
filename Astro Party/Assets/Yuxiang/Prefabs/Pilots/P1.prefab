@@ -574,8 +574,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   team: 0
-  speed: 300
-  maxVelocity: 150
   turn: 97
   move: 100
   playerRb: {fileID: 0}

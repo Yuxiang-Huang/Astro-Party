@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class BotMove : MonoBehaviour
 {
-    [SerializeField] private NavMeshAgent agent;
+    [SerializeField] public NavMeshAgent agent;
 
     public float botReloadTime;
 
@@ -13,7 +13,7 @@ public class BotMove : MonoBehaviour
 
     float traceTime;
 
-    bool disable;
+    public bool disable;
 
     // Start is called before the first frame update
     void Start()
@@ -77,14 +77,5 @@ public class BotMove : MonoBehaviour
     {
         return Mathf.Sqrt(Mathf.Pow((ship1.transform.position.x - ship2.transform.position.x), 2) +
             Mathf.Pow((ship1.transform.position.z - ship2.transform.position.z), 2));
-    }
-
-    public IEnumerator beginDisable()
-    {
-        agent.SetDestination(transform.position);
-        disable = true;
-        yield return new WaitForSeconds(2f);
-        disable = false;
-        gameObject.GetComponent<MutualShip>().freezed.SetActive(false);
     }
 }

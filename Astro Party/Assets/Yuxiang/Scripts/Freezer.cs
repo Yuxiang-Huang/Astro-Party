@@ -43,15 +43,7 @@ public class Freezer : MonoBehaviour
 
             if (toFreeze)
             {
-                if (collision.gameObject.GetComponent<PlayerController>() != null)
-                {
-                    collision.gameObject.GetComponent<PlayerController>().freezeTime += 2.0f;
-                }
-                else if (collision.gameObject.GetComponent<BotMove>() != null)
-                {
-                    collision.gameObject.GetComponent<BotMove>().StartCoroutine("beginDisable");
-                }
-                collision.gameObject.GetComponent<MutualShip>().freezed.SetActive(true);
+                collision.gameObject.GetComponent<MutualShip>().freezeTime += 2.0f;
             }
         }
 
