@@ -191,6 +191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 7616809812166868577}
   botReloadTime: 0
+  disable: 0
 --- !u!114 &4838208399194305428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,11 +216,13 @@ MonoBehaviour:
   - {fileID: 4314618894772692685}
   reloadTime: 0
   ammo: 0
+  powerUpUsed: 0
+  freezeTime: 0
   pilot: {fileID: 3417226532877467219, guid: a752c9ff2bcc04d5bbededd7ebfa1750, type: 3}
   jousters: {fileID: 1123638784640753275}
   sideCannons: {fileID: 2923404064119867279}
   shield: {fileID: 8831582377370440162}
-  freezed: {fileID: 7045849389965426325}
+  freezeCube: {fileID: 7045849389965426325}
   rend: {fileID: 8561839422940763994}
   blue1: {fileID: 2100000, guid: aee1eda5f1062490492bde072ef0f2f7, type: 2}
   red2: {fileID: 2100000, guid: 329078c58a0c04150bb7949cfde893ca, type: 2}

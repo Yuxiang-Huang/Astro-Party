@@ -498,7 +498,6 @@ public class MutualShip : MonoBehaviour
                 hasShield = true;
                 shield.SetActive(true);
             }
-
             else
             {
                 shootMode = powerUpName;

@@ -843,6 +843,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turn: 32
   shoot: 32
+  shootDisable: 0
 --- !u!114 &4154112309774915263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -867,11 +868,13 @@ MonoBehaviour:
   - {fileID: 7829440613225159307}
   reloadTime: 0
   ammo: 0
+  powerUpUsed: 0
+  freezeTime: 0
   pilot: {fileID: 2067998936253723459, guid: e7707aec2cc25b449a610f5087a64251, type: 3}
   jousters: {fileID: 775769462498974479}
   sideCannons: {fileID: 3947802593197462750}
   shield: {fileID: 5570031850638550453}
-  freezed: {fileID: 5088078409450587797}
+  freezeCube: {fileID: 5088078409450587797}
   rend: {fileID: 7173906870070017056}
   blue1: {fileID: 2100000, guid: aee1eda5f1062490492bde072ef0f2f7, type: 2}
   red2: {fileID: 2100000, guid: 329078c58a0c04150bb7949cfde893ca, type: 2}

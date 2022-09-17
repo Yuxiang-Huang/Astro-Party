@@ -74,7 +74,21 @@ public class ScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (endScreen.activeSelf)
+            {
+                endScreen.SetActive(false);
+                gameManagerScript.gameStarted = true;
+                Time.timeScale = 1;
+            }
+            else
+            {
+                endScreen.SetActive(true);
+                gameManagerScript.gameStarted = false;
+                Time.timeScale = 0;
+            }
+        }
     }
 
     public IEnumerator scoreUpdate()

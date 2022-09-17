@@ -80,7 +80,7 @@ public class GameManager : MonoBehaviour
 
     public int spawnX;
     public int spawnZ;
-    bool gameStarted;
+    public bool gameStarted;
 
     bool fixedSpawn;
     public Text fixedSpawnText;
@@ -251,6 +251,7 @@ public class GameManager : MonoBehaviour
                     ran = Random.Range(0, pos.Count);
                 }
 
+                //spawn position
                 inGameShips[i].Add(Instantiate(ships[i][j], pos[ran], ships[i][j].transform.rotation));
                 inGameShips[i][j].transform.Rotate(rot[ran]);
 
@@ -258,7 +259,8 @@ public class GameManager : MonoBehaviour
 
                 inGameShips[i][j].SetActive(true);
 
-                inGameShips[i][j].GetComponent<MutualShip>().freezeTime = 2.0f; 
+                //begin freeze
+                inGameShips[i][j].GetComponent<MutualShip>().freezeTime = 2.0f;
 
                 if (!fixedSpawn)
                 {
