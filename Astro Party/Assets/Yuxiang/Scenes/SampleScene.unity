@@ -4793,6 +4793,8 @@ MonoBehaviour:
   indicators: []
   powerUpyValue: 30
   bullet: {fileID: 4074745524491351559, guid: 3029e57bd05d644daa79107a6ba55699, type: 3}
+  maxPowerUp: 1
+  maxPowerUpText: {fileID: 2090219938}
   P1CurrText: {fileID: 0}
   P2CurrText: {fileID: 0}
   P3CurrText: {fileID: 0}
@@ -19379,7 +19381,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 344083648}
         m_TargetAssemblyTypeName: PowerUpManager, Assembly-CSharp
-        m_MethodName: setScatterShot
+        m_MethodName: setTriplePowerUp
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

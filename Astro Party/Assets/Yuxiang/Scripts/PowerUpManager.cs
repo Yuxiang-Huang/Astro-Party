@@ -11,6 +11,9 @@ public class PowerUpManager : MonoBehaviour
 
     public GameObject bullet;
 
+    public int maxPowerUp = 1;
+    public Text maxPowerUpText;
+
     public Text P1CurrText;
     public Text P2CurrText;
     public Text P3CurrText;
@@ -78,6 +81,21 @@ public class PowerUpManager : MonoBehaviour
     {
         
     }
+
+    public void setTriplePowerUp()
+    {
+        if (maxPowerUp == 1)
+        {
+            maxPowerUp = 3;
+            maxPowerUpText.text = "Triple PowerUp: On";
+        }
+        else
+        {
+            maxPowerUp = 1;
+            maxPowerUpText.text = "Triple PowerUp: Off";
+        }
+    }
+    
 
     public void setLaser()
     {

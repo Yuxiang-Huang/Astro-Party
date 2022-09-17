@@ -18,8 +18,7 @@ public class MutualShip : MonoBehaviour
     public GameObject[] bulletAnimation;
     public float reloadTime;
     public int ammo;
-    public int maxPowerUp = 3;
-    int powerUpUsed;
+    public int powerUpUsed;
 
     Rigidbody playerRb;
     AudioSource playerAudio;
@@ -280,7 +279,7 @@ public class MutualShip : MonoBehaviour
 
             powerUpUsed++;
 
-            if (powerUpUsed == maxPowerUp)
+            if (powerUpUsed == powerUpManagerScript.maxPowerUp)
             {
                 shootMode = "normal";
 
