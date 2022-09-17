@@ -17,15 +17,10 @@ public class PowerUpManager : MonoBehaviour
 
     public bool allRandomSPU;
     public Text allRandomSPUText;
-    public bool P1RandomSPU;
     public Text P1RandomSPUText;
-    public bool P2RandomSPU;
     public Text P2RandomSPUText;
-    public bool P3RandomSPU;
     public Text P3RandomSPUText;
-    public bool P4RandomSPU;
     public Text P4RandomSPUText;
-    public bool P5RandomSPU;
     public Text P5RandomSPUText;
 
     public Text P1CurrText;
@@ -119,32 +114,27 @@ public class PowerUpManager : MonoBehaviour
     public void setRandomSPUP1()
     {
         setHelper("Random Starting PowerUp", P1RandomSPUText, 1);
-        P1RandomSPU = !P1RandomSPU;
     }
 
-    //public void setRandomSPUP2()
-    //{
-    //    setRandomSPUHelper(P2RandomSPU, P2RandomSPUText);
-    //    P2RandomSPU = !P2RandomSPU;
-    //}
+    public void setRandomSPUP2()
+    {
+        setHelper("Random Starting PowerUp", P2RandomSPUText, 2);
+    }
 
-    //public void setRandomSPUP3()
-    //{
-    //    setRandomSPUHelper(P3RandomSPU, P3RandomSPUText);
-    //    P3RandomSPU = !P3RandomSPU;
-    //}
+    public void setRandomSPUP3()
+    {
+        setHelper("Random Starting PowerUp", P3RandomSPUText, 3);
+    }
 
-    //public void setRandomSPUP4()
-    //{
-    //    setRandomSPUHelper(P4RandomSPU, P4RandomSPUText);
-    //    P4RandomSPU = !P4RandomSPU;
-    //}
+    public void setRandomSPUP4()
+    {
+        setHelper("Random Starting PowerUp", P4RandomSPUText, 4);
+    }
 
-    //public void setRandomSPUP5()
-    //{
-    //    setRandomSPUHelper(P5RandomSPU, P5RandomSPUText);
-    //    P5RandomSPU = !P5RandomSPU;
-    //}
+    public void setRandomSPUP5()
+    {
+        setHelper("Random Starting PowerUp", P5RandomSPUText, 5);
+    }
 
     //PowerUP
 
