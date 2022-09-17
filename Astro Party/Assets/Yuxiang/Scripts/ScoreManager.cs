@@ -74,19 +74,22 @@ public class ScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (gameManagerScript.gameStarted)
         {
-            if (endScreen.activeSelf)
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
-                endScreen.SetActive(false);
-                Time.timeScale = 1; 
+                if (endScreen.activeSelf)
+                {
+                    endScreen.SetActive(false);
+                    Time.timeScale = 1;
+                }
+                else
+                {
+                    endScreen.SetActive(true);
+                    Time.timeScale = 0;
+                }
             }
-            else
-            {
-                endScreen.SetActive(true);
-                Time.timeScale = 0;
-            }
-        }
+        } 
     }
 
     public IEnumerator scoreUpdate()
@@ -350,6 +353,8 @@ public class ScoreManager : MonoBehaviour
                 P5.transform.position.z);
 
         //for pause
+        gameManagerScript.gameStarted = false;
+
         Time.timeScale = 1;
 
         //destroy ships
