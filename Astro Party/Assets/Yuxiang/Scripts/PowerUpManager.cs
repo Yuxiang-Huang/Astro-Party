@@ -12,6 +12,9 @@ public class PowerUpManager : MonoBehaviour
 
     public GameObject bullet;
 
+    bool isAutoBalance;
+    public Text autoBalanceText;
+
     public int maxPowerUp = 1;
     public Text maxPowerUpText;
 
@@ -93,6 +96,20 @@ public class PowerUpManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    //Auto Balance
+    public void setAutoBalance()
+    {
+        if (isAutoBalance)
+        {
+            autoBalanceText.text = "Auto Balance: Off";
+        }
+        else
+        {
+            autoBalanceText.text = "Auto Balance: On";
+        }
+        isAutoBalance = !isAutoBalance;
     }
 
     //Starting Power Up
