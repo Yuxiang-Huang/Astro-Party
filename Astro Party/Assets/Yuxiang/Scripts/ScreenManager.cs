@@ -216,7 +216,26 @@ public class ScreenManager : MonoBehaviour
             {
                 switch (ship.GetComponent<MutualShip>().id)
                 {
-                    
+                    case 1:
+                        P1SPUText.gameObject.SetActive(true);
+                        P1SPUText.text = "P1: " + ship.GetComponent<MutualShip>().shootMode;
+                        break;
+                    case 2:
+                        P2SPUText.gameObject.SetActive(true);
+                        P2SPUText.text = "P2: " + ship.GetComponent<MutualShip>().shootMode;
+                        break;
+                    case 3:
+                        P3SPUText.gameObject.SetActive(true);
+                        P3SPUText.text = "P3: " + ship.GetComponent<MutualShip>().shootMode;
+                        break;
+                    case 4:
+                        P4SPUText.gameObject.SetActive(true);
+                        P4SPUText.text = "P4: " + ship.GetComponent<MutualShip>().shootMode;
+                        break;
+                    case 5:
+                        P5SPUText.gameObject.SetActive(true);
+                        P5SPUText.text = "P5: " + ship.GetComponent<MutualShip>().shootMode;
+                        break;
                 }
             }
         }
@@ -225,7 +244,7 @@ public class ScreenManager : MonoBehaviour
 
         yield return new WaitForSeconds(1);
 
-        SPUScreen.SetActive(true);
+        SPUScreen.SetActive(false);
         P1SPUText.gameObject.SetActive(false);
         P2SPUText.gameObject.SetActive(false);
         P3SPUText.gameObject.SetActive(false);
