@@ -7,7 +7,7 @@ public class BotMove : MonoBehaviour
 {
     [SerializeField] public NavMeshAgent agent;
 
-    public float botReloadTime;
+    float botReloadTime;
 
     GameManager gameManagerScript;
 
@@ -59,15 +59,11 @@ public class BotMove : MonoBehaviour
                 traceTime -= Time.deltaTime;
             }
 
-            if (botReloadTime > 0)
-            {
-                botReloadTime -= Time.deltaTime;
-                botReloadTime = Mathf.Max(botReloadTime, 0);
-            }
+            botReloadTime += Time.deltaTime;
 
-            if (botReloadTime == 0)
+            if (botReloadTime >= 1)
             {
-                botReloadTime = 1;
+                botReloadTime = 0;
                 GetComponent<MutualShip>().shoot();
             }
         }

@@ -45,8 +45,6 @@ GameObject:
   - component: {fileID: 6242058927961685472}
   - component: {fileID: 7139296163696725982}
   - component: {fileID: 5798530351793728112}
-  - component: {fileID: 8184114122620136637}
-  - component: {fileID: 8993187678015943304}
   m_Layer: 0
   m_Name: Lo_poly_Spaceship_01_by_Liz_Reddington
   m_TagString: Untagged
@@ -145,32 +143,6 @@ CapsuleCollider:
   m_Height: 403.4355
   m_Direction: 0
   m_Center: {x: 0, y: 0, z: -150}
---- !u!135 &8184114122620136637
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3474220318715740320}
-  m_Material: {fileID: 13400000, guid: d730b0e0630334bb38e683fcde292d84, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 50
-  m_Center: {x: 200, y: 0, z: -200}
---- !u!135 &8993187678015943304
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3474220318715740320}
-  m_Material: {fileID: 13400000, guid: d730b0e0630334bb38e683fcde292d84, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 50
-  m_Center: {x: -200, y: 0, z: -200}
 --- !u!1 &3898441993749570395
 GameObject:
   m_ObjectHideFlags: 0
@@ -918,7 +890,7 @@ MonoBehaviour:
   sideCannons: {fileID: 3947802593197462750}
   shield: {fileID: 5570031850638550453}
   freezeCube: {fileID: 5088078409450587797}
-  rend: {fileID: 0}
+  rend: {fileID: 6242058927961685472}
   blue1: {fileID: 2100000, guid: aee1eda5f1062490492bde072ef0f2f7, type: 2}
   red2: {fileID: 2100000, guid: 329078c58a0c04150bb7949cfde893ca, type: 2}
   yellow3: {fileID: 2100000, guid: 90dc638151335479185544a45af3f6ec, type: 2}

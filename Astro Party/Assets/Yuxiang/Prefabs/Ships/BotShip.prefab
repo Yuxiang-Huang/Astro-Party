@@ -214,7 +214,7 @@ MonoBehaviour:
   - {fileID: 7938781035540371154}
   - {fileID: 9133046098546200028}
   - {fileID: 4314618894772692685}
-  reloadTime: 0
+  reloadTime: 1
   ammo: 0
   powerUpUsed: 0
   freezeTime: 0
@@ -223,7 +223,7 @@ MonoBehaviour:
   sideCannons: {fileID: 2923404064119867279}
   shield: {fileID: 8831582377370440162}
   freezeCube: {fileID: 7045849389965426325}
-  rend: {fileID: 0}
+  rend: {fileID: 6064003136558267334}
   blue1: {fileID: 2100000, guid: aee1eda5f1062490492bde072ef0f2f7, type: 2}
   red2: {fileID: 2100000, guid: 329078c58a0c04150bb7949cfde893ca, type: 2}
   yellow3: {fileID: 2100000, guid: 90dc638151335479185544a45af3f6ec, type: 2}
@@ -901,8 +901,6 @@ GameObject:
   - component: {fileID: 6064003136558267334}
   - component: {fileID: 6095207512252412156}
   - component: {fileID: 2379001369036427273}
-  - component: {fileID: 7049320672207873051}
-  - component: {fileID: 5814193500237393385}
   m_Layer: 0
   m_Name: Lo_poly_Spaceship_01_by_Liz_Reddington
   m_TagString: Untagged
@@ -1001,32 +999,6 @@ CapsuleCollider:
   m_Height: 403.4355
   m_Direction: 0
   m_Center: {x: 0, y: 0, z: -150}
---- !u!135 &7049320672207873051
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8071112004329604439}
-  m_Material: {fileID: 13400000, guid: d730b0e0630334bb38e683fcde292d84, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 50
-  m_Center: {x: 200, y: 0, z: -200}
---- !u!135 &5814193500237393385
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8071112004329604439}
-  m_Material: {fileID: 13400000, guid: d730b0e0630334bb38e683fcde292d84, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 50
-  m_Center: {x: -200, y: 0, z: -200}
 --- !u!1 &8831582377370440162
 GameObject:
   m_ObjectHideFlags: 0
