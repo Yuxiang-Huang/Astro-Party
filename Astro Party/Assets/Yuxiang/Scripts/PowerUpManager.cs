@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PowerUpManager : MonoBehaviour
 {
     public List<GameObject> indicators = new List<GameObject>();
+    public List<string> SPU = new List<string>();
 
     public int powerUpyValue = 30;
 
@@ -14,17 +15,17 @@ public class PowerUpManager : MonoBehaviour
     public int maxPowerUp = 1;
     public Text maxPowerUpText;
 
-    bool allRandomSPU;
+    public bool allRandomSPU;
     public Text allRandomSPUText;
-    bool P1RandomSPU;
+    public bool P1RandomSPU;
     public Text P1RandomSPUText;
-    bool P2RandomSPU;
+    public bool P2RandomSPU;
     public Text P2RandomSPUText;
-    bool P3RandomSPU;
+    public bool P3RandomSPU;
     public Text P3RandomSPUText;
-    bool P4RandomSPU;
+    public bool P4RandomSPU;
     public Text P4RandomSPUText;
-    bool P5RandomSPU;
+    public bool P5RandomSPU;
     public Text P5RandomSPUText;
 
     public Text P1CurrText;
@@ -86,6 +87,10 @@ public class PowerUpManager : MonoBehaviour
         indicators.Add(freezerIndicator);
         indicators.Add(shieldIndicator);
 
+        SPU.Add("Laser Beam");
+        SPU.Add("Scatter Shot");
+        SPU.Add("Freezer");
+
         gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
@@ -110,8 +115,6 @@ public class PowerUpManager : MonoBehaviour
         allRandomSPU = !allRandomSPU;
     }
 
-
-
     //PowerUP
 
     public void setTriplePowerUp()
@@ -134,11 +137,13 @@ public class PowerUpManager : MonoBehaviour
         if (indicators.Contains(laserIndicator))
         {
             indicators.Remove(laserIndicator);
+            SPU.Remove("Laser Beam");
             laserText.text = "Laser Beam: Off";
         }
         else
         {
             indicators.Add(laserIndicator);
+            SPU.Add("Laser Beam");
             laserText.text = "Laser Beam: On";
         }
     }
@@ -148,11 +153,13 @@ public class PowerUpManager : MonoBehaviour
         if (indicators.Contains(scatterIndicator))
         {
             indicators.Remove(scatterIndicator);
+            SPU.Remove("Scatter Shot");
             scatterText.text = "Scatter Shot: Off";
         }
         else
         {
             indicators.Add(scatterIndicator);
+            SPU.Add("Scatter Shot");
             scatterText.text = "Scatter Shot: On";
         }
     }
@@ -176,11 +183,13 @@ public class PowerUpManager : MonoBehaviour
         if (indicators.Contains(freezerIndicator))
         {
             indicators.Remove(freezerIndicator);
+            SPU.Remove("Freezer");
             freezerText.text = "Freezer: Off";
         }
         else
         {
             indicators.Add(freezerIndicator);
+            SPU.Add("Freezer");
             freezerText.text = "Freezer: On";
         }
     }

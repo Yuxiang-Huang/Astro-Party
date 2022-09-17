@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     MapManager mapManagerScript;
     SEManager SEManagerScript;
     SpawnManager spawnManagerScript;
+    PowerUpManager powerUpManagerScript;
 
     public GameObject nextButton;
 
@@ -103,7 +104,7 @@ public class GameManager : MonoBehaviour
         mapManagerScript = GameObject.Find("Map Manager").GetComponent<MapManager>();
         SEManagerScript = GameObject.Find("SoundEffect Manager").GetComponent<SEManager>();
         spawnManagerScript = GameObject.Find("Spawn Manager").GetComponent<SpawnManager>();
-
+        powerUpManagerScript = GameObject.Find("PowerUp Manager").GetComponent<PowerUpManager>();
 
         //Creating ships
         P1ShipBot = Instantiate(botShip, new Vector3(0, 0, 0), playerShip.transform.rotation);
@@ -229,6 +230,14 @@ public class GameManager : MonoBehaviour
 
     public void startRound()
     {
+        //Starting PowerUP
+        string startingPowerUp = "normal";
+
+        if (powerUpManagerScript.allRandomSPU)
+        {
+            startingPowerUp = powerUpManagerScript.SPU[Random.Range(0, powerUpManagerScript.SPU.Count)];
+        }
+
         //sound effect
         SEManagerScript.generalAudio.PlayOneShot(SEManagerScript.ready);
 
@@ -258,6 +267,7 @@ public class GameManager : MonoBehaviour
                 inGameShips[i][j].transform.Rotate(rot[ran]);
 
                 inGameShips[i][j].GetComponent<MutualShip>().team = i;
+                inGameShips[i][j].GetComponent<MutualShip>().shootMode = startingPowerUp;
 
                 inGameShips[i][j].SetActive(true);
 
