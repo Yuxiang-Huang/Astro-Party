@@ -52,7 +52,7 @@ public class BotMove : MonoBehaviour
             if (traceTime <= 0)
             {
                 agent.SetDestination(target.transform.position);
-                traceTime = 1;
+                traceTime = 0.5f;
             }
             if (traceTime > 0)
             {
