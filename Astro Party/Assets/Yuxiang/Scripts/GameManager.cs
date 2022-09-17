@@ -264,7 +264,7 @@ public class GameManager : MonoBehaviour
                 }
                 else if (inGameShips[i][j].GetComponent<PlayerController>() != null)
                 {
-                    inGameShips[i][j].GetComponent<PlayerController>().StartCoroutine("beginFreeze");
+                    inGameShips[i][j].GetComponent<PlayerController>().freezeTime = 2.0f;
                 }
 
                 if (!fixedSpawn)

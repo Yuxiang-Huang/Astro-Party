@@ -45,7 +45,7 @@ public class Freezer : MonoBehaviour
             {
                 if (collision.gameObject.GetComponent<PlayerController>() != null)
                 {
-                    collision.gameObject.GetComponent<PlayerController>().StartCoroutine("beginFreeze");
+                    collision.gameObject.GetComponent<PlayerController>().freezeTime += 2.0f;
                 }
                 else if (collision.gameObject.GetComponent<BotMove>() != null)
                 {

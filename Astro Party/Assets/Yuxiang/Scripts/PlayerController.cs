@@ -18,6 +18,9 @@ public class PlayerController : MonoBehaviour
 
     int dash;
 
+    public float freezeTime;
+    bool freezed;
+
     private void Start()
     {
         playerRb = GetComponent<Rigidbody>();
@@ -25,6 +28,28 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (freezeTime > 0)
+        {
+            freezeTime -= Time.deltaTime;
+            freezeTime = Mathf.Max(0, freezeTime);
+        }
+        //freeze
+        if (! freezed && freezeTime > 0)
+        {
+            shootDisable = true;
+            playerRb = GetComponent<Rigidbody>();
+            playerRb.constraints = RigidbodyConstraints.FreezeAll;
+            freezed = true;
+        }
+
+        if (freezed && freezeTime == 0)
+        {
+            playerRb.constraints = RigidbodyConstraints.FreezeRotation;
+            gameObject.GetComponent<MutualShip>().freezed.SetActive(false);
+            shootDisable = false;
+            freezed = false;
+        }
+
         if (Input.GetKeyDown(shoot) && !shootDisable)
         {
             GetComponent<MutualShip>().shoot();
@@ -82,16 +107,5 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(0.25f);
         dash --;
         dash = Mathf.Max(0, dash);
-    }
-
-    public IEnumerator beginFreeze()
-    {
-        shootDisable = true;
-        playerRb = GetComponent<Rigidbody>();
-        playerRb.constraints = RigidbodyConstraints.FreezeAll;
-        yield return new WaitForSeconds(2f);
-        playerRb.constraints = RigidbodyConstraints.FreezeRotation;
-        gameObject.GetComponent<MutualShip>().freezed.SetActive(false);
-        shootDisable = false;
     }
 }
