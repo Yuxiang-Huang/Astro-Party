@@ -10,11 +10,14 @@ public class BulletMove : MonoBehaviour
     Rigidbody Rb;
     int speed = 1000;
 
+    GameManager gameManagerScript;
+
     // Start is called before the first frame update
     void Start()
     {
         Rb = GetComponent<Rigidbody>();
         Rb.AddRelativeForce(new Vector3(0, 0, speed), ForceMode.VelocityChange);
+        gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -57,6 +60,11 @@ public class BulletMove : MonoBehaviour
             bool destroy = true;
             if (collision.gameObject.CompareTag("Bullet"))
             {
+                if (gameManagerScript.bulletCancel)
+                {
+                    destroy = false;
+                }
+
                 if (collision.gameObject.GetComponent<BulletMove>().id == id)
                 {
                     destroy = false;
