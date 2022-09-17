@@ -514,9 +514,9 @@ public class GameManager : MonoBehaviour
     {
         pos = new List<Vector3>() { new Vector3(spawnX, 15, spawnZ), new Vector3(-spawnX, 15, spawnZ),
         new Vector3(-spawnX, 15, -spawnZ), new Vector3(spawnX, 15, -spawnZ),
-            new Vector3(0, 15, -spawnZ), new Vector3(0, 15, spawnZ), new Vector3(spawnX, 15, 0), new Vector3(-spawnX, 15, 0)};
+            new Vector3(0, 15, -spawnZ) };
         rot = new List<Vector3>() {new Vector3(0, 180, 0), new Vector3(0, 90, 0),
         new Vector3(0, 0, 0), new Vector3(0, -90, 0),
-            new Vector3(0, -45, 0), new Vector3(0, 135, 0), new Vector3(0, -135, 0), new Vector3(0, 45, 0)};
+            new Vector3(0, -45, 0)};
     }
 }
