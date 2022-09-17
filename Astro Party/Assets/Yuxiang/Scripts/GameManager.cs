@@ -485,20 +485,20 @@ public class GameManager : MonoBehaviour
                 Destroy(shipList[0]);
                 shipList.RemoveAt(0);
             }
+        }
 
-            //destroy powerUps
-            while (inGameIndicators.Count > 0)
-            {
-                Destroy(inGameIndicators[0]);
-                inGameIndicators.Remove(inGameIndicators[0]);
-            }
+        //destroy powerUps
+        while (inGameIndicators.Count > 0)
+        {
+            Destroy(inGameIndicators[0]);
+            inGameIndicators.Remove(inGameIndicators[0]);
+        }
 
-            //destroy Asteroids
-            while (inGameAsteroids.Count > 0)
-            {
-                Destroy(inGameAsteroids[0]);
-                inGameAsteroids.Remove(inGameAsteroids[0]);
-            }
+        //destroy Asteroids
+        while (inGameAsteroids.Count > 0)
+        {
+            Destroy(inGameAsteroids[0]);
+            inGameAsteroids.Remove(inGameAsteroids[0]);
         }
 
         spawnManagerScript.startSpawn = false;

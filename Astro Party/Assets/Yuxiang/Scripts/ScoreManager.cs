@@ -62,7 +62,7 @@ public class ScoreManager : MonoBehaviour
         scale = canvas.scaleFactor;
         lengthOfSquare = 500 / scoreToWin * scale;
 
-        resetScore();
+        //resetScore();
 
         scoreScreen.SetActive(false);
 
@@ -79,13 +79,11 @@ public class ScoreManager : MonoBehaviour
             if (endScreen.activeSelf)
             {
                 endScreen.SetActive(false);
-                gameManagerScript.gameStarted = true;
-                Time.timeScale = 1;
+                Time.timeScale = 1; 
             }
             else
             {
                 endScreen.SetActive(true);
-                gameManagerScript.gameStarted = false;
                 Time.timeScale = 0;
             }
         }
@@ -350,6 +348,34 @@ public class ScoreManager : MonoBehaviour
                 P4.transform.position.z);
         P5.transform.position = new Vector3(startPosX, P5.transform.position.y,
                 P5.transform.position.z);
+
+        //for pause
+        Time.timeScale = 1;
+
+        //destroy ships
+        for (int i = 0; i < gameManagerScript.inGameShips.Count; i++)
+        {
+            List<GameObject> shipList = gameManagerScript.inGameShips[i];
+            while (shipList.Count > 0)
+            {
+                Destroy(shipList[0]);
+                shipList.RemoveAt(0);
+            }
+        }
+
+        //destroy powerUps
+        while (gameManagerScript.inGameIndicators.Count > 0)
+        {
+            Destroy(gameManagerScript.inGameIndicators[0]);
+            gameManagerScript.inGameIndicators.Remove(gameManagerScript.inGameIndicators[0]);
+        }
+
+        //destroy Asteroids
+        while (gameManagerScript.inGameAsteroids.Count > 0)
+        {
+            Destroy(gameManagerScript.inGameAsteroids[0]);
+            gameManagerScript.inGameAsteroids.Remove(gameManagerScript.inGameAsteroids[0]);
+        }
 
         scoreScreen.SetActive(false);
 
