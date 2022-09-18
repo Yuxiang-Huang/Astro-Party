@@ -93,7 +93,6 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         nextButton.SetActive(false);
-        resetPosRot();
 
         ships = new List<List<GameObject>>() {new List<GameObject>(), new List<GameObject>(), new List<GameObject>(),
         new List<GameObject>(), new List<GameObject>()};
@@ -232,6 +231,10 @@ public class GameManager : MonoBehaviour
 
     public void startRound()
     {
+        //map
+        mapManagerScript.resetMap();
+        resetPosRot();
+
         //Starting PowerUP
         string startingPowerUp = "normal";
         bool hasSPU = false;
@@ -247,7 +250,6 @@ public class GameManager : MonoBehaviour
 
         //call other scripts
         spawnManagerScript.RoundSpawn();
-        mapManagerScript.resetMap();
 
         gameStarted = true;
 
