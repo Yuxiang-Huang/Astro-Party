@@ -8126,14 +8126,8 @@ MonoBehaviour:
   backButton: {fileID: 205580504}
   Map1: {fileID: 1112501225}
   Map1Text: {fileID: 1277827305}
-  Map1Objects: []
   Map2: {fileID: 1642827276}
   Map2Text: {fileID: 1597959728}
-  Map2Objects:
-  - {fileID: 1311088787}
-  - {fileID: 203261864}
-  - {fileID: 1249357464}
-  - {fileID: 1147624957}
 --- !u!1 &474399339
 GameObject:
   m_ObjectHideFlags: 0
@@ -17196,6 +17190,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1112501226}
+  - component: {fileID: 1112501227}
   m_Layer: 0
   m_Name: Map 1
   m_TagString: Untagged
@@ -17222,6 +17217,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1112501227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1112501225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f50c561510c0c4c028cf7ccf6f2577d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapID: 1
+  breakables: []
+  xSpawn: 950
+  zSpawn: 450
 --- !u!1 &1112587505
 GameObject:
   m_ObjectHideFlags: 0
@@ -17885,8 +17896,8 @@ MonoBehaviour:
   P5SetRotateButton: {fileID: 84637714}
   P5SetShootButton: {fileID: 1387378155}
   P5StartingPowerUpButton: {fileID: 909216946}
-  spawnX: 950
-  spawnZ: 450
+  spawnX: 0
+  spawnZ: 0
   gameStarted: 0
   fixedSpawnText: {fileID: 1842794820}
   bulletCancel: 0
@@ -24371,6 +24382,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1642827277}
+  - component: {fileID: 1642827278}
   m_Layer: 0
   m_Name: Map 2
   m_TagString: Untagged
@@ -24414,6 +24426,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1642827278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1642827276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f50c561510c0c4c028cf7ccf6f2577d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapID: 2
+  breakables:
+  - {fileID: 1311088787}
+  - {fileID: 203261864}
+  - {fileID: 1249357464}
+  - {fileID: 1147624957}
+  xSpawn: 950
+  zSpawn: 450
 --- !u!1 &1649327604
 GameObject:
   m_ObjectHideFlags: 0

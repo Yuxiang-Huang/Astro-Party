@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class MapManager : MonoBehaviour
 {
+    GameManager gameManagerScript;
+
     List<GameObject> allMaps = new List<GameObject>();
 
     int currMapID;
@@ -20,6 +22,8 @@ public class MapManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
+
         allMaps.Add(Map1);
         allMaps.Add(Map2);
     }
@@ -38,6 +42,7 @@ public class MapManager : MonoBehaviour
 
     public void resetMap()
     {
+        //last map
         if (currMapID != 0)
         {
             foreach (GameObject currMap in allMaps)
@@ -53,6 +58,7 @@ public class MapManager : MonoBehaviour
             }
         }
 
+        //next map
         GameObject map = allMaps[Random.Range(0, allMaps.Count)];
 
         currMapID = map.GetComponent<Map>().mapID;
@@ -61,7 +67,10 @@ public class MapManager : MonoBehaviour
         {
             curr.SetActive(true);
         }
-        Map2.SetActive(true);
+        map.SetActive(true);
+
+        gameManagerScript.spawnX = map.GetComponent<Map>().xSpawn;
+        gameManagerScript.spawnZ = map.GetComponent<Map>().zSpawn;
     }
 
     public void Map1OnOff()
