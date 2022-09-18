@@ -190,7 +190,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 7616809812166868577}
-  botReloadTime: 0
   disable: 0
 --- !u!114 &4838208399194305428
 MonoBehaviour:
@@ -900,7 +899,7 @@ GameObject:
   - component: {fileID: 5183225799467167344}
   - component: {fileID: 6064003136558267334}
   - component: {fileID: 6095207512252412156}
-  - component: {fileID: 2379001369036427273}
+  - component: {fileID: 3562576527592770501}
   m_Layer: 0
   m_Name: Lo_poly_Spaceship_01_by_Liz_Reddington
   m_TagString: Untagged
@@ -982,11 +981,11 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 30
-  m_Height: 814.9976
+  m_Height: 850
   m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 10}
---- !u!136 &2379001369036427273
-CapsuleCollider:
+  m_Center: {x: 0, y: 0, z: 40}
+--- !u!64 &3562576527592770501
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -995,10 +994,10 @@ CapsuleCollider:
   m_Material: {fileID: 13400000, guid: d730b0e0630334bb38e683fcde292d84, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 87.94946
-  m_Height: 403.4355
-  m_Direction: 0
-  m_Center: {x: 0, y: 0, z: -150}
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2094719530997343635, guid: 468c0df8126fb4c01857f4dbcca902a9, type: 3}
 --- !u!1 &8831582377370440162
 GameObject:
   m_ObjectHideFlags: 0
