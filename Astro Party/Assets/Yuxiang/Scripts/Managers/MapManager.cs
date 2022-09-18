@@ -19,6 +19,9 @@ public class MapManager : MonoBehaviour
     public GameObject Map2;
     public Text Map2Text;
 
+    public GameObject Map3;
+    public Text Map3Text;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -81,6 +84,11 @@ public class MapManager : MonoBehaviour
     public void Map2OnOff()
     {
         MapOnOffHelper(Map2, Map2Text);
+    }
+
+    public void Map3OnOff()
+    {
+        MapOnOffHelper(Map3, Map3Text);
     }
 
     void MapOnOffHelper(GameObject map, Text mapText)
