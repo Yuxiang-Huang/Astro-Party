@@ -498,6 +498,8 @@ public class MutualShip : MonoBehaviour
             {
                 shootMode = powerUpName;
 
+                powerUpUsed = 0;
+
                 foreach (GameObject curr in bulletAnimation)
                 {
                     curr.SetActive(false);
