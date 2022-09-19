@@ -120,25 +120,19 @@ public class SpawnManager : MonoBehaviour
 
     Vector3 generateRanPos()
     {
-        Vector3 ranPos = new Vector3(Random.Range(-gameManagerScript.spawnX, gameManagerScript.spawnX), -10,
-          Random.Range(-gameManagerScript.spawnZ, gameManagerScript.spawnZ));
+        Vector3 ranPos = new Vector3(Random.Range(-gameManagerScript.spawnRadius, gameManagerScript.spawnRadius), -10,
+          Random.Range(-gameManagerScript.spawnRadius, gameManagerScript.spawnRadius));
 
-        ////asteroid distance
-        //bool flag = true;
-        //while (flag)
-        //{
-        //    flag = false;
-        //    foreach (List<GameObject> shipList in gameManagerScript.inGameShips)
-        //    {
-        //        foreach (GameObject ship in shipList)
-        //        {
-        //            if (distance(ship.transform.position, ranPos) < space)
-        //            {
-        //                flag = true;
-        //            }
-        //        }
-        //    }
-        //}
+        //outside the circle
+        bool flag = true;
+        while (flag)
+        {
+            flag = false;
+            if (distance(ranPos, new Vector3(0, 0, 0)) > gameManagerScript.spawnRadius)
+            {
+                flag = true;
+            }
+        }
         return ranPos;
     }
 

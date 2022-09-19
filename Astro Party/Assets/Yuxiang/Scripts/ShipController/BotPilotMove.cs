@@ -101,22 +101,22 @@ public class BotPilotMove : MonoBehaviour
 
         if (corners[0] == 0)
         {
-            target = new Vector3(gameManagerScript.spawnX, transform.position.y, gameManagerScript.spawnZ);
+            target = new Vector3(gameManagerScript.spawnRadius, transform.position.y, gameManagerScript.spawnRadius);
         }
 
         if (corners[1] == 0)
         {
-            target = new Vector3(-gameManagerScript.spawnX, transform.position.y, gameManagerScript.spawnZ);
+            target = new Vector3(-gameManagerScript.spawnRadius, transform.position.y, gameManagerScript.spawnRadius);
         }
 
         if (corners[2] == 0)
         {
-            target = new Vector3(-gameManagerScript.spawnX, transform.position.y, -gameManagerScript.spawnZ);
+            target = new Vector3(-gameManagerScript.spawnRadius, transform.position.y, -gameManagerScript.spawnRadius);
         }
 
         if (corners[3] == 0)
         {
-            target = new Vector3(gameManagerScript.spawnX, transform.position.y, -gameManagerScript.spawnZ);
+            target = new Vector3(gameManagerScript.spawnRadius, transform.position.y, -gameManagerScript.spawnRadius);
         }
 
         //Debug.Log(target);

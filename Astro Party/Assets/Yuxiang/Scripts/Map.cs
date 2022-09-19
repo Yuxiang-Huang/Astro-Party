@@ -6,8 +6,7 @@ public class Map : MonoBehaviour
 {
     public int mapID;
     public List<GameObject> breakables;
-    public int xSpawn;
-    public int zSpawn;
+    public int radius;
 
     // Start is called before the first frame update
     void Start()

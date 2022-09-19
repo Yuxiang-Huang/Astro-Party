@@ -77,8 +77,7 @@ public class MapManager : MonoBehaviour
         }
         map.SetActive(true);
 
-        gameManagerScript.spawnX = map.GetComponent<Map>().xSpawn;
-        gameManagerScript.spawnZ = map.GetComponent<Map>().zSpawn;
+        gameManagerScript.spawnRadius = map.GetComponent<Map>().radius;
     }
 
     public void Map1OnOff()

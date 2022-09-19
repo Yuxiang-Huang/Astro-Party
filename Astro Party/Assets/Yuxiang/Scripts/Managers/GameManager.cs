@@ -82,9 +82,7 @@ public class GameManager : MonoBehaviour
     public GameObject P5SetShootButton;
     public GameObject P5StartingPowerUpButton;
 
-    public int spawnX;
-    public int spawnZ;
-    public int spawnRadius = 700;
+    public int spawnRadius;
     int shipY = 10;
     public bool gameStarted;
 

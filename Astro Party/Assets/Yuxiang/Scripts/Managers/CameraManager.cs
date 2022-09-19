@@ -18,10 +18,10 @@ public class CameraManager : MonoBehaviour
     {
         int space = 30;
 
-        float minX = gameManagerScript.spawnX;
-        float maxX = -gameManagerScript.spawnX;
-        float minZ = gameManagerScript.spawnZ;
-        float maxZ = -gameManagerScript.spawnZ;
+        float minX = gameManagerScript.spawnRadius;
+        float maxX = -gameManagerScript.spawnRadius;
+        float minZ = gameManagerScript.spawnRadius;
+        float maxZ = -gameManagerScript.spawnRadius;
 
         foreach (List<GameObject> shipList in gameManagerScript.inGameShips)
         {
