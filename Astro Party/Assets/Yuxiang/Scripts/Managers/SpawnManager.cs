@@ -128,6 +128,10 @@ public class SpawnManager : MonoBehaviour
         while (flag)
         {
             flag = false;
+
+            ranPos = new Vector3(Random.Range(-gameManagerScript.spawnRadius, gameManagerScript.spawnRadius), -10,
+Random.Range(-gameManagerScript.spawnRadius, gameManagerScript.spawnRadius));
+
             foreach (List<GameObject> shipList in gameManagerScript.inGameShips)
             {
                 foreach (GameObject ship in shipList)
@@ -143,9 +147,6 @@ public class SpawnManager : MonoBehaviour
             {
                 flag = true;
             }
-
-            ranPos = new Vector3(Random.Range(-gameManagerScript.spawnRadius, gameManagerScript.spawnRadius), -10,
-          Random.Range(-gameManagerScript.spawnRadius, gameManagerScript.spawnRadius));
         }
         return ranPos;
     }

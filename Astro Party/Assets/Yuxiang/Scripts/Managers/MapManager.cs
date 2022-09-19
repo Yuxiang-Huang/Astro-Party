@@ -61,7 +61,7 @@ public class MapManager : MonoBehaviour
                     {
                         curr.SetActive(false);
                     }
-                    Map2.SetActive(false);
+                    currMap.SetActive(false);
                 }
             }
         }

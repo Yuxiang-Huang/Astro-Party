@@ -16,7 +16,7 @@ public class CameraManager : MonoBehaviour
 
     void LateUpdate()
     {
-        int space = 30;
+        int space = 100;
 
         float minX = gameManagerScript.spawnRadius;
         float maxX = -gameManagerScript.spawnRadius;
@@ -37,17 +37,17 @@ public class CameraManager : MonoBehaviour
             }
         }
 
-        //float lenX = (maxX - minX) / 2;
+        float lenX = (maxX - minX) / 2;
 
-        //float lenZ = (maxZ - minZ) / 2;
+        float lenZ = (maxZ - minZ) / 2;
 
         //Debug.Log("minX before: " + minX);
 
-        //minX = Mathf.Max(minX - lenX, -gameManagerScript.spawnX - 100);
-        //maxX = Mathf.Min(maxX + lenX, gameManagerScript.spawnX + 100);
+        minX = Mathf.Max(minX - lenX, -gameManagerScript.spawnRadius);
+        maxX = Mathf.Min(maxX + lenX, gameManagerScript.spawnRadius);
 
-        //minZ = Mathf.Max(minZ - lenZ, -gameManagerScript.spawnZ - 100);
-        //maxZ = Mathf.Min(maxZ + lenZ, gameManagerScript.spawnZ + 100);
+        minZ = Mathf.Max(minZ - lenZ, -gameManagerScript.spawnRadius);
+        maxZ = Mathf.Min(maxZ + lenZ, gameManagerScript.spawnRadius);
 
         myCamera.orthographicSize = Mathf.Max(500, Mathf.Max((maxX - minX), (maxZ - minZ))) / 2;
 
