@@ -27,8 +27,13 @@ public class MapManager : MonoBehaviour
     {
         gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
 
+        Map1.SetActive(false);
+        Map2.SetActive(false);
+        Map3.SetActive(false);
+
         allMaps.Add(Map1);
-        allMaps.Add(Map2);
+        //allMaps.Add(Map2);
+        //allMaps.Add(Map3);
     }
 
     void Update()

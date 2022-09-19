@@ -10,8 +10,8 @@ public class GameManager : MonoBehaviour
     public List<GameObject> inGameIndicators;
     public List<GameObject> inGameAsteroids;
 
-    List<Vector3> pos;
-    List<Vector3> rot;
+    List<Vector3> pos = new List<Vector3>(5);
+    List<Vector3> rot = new List<Vector3>(5);
 
     ScoreManager scoreManagerScript;
     MapManager mapManagerScript;
@@ -82,6 +82,7 @@ public class GameManager : MonoBehaviour
 
     public int spawnX;
     public int spawnZ;
+    public int spawnRadius = 700;
     public bool gameStarted;
 
     bool fixedSpawn;
@@ -539,12 +540,30 @@ public class GameManager : MonoBehaviour
 
     void resetPosRot()
     {
-        pos = new List<Vector3>() { new Vector3(-spawnX, 15, spawnZ), new Vector3(spawnX, 15, spawnZ),
-        new Vector3(-spawnX, 15, -spawnZ), new Vector3(spawnX, 15, -spawnZ),
-            new Vector3(0, 15, -spawnZ) };
-        rot = new List<Vector3>() {new Vector3(0, 90, 0), new Vector3(0, 180, 0),
-        new Vector3(0, 0, 0), new Vector3(0, -90, 0),
-            new Vector3(0, -45, 0)};
+        //pos = new List<Vector3>() { new Vector3(-spawnX, 15, spawnZ), new Vector3(spawnX, 15, spawnZ),
+        //new Vector3(-spawnX, 15, -spawnZ), new Vector3(spawnX, 15, -spawnZ),
+        //    new Vector3(0, 15, -spawnZ) };
+        //rot = new List<Vector3>() {new Vector3(0, 90, 0), new Vector3(0, 180, 0),
+        //new Vector3(0, 0, 0), new Vector3(0, -90, 0),
+        //    new Vector3(0, -45, 0)};
+
+        float radian = Mathf.PI / 2;
+
+        //if fixSpawn
+
+        radian += Random.Range(0, 2 * Mathf.PI);
+
+        //if (Random.Range(0, 2) == 0)
+        //{
+        //    radian += 3 * Mathf.PI / 5;
+        //}
+
+        for (int i = 0; i < 5; i++)
+        {
+            pos[i] = new Vector3(spawnRadius * Mathf.Sin(radian), 10, spawnRadius * Mathf.Cos(radian));
+            rot[i] = new Vector3(0, 180 * radian / Mathf.PI, 0);
+    }
+
     }
 
     public void setFixedSpawn()
