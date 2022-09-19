@@ -198,11 +198,11 @@ public class GameManager : MonoBehaviour
                     //prevent out of bound
                     ship[i].transform.position = new Vector3(ship[i].transform.position.x, shipY, ship[i].transform.position.z);
 
-                    if (distance(ship[i].transform.position, new Vector3(0, 0, 0)) > spawnRadius){
-                        float angle = Mathf.Acos(ship[i].transform.position.x / ship[i].transform.position.z);
-                        ship[i].transform.position =
-                            new Vector3(spawnRadius * Mathf.Sin(angle), shipY, spawnRadius * Mathf.Cos(angle));
-                    }
+                    //if (distance(ship[i].transform.position, new Vector3(0, 0, 0)) > spawnRadius){
+                    //    float angle = Mathf.Acos(ship[i].transform.position.x / ship[i].transform.position.z);
+                    //    ship[i].transform.position =
+                    //        new Vector3(spawnRadius * Mathf.Sin(angle), shipY, spawnRadius * Mathf.Cos(angle));
+                    //}
                 }
             }
         }
@@ -561,7 +561,7 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < 5; i++)
         {
             pos[i] = new Vector3(spawnRadius * Mathf.Cos(radian), shipY, spawnRadius * Mathf.Sin(radian));
-            rot[i] = new Vector3(0, - 180 * radian / Mathf.PI, 0);
+            rot[i] = new Vector3(0, -180 * radian / Mathf.PI, 0);
             radian += 2 * Mathf.PI / 5;
         }      
 
