@@ -18,7 +18,7 @@ public class SpawnManager : MonoBehaviour
 
     public bool startSpawn;
 
-    int space = 50;
+    int space = 100;
 
     int shipNum;
      
@@ -128,10 +128,24 @@ public class SpawnManager : MonoBehaviour
         while (flag)
         {
             flag = false;
+            foreach (List<GameObject> shipList in gameManagerScript.inGameShips)
+            {
+                foreach (GameObject ship in shipList)
+                {
+                    if (distance(ship.transform.position, ranPos) < space)
+                    {
+                        flag = true;
+                    }
+                }
+            }
+
             if (distance(ranPos, new Vector3(0, 0, 0)) > gameManagerScript.spawnRadius)
             {
                 flag = true;
             }
+
+            ranPos = new Vector3(Random.Range(-gameManagerScript.spawnRadius, gameManagerScript.spawnRadius), -10,
+          Random.Range(-gameManagerScript.spawnRadius, gameManagerScript.spawnRadius));
         }
         return ranPos;
     }
