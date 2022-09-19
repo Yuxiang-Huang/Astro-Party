@@ -66,7 +66,6 @@ public class PlayerController : MonoBehaviour
             playerRb.freezeRotation = true;
         }
 
-        //if (!rotating)
         playerRb.AddRelativeForce(new Vector3(0, 0, speed), ForceMode.Force);
 
         if (playerRb.velocity.magnitude > maxVelocity)
