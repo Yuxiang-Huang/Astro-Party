@@ -198,13 +198,13 @@ public class GameManager : MonoBehaviour
                     //prevent out of bound
                     ship[i].transform.position = new Vector3(ship[i].transform.position.x, shipY, ship[i].transform.position.z);
 
-                    //if (distance(ship[i].transform.position, new Vector3(0, 0, 0)) > spawnRadius)
-                    //{
-                    //    float angle = Mathf.Atan(ship[i].transform.position.x / ship[i].transform.position.z);
+                    if (distance(ship[i].transform.position, new Vector3(0, 0, 0)) > spawnRadius)
+                    {
+                        float angle = Mathf.Atan2(ship[i].transform.position.x, ship[i].transform.position.z);
 
-                    //    ship[i].transform.position =
-                    //        new Vector3(spawnRadius * Mathf.Sin(angle), shipY, spawnRadius * Mathf.Cos(angle));
-                    //}
+                        ship[i].transform.position =
+                            new Vector3(spawnRadius * Mathf.Sin(angle), shipY, spawnRadius * Mathf.Cos(angle));
+                    }
                 }
             }
         }
