@@ -16,6 +16,8 @@ public class CameraManager : MonoBehaviour
 
     void LateUpdate()
     {
+        int space = 30;
+
         float minX = gameManagerScript.spawnX;
         float maxX = -gameManagerScript.spawnX;
         float minZ = gameManagerScript.spawnZ;
@@ -27,25 +29,25 @@ public class CameraManager : MonoBehaviour
             {
                 if (ship != null)
                 {
-                    minX = Mathf.Min(minX, ship.transform.position.x);
-                    maxX = Mathf.Max(maxX, ship.transform.position.x);
-                    minZ = Mathf.Min(minZ, ship.transform.position.z);
-                    maxZ = Mathf.Max(maxZ, ship.transform.position.z);
+                    minX = Mathf.Min(minX, ship.transform.position.x) - space;
+                    maxX = Mathf.Max(maxX, ship.transform.position.x) + space;
+                    minZ = Mathf.Min(minZ, ship.transform.position.z) - space;
+                    maxZ = Mathf.Max(maxZ, ship.transform.position.z) + space;
                 }
             }
         }
 
-        float lenX = (maxX - minX) / 2;
+        //float lenX = (maxX - minX) / 2;
 
-        float lenZ = (maxZ - minZ) / 2;
+        //float lenZ = (maxZ - minZ) / 2;
 
         //Debug.Log("minX before: " + minX);
 
-        minX = Mathf.Max(minX - lenX, -gameManagerScript.spawnX - 100);
-        maxX = Mathf.Min(maxX + lenX, gameManagerScript.spawnX + 100);
+        //minX = Mathf.Max(minX - lenX, -gameManagerScript.spawnX - 100);
+        //maxX = Mathf.Min(maxX + lenX, gameManagerScript.spawnX + 100);
 
-        minZ = Mathf.Max(minZ - lenZ, -gameManagerScript.spawnZ - 100);
-        maxZ = Mathf.Min(maxZ + lenZ, gameManagerScript.spawnZ + 100);
+        //minZ = Mathf.Max(minZ - lenZ, -gameManagerScript.spawnZ - 100);
+        //maxZ = Mathf.Min(maxZ + lenZ, gameManagerScript.spawnZ + 100);
 
         myCamera.orthographicSize = Mathf.Max(500, Mathf.Max((maxX - minX), (maxZ - minZ))) / 2;
 
