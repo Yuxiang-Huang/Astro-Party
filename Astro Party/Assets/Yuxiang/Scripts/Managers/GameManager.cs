@@ -85,6 +85,7 @@ public class GameManager : MonoBehaviour
     public int spawnX;
     public int spawnZ;
     public int spawnRadius = 700;
+    int shipY = 10;
     public bool gameStarted;
 
     bool fixedSpawn;
@@ -195,10 +196,13 @@ public class GameManager : MonoBehaviour
                 else
                 {
                     //prevent out of bound
-                    ship[i].transform.position = new Vector3(Mathf.Max(ship[i].transform.position.x, -spawnX),
-                        ship[i].transform.position.y, Mathf.Max(ship[i].transform.position.z, -spawnZ));
-                    ship[i].transform.position = new Vector3(Mathf.Min(ship[i].transform.position.x, spawnX),
-                        ship[i].transform.position.y, Mathf.Min(ship[i].transform.position.z, spawnZ));
+                    ship[i].transform.position = new Vector3(ship[i].transform.position.x, shipY, ship[i].transform.position.z);
+
+                    if (distance(ship[i].transform.position, new Vector3(0, 0, 0)) > spawnRadius){
+                        float angle = Mathf.Acos(ship[i].transform.position.x / ship[i].transform.position.z);
+                        ship[i].transform.position =
+                            new Vector3(spawnRadius * Mathf.Sin(angle), shipY, spawnRadius * Mathf.Cos(angle));
+                    }
                 }
             }
         }
@@ -556,7 +560,7 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < 5; i++)
         {
-            pos[i] = new Vector3(spawnRadius * Mathf.Cos(radian), 10, spawnRadius * Mathf.Sin(radian));
+            pos[i] = new Vector3(spawnRadius * Mathf.Cos(radian), shipY, spawnRadius * Mathf.Sin(radian));
             rot[i] = new Vector3(0, - 180 * radian / Mathf.PI, 0);
             radian += 2 * Mathf.PI / 5;
         }      
@@ -587,5 +591,11 @@ public class GameManager : MonoBehaviour
             bulletCancelText.text = "Bullet Cancel: On";
         }
         bulletCancel = !bulletCancel;
+    }
+
+    float distance(Vector3 ship1, Vector3 ship2)
+    {
+        return Mathf.Sqrt(Mathf.Pow((ship1.x - ship2.x), 2) +
+            Mathf.Pow((ship1.z - ship2.z), 2));
     }
 }

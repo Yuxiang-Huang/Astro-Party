@@ -180,9 +180,6 @@ public class MutualShip : MonoBehaviour
             freezed = false;
         }
 
-        //keep y the same
-        transform.position = new Vector3(transform.position.x, 10, transform.position.z);
-
         //regenerate ammo
         if (reloadTime > 0)
         {
@@ -270,7 +267,7 @@ public class MutualShip : MonoBehaviour
             {
                 //5000 is half the length of laserbeam
                 GameObject myLaser = Instantiate(powerUpManagerScript.laser, transform.position +
-                new Vector3((bulletDis + 1000) * Mathf.Sin(angle), 10, (bulletDis + 1000) * Mathf.Cos(angle)),
+                new Vector3((bulletDis + 1000) * Mathf.Sin(angle), transform.position.y, (bulletDis + 1000) * Mathf.Cos(angle)),
                 transform.rotation);
 
                 //setting the script varibles
