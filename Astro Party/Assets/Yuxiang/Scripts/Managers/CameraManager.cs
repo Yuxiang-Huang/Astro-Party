@@ -7,6 +7,8 @@ public class CameraManager : MonoBehaviour
     Camera myCamera;
     GameManager gameManagerScript;
 
+    public int space = 50;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,8 +18,6 @@ public class CameraManager : MonoBehaviour
 
     void LateUpdate()
     {
-        int space = 100;
-
         float minX = gameManagerScript.spawnRadius;
         float maxX = -gameManagerScript.spawnRadius;
         float minZ = gameManagerScript.spawnRadius;
@@ -37,19 +37,13 @@ public class CameraManager : MonoBehaviour
             }
         }
 
-        float lenX = (maxX - minX) / 2;
+        minX = Mathf.Max(minX, -gameManagerScript.spawnRadius - space);
+        maxX = Mathf.Min(maxX, gameManagerScript.spawnRadius + space);
 
-        float lenZ = (maxZ - minZ) / 2;
+        minZ = Mathf.Max(minZ, -gameManagerScript.spawnRadius - space);
+        maxZ = Mathf.Min(maxZ, gameManagerScript.spawnRadius + space);
 
-        //Debug.Log("minX before: " + minX);
-
-        minX = Mathf.Max(minX - lenX, -gameManagerScript.spawnRadius);
-        maxX = Mathf.Min(maxX + lenX, gameManagerScript.spawnRadius);
-
-        minZ = Mathf.Max(minZ - lenZ, -gameManagerScript.spawnRadius);
-        maxZ = Mathf.Min(maxZ + lenZ, gameManagerScript.spawnRadius);
-
-        myCamera.orthographicSize = Mathf.Max(500, Mathf.Max((maxX - minX), (maxZ - minZ))) / 2;
+        myCamera.orthographicSize = Mathf.Max(500, Mathf.Max((maxX - minX) / 2, (maxZ - minZ))) / 2;
 
         transform.position = new Vector3((minX + maxX) / 2, transform.position.y, (minZ + maxZ) / 2);
 

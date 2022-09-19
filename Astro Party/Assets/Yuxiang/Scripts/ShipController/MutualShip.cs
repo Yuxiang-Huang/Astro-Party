@@ -293,13 +293,13 @@ public class MutualShip : MonoBehaviour
 
                     transform.Rotate(0, 360 / numOfShots, 0);
 
-                    //Sound effect
-                    playerAudio.PlayOneShot(SEManagerScript.bulletSound);
-
                     //setting the script varibles
                     myBullet.GetComponent<BulletMove>().id = id;
                     myBullet.GetComponent<BulletMove>().team = team;
                 }
+
+                //Sound effect
+                playerAudio.PlayOneShot(SEManagerScript.bulletSound);
             }
             else if (shootMode == "Freezer")
             {

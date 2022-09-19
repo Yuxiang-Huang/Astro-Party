@@ -10,10 +10,8 @@ public class GameManager : MonoBehaviour
     public List<GameObject> inGameIndicators;
     public List<GameObject> inGameAsteroids;
 
-    List<Vector3> pos = new List<Vector3>() {
-        new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(0, 0, 0)};
-    List<Vector3> rot = new List<Vector3>() {
-        new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(0, 0, 0)};
+    List<Vector3> pos;
+    List<Vector3> rot;
 
     ScoreManager scoreManagerScript;
     MapManager mapManagerScript;
@@ -544,12 +542,10 @@ public class GameManager : MonoBehaviour
 
     void resetPosRot()
     {
-        //pos = new List<Vector3>() { new Vector3(-spawnX, 15, spawnZ), new Vector3(spawnX, 15, spawnZ),
-        //new Vector3(-spawnX, 15, -spawnZ), new Vector3(spawnX, 15, -spawnZ),
-        //    new Vector3(0, 15, -spawnZ) };
-        //rot = new List<Vector3>() {new Vector3(0, 90, 0), new Vector3(0, 180, 0),
-        //new Vector3(0, 0, 0), new Vector3(0, -90, 0),
-        //    new Vector3(0, -45, 0)};
+        pos = new List<Vector3>() {
+        new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(0, 0, 0)};
+        rot = new List<Vector3>() {
+        new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(0, 0, 0)};
 
         float radian = Mathf.PI / 2;
 
