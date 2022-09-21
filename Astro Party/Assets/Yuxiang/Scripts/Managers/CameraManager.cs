@@ -9,6 +9,8 @@ public class CameraManager : MonoBehaviour
 
     public int space = 50;
 
+    public float itchScreenFactor = 1.5f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,7 +45,7 @@ public class CameraManager : MonoBehaviour
         minZ = Mathf.Max(minZ, -gameManagerScript.spawnRadius - space);
         maxZ = Mathf.Min(maxZ, gameManagerScript.spawnRadius + space);
 
-        myCamera.orthographicSize = Mathf.Max(500, Mathf.Max((maxX - minX), (maxZ - minZ))) / 2;
+        myCamera.orthographicSize = Mathf.Max(500, Mathf.Max((maxX - minX) / itchScreenFactor, (maxZ - minZ))) / 2;
 
         transform.position = new Vector3((minX + maxX) / 2, transform.position.y, (minZ + maxZ) / 2);
 

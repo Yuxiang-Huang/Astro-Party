@@ -63289,7 +63289,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5e679fb8b909484082b6a5c45ec6b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  space: 50
+  space: 100
+  itchScreenFactor: 1.7
 --- !u!1 &963281570
 GameObject:
   m_ObjectHideFlags: 0
