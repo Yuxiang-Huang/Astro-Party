@@ -43,7 +43,7 @@ public class CameraManager : MonoBehaviour
         minZ = Mathf.Max(minZ, -gameManagerScript.spawnRadius - space);
         maxZ = Mathf.Min(maxZ, gameManagerScript.spawnRadius + space);
 
-        myCamera.orthographicSize = Mathf.Max(500, Mathf.Max((maxX - minX) / 2, (maxZ - minZ))) / 2;
+        myCamera.orthographicSize = Mathf.Max(500, Mathf.Max((maxX - minX), (maxZ - minZ))) / 2;
 
         transform.position = new Vector3((minX + maxX) / 2, transform.position.y, (minZ + maxZ) / 2);
 

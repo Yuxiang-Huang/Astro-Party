@@ -136,9 +136,12 @@ Random.Range(-gameManagerScript.spawnRadius, gameManagerScript.spawnRadius));
             {
                 foreach (GameObject ship in shipList)
                 {
-                    if (distance(ship.transform.position, ranPos) < space)
+                    if (ship != null)
                     {
-                        flag = true;
+                        if (distance(ship.transform.position, ranPos) < space)
+                        {
+                            flag = true;
+                        }
                     }
                 }
             }
