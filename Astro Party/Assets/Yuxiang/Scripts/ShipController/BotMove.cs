@@ -20,6 +20,8 @@ public class BotMove : MonoBehaviour
     float rotatingSpeed = 2f;
     Rigidbody rb;
 
+    public float threshold = 0.1f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,14 +54,22 @@ public class BotMove : MonoBehaviour
                 }
             }
 
-            rb.AddRelativeForce(new Vector3(0, speed, 0), ForceMode.Force);
+            //moving
+            rb.AddRelativeForce(new Vector3(0, 0, speed), ForceMode.Force);
 
             if (rb.velocity.magnitude > maxVelocity)
             {
-                //Debug.Log(playerRb.velocity);
                 rb.velocity = rb.velocity.normalized * maxVelocity;
             }
 
+            //rotating
+            if (Mathf.Atan2(target.transform.position.z - transform.position.z,
+                target.transform.position.x - transform.position.x) - transform.rotation.ToEulerAngles().y > threshold)
+            {
+                transform.Rotate(new Vector3 (0, rotatingSpeed, 0));
+            }
+
+            //shooting
             botReloadTime += Time.deltaTime;
 
             if (botReloadTime >= 1)
