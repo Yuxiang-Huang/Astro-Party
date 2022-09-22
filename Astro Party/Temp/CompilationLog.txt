@@ -1,2 +1,14 @@
+# Starting compiling Unity.ProBuilder.Editor.dll
+/Applications/Unity/Unity.app/Contents/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-4c23b58a7e505410f8b0b5e2c247dbbd
+# Starting compiling NavMeshComponents.dll
+/Applications/Unity/Unity.app/Contents/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-7151b2101ad11417cb5c38d987c34547
+# Starting compiling NavMeshComponentsTestsPlaymode.dll
+/Applications/Unity/Unity.app/Contents/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-9afeab9c0254b4a80990a80c39ed0366
+# Starting compiling NavMeshComponentsEditor.dll
+/Applications/Unity/Unity.app/Contents/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-444a0f22311784b5097c610af8d0996e
+# Starting compiling NavMeshComponentsTestsEditmode.dll
+/Applications/Unity/Unity.app/Contents/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-1567e71fc19134702a7dd86fc3a3037b
+# Starting compiling Unity.ProBuilder.AddOns.Editor.dll
+/Applications/Unity/Unity.app/Contents/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-6a2163230bee9494da900c9522eff051
 # Starting compiling Assembly-CSharp.dll
-/Applications/Unity/Unity.app/Contents/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-1cb2a06dbf13146f09b03da23e949d9d
+/Applications/Unity/Unity.app/Contents/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-649a23b29db4145f38daf3eec351f517
