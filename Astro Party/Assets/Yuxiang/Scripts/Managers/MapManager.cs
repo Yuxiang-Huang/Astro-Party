@@ -18,6 +18,7 @@ public class MapManager : MonoBehaviour
 
     public GameObject Map2;
     public Text Map2Text;
+    public List<GameObject> Map2rotatingObjects;
 
     public GameObject Map3;
     public Text Map3Text;
@@ -51,20 +52,20 @@ public class MapManager : MonoBehaviour
     public void resetMap()
     {
         //last map
-        if (currMapID != 0)
-        {
-            foreach (GameObject currMap in allMaps)
-            {
-                if (currMap.GetComponent<Map>().mapID == currMapID)
-                {
-                    foreach (GameObject curr in currMap.GetComponent<Map>().breakables)
-                    {
-                        curr.SetActive(false);
-                    }
-                    currMap.SetActive(false);
-                }
-            }
-        }
+        //if (currMapID != 0)
+        //{
+        //    foreach (GameObject currMap in allMaps)
+        //    {
+        //        if (currMap.GetComponent<Map>().mapID == currMapID)
+        //        {
+        //            foreach (GameObject curr in currMap.GetComponent<Map>().breakables)
+        //            {
+        //                curr.SetActive(false);
+        //            }
+        //            currMap.SetActive(false);
+        //        }
+        //    }
+        //}
 
         //next map
         GameObject map = allMaps[Random.Range(0, allMaps.Count)];
@@ -78,6 +79,25 @@ public class MapManager : MonoBehaviour
         map.SetActive(true);
 
         gameManagerScript.spawnRadius = map.GetComponent<Map>().radius;
+
+        switch (currMapID)
+        {
+            case 1: reset1(); break;
+            case 2: reset2(); break;
+        }
+    }
+
+    void reset1()
+    {
+        //nothing
+    }
+
+    void reset2()
+    {
+        foreach (GameObject curr in Map2rotatingObjects)
+        {
+            curr.GetComponent<MapRotation>().reset();
+        }
     }
 
     public void Map1OnOff()
