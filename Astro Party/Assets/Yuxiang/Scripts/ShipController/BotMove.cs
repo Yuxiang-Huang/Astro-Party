@@ -17,7 +17,6 @@ public class BotMove : MonoBehaviour
 
     int speed = 500;
     int maxVelocity = 300;
-    float rotatingSpeed = 2f;
     Rigidbody rb;
 
     public float threshold = 0.1f;
@@ -63,11 +62,11 @@ public class BotMove : MonoBehaviour
             }
 
             //rotating
-            if (Mathf.Atan2(target.transform.position.z - transform.position.z,
-                target.transform.position.x - transform.position.x) - transform.rotation.ToEulerAngles().y > threshold)
-            {
-                transform.Rotate(new Vector3 (0, rotatingSpeed, 0));
-            }
+            //Debug.Log(Mathf.Atan2(target.transform.position.z - transform.position.z,
+            //    target.transform.position.x - transform.position.x));
+            //Debug.Log(transform.rotation.ToEulerAngles().y);
+
+            transform.LookAt(target.transform);
 
             //shooting
             botReloadTime += Time.deltaTime;
