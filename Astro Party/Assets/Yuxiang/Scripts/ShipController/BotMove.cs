@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class BotMove : MonoBehaviour
 {
-    [SerializeField] public NavMeshAgent agent;
+    //[SerializeField] public NavMeshAgent agent;
 
     float botReloadTime;
 
@@ -15,10 +15,16 @@ public class BotMove : MonoBehaviour
 
     public bool disable;
 
+    int speed = 500;
+    int maxVelocity = 300;
+    float rotatingSpeed = 2f;
+    Rigidbody rb;
+
     // Start is called before the first frame update
     void Start()
     {
         gameManagerScript = gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -46,17 +52,12 @@ public class BotMove : MonoBehaviour
                 }
             }
 
-            //Debug.Log(target.transform.position);
+            rb.AddRelativeForce(new Vector3(0, speed, 0), ForceMode.Force);
 
-            //Can't trace too frequently
-            if (traceTime <= 0)
+            if (rb.velocity.magnitude > maxVelocity)
             {
-                agent.SetDestination(target.transform.position);
-                traceTime = 0.5f;
-            }
-            if (traceTime > 0)
-            {
-                traceTime -= Time.deltaTime;
+                //Debug.Log(playerRb.velocity);
+                rb.velocity = rb.velocity.normalized * maxVelocity;
             }
 
             botReloadTime += Time.deltaTime;
@@ -66,6 +67,19 @@ public class BotMove : MonoBehaviour
                 botReloadTime = 0;
                 GetComponent<MutualShip>().shoot();
             }
+
+            //Debug.Log(target.transform.position);
+
+            //Can't trace too frequently
+            //if (traceTime <= 0)
+            //{
+            //    agent.SetDestination(target.transform.position);
+            //    traceTime = 0.5f;
+            //}
+            //if (traceTime > 0)
+            //{
+            //    traceTime -= Time.deltaTime;
+            //}
         }
     }
 
