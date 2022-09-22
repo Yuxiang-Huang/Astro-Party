@@ -217,50 +217,53 @@ public class MutualShip : MonoBehaviour
     {
         float angle = transform.rotation.ToEulerAngles().y;
 
-        if (shootMode == "normal" && ammo > 0)
+        if (shootMode == "normal")
         {
-            ammo--;
-
-            bulletAnimation[ammo].SetActive(false);
-
-            if (reloadTime == 0)
+            if (ammo > 0)
             {
-                reloadTime = 2;
-            }
+                ammo--;
 
-            //Debug.Log(Mathf.Cos(transform.rotation.y));
-            //Debug.Log(Mathf.Sin(transform.rotation.y));
+                bulletAnimation[ammo].SetActive(false);
 
-            if (tripleShot)
-            {
-                GameObject sideBullet1 = Instantiate(powerUpManagerScript.bullet, transform.position +
-            new Vector3(bulletDis * Mathf.Sin(angle + 1), 20, bulletDis * Mathf.Cos(angle + 1)),
-            transform.rotation);
+                if (reloadTime == 0)
+                {
+                    reloadTime = 2;
+                }
+
+                //Debug.Log(Mathf.Cos(transform.rotation.y));
+                //Debug.Log(Mathf.Sin(transform.rotation.y));
+
+                if (tripleShot)
+                {
+                    GameObject sideBullet1 = Instantiate(powerUpManagerScript.bullet, transform.position +
+                new Vector3(bulletDis * Mathf.Sin(angle + 1), 20, bulletDis * Mathf.Cos(angle + 1)),
+                transform.rotation);
+
+                    //setting the script varibles
+                    sideBullet1.GetComponent<BulletMove>().id = id;
+                    sideBullet1.GetComponent<BulletMove>().team = team;
+
+                    GameObject sideBullet2 = Instantiate(powerUpManagerScript.bullet, transform.position +
+                new Vector3(bulletDis * Mathf.Sin(angle - 1), 20, bulletDis * Mathf.Cos(angle - 1)),
+                transform.rotation);
+
+                    //setting the script varibles
+                    sideBullet2.GetComponent<BulletMove>().id = id;
+                    sideBullet2.GetComponent<BulletMove>().team = team;
+                }
+
+                GameObject myBullet = Instantiate(powerUpManagerScript.bullet, transform.position +
+                new Vector3(bulletDis * Mathf.Sin(angle), 20, bulletDis * Mathf.Cos(angle)),
+                transform.rotation);
 
                 //setting the script varibles
-                sideBullet1.GetComponent<BulletMove>().id = id;
-                sideBullet1.GetComponent<BulletMove>().team = team;
+                myBullet.GetComponent<BulletMove>().id = id;
+                myBullet.GetComponent<BulletMove>().team = team;
 
-                GameObject sideBullet2 = Instantiate(powerUpManagerScript.bullet, transform.position +
-            new Vector3(bulletDis * Mathf.Sin(angle - 1), 20, bulletDis * Mathf.Cos(angle - 1)),
-            transform.rotation);
 
-                //setting the script varibles
-                sideBullet2.GetComponent<BulletMove>().id = id;
-                sideBullet2.GetComponent<BulletMove>().team = team;
+                //Sound effect
+                playerAudio.PlayOneShot(SEManagerScript.bulletSound);
             }
-
-            GameObject myBullet = Instantiate(powerUpManagerScript.bullet, transform.position +
-            new Vector3(bulletDis * Mathf.Sin(angle), 20, bulletDis * Mathf.Cos(angle)),
-            transform.rotation);
-
-            //setting the script varibles
-            myBullet.GetComponent<BulletMove>().id = id;
-            myBullet.GetComponent<BulletMove>().team = team;
-
-
-            //Sound effect
-            playerAudio.PlayOneShot(SEManagerScript.bulletSound);
         }
         else
         {
