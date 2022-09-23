@@ -154,10 +154,15 @@ public class MutualShip : MonoBehaviour
                 GetComponent<PlayerController>().shootDisable = true;
                 playerRb.constraints = RigidbodyConstraints.FreezeAll;
             }
+            else if (GetComponent<BotMove>() != null)
+            {
+
+                GetComponent<BotMove>().agent.SetDestination(transform.position);
+                GetComponent<BotMove>().disable = true;
+            }
             else
             {
-                //GetComponent<BotMove>().agent.SetDestination(transform.position);
-                GetComponent<BotMove>().disable = true;
+                GetComponent<BotMove1>().disable = true;
             }
 
             freezeCube.SetActive(true);
@@ -174,7 +179,11 @@ public class MutualShip : MonoBehaviour
             else
             {
                 playerRb.constraints = RigidbodyConstraints.FreezeRotation;
-                GetComponent<BotMove>().disable = false;
+                if (GetComponent<BotMove>() != null)
+                {
+                    GetComponent<BotMove>().disable = false;
+                }
+                GetComponent<BotMove1>().disable = false;
             }
 
             freezeCube.SetActive(false);

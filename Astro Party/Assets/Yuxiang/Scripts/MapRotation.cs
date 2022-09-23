@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MapRotation : MonoBehaviour
 {
-    public float rotationSpeed;
+    float rotationSpeed;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +20,6 @@ public class MapRotation : MonoBehaviour
 
     public void reset()
     {
-        rotationSpeed = Random.Range(0.5f, 1.5f);
+        rotationSpeed = Random.Range(0.5f, 1.0f);
     }
 }

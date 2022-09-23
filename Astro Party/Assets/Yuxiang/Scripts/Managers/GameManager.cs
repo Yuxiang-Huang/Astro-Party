@@ -346,25 +346,25 @@ public class GameManager : MonoBehaviour
 
     public void P2Button()
     {
-        buttonHelper(P2ShipPlayer, P2ShipBot, P2ShipBot, P2Text, P2Team, P2TeamButtonObject,
+        buttonHelper(P2ShipPlayer, P2ShipBot, P2ShipBot1, P2Text, P2Team, P2TeamButtonObject,
             P2SetRotateButton, P2SetShootButton, scoreManagerScript.P2, P2StartingPowerUpButton);
     }
 
     public void P3Button()
     {
-        buttonHelper(P3ShipPlayer, P3ShipBot, P3ShipBot, P3Text, P3Team, P3TeamButtonObject,
+        buttonHelper(P3ShipPlayer, P3ShipBot, P3ShipBot1, P3Text, P3Team, P3TeamButtonObject,
             P3SetRotateButton, P3SetShootButton, scoreManagerScript.P3, P3StartingPowerUpButton);
     }
 
     public void P4Button()
     {
-        buttonHelper(P4ShipPlayer, P4ShipBot, P4ShipBot, P4Text, P4Team, P4TeamButtonObject,
+        buttonHelper(P4ShipPlayer, P4ShipBot, P4ShipBot1, P4Text, P4Team, P4TeamButtonObject,
             P4SetRotateButton, P4SetShootButton, scoreManagerScript.P4, P4StartingPowerUpButton);
     }
 
     public void P5Button()
     {
-        buttonHelper(P5ShipPlayer, P5ShipBot, P5ShipBot, P5Text, P5Team, P5TeamButtonObject,
+        buttonHelper(P5ShipPlayer, P5ShipBot, P5ShipBot1, P5Text, P5Team, P5TeamButtonObject,
             P5SetRotateButton, P5SetShootButton, scoreManagerScript.P5, P5StartingPowerUpButton);
     }
 
