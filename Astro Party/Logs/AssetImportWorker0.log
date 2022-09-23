@@ -6014,3 +6014,434 @@ AssetImportParameters requested are different than current active one (requested
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 249.132789 seconds.
+  path: Assets/Yuxiang/Scripts/ShipController/BotMove.cs
+  artifactKey: Guid(7d73d49edab25483391fdd2529c79818) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Yuxiang/Scripts/ShipController/BotMove.cs using Guid(7d73d49edab25483391fdd2529c79818) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.070839 seconds  code(4) message(Build asset version error: assets/yuxiang/scripts/shipcontroller/botmove.cs in SourceAssetDB has modification time of '2022-09-21T03:43:53Z' while content on disk has modification time of '2022-09-22T04:23:42Z')
+  ERROR: Build asset version error: assets/yuxiang/scripts/shipcontroller/botmove.cs in SourceAssetDB has modification time of '2022-09-21T03:43:53Z' while content on disk has modification time of '2022-09-22T04:23:42Z'
+========================================================================
+Received Import Request.
+  Time since last request: 0.944106 seconds.
+  path: Assets/Yuxiang/Scripts/ShipController/BotPilotMove.cs
+  artifactKey: Guid(a46cdd84e82a84161b7ca7cc79c7b767) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Yuxiang/Scripts/ShipController/BotPilotMove.cs using Guid(a46cdd84e82a84161b7ca7cc79c7b767) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8e9b2473bee074a049d3aae740d8f040') in 0.044367 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.834135 seconds.
+  path: 
+  artifactKey: Guid(d499a0a2aaca0479fb3a75d17a9fe99b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing  using Guid(d499a0a2aaca0479fb3a75d17a9fe99b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000096 seconds  code(3) message(Unknown asset with GUID 'd499a0a2aaca0479fb3a75d17a9fe99b')
+  ERROR: Unknown asset with GUID 'd499a0a2aaca0479fb3a75d17a9fe99b'
+========================================================================
+Received Import Request.
+  Time since last request: 111.028519 seconds.
+  path: 
+  artifactKey: Guid(d499a0a2aaca0479fb3a75d17a9fe99b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing  using Guid(d499a0a2aaca0479fb3a75d17a9fe99b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.001156 seconds  code(3) message(Unknown asset with GUID 'd499a0a2aaca0479fb3a75d17a9fe99b')
+  ERROR: Unknown asset with GUID 'd499a0a2aaca0479fb3a75d17a9fe99b'
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002306 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.49 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.720 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1722ms)
+		BeginReloadAssembly (302ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (17ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (161ms)
+		EndReloadAssembly (1331ms)
+			LoadAssemblies (114ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (517ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (114ms)
+			SetupLoadedEditorAssemblies (438ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (7ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (153ms)
+				ProcessInitializeOnLoadAttributes (258ms)
+				ProcessInitializeOnLoadMethodAttributes (17ms)
+				AfterProcessingInitializeOnLoad (1ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (4ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.08 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1946 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 233.5 MB.
+System memory in use after: 233.6 MB.
+
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 2763.
+Total: 5.357926 ms (FindLiveObjects: 0.233617 ms CreateObjectMapping: 0.092417 ms MarkObjects: 4.839908 ms  DeleteObjects: 0.190620 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:framework-osx-AVFoundation: b23960f63f64bdc6ff669e2cdcee2391 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 8.298296 seconds.
+  path: 
+  artifactKey: Guid(d499a0a2aaca0479fb3a75d17a9fe99b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing  using Guid(d499a0a2aaca0479fb3a75d17a9fe99b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000067 seconds  code(3) message(Unknown asset with GUID 'd499a0a2aaca0479fb3a75d17a9fe99b')
+  ERROR: Unknown asset with GUID 'd499a0a2aaca0479fb3a75d17a9fe99b'
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001956 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.79 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.327 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1328ms)
+		BeginReloadAssembly (181ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (10ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (94ms)
+		EndReloadAssembly (1074ms)
+			LoadAssemblies (90ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (378ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (57ms)
+			SetupLoadedEditorAssemblies (426ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (9ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (163ms)
+				ProcessInitializeOnLoadAttributes (237ms)
+				ProcessInitializeOnLoadMethodAttributes (15ms)
+				AfterProcessingInitializeOnLoad (1ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (2ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.54 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1946 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 233.6 MB.
+System memory in use after: 233.8 MB.
+
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 2766.
+Total: 3.280610 ms (FindLiveObjects: 0.214870 ms CreateObjectMapping: 0.093410 ms MarkObjects: 2.867969 ms  DeleteObjects: 0.103490 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:framework-osx-AVFoundation: b23960f63f64bdc6ff669e2cdcee2391 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 63.034699 seconds.
+  path: 
+  artifactKey: Guid(d499a0a2aaca0479fb3a75d17a9fe99b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing  using Guid(d499a0a2aaca0479fb3a75d17a9fe99b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000052 seconds  code(3) message(Unknown asset with GUID 'd499a0a2aaca0479fb3a75d17a9fe99b')
+  ERROR: Unknown asset with GUID 'd499a0a2aaca0479fb3a75d17a9fe99b'
+========================================================================
+Received Import Request.
+  Time since last request: 2.057391 seconds.
+  path: Assets/Yuxiang/Prefabs/Ships/BotShip.prefab
+  artifactKey: Guid(ab8e0b32f0a374f799dfc66ac9162a6f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Yuxiang/Prefabs/Ships/BotShip.prefab using Guid(ab8e0b32f0a374f799dfc66ac9162a6f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Diagnostics callstack to track who triggered the sub-import:
+ #5 ImportAsset(core::hash_map<AssetDatabase::ImporterID, ImporterInfo, core::hash<AssetDatabase::ImporterID>, std::__1::equal_to<AssetDatabase::ImporterID> > const&, dynamic_array<PostprocessorInfo, 0ul> const&, AssetResolveTracker const&, ImportAssetInputs const&, ImportAssetOutputs&, IImportProgress*)
+ #6 ImportAssetWithAutoReleasePool(core::hash_map<AssetDatabase::ImporterID, ImporterInfo, core::hash<AssetDatabase::ImporterID>, std::__1::equal_to<AssetDatabase::ImporterID> > const&, dynamic_array<PostprocessorInfo, 0ul> const&, AssetResolveTracker const&, ImportAssetInputs const&, ImportAssetOutputs&, IImportProgress*)
+ #7 AssetImportWorker::Import(AssetResolver&, WorkerImportPayload const&, WorkerImportResponse&, IImportProgress*, bool*)
+ #8 invocation function for block in AssetImportWorkerClient::HandleMessage(ImportRequestMessage const&)::$_6::operator()() const
+ #9 _dispatch_client_callout
+ #10 _dispatch_async_and_wait_invoke
+ #11 _dispatch_client_callout
+ #12 _dispatch_main_queue_callback_4CF
+ #13 __CFRUNLOOP_IS_SERVICING_THE_MAIN_DISPATCH_QUEUE__
+ #14 __CFRunLoopRun
+ #15 CFRunLoopRunSpecific
+ #16 RunCurrentEventLoopInMode
+ #17 ReceiveNextEventCommon
+ #18 _BlockUntilNextEventMatchingListInModeWithFilter
+ #19 _DPSNextEvent
+ #20 -[NSApplication(NSEvent) _nextEventMatchingEventMask:untilDate:inMode:dequeue:]
+ #21 -[NSApplication run]
+ #22 NSApplicationMain
+ #23 EditorMain(int, char const**)
+ #24 main
+ #25 start
+ #26 ???
+
+Requesting import of Guid(ab8e0b32f0a374f799dfc66ac9162a6f) Importer(-1,00000000000000000000000000000000), Assets/Yuxiang/Prefabs/Ships/BotShip.prefab from editor
+Resuming Guid(ab8e0b32f0a374f799dfc66ac9162a6f) Importer(-1,00000000000000000000000000000000) -> 0c5804c18a4a1727dffc1d3c86be0596 
+Assertion failed on expression: 'state.state == kUpToDate'
+Assertion failed on expression: 'state.artifactID == result'
+Diagnostics callstack to track who triggered the sub-import:
+ #5 ImportToObjects(core::basic_string<char, core::StringStorageDefault<char> > const&, core::hash_map<AssetDatabase::ImporterID, ImporterInfo, core::hash<AssetDatabase::ImporterID>, std::__1::equal_to<AssetDatabase::ImporterID> > const&, dynamic_array<PostprocessorInfo, 0ul> const&, AssetResolveTracker const&, ImportAssetInputs const&, ImportAssetOutputs&, IImportProgress*)
+ #6 ImportAsset(core::hash_map<AssetDatabase::ImporterID, ImporterInfo, core::hash<AssetDatabase::ImporterID>, std::__1::equal_to<AssetDatabase::ImporterID> > const&, dynamic_array<PostprocessorInfo, 0ul> const&, AssetResolveTracker const&, ImportAssetInputs const&, ImportAssetOutputs&, IImportProgress*)
+ #7 ImportAssetWithAutoReleasePool(core::hash_map<AssetDatabase::ImporterID, ImporterInfo, core::hash<AssetDatabase::ImporterID>, std::__1::equal_to<AssetDatabase::ImporterID> > const&, dynamic_array<PostprocessorInfo, 0ul> const&, AssetResolveTracker const&, ImportAssetInputs const&, ImportAssetOutputs&, IImportProgress*)
+ #8 AssetImportWorker::Import(AssetResolver&, WorkerImportPayload const&, WorkerImportResponse&, IImportProgress*, bool*)
+ #9 invocation function for block in AssetImportWorkerClient::HandleMessage(ImportRequestMessage const&)::$_6::operator()() const
+ #10 _dispatch_client_callout
+ #11 _dispatch_async_and_wait_invoke
+ #12 _dispatch_client_callout
+ #13 _dispatch_main_queue_callback_4CF
+ #14 __CFRUNLOOP_IS_SERVICING_THE_MAIN_DISPATCH_QUEUE__
+ #15 __CFRunLoopRun
+ #16 CFRunLoopRunSpecific
+ #17 RunCurrentEventLoopInMode
+ #18 ReceiveNextEventCommon
+ #19 _BlockUntilNextEventMatchingListInModeWithFilter
+ #20 _DPSNextEvent
+ #21 -[NSApplication(NSEvent) _nextEventMatchingEventMask:untilDate:inMode:dequeue:]
+ #22 -[NSApplication run]
+ #23 NSApplicationMain
+ #24 EditorMain(int, char const**)
+ #25 main
+ #26 start
+ #27 ???
+
+Requesting import of Guid(ab8e0b32f0a374f799dfc66ac9162a6f) Importer(-1,00000000000000000000000000000000), Assets/Yuxiang/Prefabs/Ships/BotShip.prefab from editor
+Resuming Guid(ab8e0b32f0a374f799dfc66ac9162a6f) Importer(-1,00000000000000000000000000000000) -> 0c5804c18a4a1727dffc1d3c86be0596 
+Assertion failed on expression: 'state.state == kUpToDate'
+Assertion failed on expression: 'state.artifactID == result'
+ -> (artifact id: '00000000000000000000000000000000') in 0.023049 seconds  code(4) message(Build asset version error: assets/yuxiang/prefabs/ships/botship.prefab in SourceAssetDB has modification time of '2022-09-21T03:43:53Z' while content on disk has modification time of '2022-09-22T03:54:55Z')
+  ERROR: Build asset version error: assets/yuxiang/prefabs/ships/botship.prefab in SourceAssetDB has modification time of '2022-09-21T03:43:53Z' while content on disk has modification time of '2022-09-22T03:54:55Z'
+========================================================================
+Received Import Request.
+  Time since last request: 3.207422 seconds.
+  path: 
+  artifactKey: Guid(a0ee0c34b2a7c4edda764a3ba754fbd1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing  using Guid(a0ee0c34b2a7c4edda764a3ba754fbd1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000078 seconds  code(3) message(Unknown asset with GUID 'a0ee0c34b2a7c4edda764a3ba754fbd1')
+  ERROR: Unknown asset with GUID 'a0ee0c34b2a7c4edda764a3ba754fbd1'
+========================================================================
+Received Import Request.
+  Time since last request: 10.917722 seconds.
+  path: 
+  artifactKey: Guid(a0ee0c34b2a7c4edda764a3ba754fbd1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing  using Guid(a0ee0c34b2a7c4edda764a3ba754fbd1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000281 seconds  code(3) message(Unknown asset with GUID 'a0ee0c34b2a7c4edda764a3ba754fbd1')
+  ERROR: Unknown asset with GUID 'a0ee0c34b2a7c4edda764a3ba754fbd1'
+========================================================================
+Received Import Request.
+  Time since last request: 7.668105 seconds.
+  path: 
+  artifactKey: Guid(d499a0a2aaca0479fb3a75d17a9fe99b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing  using Guid(d499a0a2aaca0479fb3a75d17a9fe99b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000085 seconds  code(3) message(Unknown asset with GUID 'd499a0a2aaca0479fb3a75d17a9fe99b')
+  ERROR: Unknown asset with GUID 'd499a0a2aaca0479fb3a75d17a9fe99b'
+========================================================================
+Received Import Request.
+  Time since last request: 1.513926 seconds.
+  path: 
+  artifactKey: Guid(a0ee0c34b2a7c4edda764a3ba754fbd1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing  using Guid(a0ee0c34b2a7c4edda764a3ba754fbd1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000302 seconds  code(3) message(Unknown asset with GUID 'a0ee0c34b2a7c4edda764a3ba754fbd1')
+  ERROR: Unknown asset with GUID 'a0ee0c34b2a7c4edda764a3ba754fbd1'
+========================================================================
+Received Import Request.
+  Time since last request: 3.020570 seconds.
+  path: Assets/Yuxiang/Prefabs/Ships/BotShip.prefab
+  artifactKey: Guid(ab8e0b32f0a374f799dfc66ac9162a6f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Yuxiang/Prefabs/Ships/BotShip.prefab using Guid(ab8e0b32f0a374f799dfc66ac9162a6f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Diagnostics callstack to track who triggered the sub-import:
+ #5 ImportAsset(core::hash_map<AssetDatabase::ImporterID, ImporterInfo, core::hash<AssetDatabase::ImporterID>, std::__1::equal_to<AssetDatabase::ImporterID> > const&, dynamic_array<PostprocessorInfo, 0ul> const&, AssetResolveTracker const&, ImportAssetInputs const&, ImportAssetOutputs&, IImportProgress*)
+ #6 ImportAssetWithAutoReleasePool(core::hash_map<AssetDatabase::ImporterID, ImporterInfo, core::hash<AssetDatabase::ImporterID>, std::__1::equal_to<AssetDatabase::ImporterID> > const&, dynamic_array<PostprocessorInfo, 0ul> const&, AssetResolveTracker const&, ImportAssetInputs const&, ImportAssetOutputs&, IImportProgress*)
+ #7 AssetImportWorker::Import(AssetResolver&, WorkerImportPayload const&, WorkerImportResponse&, IImportProgress*, bool*)
+ #8 invocation function for block in AssetImportWorkerClient::HandleMessage(ImportRequestMessage const&)::$_6::operator()() const
+ #9 _dispatch_client_callout
+ #10 _dispatch_async_and_wait_invoke
+ #11 _dispatch_client_callout
+ #12 _dispatch_main_queue_callback_4CF
+ #13 __CFRUNLOOP_IS_SERVICING_THE_MAIN_DISPATCH_QUEUE__
+ #14 __CFRunLoopRun
+ #15 CFRunLoopRunSpecific
+ #16 RunCurrentEventLoopInMode
+ #17 ReceiveNextEventCommon
+ #18 _BlockUntilNextEventMatchingListInModeWithFilter
+ #19 _DPSNextEvent
+ #20 -[NSApplication(NSEvent) _nextEventMatchingEventMask:untilDate:inMode:dequeue:]
+ #21 -[NSApplication run]
+ #22 NSApplicationMain
+ #23 EditorMain(int, char const**)
+ #24 main
+ #25 start
+ #26 ???
+
+Requesting import of Guid(ab8e0b32f0a374f799dfc66ac9162a6f) Importer(-1,00000000000000000000000000000000), Assets/Yuxiang/Prefabs/Ships/BotShip.prefab from editor
+Resuming Guid(ab8e0b32f0a374f799dfc66ac9162a6f) Importer(-1,00000000000000000000000000000000) -> 0c5804c18a4a1727dffc1d3c86be0596 
+Assertion failed on expression: 'state.state == kUpToDate'
+Assertion failed on expression: 'state.artifactID == result'
+Diagnostics callstack to track who triggered the sub-import:
+ #5 ImportToObjects(core::basic_string<char, core::StringStorageDefault<char> > const&, core::hash_map<AssetDatabase::ImporterID, ImporterInfo, core::hash<AssetDatabase::ImporterID>, std::__1::equal_to<AssetDatabase::ImporterID> > const&, dynamic_array<PostprocessorInfo, 0ul> const&, AssetResolveTracker const&, ImportAssetInputs const&, ImportAssetOutputs&, IImportProgress*)
+ #6 ImportAsset(core::hash_map<AssetDatabase::ImporterID, ImporterInfo, core::hash<AssetDatabase::ImporterID>, std::__1::equal_to<AssetDatabase::ImporterID> > const&, dynamic_array<PostprocessorInfo, 0ul> const&, AssetResolveTracker const&, ImportAssetInputs const&, ImportAssetOutputs&, IImportProgress*)
+ #7 ImportAssetWithAutoReleasePool(core::hash_map<AssetDatabase::ImporterID, ImporterInfo, core::hash<AssetDatabase::ImporterID>, std::__1::equal_to<AssetDatabase::ImporterID> > const&, dynamic_array<PostprocessorInfo, 0ul> const&, AssetResolveTracker const&, ImportAssetInputs const&, ImportAssetOutputs&, IImportProgress*)
+ #8 AssetImportWorker::Import(AssetResolver&, WorkerImportPayload const&, WorkerImportResponse&, IImportProgress*, bool*)
+ #9 invocation function for block in AssetImportWorkerClient::HandleMessage(ImportRequestMessage const&)::$_6::operator()() const
+ #10 _dispatch_client_callout
+ #11 _dispatch_async_and_wait_invoke
+ #12 _dispatch_client_callout
+ #13 _dispatch_main_queue_callback_4CF
+ #14 __CFRUNLOOP_IS_SERVICING_THE_MAIN_DISPATCH_QUEUE__
+ #15 __CFRunLoopRun
+ #16 CFRunLoopRunSpecific
+ #17 RunCurrentEventLoopInMode
+ #18 ReceiveNextEventCommon
+ #19 _BlockUntilNextEventMatchingListInModeWithFilter
+ #20 _DPSNextEvent
+ #21 -[NSApplication(NSEvent) _nextEventMatchingEventMask:untilDate:inMode:dequeue:]
+ #22 -[NSApplication run]
+ #23 NSApplicationMain
+ #24 EditorMain(int, char const**)
+ #25 main
+ #26 start
+ #27 ???
+
+Requesting import of Guid(ab8e0b32f0a374f799dfc66ac9162a6f) Importer(-1,00000000000000000000000000000000), Assets/Yuxiang/Prefabs/Ships/BotShip.prefab from editor
+Resuming Guid(ab8e0b32f0a374f799dfc66ac9162a6f) Importer(-1,00000000000000000000000000000000) -> 0c5804c18a4a1727dffc1d3c86be0596 
+Assertion failed on expression: 'state.state == kUpToDate'
+Assertion failed on expression: 'state.artifactID == result'
+ -> (artifact id: '00000000000000000000000000000000') in 0.011428 seconds  code(4) message(Build asset version error: assets/yuxiang/prefabs/ships/botship.prefab in SourceAssetDB has modification time of '2022-09-21T03:43:53Z' while content on disk has modification time of '2022-09-22T03:54:55Z')
+  ERROR: Build asset version error: assets/yuxiang/prefabs/ships/botship.prefab in SourceAssetDB has modification time of '2022-09-21T03:43:53Z' while content on disk has modification time of '2022-09-22T03:54:55Z'
+========================================================================
+Received Import Request.
+  Time since last request: 19.923349 seconds.
+  path: 
+  artifactKey: Guid(a0ee0c34b2a7c4edda764a3ba754fbd1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing  using Guid(a0ee0c34b2a7c4edda764a3ba754fbd1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000076 seconds  code(3) message(Unknown asset with GUID 'a0ee0c34b2a7c4edda764a3ba754fbd1')
+  ERROR: Unknown asset with GUID 'a0ee0c34b2a7c4edda764a3ba754fbd1'
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001902 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.67 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.420 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1421ms)
+		BeginReloadAssembly (190ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (6ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (107ms)
+		EndReloadAssembly (1151ms)
+			LoadAssemblies (91ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (399ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (65ms)
+			SetupLoadedEditorAssemblies (455ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (8ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (157ms)
+				ProcessInitializeOnLoadAttributes (272ms)
+				ProcessInitializeOnLoadMethodAttributes (15ms)
+				AfterProcessingInitializeOnLoad (1ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (2ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.52 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1946 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 233.9 MB.
+System memory in use after: 234.1 MB.
+
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 2769.
+Total: 3.262327 ms (FindLiveObjects: 0.254868 ms CreateObjectMapping: 0.105683 ms MarkObjects: 2.791046 ms  DeleteObjects: 0.109760 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:framework-osx-AVFoundation: b23960f63f64bdc6ff669e2cdcee2391 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 7.392472 seconds.
+  path: 
+  artifactKey: Guid(a0ee0c34b2a7c4edda764a3ba754fbd1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing  using Guid(a0ee0c34b2a7c4edda764a3ba754fbd1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000056 seconds  code(3) message(Unknown asset with GUID 'a0ee0c34b2a7c4edda764a3ba754fbd1')
+  ERROR: Unknown asset with GUID 'a0ee0c34b2a7c4edda764a3ba754fbd1'
+========================================================================
+Received Import Request.
+  Time since last request: 0.000191 seconds.
+  path: Assets/Yuxiang/Prefabs/Ships/BotShip.prefab
+  artifactKey: Guid(ab8e0b32f0a374f799dfc66ac9162a6f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Yuxiang/Prefabs/Ships/BotShip.prefab using Guid(ab8e0b32f0a374f799dfc66ac9162a6f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.234547 seconds  code(4) message(Build asset version error: assets/yuxiang/prefabs/ships/botship.prefab in SourceAssetDB has modification time of '2022-09-21T03:43:53Z' while content on disk has modification time of '2022-09-22T03:54:55Z')
+  ERROR: Build asset version error: assets/yuxiang/prefabs/ships/botship.prefab in SourceAssetDB has modification time of '2022-09-21T03:43:53Z' while content on disk has modification time of '2022-09-22T03:54:55Z'
+========================================================================
+Received Import Request.
+  Time since last request: 8.422503 seconds.
+  path: Assets/Yuxiang/Prefabs/Ships/BotShip.prefab
+  artifactKey: Guid(ab8e0b32f0a374f799dfc66ac9162a6f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Yuxiang/Prefabs/Ships/BotShip.prefab using Guid(ab8e0b32f0a374f799dfc66ac9162a6f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.022968 seconds  code(4) message(Build asset version error: assets/yuxiang/prefabs/ships/botship.prefab in SourceAssetDB has modification time of '2022-09-21T03:43:53Z' while content on disk has modification time of '2022-09-23T03:29:34Z')
+  ERROR: Build asset version error: assets/yuxiang/prefabs/ships/botship.prefab in SourceAssetDB has modification time of '2022-09-21T03:43:53Z' while content on disk has modification time of '2022-09-23T03:29:34Z'
+========================================================================
+Received Import Request.
+  Time since last request: 7.339136 seconds.
+  path: Assets/Yuxiang/Prefabs/Ships/BotShip.prefab
+  artifactKey: Guid(ab8e0b32f0a374f799dfc66ac9162a6f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Yuxiang/Prefabs/Ships/BotShip.prefab using Guid(ab8e0b32f0a374f799dfc66ac9162a6f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.025078 seconds  code(4) message(Build asset version error: assets/yuxiang/prefabs/ships/botship.prefab in SourceAssetDB has modification time of '2022-09-21T03:43:53Z' while content on disk has modification time of '2022-09-23T03:29:41Z')
+  ERROR: Build asset version error: assets/yuxiang/prefabs/ships/botship.prefab in SourceAssetDB has modification time of '2022-09-21T03:43:53Z' while content on disk has modification time of '2022-09-23T03:29:41Z'
+========================================================================
+Received Import Request.
+  Time since last request: 35.309327 seconds.
+  path: Assets/Yuxiang/Prefabs/Ships/BotShip.prefab
+  artifactKey: Guid(ab8e0b32f0a374f799dfc66ac9162a6f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Yuxiang/Prefabs/Ships/BotShip.prefab using Guid(ab8e0b32f0a374f799dfc66ac9162a6f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.046924 seconds  code(4) message(Build asset version error: assets/yuxiang/prefabs/ships/botship.prefab in SourceAssetDB has modification time of '2022-09-21T03:43:53Z' while content on disk has modification time of '2022-09-23T03:30:16Z')
+  ERROR: Build asset version error: assets/yuxiang/prefabs/ships/botship.prefab in SourceAssetDB has modification time of '2022-09-21T03:43:53Z' while content on disk has modification time of '2022-09-23T03:30:16Z'
+========================================================================
+Received Import Request.
+  Time since last request: 2.144087 seconds.
+  path: Assets/Yuxiang/Prefabs/Ships/BotShip.prefab
+  artifactKey: Guid(ab8e0b32f0a374f799dfc66ac9162a6f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Yuxiang/Prefabs/Ships/BotShip.prefab using Guid(ab8e0b32f0a374f799dfc66ac9162a6f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.033051 seconds  code(4) message(Build asset version error: assets/yuxiang/prefabs/ships/botship.prefab in SourceAssetDB has modification time of '2022-09-21T03:43:53Z' while content on disk has modification time of '2022-09-23T03:30:19Z')
+  ERROR: Build asset version error: assets/yuxiang/prefabs/ships/botship.prefab in SourceAssetDB has modification time of '2022-09-21T03:43:53Z' while content on disk has modification time of '2022-09-23T03:30:19Z'
+========================================================================
+Received Import Request.
+  Time since last request: 2.597815 seconds.
+  path: Assets/Yuxiang/Prefabs/Ships/BotShip.prefab
+  artifactKey: Guid(ab8e0b32f0a374f799dfc66ac9162a6f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Yuxiang/Prefabs/Ships/BotShip.prefab using Guid(ab8e0b32f0a374f799dfc66ac9162a6f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.031829 seconds  code(4) message(Build asset version error: assets/yuxiang/prefabs/ships/botship.prefab in SourceAssetDB has modification time of '2022-09-21T03:43:53Z' while content on disk has modification time of '2022-09-23T03:30:21Z')
+  ERROR: Build asset version error: assets/yuxiang/prefabs/ships/botship.prefab in SourceAssetDB has modification time of '2022-09-21T03:43:53Z' while content on disk has modification time of '2022-09-23T03:30:21Z'
+========================================================================
+Received Import Request.
+  Time since last request: 4.834646 seconds.
+  path: Assets/Yuxiang/Prefabs/Ships/BotShip.prefab
+  artifactKey: Guid(ab8e0b32f0a374f799dfc66ac9162a6f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Yuxiang/Prefabs/Ships/BotShip.prefab using Guid(ab8e0b32f0a374f799dfc66ac9162a6f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.024204 seconds  code(4) message(Build asset version error: assets/yuxiang/prefabs/ships/botship.prefab in SourceAssetDB has modification time of '2022-09-21T03:43:53Z' while content on disk has modification time of '2022-09-23T03:30:26Z')
+  ERROR: Build asset version error: assets/yuxiang/prefabs/ships/botship.prefab in SourceAssetDB has modification time of '2022-09-21T03:43:53Z' while content on disk has modification time of '2022-09-23T03:30:26Z'

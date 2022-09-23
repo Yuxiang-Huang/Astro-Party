@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class BotMove : MonoBehaviour
 {
-    //[SerializeField] public NavMeshAgent agent;
+    [SerializeField] public NavMeshAgent agent;
 
     float botReloadTime;
 
@@ -15,17 +15,10 @@ public class BotMove : MonoBehaviour
 
     public bool disable;
 
-    int speed = 500;
-    int maxVelocity = 300;
-    Rigidbody rb;
-
-    public float threshold = 0.1f;
-
     // Start is called before the first frame update
     void Start()
     {
         gameManagerScript = gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
-        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -53,21 +46,6 @@ public class BotMove : MonoBehaviour
                 }
             }
 
-            //moving
-            rb.AddRelativeForce(new Vector3(0, 0, speed), ForceMode.Force);
-
-            if (rb.velocity.magnitude > maxVelocity)
-            {
-                rb.velocity = rb.velocity.normalized * maxVelocity;
-            }
-
-            //rotating
-            //Debug.Log(Mathf.Atan2(target.transform.position.z - transform.position.z,
-            //    target.transform.position.x - transform.position.x));
-            //Debug.Log(transform.rotation.ToEulerAngles().y);
-
-            transform.LookAt(target.transform);
-
             //shooting
             botReloadTime += Time.deltaTime;
 
@@ -80,15 +58,15 @@ public class BotMove : MonoBehaviour
             //Debug.Log(target.transform.position);
 
             //Can't trace too frequently
-            //if (traceTime <= 0)
-            //{
-            //    agent.SetDestination(target.transform.position);
-            //    traceTime = 0.5f;
-            //}
-            //if (traceTime > 0)
-            //{
-            //    traceTime -= Time.deltaTime;
-            //}
+            if (traceTime <= 0)
+            {
+                agent.SetDestination(target.transform.position);
+                traceTime = 1f;
+            }
+            if (traceTime > 0)
+            {
+                traceTime -= Time.deltaTime;
+            }
         }
     }
 

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6773695091364062684}
   - component: {fileID: 9136989797160231119}
   - component: {fileID: 4838208399194305428}
+  - component: {fileID: 1395938046298827899}
   m_Layer: 0
   m_Name: BotShip
   m_TagString: Ship
@@ -166,6 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d73d49edab25483391fdd2529c79818, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agent: {fileID: 1395938046298827899}
   disable: 0
 --- !u!114 &4838208399194305428
 MonoBehaviour:
@@ -204,6 +206,28 @@ MonoBehaviour:
   yellow3: {fileID: 2100000, guid: 90dc638151335479185544a45af3f6ec, type: 2}
   cyan4: {fileID: 2100000, guid: 766cb1bc9d98e4bf9b48150d9f39940b, type: 2}
   green5: {fileID: 2100000, guid: c59522cafbf944136839f49263b32d74, type: 2}
+--- !u!195 &1395938046298827899
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 929155996236426145}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 300
+  m_Speed: 300
+  m_Acceleration: 500
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 0
+  m_AutoRepath: 1
+  m_Height: 300
+  m_BaseOffset: 100
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &1123638784640753275
 GameObject:
   m_ObjectHideFlags: 0
