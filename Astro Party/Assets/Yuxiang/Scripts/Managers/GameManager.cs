@@ -388,7 +388,7 @@ public class GameManager : MonoBehaviour
             ship.Remove(bot);
             ship.Add(bot1);
         }
-        else if (ship.Contains(bot))
+        else if (ship.Contains(bot1))
         {
             textPlayer.text = "Off";
             ship.Remove(bot1);
