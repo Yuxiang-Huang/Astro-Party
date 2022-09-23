@@ -45,6 +45,7 @@ public class ThreeBody : MonoBehaviour
             case 3: transform.position = new Vector3(-radius * Mathf.Sqrt(3) / 2, 0, -radius / 2); break;
         }
 
+        rb = GetComponent<Rigidbody>();
         rb.velocity = new Vector3(Random.Range(-randomSpeed, randomSpeed), 0, Random.Range(-randomSpeed, randomSpeed));
     }
 }
