@@ -157,7 +157,7 @@ public class MutualShip : MonoBehaviour
             else if (GetComponent<BotMove>() != null)
             {
 
-                GetComponent<BotMove>().agent.SetDestination(transform.position);
+                GetComponent<BotMove>().agent.enabled = false;
                 GetComponent<BotMove>().disable = true;
             }
             else
@@ -181,6 +181,7 @@ public class MutualShip : MonoBehaviour
                 playerRb.constraints = RigidbodyConstraints.FreezeRotation;
                 if (GetComponent<BotMove>() != null)
                 {
+                    GetComponent<BotMove>().agent.enabled = true;
                     GetComponent<BotMove>().disable = false;
                 }
                 else
