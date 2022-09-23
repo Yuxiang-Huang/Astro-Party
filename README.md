@@ -28,3 +28,4 @@ This is a recreation of the game Astro Party. I am not using it for commercial p
     *  (09-18-2022): Today I started by making a third map and finally realize the problem of making maps with five players. Then, I spent all my time transforming the rectangular map into a circular one and adjusted everyhting related to the map, including spawn position and rotation, spawning of asteroids and power up, border... Also, I published the game in itch.io today.
     
     *  (09-20-2022): Today I recloned the repository because the file changes left last time after build the game for publishing was too big to be commited. I fixed the camera resizing to correspond to the aspect ratio of the itch.io game screen. Lastly, I figured out that branching will allow to build the game without causing issues about commiting, and I cleaned all the folders I cloned for testing.
+    *  (09-21-2022): Today I made a new map with rotating objects and made a new bot type.
