@@ -29,9 +29,7 @@ public class GameManager : MonoBehaviour
     public GameObject P1ShipPlayer;
     public GameObject P1ShipBot;
     public GameObject P1ShipBot1;
-    public GameObject P1TextPlayer;
-    public GameObject P1TextBot;
-    public GameObject P1TextOff;
+    public Text P1Text;
     public int P1Team = 0;
     public GameObject P1TeamButtonObject;
     public GameObject P1SetRotateButton;
@@ -41,9 +39,7 @@ public class GameManager : MonoBehaviour
     public GameObject P2ShipPlayer;
     public GameObject P2ShipBot;
     public GameObject P2ShipBot1;
-    public GameObject P2TextPlayer;
-    public GameObject P2TextBot;
-    public GameObject P2TextOff;
+    public Text P2Text;
     public int P2Team = 1;
     public GameObject P2TeamButtonObject;
     public GameObject P2SetRotateButton;
@@ -53,9 +49,7 @@ public class GameManager : MonoBehaviour
     public GameObject P3ShipPlayer;
     public GameObject P3ShipBot;
     public GameObject P3ShipBot1;
-    public GameObject P3TextPlayer;
-    public GameObject P3TextBot;
-    public GameObject P3TextOff;
+    public Text P3Text;
     public int P3Team = 2;
     public GameObject P3TeamButtonObject;
     public GameObject P3SetRotateButton;
@@ -65,9 +59,7 @@ public class GameManager : MonoBehaviour
     public GameObject P4ShipPlayer;
     public GameObject P4ShipBot;
     public GameObject P4ShipBot1;
-    public GameObject P4TextPlayer;
-    public GameObject P4TextBot;
-    public GameObject P4TextOff;
+    public Text P4Text;
     public int P4Team = 3;
     public GameObject P4TeamButtonObject;
     public GameObject P4SetRotateButton;
@@ -77,9 +69,7 @@ public class GameManager : MonoBehaviour
     public GameObject P5ShipPlayer;
     public GameObject P5ShipBot;
     public GameObject P5ShipBot1;
-    public GameObject P5TextPlayer;
-    public GameObject P5TextBot;
-    public GameObject P5TextOff;
+    public Text P5Text;
     public int P5Team = 4;
     public GameObject P5TeamButtonObject;
     public GameObject P5SetRotateButton;
@@ -350,43 +340,42 @@ public class GameManager : MonoBehaviour
 
     public void P1Button()
     {
-        buttonHelper(P1ShipPlayer, P1ShipBot, P1TextPlayer, P1TextBot, P1TextOff, P1Team, P1TeamButtonObject,
+        buttonHelper(P1ShipPlayer, P1ShipBot, P1ShipBot1, P1Text, P1Team, P1TeamButtonObject,
             P1SetRotateButton, P1SetShootButton, scoreManagerScript.P1, P1StartingPowerUpButton);
     }
 
     public void P2Button()
     {
-        buttonHelper(P2ShipPlayer, P2ShipBot, P2TextPlayer, P2TextBot, P2TextOff, P2Team, P2TeamButtonObject,
+        buttonHelper(P2ShipPlayer, P2ShipBot, P2ShipBot, P2Text, P2Team, P2TeamButtonObject,
             P2SetRotateButton, P2SetShootButton, scoreManagerScript.P2, P2StartingPowerUpButton);
     }
 
     public void P3Button()
     {
-        buttonHelper(P3ShipPlayer, P3ShipBot, P3TextPlayer, P3TextBot, P3TextOff, P3Team, P3TeamButtonObject,
+        buttonHelper(P3ShipPlayer, P3ShipBot, P3ShipBot, P3Text, P3Team, P3TeamButtonObject,
             P3SetRotateButton, P3SetShootButton, scoreManagerScript.P3, P3StartingPowerUpButton);
     }
 
     public void P4Button()
     {
-        buttonHelper(P4ShipPlayer, P4ShipBot, P4TextPlayer, P4TextBot, P4TextOff, P4Team, P4TeamButtonObject,
+        buttonHelper(P4ShipPlayer, P4ShipBot, P4ShipBot, P4Text, P4Team, P4TeamButtonObject,
             P4SetRotateButton, P4SetShootButton, scoreManagerScript.P4, P4StartingPowerUpButton);
     }
 
     public void P5Button()
     {
-        buttonHelper(P5ShipPlayer, P5ShipBot, P5TextPlayer, P5TextBot, P5TextOff, P5Team, P5TeamButtonObject,
+        buttonHelper(P5ShipPlayer, P5ShipBot, P5ShipBot, P5Text, P5Team, P5TeamButtonObject,
             P5SetRotateButton, P5SetShootButton, scoreManagerScript.P5, P5StartingPowerUpButton);
     }
 
-    void buttonHelper(GameObject player, GameObject bot, GameObject textPlayer, GameObject textBot, GameObject textOff,
-        int team, GameObject teamButton, GameObject setRotateButton, GameObject setShootButton, GameObject picture,
+    void buttonHelper(GameObject player, GameObject bot, GameObject bot1, Text textPlayer, int team,
+        GameObject teamButton, GameObject setRotateButton, GameObject setShootButton, GameObject picture,
             GameObject startingPowerUpButton)
     {
         List<GameObject> ship = ships[team];
         if (ship.Contains(player))
         {
-            textPlayer.SetActive(false);
-            textBot.SetActive(true);
+            textPlayer.text = "Bot1";
             ship.Remove(player);
             ship.Add(bot);
 
@@ -395,9 +384,14 @@ public class GameManager : MonoBehaviour
         }
         else if (ship.Contains(bot))
         {
-            textBot.SetActive(false);
-            textOff.SetActive(true);
+            textPlayer.text = "Bot2";
             ship.Remove(bot);
+            ship.Add(bot1);
+        }
+        else if (ship.Contains(bot))
+        {
+            textPlayer.text = "Off";
+            ship.Remove(bot1);
 
             teamButton.SetActive(false);
             teamButton.SetActive(false);
@@ -406,8 +400,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            textOff.SetActive(false);
-            textPlayer.SetActive(true);
+            textPlayer.text = "P" + player.GetComponent<MutualShip>().id;
             ship.Add(player);
 
             setRotateButton.SetActive(true);
