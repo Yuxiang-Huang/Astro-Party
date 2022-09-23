@@ -53,20 +53,20 @@ public class MapManager : MonoBehaviour
     public void resetMap()
     {
         //last map
-        //if (currMapID != 0)
-        //{
-        //    foreach (GameObject currMap in allMaps)
-        //    {
-        //        if (currMap.GetComponent<Map>().mapID == currMapID)
-        //        {
-        //            foreach (GameObject curr in currMap.GetComponent<Map>().breakables)
-        //            {
-        //                curr.SetActive(false);
-        //            }
-        //            currMap.SetActive(false);
-        //        }
-        //    }
-        //}
+        if (currMapID != 0)
+        {
+            foreach (GameObject currMap in allMaps)
+            {
+                if (currMap.GetComponent<Map>().mapID == currMapID)
+                {
+                    //foreach (GameObject curr in currMap.GetComponent<Map>().breakables)
+                    //{
+                    //    curr.SetActive(false);
+                    //}
+                    currMap.SetActive(false);
+                }
+            }
+        }
 
         //next map
         GameObject map = allMaps[Random.Range(0, allMaps.Count)];

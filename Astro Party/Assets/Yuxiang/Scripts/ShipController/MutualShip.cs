@@ -183,7 +183,10 @@ public class MutualShip : MonoBehaviour
                 {
                     GetComponent<BotMove>().disable = false;
                 }
-                GetComponent<BotMove1>().disable = false;
+                else
+                {
+                    GetComponent<BotMove1>().disable = false;
+                }
             }
 
             freezeCube.SetActive(false);
