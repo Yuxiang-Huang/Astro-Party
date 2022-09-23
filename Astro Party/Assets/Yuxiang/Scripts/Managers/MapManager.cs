@@ -22,6 +22,7 @@ public class MapManager : MonoBehaviour
 
     public GameObject Map3;
     public Text Map3Text;
+    public List<GameObject> Map3ThreeBodyObjects;
 
     // Start is called before the first frame update
     void Start()
@@ -30,11 +31,11 @@ public class MapManager : MonoBehaviour
 
         Map1.SetActive(false);
         Map2.SetActive(false);
-        //Map3.SetActive(false);
+        Map3.SetActive(false);
 
         allMaps.Add(Map1);
         allMaps.Add(Map2);
-        //allMaps.Add(Map3);
+        allMaps.Add(Map3);
     }
 
     void Update()
@@ -84,6 +85,7 @@ public class MapManager : MonoBehaviour
         {
             case 1: reset1(); break;
             case 2: reset2(); break;
+            case 3: reset3(); break;
         }
     }
 
@@ -97,6 +99,14 @@ public class MapManager : MonoBehaviour
         foreach (GameObject curr in Map2rotatingObjects)
         {
             curr.GetComponent<MapRotation>().reset();
+        }
+    }
+
+    void reset3()
+    {
+        foreach (GameObject curr in Map3ThreeBodyObjects)
+        {
+            curr.GetComponent<ThreeBody>().reset();
         }
     }
 
