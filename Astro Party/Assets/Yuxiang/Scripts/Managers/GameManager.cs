@@ -24,9 +24,11 @@ public class GameManager : MonoBehaviour
 
     public GameObject playerShip;
     public GameObject botShip;
+    public GameObject botShip1;
 
     public GameObject P1ShipPlayer;
     public GameObject P1ShipBot;
+    public GameObject P1ShipBot1;
     public GameObject P1TextPlayer;
     public GameObject P1TextBot;
     public GameObject P1TextOff;
@@ -38,6 +40,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject P2ShipPlayer;
     public GameObject P2ShipBot;
+    public GameObject P2ShipBot1;
     public GameObject P2TextPlayer;
     public GameObject P2TextBot;
     public GameObject P2TextOff;
@@ -49,6 +52,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject P3ShipPlayer;
     public GameObject P3ShipBot;
+    public GameObject P3ShipBot1;
     public GameObject P3TextPlayer;
     public GameObject P3TextBot;
     public GameObject P3TextOff;
@@ -60,6 +64,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject P4ShipPlayer;
     public GameObject P4ShipBot;
+    public GameObject P4ShipBot1;
     public GameObject P4TextPlayer;
     public GameObject P4TextBot;
     public GameObject P4TextOff;
@@ -71,6 +76,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject P5ShipPlayer;
     public GameObject P5ShipBot;
+    public GameObject P5ShipBot1;
     public GameObject P5TextPlayer;
     public GameObject P5TextBot;
     public GameObject P5TextOff;
@@ -128,6 +134,27 @@ public class GameManager : MonoBehaviour
         P3ShipBot.SetActive(false);
         P4ShipBot.SetActive(false);
         P5ShipBot.SetActive(false);
+
+        P1ShipBot1 = Instantiate(botShip1, new Vector3(0, 0, 0), playerShip.transform.rotation);
+        P1ShipBot1.GetComponent<MutualShip>().id = 1;
+
+        P2ShipBot1 = Instantiate(botShip1, new Vector3(0, 0, 0), playerShip.transform.rotation);
+        P2ShipBot1.GetComponent<MutualShip>().id = 2;
+
+        P3ShipBot1 = Instantiate(botShip1, new Vector3(0, 0, 0), playerShip.transform.rotation);
+        P3ShipBot1.GetComponent<MutualShip>().id = 3;
+
+        P4ShipBot1 = Instantiate(botShip1, new Vector3(0, 0, 0), playerShip.transform.rotation);
+        P4ShipBot1.GetComponent<MutualShip>().id = 4;
+
+        P5ShipBot1 = Instantiate(botShip1, new Vector3(0, 0, 0), playerShip.transform.rotation);
+        P5ShipBot1.GetComponent<MutualShip>().id = 5;
+
+        P1ShipBot1.SetActive(false);
+        P2ShipBot1.SetActive(false);
+        P3ShipBot1.SetActive(false);
+        P4ShipBot1.SetActive(false);
+        P5ShipBot1.SetActive(false);
 
         P1ShipPlayer = Instantiate(playerShip, new Vector3(0, 0, 0), playerShip.transform.rotation);
         P1ShipPlayer.GetComponent<MutualShip>().id = 1;
