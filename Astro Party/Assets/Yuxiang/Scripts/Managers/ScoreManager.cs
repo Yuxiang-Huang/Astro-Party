@@ -22,6 +22,12 @@ public class ScoreManager : MonoBehaviour
     public int P4Score;
     public int P5Score;
 
+    public bool P1Suicide;
+    public bool P2Suicide;
+    public bool P3Suicide;
+    public bool P4Suicide;
+    public bool P5Suicide;
+
     public GameObject P1WinText;
     public GameObject P2WinText;
     public GameObject P3WinText;
@@ -108,6 +114,14 @@ public class ScoreManager : MonoBehaviour
                 //Debug.Log(P1.transform.position.x);
                 //Debug.Log(P1.transform.position.x - startPosX);
                 //Debug.Log(P1Score * lengthOfSquare);
+            }
+
+            if (P1Suicide)
+            {
+                yield return new WaitForSeconds(1f);
+                P1.transform.position = new Vector3(P1.transform.position.x - lengthOfSquare, P1.transform.position.y,
+                    P1.transform.position.z);
+                P1Suicide = false;
             }
 
             while (!closeEnough(P2.transform.position.x - startPosX, P2Score * lengthOfSquare))
