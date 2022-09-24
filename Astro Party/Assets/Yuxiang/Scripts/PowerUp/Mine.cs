@@ -12,11 +12,13 @@ public class Mine : MonoBehaviour
     public GameObject killerPlane;
 
     GameManager gameManagerScript;
+    SEManager SEManagerScript;
 
     // Start is called before the first frame update
     void Start()
     {
         gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        SEManagerScript = GameObject.Find("SoundEffect Manager").GetComponent<SEManager>();
     }
 
     // Update is called once per frame
@@ -49,7 +51,6 @@ public class Mine : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Bullet"))
         {
-            Debug.Log("Yes");
             Destroy(other.gameObject);
         }
 
@@ -65,7 +66,7 @@ public class Mine : MonoBehaviour
         yield return new WaitForSeconds(1);
 
         //sound effect
-
+        SEManagerScript.generalAudio.PlayOneShot(SEManagerScript.mineSound);
 
         GameObject myExplode = Instantiate(killerPlane, transform.position, transform.rotation);
         myExplode.GetComponent<Killer>().id = id;

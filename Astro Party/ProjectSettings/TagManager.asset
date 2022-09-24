@@ -13,6 +13,9 @@ TagManager:
   - Asteroid
   - Jouster
   - Bullet
+  - Mine
+  - Freezer
+  - Laser
   layers:
   - Default
   - TransparentFX

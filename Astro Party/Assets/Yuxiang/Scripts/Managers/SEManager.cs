@@ -16,6 +16,8 @@ public class SEManager : MonoBehaviour
 
     public AudioClip freezerSound;
 
+    public AudioClip mineSound;
+
     // Start is called before the first frame update
     void Start()
     {
