@@ -26,11 +26,14 @@ public class Mine : MonoBehaviour
         {
             foreach (GameObject ship in shipList)
             {
-                if (ship.GetComponent<MutualShip>().team != team)
+                if (ship.GetComponent<MutualShip>() != null)
                 {
-                    if (distance(ship.transform.position, transform.position) < explodingRadius)
+                    if (ship.GetComponent<MutualShip>().team != team)
                     {
-                        StartCoroutine("trigger");
+                        if (distance(ship.transform.position, transform.position) < explodingRadius)
+                        {
+                            StartCoroutine("trigger");
+                        }
                     }
                 }
             }
@@ -44,7 +47,10 @@ public class Mine : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        StartCoroutine("trigger");
+        if (!collision.gameObject.CompareTag("Ship"))
+        {
+            StartCoroutine("trigger");
+        }
     }
 
     IEnumerator trigger()

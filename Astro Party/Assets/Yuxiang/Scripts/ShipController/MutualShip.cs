@@ -332,7 +332,7 @@ public class MutualShip : MonoBehaviour
 
             else if (shootMode == "Proximity Mine")
             {
-                Vector3 offSet = new Vector3(-Mathf.Cos(angle) * 100, 0, -Mathf.Cos(angle) * 100);
+                Vector3 offSet = new Vector3(-Mathf.Cos(angle) * bulletDis, 0, -Mathf.Cos(angle) * bulletDis);
 
                 GameObject myMine = Instantiate(powerUpManagerScript.mine, transform.position + offSet, transform.rotation);
 
