@@ -332,9 +332,7 @@ public class MutualShip : MonoBehaviour
 
             else if (shootMode == "Proximity Mine")
             {
-                Vector3 offSet = new Vector3(-Mathf.Cos(angle) * bulletDis, 0, -Mathf.Cos(angle) * bulletDis);
-
-                GameObject myMine = Instantiate(powerUpManagerScript.mine, transform.position + offSet, transform.rotation);
+                GameObject myMine = Instantiate(powerUpManagerScript.mine, transform.position, transform.rotation);
 
                 //setting the script varibles
                 myMine.GetComponent<Mine>().id = id;
@@ -530,9 +528,8 @@ public class MutualShip : MonoBehaviour
                     curr.SetActive(false);
                 }
             }
+            gameManagerScript.inGameIndicators.Remove(other.gameObject);
+            Destroy(other.gameObject);
         }
-
-        gameManagerScript.inGameIndicators.Remove(other.gameObject);
-        Destroy(other.gameObject);
     }
 }

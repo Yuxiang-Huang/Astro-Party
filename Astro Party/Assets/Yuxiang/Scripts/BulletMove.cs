@@ -55,11 +55,6 @@ public class BulletMove : MonoBehaviour
             collision.gameObject.GetComponent<MutualShip>().damage(id, team);
         }
 
-        if (collision.gameObject.CompareTag("Mine"))
-        {
-            collision.gameObject.GetComponent<Mine>().StartCoroutine("trigger");
-        }
-
         if (!collision.gameObject.CompareTag("Floor"))
         {
             bool destroy = true;

@@ -83,11 +83,11 @@ public class PowerUpManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        indicators.Add(laserIndicator);
-        indicators.Add(scatterIndicator);
-        indicators.Add(tripleShotIndicator);
-        indicators.Add(freezerIndicator);
-        indicators.Add(shieldIndicator);
+        //indicators.Add(laserIndicator);
+        //indicators.Add(scatterIndicator);
+        //indicators.Add(tripleShotIndicator);
+        //indicators.Add(freezerIndicator);
+        //indicators.Add(shieldIndicator);
         indicators.Add(mineIndicator);
 
         SPU.Add("Laser Beam");

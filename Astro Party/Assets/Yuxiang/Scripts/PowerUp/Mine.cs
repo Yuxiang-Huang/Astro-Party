@@ -45,10 +45,16 @@ public class Mine : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (!collision.gameObject.CompareTag("Ship"))
+        if (other.gameObject.CompareTag("Bullet"))
         {
+            Debug.Log("Yes");
+            Destroy(other.gameObject);
+        }
+
+        if (other.gameObject.CompareTag("Bullet") || other.gameObject.CompareTag("Laser") ||
+            other.gameObject.CompareTag("Freezer")) { 
             StartCoroutine("trigger");
         }
     }
