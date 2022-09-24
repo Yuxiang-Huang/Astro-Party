@@ -119,8 +119,19 @@ public class ScoreManager : MonoBehaviour
             if (P1Suicide)
             {
                 yield return new WaitForSeconds(1f);
-                P1.transform.position = new Vector3(P1.transform.position.x - lengthOfSquare, P1.transform.position.y,
-                    P1.transform.position.z);
+                if (P1Score > 0)
+                {
+                    P1.transform.position = new Vector3(P1.transform.position.x - lengthOfSquare, P1.transform.position.y,
+    P1.transform.position.z);
+                    P1Score--;
+                }
+
+                for (int i = 0; i < 8; i++)
+                {
+                    yield return new WaitForSeconds(0.1f);
+                    P1.transform.Rotate(new Vector3 (0, 0, 45));
+                }
+
                 P1Suicide = false;
             }
 
