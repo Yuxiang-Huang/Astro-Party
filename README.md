@@ -29,3 +29,4 @@ This is a recreation of the game Astro Party. I am not using it for commercial p
     
     *  (09-20-2022): Today I recloned the repository because the file changes left last time after build the game for publishing was too big to be commited. I fixed the camera resizing to correspond to the aspect ratio of the itch.io game screen. Lastly, I figured out that branching will allow to build the game without causing issues about commiting, and I cleaned all the folders I cloned for testing.
     *  (09-21-2022): Today I made a new map with rotating objects and made a new bot type.
+    *  (09-22-2022): Today I made a map3, which is inspired by the three body problem. After adding it to the game, I decided to have two types of bot in the game and reworked the ship screen. Lastly, I checked and fixed issues of the bots.
