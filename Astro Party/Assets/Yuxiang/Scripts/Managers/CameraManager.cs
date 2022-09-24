@@ -39,8 +39,8 @@ public class CameraManager : MonoBehaviour
             }
         }
 
-        float lenX = (maxX - minX) / 2;
-        float lenZ = (maxZ - minZ) / 2;
+        float lenX = (maxX - minX) / 4;
+        float lenZ = (maxZ - minZ) / 4;
 
         minX = Mathf.Max(minX - lenX, -gameManagerScript.spawnRadius - space);
         maxX = Mathf.Min(maxX + lenX, gameManagerScript.spawnRadius + space);
