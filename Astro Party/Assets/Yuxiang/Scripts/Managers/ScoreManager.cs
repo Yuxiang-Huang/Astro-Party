@@ -126,12 +126,6 @@ public class ScoreManager : MonoBehaviour
                     P1Score--;
                 }
 
-                for (int i = 0; i < 8; i++)
-                {
-                    yield return new WaitForSeconds(0.1f);
-                    P1.transform.Rotate(new Vector3 (0, 0, 45));
-                }
-
                 P1Suicide = false;
             }
 
@@ -143,12 +137,38 @@ public class ScoreManager : MonoBehaviour
                     P2.transform.position.z);
             }
 
+            if (P2Suicide)
+            {
+                yield return new WaitForSeconds(2f);
+                if (P2Score > 0)
+                {
+                    P2.transform.position = new Vector3(P2.transform.position.x - lengthOfSquare, P2.transform.position.y,
+    P2.transform.position.z);
+                    P2Score--;
+                }
+
+                P2Suicide = false;
+            }
+
             while (!closeEnough(P3.transform.position.x - startPosX, P3Score * lengthOfSquare))
             {
 
                 yield return new WaitForSeconds(1f);
                 P3.transform.position = new Vector3(P3.transform.position.x + lengthOfSquare, P3.transform.position.y,
                     P3.transform.position.z);
+            }
+
+            if (P3Suicide)
+            {
+                yield return new WaitForSeconds(3f);
+                if (P3Score > 0)
+                {
+                    P3.transform.position = new Vector3(P3.transform.position.x - lengthOfSquare, P3.transform.position.y,
+    P3.transform.position.z);
+                    P3Score--;
+                }
+
+                P3Suicide = false;
             }
 
             while (!closeEnough(P4.transform.position.x - startPosX, P4Score * lengthOfSquare))
@@ -159,6 +179,19 @@ public class ScoreManager : MonoBehaviour
                     P4.transform.position.z);
             }
 
+            if (P4Suicide)
+            {
+                yield return new WaitForSeconds(4f);
+                if (P4Score > 0)
+                {
+                    P4.transform.position = new Vector3(P4.transform.position.x - lengthOfSquare, P4.transform.position.y,
+    P4.transform.position.z);
+                    P4Score--;
+                }
+
+                P4Suicide = false;
+            }
+
             while (!closeEnough(P5.transform.position.x - startPosX, P5Score * lengthOfSquare))
             {
 
@@ -166,6 +199,21 @@ public class ScoreManager : MonoBehaviour
                 P5.transform.position = new Vector3(P5.transform.position.x + lengthOfSquare, P5.transform.position.y,
                     P5.transform.position.z);
             }
+
+
+            if (P5Suicide)
+            {
+                yield return new WaitForSeconds(5f);
+                if (P5Score > 0)
+                {
+                    P5.transform.position = new Vector3(P5.transform.position.x - lengthOfSquare, P5.transform.position.y,
+    P5.transform.position.z);
+                    P5Score--;
+                }
+
+                P5Suicide = false;
+            }
+
         }
 
         else if (gameMode == "team")
