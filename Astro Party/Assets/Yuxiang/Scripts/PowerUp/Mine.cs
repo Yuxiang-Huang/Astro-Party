@@ -6,7 +6,7 @@ public class Mine : MonoBehaviour
 {
     public int id;
     public int team;
-    public float explodingRadius = 300;
+    public float explodingRadius = 500;
     public bool triggered;
 
     public GameObject killerPlane;
@@ -40,6 +40,11 @@ public class Mine : MonoBehaviour
         {
             transform.Rotate(new Vector3(0, 30, 0));
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        StartCoroutine("trigger");
     }
 
     IEnumerator trigger()
