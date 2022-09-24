@@ -51,6 +51,10 @@ public class Mine : MonoBehaviour
     {
         triggered = true;
         yield return new WaitForSeconds(1);
+
+        //sound effect
+
+
         GameObject myExplode = Instantiate(killerPlane, transform.position, transform.rotation);
         myExplode.GetComponent<Killer>().id = id;
         myExplode.GetComponent<Killer>().StartCoroutine("selfDestruct");

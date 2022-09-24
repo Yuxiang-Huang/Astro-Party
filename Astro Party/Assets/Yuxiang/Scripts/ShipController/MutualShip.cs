@@ -330,6 +330,15 @@ public class MutualShip : MonoBehaviour
                 myFreezer.GetComponent<Freezer>().team = team;
             }
 
+            else if (shootMode == "Proximity Mine")
+            {
+                GameObject myMine = Instantiate(powerUpManagerScript.mine, transform.position, transform.rotation);
+
+                //setting the script varibles
+                myMine.GetComponent<Mine>().id = id;
+                myMine.GetComponent<Mine>().team = team;
+            }
+
             powerUpUsed++;
 
             if (powerUpUsed == powerUpManagerScript.maxPowerUp)

@@ -74,6 +74,9 @@ public class PowerUpManager : MonoBehaviour
     public Text P4ShieldText;
     public Text P5ShieldText;
 
+    public GameObject mine;
+    public GameObject mineIndicator;
+
     GameManager gameManagerScript;
     ScoreManager scoreManagerScript;
 
@@ -85,10 +88,12 @@ public class PowerUpManager : MonoBehaviour
         indicators.Add(tripleShotIndicator);
         indicators.Add(freezerIndicator);
         indicators.Add(shieldIndicator);
+        indicators.Add(mineIndicator);
 
         SPU.Add("Laser Beam");
         SPU.Add("Scatter Shot");
         SPU.Add("Freezer");
+        SPU.Add("Proximity Mine");
 
         gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
         scoreManagerScript = GameObject.Find("Score Manager").GetComponent<ScoreManager>();
