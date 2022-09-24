@@ -1,0 +1,55 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Mine : MonoBehaviour
+{
+    int id;
+    int team;
+    public float explodingRadius = 300;
+    bool triggered;
+
+    GameManager gameManagerScript;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        foreach (List<GameObject> shipList in gameManagerScript.inGameShips)
+        {
+            foreach (GameObject ship in shipList)
+            {
+                if (ship.GetComponent<MutualShip>().team != team)
+                {
+                    if (distance(ship.transform.position, transform.position) < explodingRadius)
+                    {
+                        StartCoroutine("trigger");
+                    }
+                }
+            }
+        }
+
+        if (triggered)
+        {
+            transform.Rotate(new Vector3(0, 3, 0));
+        }
+    }
+
+    IEnumerator trigger()
+    {
+        triggered = true;
+        yield return new WaitForSeconds(1);
+        triggered = false;
+    }
+
+    float distance(Vector3 ship1, Vector3 ship2)
+    {
+        return Mathf.Sqrt(Mathf.Pow((ship1.x - ship2.x), 2) +
+            Mathf.Pow((ship1.z - ship2.z), 2));
+    }
+}
