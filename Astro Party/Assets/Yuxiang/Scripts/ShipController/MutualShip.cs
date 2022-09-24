@@ -332,7 +332,9 @@ public class MutualShip : MonoBehaviour
 
             else if (shootMode == "Proximity Mine")
             {
-                GameObject myMine = Instantiate(powerUpManagerScript.mine, transform.position, transform.rotation);
+                Vector3 offSet = new Vector3(-Mathf.Cos(angle) * 100, 0, -Mathf.Cos(angle) * 100);
+
+                GameObject myMine = Instantiate(powerUpManagerScript.mine, transform.position + offSet, transform.rotation);
 
                 //setting the script varibles
                 myMine.GetComponent<Mine>().id = id;
