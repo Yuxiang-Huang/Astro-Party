@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public List<List<GameObject>> inGameShips;
     public List<GameObject> inGameIndicators;
     public List<GameObject> inGameAsteroids;
+    public List<GameObject> needToClear;
 
     List<Vector3> pos;
     List<Vector3> rot;
@@ -554,6 +555,13 @@ public class GameManager : MonoBehaviour
         {
             Destroy(inGameAsteroids[0]);
             inGameAsteroids.Remove(inGameAsteroids[0]);
+        }
+
+        //destroy Mines, etc
+        while (needToClear.Count > 0)
+        {
+            Destroy(needToClear[0]);
+            needToClear.Remove(needToClear[0]);
         }
 
         spawnManagerScript.startSpawn = false;

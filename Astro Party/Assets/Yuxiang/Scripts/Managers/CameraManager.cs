@@ -39,11 +39,14 @@ public class CameraManager : MonoBehaviour
             }
         }
 
-        minX = Mathf.Max(minX, -gameManagerScript.spawnRadius - space);
-        maxX = Mathf.Min(maxX, gameManagerScript.spawnRadius + space);
+        float lenX = (maxX - minX) / 2;
+        float lenZ = (maxZ - minZ) / 2;
 
-        minZ = Mathf.Max(minZ, -gameManagerScript.spawnRadius - space);
-        maxZ = Mathf.Min(maxZ, gameManagerScript.spawnRadius + space);
+        minX = Mathf.Max(minX - lenX, -gameManagerScript.spawnRadius - space);
+        maxX = Mathf.Min(maxX + lenX, gameManagerScript.spawnRadius + space);
+
+        minZ = Mathf.Max(minZ - lenZ, -gameManagerScript.spawnRadius - space);
+        maxZ = Mathf.Min(maxZ + lenZ, gameManagerScript.spawnRadius + space);
 
         myCamera.orthographicSize = Mathf.Max(500, Mathf.Max((maxX - minX) / itchScreenFactor, (maxZ - minZ))) / 2;
 

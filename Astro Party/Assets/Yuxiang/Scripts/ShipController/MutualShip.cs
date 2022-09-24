@@ -337,6 +337,8 @@ public class MutualShip : MonoBehaviour
                 //setting the script varibles
                 myMine.GetComponent<Mine>().id = id;
                 myMine.GetComponent<Mine>().team = team;
+
+                gameManagerScript.needToClear.Add(myMine);
             }
 
             powerUpUsed++;
