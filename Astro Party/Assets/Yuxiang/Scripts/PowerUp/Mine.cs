@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class Mine : MonoBehaviour
 {
-    int id;
-    int team;
+    public int id;
+    public int team;
     public float explodingRadius = 300;
-    bool triggered;
+    public bool triggered;
+
+    public GameObject killerPlane;
 
     GameManager gameManagerScript;
 
@@ -36,7 +38,7 @@ public class Mine : MonoBehaviour
 
         if (triggered)
         {
-            transform.Rotate(new Vector3(0, 3, 0));
+            transform.Rotate(new Vector3(0, 30, 0));
         }
     }
 
@@ -44,7 +46,10 @@ public class Mine : MonoBehaviour
     {
         triggered = true;
         yield return new WaitForSeconds(1);
-        triggered = false;
+        GameObject myExplode = Instantiate(killerPlane, transform.position, transform.rotation);
+        myExplode.GetComponent<Killer>().id = id;
+        myExplode.GetComponent<Killer>().StartCoroutine("selfDestruct");
+        Destroy(gameObject);
     }
 
     float distance(Vector3 ship1, Vector3 ship2)

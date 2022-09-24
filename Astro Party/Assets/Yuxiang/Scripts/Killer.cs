@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Killer : MonoBehaviour
 {
+    public int id = -1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,17 +28,23 @@ public class Killer : MonoBehaviour
         {
             if (collision.gameObject.GetComponent<PilotPlayerController>() != null)
             {
-                collision.gameObject.GetComponent<PilotPlayerController>().kill(-1, -1);
+                collision.gameObject.GetComponent<PilotPlayerController>().kill(id, id);
             }
             else
             {
-                collision.gameObject.GetComponent<BotPilotMove>().kill(-1, -1);
+                collision.gameObject.GetComponent<BotPilotMove>().kill(id, id);
             }
         }
 
         if (collision.gameObject.CompareTag("Ship"))
         {
-            collision.gameObject.GetComponent<MutualShip>().damage(-1, -1);
+            collision.gameObject.GetComponent<MutualShip>().damage(id, id);
         }
+    }
+
+    IEnumerator selfDestruct()
+    {
+        yield return new WaitForSeconds(0.1f);
+        Destroy(gameObject);
     }
 }
