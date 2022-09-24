@@ -76,6 +76,7 @@ public class PowerUpManager : MonoBehaviour
 
     public GameObject mine;
     public GameObject mineIndicator;
+    public Text mineText;
 
     GameManager gameManagerScript;
     ScoreManager scoreManagerScript;
@@ -299,6 +300,20 @@ public class PowerUpManager : MonoBehaviour
         {
             indicators.Add(shieldIndicator);
             shieldText.text = "Shield: On";
+        }
+    }
+
+    public void setMine()
+    {
+        if (indicators.Contains(mineIndicator))
+        {
+            indicators.Remove(mineIndicator);
+            mineText.text = "Proximity Mine: Off";
+        }
+        else
+        {
+            indicators.Add(mineIndicator);
+            mineText.text = "Proximity Mine: On";
         }
     }
 
