@@ -126,6 +126,12 @@ public class ScoreManager : MonoBehaviour
                     P1Score--;
                 }
 
+                for (int i = 0; i < 8; i++)
+                {
+                    yield return new WaitForSeconds(0.05f);
+                    P1.transform.Rotate(new Vector3(0, 0, 45));
+                }
+
                 P1Suicide = false;
             }
 
@@ -139,12 +145,18 @@ public class ScoreManager : MonoBehaviour
 
             if (P2Suicide)
             {
-                yield return new WaitForSeconds(2f);
+                yield return new WaitForSeconds(1f);
                 if (P2Score > 0)
                 {
                     P2.transform.position = new Vector3(P2.transform.position.x - lengthOfSquare, P2.transform.position.y,
     P2.transform.position.z);
                     P2Score--;
+                }
+
+                for (int i = 0; i < 8; i++)
+                {
+                    yield return new WaitForSeconds(0.05f);
+                    P2.transform.Rotate(new Vector3(0, 0, 45));
                 }
 
                 P2Suicide = false;
@@ -160,12 +172,18 @@ public class ScoreManager : MonoBehaviour
 
             if (P3Suicide)
             {
-                yield return new WaitForSeconds(3f);
+                yield return new WaitForSeconds(1f);
                 if (P3Score > 0)
                 {
                     P3.transform.position = new Vector3(P3.transform.position.x - lengthOfSquare, P3.transform.position.y,
     P3.transform.position.z);
                     P3Score--;
+                }
+
+                for (int i = 0; i < 8; i++)
+                {
+                    yield return new WaitForSeconds(0.05f);
+                    P3.transform.Rotate(new Vector3(0, 0, 45));
                 }
 
                 P3Suicide = false;
@@ -181,12 +199,18 @@ public class ScoreManager : MonoBehaviour
 
             if (P4Suicide)
             {
-                yield return new WaitForSeconds(4f);
+                yield return new WaitForSeconds(1f);
                 if (P4Score > 0)
                 {
                     P4.transform.position = new Vector3(P4.transform.position.x - lengthOfSquare, P4.transform.position.y,
     P4.transform.position.z);
                     P4Score--;
+                }
+
+                for (int i = 0; i < 8; i++)
+                {
+                    yield return new WaitForSeconds(0.05f);
+                    P4.transform.Rotate(new Vector3(0, 0, 45));
                 }
 
                 P4Suicide = false;
@@ -203,12 +227,18 @@ public class ScoreManager : MonoBehaviour
 
             if (P5Suicide)
             {
-                yield return new WaitForSeconds(5f);
+                yield return new WaitForSeconds(1f);
                 if (P5Score > 0)
                 {
                     P5.transform.position = new Vector3(P5.transform.position.x - lengthOfSquare, P5.transform.position.y,
     P5.transform.position.z);
                     P5Score--;
+                }
+
+                for (int i = 0; i < 8; i++)
+                {
+                    yield return new WaitForSeconds(0.05f);
+                    P5.transform.Rotate(new Vector3(0, 0, 45));
                 }
 
                 P5Suicide = false;
