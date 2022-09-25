@@ -384,15 +384,15 @@ public class MutualShip : MonoBehaviour
             }
         }
 
+        if (died)
+        {
+            toKill = false;
+        }
+
         if (toKill && hasShield)
         {
             hasShield = false;
             shield.SetActive(false);
-            toKill = false;
-        }
-
-        if (died)
-        {
             toKill = false;
         }
 

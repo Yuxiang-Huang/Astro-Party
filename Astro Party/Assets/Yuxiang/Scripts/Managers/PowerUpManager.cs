@@ -341,6 +341,12 @@ public class PowerUpManager : MonoBehaviour
                         freezerIndicator.transform.rotation);
                     gameManagerScript.inGameIndicators.Add(toAdd2);
                     break;
+                case "Proximity Mine":
+                    GameObject toAdd3 = Instantiate(mineIndicator,
+                        new Vector3(script.transform.position.x, powerUpyValue, script.transform.position.z),
+                        mineIndicator.transform.rotation);
+                    gameManagerScript.inGameIndicators.Add(toAdd3);
+                    break;
             }
         }
     }

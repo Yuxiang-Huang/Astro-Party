@@ -63,7 +63,7 @@ public class Mine : MonoBehaviour
     IEnumerator trigger()
     {
         triggered = true;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1f);
 
         //sound effect
         SEManagerScript.generalAudio.PlayOneShot(SEManagerScript.mineSound);
