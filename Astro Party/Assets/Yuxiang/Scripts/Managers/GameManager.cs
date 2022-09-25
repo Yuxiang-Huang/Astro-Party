@@ -81,7 +81,7 @@ public class GameManager : MonoBehaviour
     int shipY = 10;
     public bool gameStarted;
 
-    bool fixedSpawn;
+    public bool fixedSpawn;
     public Text fixedSpawnText;
     public bool bulletCancel;
     public Text bulletCancelText;

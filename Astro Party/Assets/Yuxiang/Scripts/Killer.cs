@@ -28,17 +28,17 @@ public class Killer : MonoBehaviour
         {
             if (collision.gameObject.GetComponent<PilotPlayerController>() != null)
             {
-                collision.gameObject.GetComponent<PilotPlayerController>().kill(id, id);
+                collision.gameObject.GetComponent<PilotPlayerController>().kill(id, -1);
             }
             else
             {
-                collision.gameObject.GetComponent<BotPilotMove>().kill(id, id);
+                collision.gameObject.GetComponent<BotPilotMove>().kill(id, -1);
             }
         }
 
         if (collision.gameObject.CompareTag("Ship"))
         {
-            collision.gameObject.GetComponent<MutualShip>().damage(id, id);
+            collision.gameObject.GetComponent<MutualShip>().damage(id, -1);
         }
     }
 
