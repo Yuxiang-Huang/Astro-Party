@@ -20,59 +20,23 @@ public class PowerUpManager : MonoBehaviour
 
     public bool allRandomSPU;
     public Text allRandomSPUText;
-    public Text P1RandomSPUText;
-    public Text P2RandomSPUText;
-    public Text P3RandomSPUText;
-    public Text P4RandomSPUText;
-    public Text P5RandomSPUText;
-
-    public Text P1CurrText;
-    public Text P2CurrText;
-    public Text P3CurrText;
-    public Text P4CurrText;
-    public Text P5CurrText;
 
     public GameObject laser;
     public GameObject laserIndicator;
     public Text laserText;
-    public Text P1LaserText;
-    public Text P2LaserText;
-    public Text P3LaserText;
-    public Text P4LaserText;
-    public Text P5LaserText;
 
     public GameObject scatterIndicator;
     public Text scatterText;
-    public Text P1scatterText;
-    public Text P2scatterText;
-    public Text P3scatterText;
-    public Text P4scatterText;
-    public Text P5scatterText;
 
     public GameObject tripleShotIndicator;
     public Text tripleText;
-    public Text P1TripleText;
-    public Text P2TripleText;
-    public Text P3TripleText;
-    public Text P4TripleText;
-    public Text P5TripleText;
 
     public GameObject freezer;
     public GameObject freezerIndicator;
     public Text freezerText;
-    public Text P1FreezerText;
-    public Text P2FreezerText;
-    public Text P3FreezerText;
-    public Text P4FreezerText;
-    public Text P5FreezerText;
 
     public GameObject shieldIndicator;
     public Text shieldText;
-    public Text P1ShieldText;
-    public Text P2ShieldText;
-    public Text P3ShieldText;
-    public Text P4ShieldText;
-    public Text P5ShieldText;
 
     public GameObject mine;
     public GameObject mineIndicator;
@@ -183,31 +147,6 @@ public class PowerUpManager : MonoBehaviour
         }
 
         allRandomSPU = !allRandomSPU;
-    }
-
-    public void setRandomSPUP1()
-    {
-        setHelper("Random Starting PowerUp", P1RandomSPUText, 1);
-    }
-
-    public void setRandomSPUP2()
-    {
-        setHelper("Random Starting PowerUp", P2RandomSPUText, 2);
-    }
-
-    public void setRandomSPUP3()
-    {
-        setHelper("Random Starting PowerUp", P3RandomSPUText, 3);
-    }
-
-    public void setRandomSPUP4()
-    {
-        setHelper("Random Starting PowerUp", P4RandomSPUText, 4);
-    }
-
-    public void setRandomSPUP5()
-    {
-        setHelper("Random Starting PowerUp", P5RandomSPUText, 5);
     }
 
     //PowerUP
@@ -347,266 +286,6 @@ public class PowerUpManager : MonoBehaviour
                         mineIndicator.transform.rotation);
                     gameManagerScript.inGameIndicators.Add(toAdd3);
                     break;
-            }
-        }
-    }
-
-    //Players
-    //Laser Beam
-    public void setLaserP1()
-    {
-        setHelper("Laser Beam", P1LaserText, 1);
-    }
-
-    public void setLaserP2()
-    {
-        setHelper("Laser Beam", P2LaserText, 2);
-    }
-
-    public void setLaserP3()
-    {
-        setHelper("Laser Beam", P3LaserText, 3);
-    }
-
-    public void setLaserP4()
-    {
-        setHelper("Laser Beam", P4LaserText, 4);
-    }
-
-    public void setLaserP5()
-    {
-        setHelper("Laser Beam", P5LaserText, 5);
-    }
-
-    //Scatter Shot
-
-    public void setScatterP1()
-    {
-        setHelper("Scatter Shot", P1scatterText, 1);
-    }
-
-    public void setScatterP2()
-    {
-        setHelper("Scatter Shot", P2scatterText, 2);
-    }
-
-    public void setScatterP3()
-    {
-        setHelper("Scatter Shot", P3scatterText, 3);
-    }
-
-    public void setScatterP4()
-    {
-        setHelper("Scatter Shot", P4scatterText, 4);
-    }
-
-    public void setScatterP5()
-    {
-        setHelper("Scatter Shot", P5scatterText, 5);
-    }
-
-    //Freezer
-
-    public void setFreezerP1()
-    {
-        setHelper("Freezer", P1FreezerText, 1);
-    }
-
-    public void setFreezerP2()
-    {
-        setHelper("Freezer", P2FreezerText, 2);
-    }
-
-    public void setFreezerP3()
-    {
-        setHelper("Freezer", P3FreezerText, 3);
-    }
-
-    public void setFreezerP4()
-    {
-        setHelper("Freezer", P4FreezerText, 4);
-    }
-
-    public void setFreezerP5()
-    {
-        setHelper("Freezer", P5FreezerText, 5);
-    }
-
-    void setHelper(string modeString, Text modeText, int id)
-    {
-        foreach (List<GameObject> shipList in gameManagerScript.ships)
-        {
-            foreach (GameObject ship in shipList)
-            {
-                MutualShip script = ship.GetComponent<MutualShip>();
-                if (script.id == id)
-                {
-                    //to set last powerUpText off
-
-                    if (script.shootMode == modeString)
-                    {
-                        script.shootMode = "normal";
-                        modeText.text = modeString + ": Off";
-                        switch (id)
-                        {
-                            case 1:
-                                P1CurrText = null;
-                                break;
-                            case 2:
-                                P2CurrText = null;
-                                break;
-                            case 3:
-                                P3CurrText = null;
-                                break;
-                            case 4:
-                                P4CurrText = null;
-                                break;
-                            case 5:
-                                P5CurrText = null;
-                                break;
-                        }
-                    }
-                    else
-                    { 
-                        switch (id)
-                        {
-                            case 1:
-                                if (P1CurrText != null)
-                                    P1CurrText.text = script.shootMode + ": Off";
-                                break;
-                            case 2:
-                                if (P2CurrText != null)
-                                    P2CurrText.text = script.shootMode + ": Off";
-                                break;
-                            case 3:
-                                if (P3CurrText != null)
-                                    P3CurrText.text = script.shootMode + ": Off";
-                                break;
-                            case 4:
-                                if (P4CurrText != null)
-                                    P4CurrText.text = script.shootMode + ": Off";
-                                break;
-                            case 5:
-                                if (P5CurrText != null)
-                                    P5CurrText.text = script.shootMode + ": Off";
-                                break;
-                        }
-
-                        script.shootMode = modeString;
-                        modeText.text = modeString + ": On";
-
-                        switch (id)
-                        {
-                            case 1: P1CurrText = modeText; break;
-                            case 2: P2CurrText = modeText; break;
-                            case 3: P3CurrText = modeText; break;
-                            case 4: P4CurrText = modeText; break;
-                            case 5: P5CurrText = modeText; break;
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    //Triple Shot
-
-    public void setTripleP1()
-    {
-        setTripleHelper(1, P1TripleText);
-    }
-
-    public void setTripleP2()
-    {
-        setTripleHelper(2, P2TripleText);
-    }
-
-    public void setTripleP3()
-    {
-        setTripleHelper(3, P3TripleText);
-    }
-
-    public void setTripleP4()
-    {
-        setTripleHelper(4, P4TripleText);
-    }
-
-    public void setTripleP5()
-    {
-        setTripleHelper(5, P5TripleText);
-    }
-
-    void setTripleHelper(int id, Text modeText)
-    {
-        foreach (List<GameObject> shipList in gameManagerScript.ships)
-        {
-            foreach (GameObject ship in shipList)
-            {
-                MutualShip script = ship.GetComponent<MutualShip>();
-                if (script.id == id)
-                {
-                    if (script.tripleShot)
-                    {
-                        script.tripleShot = false;
-                        modeText.text = "Triple Shot: Off";
-                    }
-                    else
-                    {
-                        script.tripleShot = true;
-                        modeText.text = "Triple Shot: On";
-                    }
-                }
-            }
-        }
-    }
-
-    //Shield
-
-    public void setShieldP1()
-    {
-        setShiledHelper(1, P1ShieldText);
-    }
-
-    public void setShieldP2()
-    {
-        setShiledHelper(2, P2ShieldText);
-    }
-
-    public void setShieldP3()
-    {
-        setShiledHelper(3, P3ShieldText);
-    }
-
-    public void setShieldP4()
-    {
-        setShiledHelper(4, P4ShieldText);
-    }
-
-    public void setShieldP5()
-    {
-        setShiledHelper(5, P5ShieldText);
-    }
-
-    void setShiledHelper(int id, Text modeText)
-    {
-        foreach (List<GameObject> shipList in gameManagerScript.ships)
-        {
-            foreach (GameObject ship in shipList)
-            {
-                MutualShip script = ship.GetComponent<MutualShip>();
-                if (script.id == id)
-                {
-                    if (script.hasShield)
-                    {
-                        script.hasShield = false;
-                        modeText.text = "Shield: Off";
-                    }
-                    else
-                    {
-                        script.hasShield = true;
-                        modeText.text = "Shield: On";
-                    }
-                }
             }
         }
     }
