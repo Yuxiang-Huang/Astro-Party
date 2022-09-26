@@ -57,7 +57,7 @@ public class Screen {
         y1 = temp;
       }
       int y = y0;
-      while (y < y1){
+      while (y <= y1){
         plot(c, x0, y);
         y++;
       }
@@ -65,7 +65,7 @@ public class Screen {
 
     else if (dy == 0){
       int x = x0;
-      while (x < x1){
+      while (x <= x1){
         plot(c, x, y0);
         x++;
       }
