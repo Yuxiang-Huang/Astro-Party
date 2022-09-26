@@ -50,6 +50,11 @@ public class SPUManager : MonoBehaviour
         setHelper("Freezer", SPUFreezerText, id);
     }
 
+    public void setMineSPU()
+    {
+        setHelper("Proximity Mine", SPUMineText, id);
+    }
+
     void setHelper(string modeString, Text modeText, int id)
     {
         foreach (List<GameObject> shipList in gameManagerScript.ships)
