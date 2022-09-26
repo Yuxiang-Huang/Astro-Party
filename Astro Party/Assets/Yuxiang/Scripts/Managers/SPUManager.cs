@@ -9,6 +9,7 @@ public class SPUManager : MonoBehaviour
 
     GameManager gameManagerScript;
 
+    public Text title;
     public Text RandomSPUText;
     public Text SPUCurrText;
     public Text SPULaserText;
@@ -22,6 +23,7 @@ public class SPUManager : MonoBehaviour
     void Start()
     {
         gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        title.text = "P" + id + " Starting Power Up";
     }
 
     // Update is called once per frame
