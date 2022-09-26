@@ -6,12 +6,14 @@ public class Main {
   public static void main(String[] args) {
 
     Screen s = new Screen();
-    int B = 255;
+    int B;
     Color c;
 
     for (int i = 0; i < Screen.YRES; i ++){
-      c = new Color (255, 255, B);
-      s.drawLine(Screen.XRES/2, 0, Screen.XRES/2, Screen.YRES-1, c);
+      B = (int) (125 - i * 0.5);
+      B = Math.max(0, B);
+      c = new Color (0, 0, B);
+      s.drawLine(0, i, Screen.XRES-1, i, c);
     }
 
     s.display();
