@@ -69,7 +69,11 @@ public class SPUManager : MonoBehaviour
                     }
                     else
                     {
-                        SPUCurrText.text = script.shootMode + ": Off";
+                        if (SPUCurrText != null)
+                        {
+                            SPUCurrText.text = script.shootMode + ": Off";
+                        }
+
                         script.shootMode = modeString;
                         modeText.text = modeString + ": On";
 
