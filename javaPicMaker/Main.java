@@ -1,9 +1,10 @@
 import java.util.*;
 import java.io.*;
 import java.awt.*;
+import java.lang.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args){
 
     Screen s = new Screen();
     int B;
@@ -18,7 +19,7 @@ public class Main {
 
     c = new Color (255, 255, 255);
 
-    for (int i = 0; i < 30; i ++){
+    for (int i = 0; i < 100; i ++){
       Point rand = new Point ((int) (Math.random() * Screen.XRES),
       (int) (Math.random() * Screen.YRES));
       s.drawLine(rand.x - 1, rand.y, rand.x + 1, rand.y, c);

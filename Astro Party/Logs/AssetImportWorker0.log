@@ -1251,3 +1251,33 @@ Received Import Request.
   path: Assets/Mine.png
   artifactKey: Guid(8da2d7f47f86944e1ac08a918e94f72f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Mine.png using Guid(8da2d7f47f86944e1ac08a918e94f72f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '215ccb195ee02986f2a82b014b051e97') in 0.025658 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3033.683519 seconds.
+  path: Assets/Background.png
+  artifactKey: Guid(dc41853cee62844ef8d5800745276192) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Background.png using Guid(dc41853cee62844ef8d5800745276192) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e2924ddd13b3eb6639f5fa5be3cc4381') in 0.140749 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 6.307504 seconds.
+  path: Assets/Yuxiang/Course Library/Pictures/background.jpg
+  artifactKey: Guid(978ef7ae4fd9340f69c0a4edc0eba8fe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Yuxiang/Course Library/Pictures/background.jpg using Guid(978ef7ae4fd9340f69c0a4edc0eba8fe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ed1dafceb30a5e06de25c4bd76411e74') in 0.600099 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 268.077937 seconds.
+  path: Assets/Yuxiang/Course Library/Pictures/Map1.png
+  artifactKey: Guid(85ddd151b7eb245ec9ddab671c974eb6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Yuxiang/Course Library/Pictures/Map1.png using Guid(85ddd151b7eb245ec9ddab671c974eb6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c76bbb4d24e27484338f0aae4dcd36fe') in 0.202170 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.463444 seconds.
+  path: Assets/Yuxiang/Course Library/Pictures/background2.jpg
+  artifactKey: Guid(77630d0c8ddb84f53a82427bcc5fcdc3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Yuxiang/Course Library/Pictures/background2.jpg using Guid(77630d0c8ddb84f53a82427bcc5fcdc3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '34bfb8419456c19234d86684a9227374') in 0.051800 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 42.080063 seconds.
+  path: Assets/BackGround.png
+  artifactKey: Guid(daba22bca3ce944598efa22ee2e789a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/BackGround.png using Guid(daba22bca3ce944598efa22ee2e789a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ef746a7b06e16c1ead6f8538ae1e7bc2') in 0.023344 seconds 
