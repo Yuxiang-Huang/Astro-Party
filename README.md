@@ -33,4 +33,5 @@ This is a recreation of the game Astro Party. I am not using it for commercial p
     
     *  (09-24-2022): Today I made another powerUp called the proximity mine. Also, I worked on the effect of suicide on the score system.
     
-    *  (09-25-2022): Today I reworked the Starting Power Up system so I can duplicate a screen easily for each player. Also, I started to make my own background pictures.
+    *  (09-26-2022): Today I reworked the Starting Power Up system so I can duplicate a screen easily for each player. Also, I started to make my own background pictures.
+    *  (09-27-2022): Today I added map 4 to the game, which will spawn deadly laser beams of a pentagon randomly.
