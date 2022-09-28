@@ -32,3 +32,5 @@ This is a recreation of the game Astro Party. I am not using it for commercial p
     *  (09-22-2022): Today I made a map3, which is inspired by the three body problem. After adding it to the game, I decided to have two types of bot in the game and reworked the ship screen. Lastly, I checked and fixed issues of the bots.
     
     *  (09-24-2022): Today I made another powerUp called the proximity mine. Also, I worked on the effect of suicide on the score system.
+    
+    *  (09-25-2022): Today I reworked the Starting Power Up system so I can duplicate a screen easily for each player. Also, I started to make my own background pictures.
