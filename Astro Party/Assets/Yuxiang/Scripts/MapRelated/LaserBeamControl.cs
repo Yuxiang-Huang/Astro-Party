@@ -11,6 +11,9 @@ public class LaserBeamControl : MonoBehaviour
     public List<GameObject> indicators;
     public List<GameObject> laserBeams;
 
+    float time;
+    float interval = 7.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +23,74 @@ public class LaserBeamControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        time += Time.deltaTime;
+        if (time > interval)
+        {
+            StartCoroutine("spawnLaser");
+            time = 0;
+        }
+    }
+
+    IEnumerator spawnLaser()
+    {
+        bool[] spawn = new bool[indicators.Count];
+
+        for (int i = 0; i < indicators.Count; i++)
+        {
+            if (Random.Range(0, 2) == 0)
+            {
+                spawn[i] = true;
+            }
+        }
+
+        for (int i = 0; i < indicators.Count; i++)
+        {
+            if (spawn[i])
+            {
+                indicators[i].SetActive(true);
+            }
+        }
+
+        yield return new WaitForSeconds(1f);
+
+        for (int i = 0; i < indicators.Count; i++)
+        {
+            if (spawn[i])
+            {
+                indicators[i].SetActive(false);
+            }
+        }
+
+        for (int i = 0; i < indicators.Count; i++)
+        {
+            if (spawn[i])
+            {
+                indicators[i].SetActive(false);
+            }
+        }
+
+        for (int i = 0; i < indicators.Count; i++)
+        {
+            if (spawn[i])
+            {
+                laserBeams[i].SetActive(true);
+            }
+        }
+
+        yield return new WaitForSeconds(2f);
+
+        for (int i = 0; i < indicators.Count; i++)
+        {
+            if (spawn[i])
+            {
+                laserBeams[i].SetActive(false);
+            }
+        }
+
+        float rand = Random.Range(0, 2 * Mathf.PI);
+
+        indicator.transform.Rotate(new Vector3 (0, rand, 0));
+        laserBeam.transform.Rotate(new Vector3(0, rand, 0));
     }
 
     void make(GameObject beam)
