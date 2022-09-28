@@ -14,10 +14,12 @@ public class LaserBeamControl : MonoBehaviour
     float time;
     float interval = 7.0f;
 
+    SEManager SEManagerScript;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        SEManagerScript = GameObject.Find("SoundEffect Manager").GetComponent<SEManager>();
     }
 
     // Update is called once per frame
@@ -31,8 +33,15 @@ public class LaserBeamControl : MonoBehaviour
         }
     }
 
+    public void reset()
+    {
+        time = 0;
+    }
+
     IEnumerator spawnLaser()
     {
+        SEManagerScript.generalAudio.PlayOneShot(SEManagerScript.laserChargeSound);
+
         bool[] spawn = new bool[indicators.Count];
 
         for (int i = 0; i < indicators.Count; i++)
@@ -40,39 +49,17 @@ public class LaserBeamControl : MonoBehaviour
             if (Random.Range(0, 2) == 0)
             {
                 spawn[i] = true;
-            }
-        }
-
-        for (int i = 0; i < indicators.Count; i++)
-        {
-            if (spawn[i])
-            {
                 indicators[i].SetActive(true);
             }
         }
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2.25f);
 
         for (int i = 0; i < indicators.Count; i++)
         {
             if (spawn[i])
             {
                 indicators[i].SetActive(false);
-            }
-        }
-
-        for (int i = 0; i < indicators.Count; i++)
-        {
-            if (spawn[i])
-            {
-                indicators[i].SetActive(false);
-            }
-        }
-
-        for (int i = 0; i < indicators.Count; i++)
-        {
-            if (spawn[i])
-            {
                 laserBeams[i].SetActive(true);
             }
         }

@@ -18,6 +18,8 @@ public class SEManager : MonoBehaviour
 
     public AudioClip mineSound;
 
+    public AudioClip laserChargeSound;
+
     // Start is called before the first frame update
     void Start()
     {

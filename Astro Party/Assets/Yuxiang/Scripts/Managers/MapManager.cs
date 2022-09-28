@@ -24,6 +24,9 @@ public class MapManager : MonoBehaviour
     public Text Map3Text;
     public List<GameObject> Map3ThreeBodyObjects;
 
+    public GameObject Map4;
+    public Text Map4Text;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,10 +35,12 @@ public class MapManager : MonoBehaviour
         Map1.SetActive(false);
         Map2.SetActive(false);
         Map3.SetActive(false);
+        Map4.SetActive(false);
 
         allMaps.Add(Map1);
         allMaps.Add(Map2);
         allMaps.Add(Map3);
+        allMaps.Add(Map4);
     }
 
     void Update()
@@ -86,6 +91,7 @@ public class MapManager : MonoBehaviour
             case 1: reset1(); break;
             case 2: reset2(); break;
             case 3: reset3(); break;
+            case 4: reset4(); break;
         }
     }
 
@@ -110,6 +116,11 @@ public class MapManager : MonoBehaviour
         }
     }
 
+    void reset4()
+    {
+        Map4.GetComponent<LaserBeamControl>().reset();
+    }
+
     public void Map1OnOff()
     {
         MapOnOffHelper(Map1, Map1Text);
@@ -123,6 +134,11 @@ public class MapManager : MonoBehaviour
     public void Map3OnOff()
     {
         MapOnOffHelper(Map3, Map3Text);
+    }
+
+    public void Map4OnOff()
+    {
+        MapOnOffHelper(Map4, Map4Text);
     }
 
     void MapOnOffHelper(GameObject map, Text mapText)
