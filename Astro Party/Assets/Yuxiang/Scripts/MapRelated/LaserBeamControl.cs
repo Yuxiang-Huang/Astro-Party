@@ -35,7 +35,7 @@ public class LaserBeamControl : MonoBehaviour
 
     public void reset()
     {
-        time = 0;
+        time = 3;
     }
 
     IEnumerator spawnLaser()
