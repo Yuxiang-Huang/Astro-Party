@@ -35,12 +35,12 @@ public class LaserBeamControl : MonoBehaviour
         //2 and 4
         indicator3 = Instantiate(indicator, new Vector3((endPoint2.x + endPoint4.x) / 2, 1, (endPoint2.z + endPoint4.z) / 2),
             transform.rotation);
-        indicator3.transform.Rotate(new Vector3(0, 90 + 36, 0));
+        indicator3.transform.Rotate(new Vector3(0, 90 + 36 / 2, 0));
 
         //2 and 5
         indicator4 = Instantiate(indicator, new Vector3((endPoint2.x + endPoint5.x) / 2, 1, (endPoint2.z + endPoint5.z) / 2),
             transform.rotation);
-        indicator4.transform.Rotate(new Vector3(0, 36, 0));
+        indicator4.transform.Rotate(new Vector3(0, 36 * 2, 0));
 
         //3 and 5
         indicator5 = Instantiate(indicator, new Vector3((endPoint3.x + endPoint5.x) / 2, 1, (endPoint3.z + endPoint5.z) / 2),
