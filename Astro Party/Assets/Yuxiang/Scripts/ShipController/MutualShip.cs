@@ -7,7 +7,7 @@ public class MutualShip : MonoBehaviour
     public int id;
     public int team;
 
-    bool died;
+    bool attacked;
     public string shootMode = "normal";
     public bool tripleShot;
     public bool hasShield;
@@ -384,7 +384,7 @@ public class MutualShip : MonoBehaviour
             }
         }
 
-        if (died)
+        if (attacked)
         {
             toKill = false;
         }
@@ -394,11 +394,12 @@ public class MutualShip : MonoBehaviour
             hasShield = false;
             shield.SetActive(false);
             toKill = false;
+            attacked = true;
         }
 
         if (toKill)
         {
-            died = true;
+            attacked = true;
 
             //ship explode sound effect
             SEManagerScript.generalAudio.PlayOneShot(SEManagerScript.shipExplode);

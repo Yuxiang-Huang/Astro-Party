@@ -15,17 +15,23 @@ public class LaserBeamControl : MonoBehaviour
     float interval = 7.0f;
 
     SEManager SEManagerScript;
+    GameManager gameManagerScript;
 
     // Start is called before the first frame update
     void Start()
     {
+        gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
         SEManagerScript = GameObject.Find("SoundEffect Manager").GetComponent<SEManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        time += Time.deltaTime;
+        if (gameManagerScript.gameStarted)
+        {
+            time += Time.deltaTime;
+        }
+
         if (time > interval)
         {
             StartCoroutine("spawnLaser");
@@ -36,6 +42,14 @@ public class LaserBeamControl : MonoBehaviour
     public void reset()
     {
         time = 3;
+        for (int i = 0; i < indicators.Count; i++)
+        {
+            if (Random.Range(0, 2) == 0)
+            {
+                indicators[i].SetActive(false);
+                laserBeams[i].SetActive(false);
+            }
+        }
     }
 
     IEnumerator spawnLaser()
