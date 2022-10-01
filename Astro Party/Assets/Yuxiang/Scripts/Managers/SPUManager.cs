@@ -59,33 +59,30 @@ public class SPUManager : MonoBehaviour
 
     void setHelper(string modeString, Text modeText, int id)
     {
-        foreach (List<GameObject> shipList in gameManagerScript.ships)
+        foreach (GameObject ship in gameManagerScript.allShips)
         {
-            foreach (GameObject ship in shipList)
+            MutualShip script = ship.GetComponent<MutualShip>();
+            if (script.id == id)
             {
-                MutualShip script = ship.GetComponent<MutualShip>();
-                if (script.id == id)
+                //to set last powerUpText off
+
+                if (script.shootMode == modeString)
                 {
-                    //to set last powerUpText off
-
-                    if (script.shootMode == modeString)
+                    script.shootMode = "normal";
+                    modeText.text = modeString + ": Off";
+                    SPUCurrText = null;
+                }
+                else
+                {
+                    if (SPUCurrText != null)
                     {
-                        script.shootMode = "normal";
-                        modeText.text = modeString + ": Off";
-                        SPUCurrText = null;
+                        SPUCurrText.text = script.shootMode + ": Off";
                     }
-                    else
-                    {
-                        if (SPUCurrText != null)
-                        {
-                            SPUCurrText.text = script.shootMode + ": Off";
-                        }
 
-                        script.shootMode = modeString;
-                        modeText.text = modeString + ": On";
+                    script.shootMode = modeString;
+                    modeText.text = modeString + ": On";
 
-                        SPUCurrText = modeText;
-                    }
+                    SPUCurrText = modeText;
                 }
             }
         }

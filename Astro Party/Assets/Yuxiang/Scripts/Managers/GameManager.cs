@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public List<GameObject> allShips;
     public List<List<GameObject>> ships;
     public List<List<GameObject>> inGameShips;
     public List<GameObject> inGameIndicators;
@@ -167,6 +168,13 @@ public class GameManager : MonoBehaviour
         P3ShipPlayer.SetActive(false);
         P4ShipPlayer.SetActive(false);
         P5ShipPlayer.SetActive(false);
+
+        allShips = new List<GameObject>() {
+        P1ShipPlayer, P1ShipBot1, P1ShipBot,
+        P2ShipPlayer, P2ShipBot1, P2ShipBot,
+        P3ShipPlayer, P3ShipBot1, P3ShipBot,
+        P4ShipPlayer, P4ShipBot1, P4ShipBot,
+        P5ShipPlayer, P5ShipBot1, P5ShipBot};
     }
 
     // Update is called once per frame
