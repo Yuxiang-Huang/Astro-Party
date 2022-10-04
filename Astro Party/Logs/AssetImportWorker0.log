@@ -162,3 +162,9 @@ Received Import Request.
   path: Assets/Yuxiang/Prefabs/Map/Wall.prefab
   artifactKey: Guid(d8ef96e99f1094f7c933345733a44d0f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Yuxiang/Prefabs/Map/Wall.prefab using Guid(d8ef96e99f1094f7c933345733a44d0f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'adfbcab2ee97917f65bdf40913ce66a5') in 0.028257 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 660.074885 seconds.
+  path: Assets/Yuxiang/Prefabs/Map/Breakable Wall.prefab
+  artifactKey: Guid(54bab02415dea463bbb843d509ec7b4b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Yuxiang/Prefabs/Map/Breakable Wall.prefab using Guid(54bab02415dea463bbb843d509ec7b4b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c7d3c815c7bd8b0cf6b602f4c6b73b4a') in 0.177212 seconds 
