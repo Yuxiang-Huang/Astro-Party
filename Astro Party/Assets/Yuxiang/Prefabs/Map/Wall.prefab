@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2860530745390426768}
   - component: {fileID: 2860530745390426769}
   - component: {fileID: 2860530745390426770}
-  - component: {fileID: 2860530745390426771}
   m_Layer: 0
   m_Name: Wall Up
   m_TagString: Wall
@@ -82,19 +81,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2860530745390426771
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2860530745390426764}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2860530745401027752
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,9 +90,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2860530745401027759}
+  - component: {fileID: 5851777039333227408}
   m_Layer: 0
   m_Name: Wall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -129,6 +116,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5851777039333227408
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2860530745401027752}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 120, y: 100, z: 120}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2860530745482723828
 GameObject:
   m_ObjectHideFlags: 0
@@ -140,7 +140,6 @@ GameObject:
   - component: {fileID: 2860530745482723832}
   - component: {fileID: 2860530745482723833}
   - component: {fileID: 2860530745482723834}
-  - component: {fileID: 2860530745482723835}
   m_Layer: 0
   m_Name: Wall Left
   m_TagString: Wall
@@ -211,19 +210,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2860530745482723835
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2860530745482723828}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2860530745894296000
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,7 +221,6 @@ GameObject:
   - component: {fileID: 2860530745894296004}
   - component: {fileID: 2860530745894296005}
   - component: {fileID: 2860530745894296006}
-  - component: {fileID: 2860530745894296007}
   m_Layer: 0
   m_Name: Wall Down
   m_TagString: Wall
@@ -306,19 +291,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2860530745894296007
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2860530745894296000}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2860530746762279085
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,7 +302,6 @@ GameObject:
   - component: {fileID: 2860530746762279089}
   - component: {fileID: 2860530746762279090}
   - component: {fileID: 2860530746762279091}
-  - component: {fileID: 2860530746762279084}
   m_Layer: 0
   m_Name: Wall Right
   m_TagString: Wall
@@ -401,16 +372,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2860530746762279084
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2860530746762279085}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}

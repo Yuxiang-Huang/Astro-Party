@@ -21,8 +21,10 @@ public class SpiralBuilder : MonoBehaviour
         
     }
 
-    public void map5Build()
+    public void reset()
     {
+        Destroy(p);
+
         p = new GameObject();
 
         p.transform.position = new Vector3(0, 0, 0);
@@ -94,10 +96,5 @@ public class SpiralBuilder : MonoBehaviour
         {
             return breakableWall;
         }
-    }
-
-    public void reset()
-    {
-        Destroy(p.gameObject);
     }
 }

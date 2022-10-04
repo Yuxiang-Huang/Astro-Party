@@ -12,6 +12,8 @@ public class BulletMove : MonoBehaviour
 
     GameManager gameManagerScript;
 
+    bool attacked;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,53 +30,58 @@ public class BulletMove : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Asteroid"))
+        if (!attacked)
         {
-            collision.gameObject.GetComponent<Asteroid>().health--;
-        }
-
-        if (collision.gameObject.CompareTag("Breakable"))
-        {
-            collision.gameObject.SetActive(false);
-        }
-
-        if (collision.gameObject.CompareTag("Pilot"))
-        {
-            if (collision.gameObject.GetComponent<PilotPlayerController>() != null)
+            if (collision.gameObject.CompareTag("Asteroid"))
             {
-                collision.gameObject.GetComponent<PilotPlayerController>().kill(id, team);
+                collision.gameObject.GetComponent<Asteroid>().health--;
             }
-            else
+
+            if (collision.gameObject.CompareTag("Breakable"))
             {
-                collision.gameObject.GetComponent<BotPilotMove>().kill(id, team);
+                collision.gameObject.SetActive(false);
             }
-        }
 
-        if (collision.gameObject.CompareTag("Ship"))
-        {
-            collision.gameObject.GetComponent<MutualShip>().damage(id, team);
-        }
-
-        if (!collision.gameObject.CompareTag("Floor"))
-        {
-            bool destroy = true;
-            if (collision.gameObject.CompareTag("Bullet"))
+            if (collision.gameObject.CompareTag("Pilot"))
             {
-                if (gameManagerScript.bulletCancel)
+                if (collision.gameObject.GetComponent<PilotPlayerController>() != null)
                 {
-                    destroy = false;
+                    collision.gameObject.GetComponent<PilotPlayerController>().kill(id, team);
                 }
-
-                if (collision.gameObject.GetComponent<BulletMove>().id == id)
+                else
                 {
-                    destroy = false;
+                    collision.gameObject.GetComponent<BotPilotMove>().kill(id, team);
                 }
             }
 
-            if (destroy)
+            if (collision.gameObject.CompareTag("Ship"))
             {
-                Destroy(gameObject);
+                collision.gameObject.GetComponent<MutualShip>().damage(id, team);
             }
+
+            if (!collision.gameObject.CompareTag("Floor"))
+            {
+                bool destroy = true;
+                if (collision.gameObject.CompareTag("Bullet"))
+                {
+                    if (gameManagerScript.bulletCancel)
+                    {
+                        destroy = false;
+                    }
+
+                    if (collision.gameObject.GetComponent<BulletMove>().id == id)
+                    {
+                        destroy = false;
+                    }
+                }
+
+                if (destroy)
+                {
+                    Destroy(gameObject);
+                }
+            }
+
+            attacked = true;
         }
     }
 }
