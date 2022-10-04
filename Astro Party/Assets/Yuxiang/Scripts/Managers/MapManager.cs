@@ -28,6 +28,7 @@ public class MapManager : MonoBehaviour
     public Text Map4Text;
 
     public GameObject Map5;
+    public Text Map5Text;
 
     // Start is called before the first frame update
     void Start()
@@ -40,10 +41,10 @@ public class MapManager : MonoBehaviour
         Map4.SetActive(false);
         Map5.SetActive(false);
 
-        //allMaps.Add(Map1);
-        //allMaps.Add(Map2);
-        //allMaps.Add(Map3);
-        //allMaps.Add(Map4);
+        allMaps.Add(Map1);
+        allMaps.Add(Map2);
+        allMaps.Add(Map3);
+        allMaps.Add(Map4);
         allMaps.Add(Map5);
     }
 
@@ -149,6 +150,11 @@ public class MapManager : MonoBehaviour
     public void Map4OnOff()
     {
         MapOnOffHelper(Map4, Map4Text);
+    }
+
+    public void Map5OnOff()
+    {
+        MapOnOffHelper(Map5, Map5Text);
     }
 
     void MapOnOffHelper(GameObject map, Text mapText)

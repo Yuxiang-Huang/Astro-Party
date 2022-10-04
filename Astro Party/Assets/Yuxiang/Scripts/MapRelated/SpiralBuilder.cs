@@ -12,7 +12,7 @@ public class SpiralBuilder : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        reset();
     }
 
     // Update is called once per frame
@@ -29,18 +29,19 @@ public class SpiralBuilder : MonoBehaviour
 
         p.transform.position = new Vector3(0, 0, 0);
 
-        Vector3 curr = new Vector3(0, 0, 50);
+        Vector3 curr = new Vector3(0, 0, 0);
 
         //special first
-        for (int i = 0; i < 2; i++)
-        {
-            curr = new Vector3(curr.x + 100, curr.y, curr.z);
 
-            GameObject now = Instantiate(pick(), curr, transform.rotation);
-            now.transform.SetParent(p.transform);
-        }
+        GameObject now1 = Instantiate(breakableWall, curr, transform.rotation);
+        now1.transform.SetParent(p.transform);
 
-        int times = 9;
+        curr = new Vector3(curr.x + 100, curr.y, curr.z);
+
+        GameObject now2 = Instantiate(breakableWall, curr, transform.rotation);
+        now2.transform.SetParent(p.transform);
+
+        int times = 10;
 
         for (int x = 2; x < times; x++)
         {
@@ -76,9 +77,9 @@ public class SpiralBuilder : MonoBehaviour
         }
 
         //special last 
-        for (int i = 0; i < 7; i++)
+        for (int i = 0; i < 8; i++)
         {
-            curr = new Vector3(curr.x + 100, curr.y, curr.z);
+            curr = new Vector3(curr.x, curr.y, curr.z - 100);
             GameObject now = Instantiate(pick(), curr, transform.rotation);
             now.transform.SetParent(p.transform);
         }
