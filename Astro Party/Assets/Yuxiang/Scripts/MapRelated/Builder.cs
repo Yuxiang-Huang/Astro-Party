@@ -40,64 +40,65 @@ public class Builder : MonoBehaviour
 
     public void map5Build()
     {
+        GameObject p = new GameObject();
+
+        p.transform.position = new Vector3(0, 0, 0);
 
         Vector3 curr = new Vector3(0, 0, 50);
 
+        //special first
         for (int i = 0; i < 2; i++)
         {
             curr = new Vector3(curr.x + 100, curr.y, curr.z);
 
-            Instantiate(pick(), curr, transform.rotation);
+            GameObject now = Instantiate(pick(), curr, transform.rotation);
+            now.transform.SetParent(p.transform);
         }
 
         int times = 9;
 
         for (int x = 2; x < times; x++)
         {
-            //down
-            if (x % 4 == 2)
+            for (int i = 0; i < x; i++)
             {
-                for (int i = 0; i < x; i++)
+                //down
+                if (x % 4 == 2)
                 {
                     curr = new Vector3(curr.x, curr.y, curr.z - 100);
-
-                    Instantiate(pick(), curr, transform.rotation);
                 }
-            }
 
-            //left
-            if (x % 4 == 3)
-            {
-                for (int i = 0; i < x; i++)
+                //left
+                if (x % 4 == 3)
                 {
                     curr = new Vector3(curr.x - 100, curr.y, curr.z);
-
-                    Instantiate(pick(), curr, transform.rotation);
                 }
-            }
 
-            //up
-            if (x % 4 == 0)
-            {
-                for (int i = 0; i < x; i++)
+                //up
+                if (x % 4 == 0)
                 {
                     curr = new Vector3(curr.x, curr.y, curr.z + 100);
-
-                    Instantiate(pick(), curr, transform.rotation);
                 }
-            }
 
-            //right
-            if (x % 4 == 1)
-            {
-                for (int i = 0; i < x; i++)
+                //right
+                if (x % 4 == 1)
                 {
                     curr = new Vector3(curr.x + 100, curr.y, curr.z);
-
-                    Instantiate(pick(), curr, transform.rotation);
                 }
+
+                GameObject now = Instantiate(pick(), curr, transform.rotation);
+                now.transform.SetParent(p.transform);
             }
         }
+
+        //special last 
+        for (int i = 0; i < 7; i++)
+        {
+            curr = new Vector3(curr.x + 100, curr.y, curr.z);
+            GameObject now = Instantiate(pick(), curr, transform.rotation);
+            now.transform.SetParent(p.transform);
+        }
+
+        p.transform.Rotate(new Vector3 (0, Random.Range(0, 360), 0));
     }
 
     GameObject pick()
