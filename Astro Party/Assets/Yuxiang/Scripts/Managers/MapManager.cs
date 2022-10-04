@@ -27,6 +27,8 @@ public class MapManager : MonoBehaviour
     public GameObject Map4;
     public Text Map4Text;
 
+    public GameObject Map5;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,11 +38,13 @@ public class MapManager : MonoBehaviour
         Map2.SetActive(false);
         Map3.SetActive(false);
         Map4.SetActive(false);
+        Map5.SetActive(false);
 
-        allMaps.Add(Map1);
-        allMaps.Add(Map2);
-        allMaps.Add(Map3);
-        allMaps.Add(Map4);
+        //allMaps.Add(Map1);
+        //allMaps.Add(Map2);
+        //allMaps.Add(Map3);
+        //allMaps.Add(Map4);
+        allMaps.Add(Map5);
     }
 
     void Update()
@@ -92,6 +96,7 @@ public class MapManager : MonoBehaviour
             case 2: reset2(); break;
             case 3: reset3(); break;
             case 4: reset4(); break;
+            case 5: reset5(); break;
         }
     }
 
@@ -119,6 +124,11 @@ public class MapManager : MonoBehaviour
     void reset4()
     {
         Map4.GetComponent<LaserBeamControl>().reset();
+    }
+
+    void reset5()
+    {
+        Map5.GetComponent<SpiralBuilder>().reset();
     }
 
     public void Map1OnOff()
