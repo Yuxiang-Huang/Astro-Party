@@ -35,3 +35,7 @@ This is a recreation of the game Astro Party. I am not using it for commercial p
     
     *  (09-26-2022): Today I reworked the Starting Power Up system so I can duplicate a screen easily for each player. Also, I started to make my own background pictures.
     *  (09-27-2022): Today I added map 4 to the game, which will spawn deadly laser beams of a pentagon randomly.
+    
+    *  (09-30-2022): Today I play tested the games with my friends and fixed issues along the way.
+    
+    *  (10-03-2022): Today I started by making breakable and unbreakable wall prefabs. Then, I used them to create map 5, which will spawn them in random orders but in same positions, and added map 5 to the map system.
