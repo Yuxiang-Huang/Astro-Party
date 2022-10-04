@@ -41,12 +41,62 @@ public class Builder : MonoBehaviour
     public void map5Build()
     {
 
-        Instantiate(pick(), new Vector3(0, 0, 50), transform.rotation);
+        Vector3 curr = new Vector3(0, 0, 50);
 
-        int times = 2;
-        for (int x = 0; x < times; x++)
+        for (int i = 0; i < 2; i++)
         {
-            
+            curr = new Vector3(curr.x + 100, curr.y, curr.z);
+
+            Instantiate(pick(), curr, transform.rotation);
+        }
+
+        int times = 9;
+
+        for (int x = 2; x < times; x++)
+        {
+            //down
+            if (x % 4 == 2)
+            {
+                for (int i = 0; i < x; i++)
+                {
+                    curr = new Vector3(curr.x, curr.y, curr.z - 100);
+
+                    Instantiate(pick(), curr, transform.rotation);
+                }
+            }
+
+            //left
+            if (x % 4 == 3)
+            {
+                for (int i = 0; i < x; i++)
+                {
+                    curr = new Vector3(curr.x - 100, curr.y, curr.z);
+
+                    Instantiate(pick(), curr, transform.rotation);
+                }
+            }
+
+            //up
+            if (x % 4 == 0)
+            {
+                for (int i = 0; i < x; i++)
+                {
+                    curr = new Vector3(curr.x, curr.y, curr.z + 100);
+
+                    Instantiate(pick(), curr, transform.rotation);
+                }
+            }
+
+            //right
+            if (x % 4 == 1)
+            {
+                for (int i = 0; i < x; i++)
+                {
+                    curr = new Vector3(curr.x + 100, curr.y, curr.z);
+
+                    Instantiate(pick(), curr, transform.rotation);
+                }
+            }
         }
     }
 
