@@ -30,10 +30,8 @@ public class BulletMove : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        //if (!attacked)
-        //{
-        //    Debug.Log("Attack!");
-
+        if (!attacked)
+        {
             if (collision.gameObject.CompareTag("Asteroid"))
             {
                 collision.gameObject.GetComponent<Asteroid>().health--;
@@ -83,7 +81,7 @@ public class BulletMove : MonoBehaviour
                 }
             }
 
-        //    attacked = true;
-        //}
+            attacked = true;
+        }
     }
 }
