@@ -6,6 +6,7 @@ public class SpiralBuilder : MonoBehaviour
 {
     public GameObject wall;
     public GameObject breakableWall;
+    public GameObject Map5;
 
     GameObject p;
 
@@ -74,6 +75,8 @@ public class SpiralBuilder : MonoBehaviour
                 GameObject now = Instantiate(pick(), curr, transform.rotation);
                 now.transform.SetParent(p.transform);
             }
+
+            p.transform.SetParent(Map5.transform);
         }
 
         //special last 

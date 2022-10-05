@@ -374,6 +374,9 @@ public class MutualShip : MonoBehaviour
                     //setting the script varibles
                     sideBullet2.GetComponent<BouncyBullet>().id = id;
                     sideBullet2.GetComponent<BouncyBullet>().team = team;
+
+                    gameManagerScript.needToClear.Add(sideBullet1);
+                    gameManagerScript.needToClear.Add(sideBullet2);
                 }
             }
 
@@ -430,7 +433,6 @@ public class MutualShip : MonoBehaviour
             hasShield = false;
             shield.SetActive(false);
             toKill = false;
-            attacked = true;
         }
 
         if (toKill)
