@@ -43,6 +43,8 @@ public class PowerUpManager : MonoBehaviour
     public Text mineText;
 
     public GameObject bouncyBullet;
+    public GameObject BBIndicator;
+    public Text BBText;
 
     GameManager gameManagerScript;
     ScoreManager scoreManagerScript;
@@ -56,11 +58,13 @@ public class PowerUpManager : MonoBehaviour
         indicators.Add(freezerIndicator);
         indicators.Add(shieldIndicator);
         indicators.Add(mineIndicator);
+        indicators.Add(BBIndicator);
 
         SPU.Add("Laser Beam");
         SPU.Add("Scatter Shot");
         SPU.Add("Freezer");
         SPU.Add("Proximity Mine");
+        SPU.Add("Bouncy Bullet");
 
         gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
         scoreManagerScript = GameObject.Find("Score Manager").GetComponent<ScoreManager>();
@@ -255,6 +259,20 @@ public class PowerUpManager : MonoBehaviour
         {
             indicators.Add(mineIndicator);
             mineText.text = "Proximity Mine: On";
+        }
+    }
+
+    public void setBB()
+    {
+        if (indicators.Contains(BBIndicator))
+        {
+            indicators.Remove(BBIndicator);
+            BBText.text = "Bouncy Bullet: Off";
+        }
+        else
+        {
+            indicators.Add(BBIndicator);
+            BBText.text = "Bouncy Bullet: On";
         }
     }
 
