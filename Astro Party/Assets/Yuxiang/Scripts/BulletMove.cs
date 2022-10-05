@@ -69,6 +69,7 @@ public class BulletMove : MonoBehaviour
                         destroy = false;
                     }
 
+                    //for scatter shot
                     if (collision.gameObject.GetComponent<BulletMove>().id == id)
                     {
                         destroy = false;

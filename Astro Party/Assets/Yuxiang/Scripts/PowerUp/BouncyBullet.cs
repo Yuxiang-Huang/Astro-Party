@@ -101,9 +101,10 @@ public class BouncyBullet : MonoBehaviour
                     }
                 }
 
-                //if (collision.gameObject.CompareTag("Wall")){
-                //    destroy = false;
-                //}
+                if (collision.gameObject.CompareTag("Wall"))
+                {
+                    destroy = false;
+                }
 
                 if (destroy)
                 {
