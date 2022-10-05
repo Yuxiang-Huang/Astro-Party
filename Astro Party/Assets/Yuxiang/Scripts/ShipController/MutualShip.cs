@@ -343,11 +343,14 @@ public class MutualShip : MonoBehaviour
 
             else if (shootMode == "Bouncy Bullet")
             {
-                GameObject myBouncyBullet = Instantiate(powerUpManagerScript.bouncyBullet, transform.position, transform.rotation);
+                GameObject myBouncyBullet = Instantiate(powerUpManagerScript.bouncyBullet,
+                    transform.position +
+                new Vector3(bulletDis * Mathf.Sin(angle), 20, bulletDis * Mathf.Cos(angle)),
+                transform.rotation);
 
                 //setting the script varibles
-                myBouncyBullet.GetComponent<Mine>().id = id;
-                myBouncyBullet.GetComponent<Mine>().team = team;
+                myBouncyBullet.GetComponent<BouncyBullet>().id = id;
+                myBouncyBullet.GetComponent<BouncyBullet>().team = team;
 
                 gameManagerScript.needToClear.Add(myBouncyBullet);
 
