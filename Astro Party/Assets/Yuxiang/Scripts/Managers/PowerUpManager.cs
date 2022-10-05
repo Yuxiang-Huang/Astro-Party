@@ -42,6 +42,8 @@ public class PowerUpManager : MonoBehaviour
     public GameObject mineIndicator;
     public Text mineText;
 
+    public GameObject bouncyBullet;
+
     GameManager gameManagerScript;
     ScoreManager scoreManagerScript;
 

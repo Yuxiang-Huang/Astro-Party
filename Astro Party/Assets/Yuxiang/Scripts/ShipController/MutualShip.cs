@@ -341,6 +341,20 @@ public class MutualShip : MonoBehaviour
                 gameManagerScript.needToClear.Add(myMine);
             }
 
+            else if (shootMode == "Bouncy Bullet")
+            {
+                GameObject myBouncyBullet = Instantiate(powerUpManagerScript.bouncyBullet, transform.position, transform.rotation);
+
+                //setting the script varibles
+                myBouncyBullet.GetComponent<Mine>().id = id;
+                myBouncyBullet.GetComponent<Mine>().team = team;
+
+                gameManagerScript.needToClear.Add(myBouncyBullet);
+
+                //Sound effect
+                playerAudio.PlayOneShot(SEManagerScript.bulletSound);
+            }
+
             powerUpUsed++;
 
             if (powerUpUsed == powerUpManagerScript.maxPowerUp)

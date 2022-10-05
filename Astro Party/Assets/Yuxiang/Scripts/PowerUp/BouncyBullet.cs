@@ -14,12 +14,38 @@ public class BouncyBullet : MonoBehaviour
 
     bool attacked;
 
+    public Renderer rend;
+    public Material blue1;
+    public Material red2;
+    public Material yellow3;
+    public Material cyan4;
+    public Material green5;
+
     // Start is called before the first frame update
     void Start()
     {
         Rb = GetComponent<Rigidbody>();
         Rb.AddRelativeForce(new Vector3(0, 0, speed), ForceMode.VelocityChange);
         gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
+
+        switch (id)
+        {
+            case 1:
+                rend.material = blue1;
+                break;
+            case 2:
+                rend.material = red2;
+                break;
+            case 3:
+                rend.material = yellow3;
+                break;
+            case 4:
+                rend.material = cyan4;
+                break;
+            case 5:
+                rend.material = green5;
+                break;
+        }
     }
 
     // Update is called once per frame
