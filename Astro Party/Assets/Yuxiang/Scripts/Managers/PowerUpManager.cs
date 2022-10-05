@@ -54,7 +54,7 @@ public class PowerUpManager : MonoBehaviour
     {
         indicators.Add(laserIndicator);
         indicators.Add(scatterIndicator);
-        indicators.Add(tripleShotIndicator);
+        //indicators.Add(tripleShotIndicator);
         indicators.Add(freezerIndicator);
         indicators.Add(shieldIndicator);
         indicators.Add(mineIndicator);
