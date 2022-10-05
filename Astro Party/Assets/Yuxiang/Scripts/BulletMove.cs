@@ -30,6 +30,8 @@ public class BulletMove : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("collide!");
+
         if (!attacked)
         {
             if (collision.gameObject.CompareTag("Asteroid"))
@@ -79,10 +81,9 @@ public class BulletMove : MonoBehaviour
                 if (destroy)
                 {
                     Destroy(gameObject);
+                    attacked = true;
                 }
             }
-
-            attacked = true;
         }
     }
 }

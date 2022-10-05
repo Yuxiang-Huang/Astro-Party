@@ -356,6 +356,25 @@ public class MutualShip : MonoBehaviour
 
                 //Sound effect
                 playerAudio.PlayOneShot(SEManagerScript.bulletSound);
+
+                if (tripleShot)
+                {
+                    GameObject sideBullet1 = Instantiate(powerUpManagerScript.bouncyBullet, transform.position +
+                new Vector3(bulletDis * Mathf.Sin(angle + 1), 20, bulletDis * Mathf.Cos(angle + 1)),
+                transform.rotation);
+
+                    //setting the script varibles
+                    sideBullet1.GetComponent<BouncyBullet>().id = id;
+                    sideBullet1.GetComponent<BouncyBullet>().team = team;
+
+                    GameObject sideBullet2 = Instantiate(powerUpManagerScript.bouncyBullet, transform.position +
+                new Vector3(bulletDis * Mathf.Sin(angle - 1), 20, bulletDis * Mathf.Cos(angle - 1)),
+                transform.rotation);
+
+                    //setting the script varibles
+                    sideBullet2.GetComponent<BouncyBullet>().id = id;
+                    sideBullet2.GetComponent<BouncyBullet>().team = team;
+                }
             }
 
             powerUpUsed++;
