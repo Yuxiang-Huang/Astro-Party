@@ -88,14 +88,10 @@ public class BouncyBullet : MonoBehaviour
             if (!collision.gameObject.CompareTag("Floor"))
             {
                 bool destroy = true;
-                if (collision.gameObject.CompareTag("Bullet"))
-                {
-                    if (gameManagerScript.bulletCancel)
-                    {
-                        destroy = false;
-                    }
 
-                    if (collision.gameObject.GetComponent<BulletMove>().id == id)
+                if (collision.gameObject.GetComponent<BouncyBullet>() != null)
+                {
+                    if (collision.gameObject.GetComponent<BouncyBullet>().id == id)
                     {
                         destroy = false;
                     }
@@ -109,10 +105,9 @@ public class BouncyBullet : MonoBehaviour
                 if (destroy)
                 {
                     Destroy(gameObject);
+                    attacked = true;
                 }
             }
-
-            attacked = true;
         }
     }
 }

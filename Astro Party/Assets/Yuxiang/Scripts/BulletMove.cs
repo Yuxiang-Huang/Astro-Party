@@ -30,8 +30,6 @@ public class BulletMove : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("collide!");
-
         if (!attacked)
         {
             if (collision.gameObject.CompareTag("Asteroid"))
