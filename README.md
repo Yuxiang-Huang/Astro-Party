@@ -39,3 +39,5 @@ This is a recreation of the game Astro Party. I am not using it for commercial p
     *  (09-30-2022): Today I play tested the games with my friends and fixed issues along the way.
     
     *  (10-03-2022): Today I started by making breakable and unbreakable wall prefabs. Then, I used them to create map 5, which will spawn them in random orders but in same positions, and added map 5 to the map system.
+    
+    *  (10-04-2022): Today I made a new power up called bouncy bullet, which is bullet except that it bouncies when collide with a wall. As usual, I fixed issues I encounter along the way. 
