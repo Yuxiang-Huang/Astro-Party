@@ -69,10 +69,10 @@ public class BulletMove : MonoBehaviour
                         destroy = false;
                     }
 
-                    //if (collision.gameObject.GetComponent<BulletMove>().id == id)
-                    //{
-                    //    destroy = false;
-                    //}
+                    if (collision.gameObject.GetComponent<BulletMove>().id == id)
+                    {
+                        destroy = false;
+                    }
                 }
 
                 if (destroy)

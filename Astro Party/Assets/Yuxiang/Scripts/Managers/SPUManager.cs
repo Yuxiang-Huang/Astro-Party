@@ -18,6 +18,7 @@ public class SPUManager : MonoBehaviour
     public Text SPUFreezerText;
     public Text SPUShieldText;
     public Text SPUMineText;
+    public Text SPUBBText;
 
     // Start is called before the first frame update
     void Start()
@@ -55,6 +56,11 @@ public class SPUManager : MonoBehaviour
     public void setMineSPU()
     {
         setHelper("Proximity Mine", SPUMineText, id);
+    }
+
+    public void setBBSPU()
+    {
+        setHelper("Bouncy Bullet", SPUBBText, id);
     }
 
     void setHelper(string modeString, Text modeText, int id)

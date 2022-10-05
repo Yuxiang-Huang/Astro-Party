@@ -95,15 +95,15 @@ public class BouncyBullet : MonoBehaviour
                         destroy = false;
                     }
 
-                    //if (collision.gameObject.GetComponent<BulletMove>().id == id)
-                    //{
-                    //    destroy = false;
-                    //}
+                    if (collision.gameObject.GetComponent<BulletMove>().id == id)
+                    {
+                        destroy = false;
+                    }
                 }
 
-                if (collision.gameObject.CompareTag("Wall")){
-                    destroy = false;
-                }
+                //if (collision.gameObject.CompareTag("Wall")){
+                //    destroy = false;
+                //}
 
                 if (destroy)
                 {
