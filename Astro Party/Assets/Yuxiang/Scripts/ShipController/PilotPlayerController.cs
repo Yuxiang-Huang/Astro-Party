@@ -93,7 +93,7 @@ public class PilotPlayerController : MonoBehaviour
         {
             rotating = false;
         }
-        
+
         if (rotating)
         {
             playerRb.freezeRotation = false;
@@ -160,23 +160,49 @@ public class PilotPlayerController : MonoBehaviour
     {
         if (scoreManagerScript.gameMode == "solo")
         {
-            switch (ID)
+            //suicide
+            if (ID == id || ID == -1)
             {
-                case 1:
-                    scoreManagerScript.P1Score++;
-                    break;
-                case 2:
-                    scoreManagerScript.P2Score++;
-                    break;
-                case 3:
-                    scoreManagerScript.P3Score++;
-                    break;
-                case 4:
-                    scoreManagerScript.P4Score++;
-                    break;
-                case 5:
-                    scoreManagerScript.P5Score++;
-                    break;
+                switch (id)
+                {
+                    case 1:
+                        scoreManagerScript.P1Suicide = true;
+                        break;
+                    case 2:
+                        scoreManagerScript.P2Suicide = true;
+                        break;
+                    case 3:
+                        scoreManagerScript.P3Suicide = true;
+                        break;
+                    case 4:
+                        scoreManagerScript.P4Suicide = true;
+                        break;
+                    case 5:
+                        scoreManagerScript.P5Suicide = true;
+                        break;
+                }
+            }
+
+            else
+            {
+                switch (ID)
+                {
+                    case 1:
+                        scoreManagerScript.P1Score++;
+                        break;
+                    case 2:
+                        scoreManagerScript.P2Score++;
+                        break;
+                    case 3:
+                        scoreManagerScript.P3Score++;
+                        break;
+                    case 4:
+                        scoreManagerScript.P4Score++;
+                        break;
+                    case 5:
+                        scoreManagerScript.P5Score++;
+                        break;
+                }
             }
         }
     }

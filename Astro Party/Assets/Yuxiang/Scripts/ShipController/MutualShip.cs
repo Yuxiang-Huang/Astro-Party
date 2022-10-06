@@ -67,6 +67,8 @@ public class MutualShip : MonoBehaviour
         SEManagerScript = GameObject.Find("SoundEffect Manager").GetComponent<SEManager>();
 
         jousters.SetActive(false);
+        jousters.GetComponent<Jouster>().id = id;
+        jousters.GetComponent<Jouster>().team = team;
 
         if (tripleShot)
         {

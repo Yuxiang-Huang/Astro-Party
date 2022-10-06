@@ -40,6 +40,11 @@ public class Killer : MonoBehaviour
         {
             collision.gameObject.GetComponent<MutualShip>().damage(id, -1);
         }
+
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+            Destroy(collision.gameObject);
+        }
     }
 
     IEnumerator selfDestruct()
