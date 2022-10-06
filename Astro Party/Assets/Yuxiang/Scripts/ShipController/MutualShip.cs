@@ -230,7 +230,7 @@ public class MutualShip : MonoBehaviour
         for (int i = 0; i < bulletAnimation.Length; i++)
         {
             bulletAnimation[i].transform.position = new Vector3(transform.position.x +
-                Mathf.Cos(bulletAnimationPos + i * 2 * Mathf.PI / 3) * bulletDis,
+                Mathf.Cos(bulletAnimationPos + i * 2 * Mathf.PI / 3) * bulletDis * 2,
                 transform.position.y, transform.position.z + Mathf.Sin(bulletAnimationPos + i * 2 * Mathf.PI / 3) * bulletDis * 2);
         }
     }

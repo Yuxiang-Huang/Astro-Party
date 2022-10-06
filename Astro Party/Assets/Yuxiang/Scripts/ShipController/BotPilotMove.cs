@@ -170,12 +170,12 @@ public class BotPilotMove : MonoBehaviour
             //sound effect
             SEManagerScript.generalAudio.PlayOneShot(SEManagerScript.pilotDeath);
 
-            Destroy(this.gameObject);
-
             if (scoreManagerScript.shipMode == "pilot")
             {
                 earnPoint(otherID);
             }
+
+            Destroy(this.gameObject);
         }
     }
 

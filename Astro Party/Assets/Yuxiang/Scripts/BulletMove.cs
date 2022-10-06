@@ -39,6 +39,7 @@ public class BulletMove : MonoBehaviour
 
             if (collision.gameObject.CompareTag("Breakable"))
             {
+                Debug.Log("Destroy");
                 collision.gameObject.SetActive(false);
             }
 
