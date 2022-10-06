@@ -49,6 +49,8 @@ public class Mine : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("detonate");
+
         if (other.gameObject.CompareTag("Bullet"))
         {
             Destroy(other.gameObject);

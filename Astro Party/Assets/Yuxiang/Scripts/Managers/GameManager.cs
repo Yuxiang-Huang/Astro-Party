@@ -255,7 +255,6 @@ public class GameManager : MonoBehaviour
             if (activeTeamInGame <= 1)
             {
                 StartCoroutine("scoreScreen");
-                endRound();
                 gameStarted = false;
             }
         }  
@@ -508,6 +507,7 @@ public class GameManager : MonoBehaviour
     IEnumerator scoreScreen()
     {
         yield return new WaitForSeconds(1.5f);
+        endRound();
         scoreManagerScript.StartCoroutine("scoreUpdate");
     }
 
