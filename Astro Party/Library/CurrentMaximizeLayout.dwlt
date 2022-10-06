@@ -159,8 +159,8 @@ MonoBehaviour:
     y: 0
     width: 838
     height: 311.5
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 5}
   m_Panes:
   - {fileID: 5}
@@ -202,9 +202,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 277.86426, y: 11.000009, z: 421.85522}
+    m_Target: {x: 0, y: 0, z: 0}
     speed: 2
-    m_Value: {x: 277.86426, y: 11.000009, z: 421.85522}
+    m_Value: {x: 0, y: 0, z: 0}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -251,13 +251,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.35171017, y: -0.0028083937, z: 0.0010547133, w: 0.936106}
+    m_Target: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
     speed: 2
-    m_Value: {x: 0.35170954, y: -0.0028083886, z: 0.0010547114, w: 0.93610436}
+    m_Value: {x: 0.70710677, y: 0, z: 0, w: 0.70710677}
   m_Size:
-    m_Target: 35.81352
+    m_Target: 46.748856
     speed: 2
-    m_Value: 35.81352
+    m_Value: 46.748856
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -301,8 +301,8 @@ MonoBehaviour:
     y: 311.5
     width: 838
     height: 450.5
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 2}
   m_Panes:
   - {fileID: 2}
@@ -332,7 +332,7 @@ MonoBehaviour:
   m_MinSize: {x: 232, y: 492}
   m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
-  controlID: 294
+  controlID: 4459
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -386,10 +386,10 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 424.5}
-      m_SelectedIDs: 66020100
-      m_LastClickedID: 66150
-      m_ExpandedIDs: 649effff6cfbffff94160100
+      scrollPos: {x: 0, y: 501.5}
+      m_SelectedIDs: 74d8feff
+      m_LastClickedID: -75660
+      m_ExpandedIDs: 3e06ffff9014ffff1425ffff422fffff603cffff6e7bffff649effff6cfbffff94160100
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -476,8 +476,7 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SkipHidden: 0
     m_SearchArea: 1
-    m_Folders:
-    - Assets/Yuxiang/Prefabs/Ships
+    m_Folders: []
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 0
@@ -516,21 +515,21 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_AssetTreeState:
-    scrollPos: {x: 0, y: 857.50024}
-    m_SelectedIDs: 66020100
+    scrollPos: {x: 0, y: 249.50012}
+    m_SelectedIDs: 74d8feff
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff00000000d8410100da410100dc410100de410100e0410100e2410100e4410100e6410100e8410100ea410100ec410100ee410100f0410100f2410100f4410100f6410100f8410100fa410100fc410100fe41010000420100024201000442010006420100084201000a4201000c4201000e42010010420100
+    m_ExpandedIDs: ffffffff00000000d8410100da410100dc410100de410100e0410100e2410100e4410100e6410100e8410100ea410100ec410100ee410100f0410100f2410100f4410100f6410100f8410100fa410100fe41010000420100024201000442010006420100084201000c4201000e42010010420100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Jouster
-      m_OriginalName: Jouster
+      m_Name: PlayerShip
+      m_OriginalName: PlayerShip
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 146186
+      m_UserData: 79958
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
       m_OriginalEventType: 0
@@ -544,8 +543,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 66020100
-    m_LastClickedInstanceID: 66150
+    m_SelectedInstanceIDs: 74d8feff
+    m_LastClickedInstanceID: -75660
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000
     m_RenameOverlay:

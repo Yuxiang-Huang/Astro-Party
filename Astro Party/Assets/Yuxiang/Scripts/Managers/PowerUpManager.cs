@@ -46,6 +46,9 @@ public class PowerUpManager : MonoBehaviour
     public GameObject BBIndicator;
     public Text BBText;
 
+    public GameObject jousterIndicator;
+    public Text jousterText;
+
     GameManager gameManagerScript;
     ScoreManager scoreManagerScript;
 
@@ -59,12 +62,14 @@ public class PowerUpManager : MonoBehaviour
         indicators.Add(shieldIndicator);
         indicators.Add(mineIndicator);
         indicators.Add(BBIndicator);
+        indicators.Add(jousterIndicator);
 
         SPU.Add("Laser Beam");
         SPU.Add("Scatter Shot");
         SPU.Add("Freezer");
         SPU.Add("Proximity Mine");
         SPU.Add("Bouncy Bullet");
+        SPU.Add("Jouster");
 
         gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
         scoreManagerScript = GameObject.Find("Score Manager").GetComponent<ScoreManager>();
@@ -273,6 +278,20 @@ public class PowerUpManager : MonoBehaviour
         {
             indicators.Add(BBIndicator);
             BBText.text = "Bouncy Bullet: On";
+        }
+    }
+
+    public void setJouster()
+    {
+        if (indicators.Contains(jousterIndicator))
+        {
+            indicators.Remove(jousterIndicator);
+            jousterText.text = "Jouster: Off";
+        }
+        else
+        {
+            indicators.Add(jousterIndicator);
+            jousterText.text = "Jouster: On";
         }
     }
 
