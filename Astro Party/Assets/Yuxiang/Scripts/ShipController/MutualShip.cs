@@ -14,7 +14,7 @@ public class MutualShip : MonoBehaviour
     public bool hasShield;
 
     int speed = 500;
-    int bulletDis = 50;
+    int bulletDis = 25;
     public float bulletAnimationPos;
     public GameObject[] bulletAnimation;
     public float reloadTime;
@@ -231,7 +231,7 @@ public class MutualShip : MonoBehaviour
         {
             bulletAnimation[i].transform.position = new Vector3(transform.position.x +
                 Mathf.Cos(bulletAnimationPos + i * 2 * Mathf.PI / 3) * bulletDis,
-                transform.position.y, transform.position.z + Mathf.Sin(bulletAnimationPos + i * 2 * Mathf.PI / 3) * bulletDis);
+                transform.position.y, transform.position.z + Mathf.Sin(bulletAnimationPos + i * 2 * Mathf.PI / 3) * bulletDis * 2);
         }
     }
 
