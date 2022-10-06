@@ -49,20 +49,14 @@ public class Mine : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("trigger");
-
         if (other.gameObject.CompareTag("Bullet"))
         {
-            Debug.Log("destroy");
-
             Destroy(other.gameObject);
         }
 
         if (other.gameObject.CompareTag("Bullet") || other.gameObject.CompareTag("Laser") ||
             other.gameObject.CompareTag("Freezer") || other.gameObject.CompareTag("Killer"))
         {
-            Debug.Log("detonate");
-
             StartCoroutine("trigger");
         }
     }
