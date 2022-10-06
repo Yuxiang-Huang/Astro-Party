@@ -60,6 +60,20 @@ public class MapManager : MonoBehaviour
         }
     }
 
+    public void resetMapNotNext()
+    {
+        if (currMapID != 0)
+        {
+            foreach (GameObject currMap in allMaps)
+            {
+                if (currMap.GetComponent<Map>().mapID == currMapID)
+                {
+                    currMap.SetActive(false);
+                }
+            }
+        }
+    }
+
     public void resetMap()
     {
         //last map
@@ -69,10 +83,6 @@ public class MapManager : MonoBehaviour
             {
                 if (currMap.GetComponent<Map>().mapID == currMapID)
                 {
-                    //foreach (GameObject curr in currMap.GetComponent<Map>().breakables)
-                    //{
-                    //    curr.SetActive(false);
-                    //}
                     currMap.SetActive(false);
                 }
             }

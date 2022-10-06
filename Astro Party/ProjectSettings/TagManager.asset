@@ -13,9 +13,10 @@ TagManager:
   - Asteroid
   - Jouster
   - Bullet
-  - Mine
-  - Freezer
   - Laser
+  - Freezer
+  - Mine
+  - BouncyBullet
   layers:
   - Default
   - TransparentFX

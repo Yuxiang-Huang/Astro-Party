@@ -254,7 +254,8 @@ public class GameManager : MonoBehaviour
 
             if (activeTeamInGame <= 1)
             {
-                StartCoroutine("endRound");
+                StartCoroutine("scoreScreen");
+                endRound();
                 gameStarted = false;
             }
         }  
@@ -504,10 +505,14 @@ public class GameManager : MonoBehaviour
         return ans;
     }
 
-    IEnumerator endRound()
+    IEnumerator scoreScreen()
     {
         yield return new WaitForSeconds(1.5f);
+        scoreManagerScript.StartCoroutine("scoreUpdate");
+    }
 
+    public void endRound()
+    {
         for (int i = 0; i < inGameShips.Count; i++)
         {
             List<GameObject> shipList = inGameShips[i];
@@ -573,7 +578,6 @@ public class GameManager : MonoBehaviour
         }
 
         spawnManagerScript.startSpawn = false;
-        scoreManagerScript.StartCoroutine("scoreUpdate");
     }
 
     void resetPosRot()
