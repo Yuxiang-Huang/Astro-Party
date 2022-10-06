@@ -33,7 +33,8 @@ public class MutualShip : MonoBehaviour
 
     public GameObject pilot;
 
-    public GameObject jousters;
+    public GameObject jouster1;
+    public GameObject jouster2;
     public GameObject sideCannons;
     public GameObject shield;
     public GameObject freezeCube;
@@ -66,9 +67,13 @@ public class MutualShip : MonoBehaviour
         powerUpManagerScript = GameObject.Find("PowerUp Manager").GetComponent<PowerUpManager>();
         SEManagerScript = GameObject.Find("SoundEffect Manager").GetComponent<SEManager>();
 
-        jousters.SetActive(false);
-        jousters.GetComponent<Jouster>().id = id;
-        jousters.GetComponent<Jouster>().team = team;
+        //jousters
+        jouster1.SetActive(false);
+        jouster1.GetComponent<Jouster>().id = id;
+        jouster1.GetComponent<Jouster>().team = team;
+        jouster2.SetActive(false);
+        jouster2.GetComponent<Jouster>().id = id;
+        jouster2.GetComponent<Jouster>().team = team;
 
         if (tripleShot)
         {
@@ -379,6 +384,15 @@ public class MutualShip : MonoBehaviour
 
                     gameManagerScript.needToClear.Add(sideBullet1);
                     gameManagerScript.needToClear.Add(sideBullet2);
+                }
+
+                else if (shootMode == "Proximity Mine")
+                {
+                    jouster1.SetActive(true);
+                    jouster2.SetActive(true);
+
+                    jouster1.GetComponent<Jouster>().health = 5;
+                    jouster2.GetComponent<Jouster>().health = 5;
                 }
             }
 
