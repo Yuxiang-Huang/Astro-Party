@@ -17,6 +17,7 @@ TagManager:
   - Freezer
   - Mine
   - BouncyBullet
+  - Killer
   layers:
   - Default
   - TransparentFX
