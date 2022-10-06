@@ -34,7 +34,7 @@ public class MutualShip : MonoBehaviour
 
     public GameObject pilot;
 
-    int speedBoostInt = 300;
+    int speedBoostInt = 500;
     public GameObject jouster1;
     public GameObject jouster2;
     public GameObject sideCannons;
@@ -387,19 +387,19 @@ public class MutualShip : MonoBehaviour
                     gameManagerScript.needToClear.Add(sideBullet1);
                     gameManagerScript.needToClear.Add(sideBullet2);
                 }
+            }
 
-                else if (shootMode == "Proximity Mine")
-                {
-                    jouster1.SetActive(true);
-                    jouster2.SetActive(true);
+            else if (shootMode == "Jouster")
+            {
+                jouster1.SetActive(true);
+                jouster2.SetActive(true);
 
-                    jouster1.GetComponent<Jouster>().health = 5;
-                    jouster2.GetComponent<Jouster>().health = 5;
+                jouster1.GetComponent<Jouster>().health = 5;
+                jouster2.GetComponent<Jouster>().health = 5;
 
-                    StartCoroutine("speedBoost");
+                StartCoroutine("speedBoost");
 
-                    playerRb.AddRelativeForce(new Vector3(0, 0, speed * 100), ForceMode.Force);
-                }
+                playerRb.AddRelativeForce(new Vector3(0, 0, speed * 50), ForceMode.Force);
             }
 
             powerUpUsed++;

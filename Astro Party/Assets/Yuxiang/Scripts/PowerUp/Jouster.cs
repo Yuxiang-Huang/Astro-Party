@@ -16,6 +16,8 @@ public class Jouster : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("collide!");
+
         if (collision.gameObject.CompareTag("Asteroid"))
         {
             health -= collision.gameObject.GetComponent<Asteroid>().health;
