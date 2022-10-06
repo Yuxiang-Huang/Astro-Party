@@ -13,8 +13,8 @@ public class BotMove1: MonoBehaviour
 
     public bool disable;
 
-    int speed = 500;
-    int maxVelocity = 300;
+    public int speed = 500;
+    public int maxVelocity = 300;
     Rigidbody rb;
 
     public float threshold = 0.1f;

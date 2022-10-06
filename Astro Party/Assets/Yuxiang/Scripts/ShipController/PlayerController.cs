@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    int speed = 1000;
-    int maxVelocity = 500;
+    public int speed = 1000;
+    public int maxVelocity = 500;
     float rotatingSpeed = 5f;
     bool rotating;
 

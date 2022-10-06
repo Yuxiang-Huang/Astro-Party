@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class MutualShip : MonoBehaviour
 {
@@ -33,6 +34,7 @@ public class MutualShip : MonoBehaviour
 
     public GameObject pilot;
 
+    int speedBoostInt = 300;
     public GameObject jouster1;
     public GameObject jouster2;
     public GameObject sideCannons;
@@ -393,6 +395,10 @@ public class MutualShip : MonoBehaviour
 
                     jouster1.GetComponent<Jouster>().health = 5;
                     jouster2.GetComponent<Jouster>().health = 5;
+
+                    StartCoroutine("speedBoost");
+
+                    playerRb.AddRelativeForce(new Vector3(0, 0, speed * 100), ForceMode.Force);
                 }
             }
 
@@ -424,6 +430,42 @@ public class MutualShip : MonoBehaviour
         if (GetComponent<PlayerController>() != null)
         {
             playerRb.AddRelativeForce(new Vector3(0, 0, -speed * 30), ForceMode.Force);
+        }
+    }
+
+    IEnumerator speedBoost()
+    {
+        speed += speedBoostInt;
+
+        if (GetComponent<PlayerController>() != null)
+        {
+            GetComponent<PlayerController>().speed += speedBoostInt;
+            GetComponent<PlayerController>().maxVelocity += speedBoostInt;
+
+            yield return new WaitForSeconds(7f);
+
+            GetComponent<PlayerController>().speed -= speedBoostInt;
+            GetComponent<PlayerController>().maxVelocity -= speedBoostInt;
+        }
+
+        if (GetComponent<BotMove>() != null)
+        {
+            GetComponent<NavMeshAgent>().speed += speedBoostInt;
+
+            yield return new WaitForSeconds(7f);
+
+            GetComponent<NavMeshAgent>().speed -= speedBoostInt;
+        }
+
+        if (GetComponent<BotMove1>() != null)
+        {
+            GetComponent<BotMove1>().speed += speedBoostInt;
+            GetComponent<BotMove1>().maxVelocity += speedBoostInt;
+
+            yield return new WaitForSeconds(7f);
+
+            GetComponent<BotMove1>().speed -= 100;
+            GetComponent<BotMove1>().maxVelocity -= speedBoostInt;
         }
     }
 
