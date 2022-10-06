@@ -34,7 +34,7 @@ public class MutualShip : MonoBehaviour
 
     public GameObject pilot;
 
-    int speedBoostInt = 500;
+    int speedBoostInt = 300;
     public GameObject jouster1;
     public GameObject jouster2;
     public GameObject sideCannons;

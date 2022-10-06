@@ -19,6 +19,7 @@ public class SPUManager : MonoBehaviour
     public Text SPUShieldText;
     public Text SPUMineText;
     public Text SPUBBText;
+    public Text SPUJousterText;
 
     // Start is called before the first frame update
     void Start()
@@ -61,6 +62,11 @@ public class SPUManager : MonoBehaviour
     public void setBBSPU()
     {
         setHelper("Bouncy Bullet", SPUBBText, id);
+    }
+
+    public void setJousterSPU()
+    {
+        setHelper("Jouster", SPUJousterText, id);
     }
 
     void setHelper(string modeString, Text modeText, int id)
