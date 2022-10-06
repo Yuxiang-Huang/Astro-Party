@@ -11,40 +11,43 @@ public class Jouster : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+  
+    }
+
+    void Update()
+    {
 
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("collide!");
-
-        if (collision.gameObject.CompareTag("Asteroid"))
+        if (other.CompareTag("Asteroid"))
         {
-            health -= collision.gameObject.GetComponent<Asteroid>().health;
-            collision.gameObject.GetComponent<Asteroid>().health = 0;
+            health -= other.GetComponent<Asteroid>().health;
+            other.GetComponent<Asteroid>().health = 0;
         }
 
-        if (collision.gameObject.CompareTag("Breakable"))
+        if (other.CompareTag("Breakable"))
         {
-            collision.gameObject.SetActive(false);
+            other.gameObject.SetActive(false);
             health -= 1;
         }
 
-        if (collision.gameObject.CompareTag("Pilot"))
+        if (other.CompareTag("Pilot"))
         {
-            if (collision.gameObject.GetComponent<PilotPlayerController>() != null)
+            if (other.GetComponent<PilotPlayerController>() != null)
             {
-                collision.gameObject.GetComponent<PilotPlayerController>().kill(id, team);
+                other.GetComponent<PilotPlayerController>().kill(id, team);
             }
             else
             {
-                collision.gameObject.GetComponent<BotPilotMove>().kill(id, team);
+                other.GetComponent<BotPilotMove>().kill(id, team);
             }
         }
 
-        if (collision.gameObject.CompareTag("Ship"))
+        if (other.CompareTag("Ship"))
         {
-            collision.gameObject.GetComponent<MutualShip>().damage(id, team);
+            other.GetComponent<MutualShip>().damage(id, team);
             health = 0;
         }
 
