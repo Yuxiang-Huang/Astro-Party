@@ -45,11 +45,11 @@ public class Jouster : MonoBehaviour
             }
         }
 
-        if (other.CompareTag("Ship"))
-        {
-            other.GetComponent<MutualShip>().damage(id, team);
-            health = 0;
-        }
+        //if (other.CompareTag("Ship"))
+        //{
+        //    other.GetComponent<MutualShip>().damage(id, team);
+        //    health = 0;
+        //}
 
         if (health <= 0)
         {

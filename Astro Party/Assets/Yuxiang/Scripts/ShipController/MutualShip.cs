@@ -394,12 +394,12 @@ public class MutualShip : MonoBehaviour
                 jouster1.SetActive(true);
                 jouster2.SetActive(true);
 
-                jouster1.GetComponent<Jouster>().health = 5;
-                jouster2.GetComponent<Jouster>().health = 5;
+                jouster1.GetComponent<Jouster>().health = 3;
+                jouster2.GetComponent<Jouster>().health = 3;
 
                 StartCoroutine("speedBoost");
 
-                playerRb.AddRelativeForce(new Vector3(0, 0, speed * 50), ForceMode.Force);
+                playerRb.AddRelativeForce(new Vector3(0, 0, speed * 30), ForceMode.Force);
             }
 
             powerUpUsed++;
@@ -629,6 +629,13 @@ public class MutualShip : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.CompareTag("Jouster"))
+        {
+            Jouster script = other.gameObject.GetComponent<Jouster>();
+            damage(script.id, script.team);
+            script.health = 0;
+        }
+
         if (other.gameObject.CompareTag("PowerUp"))
         {
             string powerUpName = other.gameObject.GetComponent<PowerUp>().powerUpName;

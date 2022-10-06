@@ -358,7 +358,7 @@ GameObject:
   - component: {fileID: 6168668632558524685}
   m_Layer: 0
   m_Name: Jouster1
-  m_TagString: Untagged
+  m_TagString: Jouster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -550,7 +550,7 @@ GameObject:
   - component: {fileID: 812878731200062475}
   m_Layer: 0
   m_Name: Jouster2
-  m_TagString: Untagged
+  m_TagString: Jouster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
