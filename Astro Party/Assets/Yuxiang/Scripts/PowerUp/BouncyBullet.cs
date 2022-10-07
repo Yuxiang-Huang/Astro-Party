@@ -97,7 +97,7 @@ public class BouncyBullet : MonoBehaviour
                     }
                 }
 
-                if (collision.gameObject.CompareTag("Wall"))
+                if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Breakable"))
                 {
                     destroy = false;
                 }
