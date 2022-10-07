@@ -510,7 +510,14 @@ public class MutualShip : MonoBehaviour
 
             if (scoreManagerScript.shipMode == "ship")
             {
-                earnPoint(otherID);
+                if (otherID == id)
+                {
+                    suicide();
+                }
+                else
+                {
+                    earnPoint(otherID);
+                }
                 Destroy(this.gameObject);
             }
             else if (scoreManagerScript.shipMode == "pilot")
@@ -578,6 +585,31 @@ public class MutualShip : MonoBehaviour
                 {
                     earnPoint(id);
                 }
+            }
+        }
+    }
+
+    void suicide()
+    {
+        if (scoreManagerScript.gameMode == "solo")
+        { 
+            switch (id)
+            {
+                case 1:
+                    scoreManagerScript.P1Suicide = true;
+                    break;
+                case 2:
+                    scoreManagerScript.P2Suicide = true;
+                    break;
+                case 3:
+                    scoreManagerScript.P3Suicide = true;
+                    break;
+                case 4:
+                    scoreManagerScript.P4Suicide = true;
+                    break;
+                case 5:
+                    scoreManagerScript.P5Suicide = true;
+                    break;
             }
         }
     }
