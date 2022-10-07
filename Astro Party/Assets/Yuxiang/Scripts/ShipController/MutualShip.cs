@@ -310,6 +310,10 @@ public class MutualShip : MonoBehaviour
             {
                 int numOfShots = 16;
 
+                float ran = Random.Range(0, 360);
+
+                transform.Rotate(0, ran, 0);
+
                 for (int i = 0; i < numOfShots; i++)
                 {
                     float angleNow = transform.rotation.ToEulerAngles().y;
@@ -323,6 +327,8 @@ public class MutualShip : MonoBehaviour
                     myBullet.GetComponent<BulletMove>().id = id;
                     myBullet.GetComponent<BulletMove>().team = team;
                 }
+
+                transform.Rotate(0, 360 - ran, 0);
 
                 //Sound effect
                 playerAudio.PlayOneShot(SEManagerScript.bulletSound);
