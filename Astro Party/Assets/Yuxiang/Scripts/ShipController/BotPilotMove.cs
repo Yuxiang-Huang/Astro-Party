@@ -184,7 +184,7 @@ public class BotPilotMove : MonoBehaviour
         if (scoreManagerScript.gameMode == "solo")
         {
             //suicide
-            if (ID == id || ID == -1)
+            if (ID == -1)
             {
                 switch (id)
                 {
