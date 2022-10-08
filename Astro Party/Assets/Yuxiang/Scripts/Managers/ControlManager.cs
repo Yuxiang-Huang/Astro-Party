@@ -84,6 +84,10 @@ public class ControlManager : MonoBehaviour
         colors.normalColor = c;
         colors.selectedColor = c;
         colors.pressedColor = c;
+
+        teamButtonObject.gameObject.SetActive(false);
+        setRotateButton.gameObject.SetActive(false);
+        setShootButton.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
