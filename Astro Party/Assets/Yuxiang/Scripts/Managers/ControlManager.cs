@@ -10,7 +10,6 @@ public class ControlManager : MonoBehaviour
     public GameObject shipPlayer;
     public GameObject shipBot;
     public GameObject shipBot1;
-    public Text PText;
     public int team;
     public Button PButton;
     public Button teamButtonObject;
@@ -21,6 +20,7 @@ public class ControlManager : MonoBehaviour
     GameManager gameManagerScript;
     ScoreManager scoreManagerScript;
 
+    public Text PText;
     public Text teamText;
     public Text rotateText;
     public Text shootText;
@@ -160,9 +160,9 @@ public class ControlManager : MonoBehaviour
         gameManagerScript.ships[team-1].Remove(curr);
         team++;
 
-        if (team == 5)
+        if (team == 6)
         {
-            team = 0;
+            team = 1;
         }
         gameManagerScript.ships[team-1].Add(curr);
 
