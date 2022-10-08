@@ -92,6 +92,36 @@ public class ControlManager : MonoBehaviour
         teamButtonObject.gameObject.SetActive(false);
         setRotateButton.gameObject.SetActive(false);
         setShootButton.gameObject.SetActive(false);
+
+        //set control
+        PlayerController script = shipPlayer.GetComponent<PlayerController>();
+
+        switch (id)
+        {
+            case 1:
+                script.turn = KeyCode.BackQuote;
+                script.shoot = KeyCode.Tab;
+                break;
+            case 2:
+                script.turn = KeyCode.Z;
+                script.shoot = KeyCode.X;
+                break;
+            case 3:
+                script.turn = KeyCode.T;
+                script.shoot = KeyCode.Y;
+                break;
+            case 4:
+                script.turn = KeyCode.O;
+                script.shoot = KeyCode.P;
+                break;
+            case 5:
+                script.turn = KeyCode.UpArrow;
+                script.shoot = KeyCode.DownArrow;
+                break;
+        }
+
+        rotateText.text = script.turn.ToString();
+        shootText.text = script.shoot.ToString();
     }
 
     // Update is called once per frame

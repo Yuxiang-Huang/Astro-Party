@@ -105,43 +105,18 @@ public class MutualShip : MonoBehaviour
         {
             case 1:
                 rend.material = blue1;
-                if (script != null && script.turn == KeyCode.Space && script.shoot == KeyCode.Space)
-                {
-                    script.turn = KeyCode.BackQuote;
-                    script.shoot = KeyCode.Tab;
-                }
                 break;
             case 2:
                 rend.material = red2;
-                if (script != null && script.turn == KeyCode.Space && script.shoot == KeyCode.Space)
-                {
-                    script.turn = KeyCode.Z;
-                    script.shoot = KeyCode.X;
-                }
                 break;
             case 3:
                 rend.material = yellow3;
-                if (script != null && script.turn == KeyCode.Space && script.shoot == KeyCode.Space)
-                {
-                    script.turn = KeyCode.T;
-                    script.shoot = KeyCode.Y;
-                }
                 break;
             case 4:
                 rend.material = cyan4;
-                if (script != null && script.turn == KeyCode.Space && script.shoot == KeyCode.Space)
-                {
-                    script.turn = KeyCode.O;
-                    script.shoot = KeyCode.P;
-                }
                 break;
             case 5:
                 rend.material = green5;
-                if (script != null && script.turn == KeyCode.Space && script.shoot == KeyCode.Space)
-                {
-                    script.turn = KeyCode.UpArrow;
-                    script.shoot = KeyCode.DownArrow;
-                }
                 break;
         }
     }
