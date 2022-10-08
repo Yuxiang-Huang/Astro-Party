@@ -10,11 +10,12 @@ public class ControlManager : MonoBehaviour
     public GameObject shipPlayer;
     public GameObject shipBot;
     public GameObject shipBot1;
-    public Text pText;
+    public Text PText;
     public int team;
-    public GameObject teamButtonObject;
-    public GameObject setRotateButton;
-    public GameObject setShootButton;
+    public Button PButton;
+    public Button teamButtonObject;
+    public Button setRotateButton;
+    public Button setShootButton;
     public GameObject startingPowerUpButton;
 
     GameManager gameManagerScript;
@@ -51,6 +52,38 @@ public class ControlManager : MonoBehaviour
         gameManagerScript.allShips.Add(shipBot);
         gameManagerScript.allShips.Add(shipBot1);
         gameManagerScript.allShips.Add(shipPlayer);
+
+        //button color
+        Color c = new Color(0, 0, 255);
+
+        switch (id)
+        {
+            case 1: c = new Color(0, 0, 255); break;
+            case 2: c = new Color(255, 0, 0); break;
+            case 3: c = new Color(255, 255, 0); break;
+            case 4: c = new Color(0, 255, 255); break;
+            case 5: c = new Color(0, 255, 0); break;
+        }
+
+        ColorBlock colors = PButton.colors;
+        colors.normalColor = c;
+        colors.selectedColor = c;
+        colors.pressedColor = c;
+
+        colors = teamButtonObject.colors;
+        colors.normalColor = c;
+        colors.selectedColor = c;
+        colors.pressedColor = c;
+
+        colors = setRotateButton.colors;
+        colors.normalColor = c;
+        colors.selectedColor = c;
+        colors.pressedColor = c;
+
+        colors = setShootButton.colors;
+        colors.normalColor = c;
+        colors.selectedColor = c;
+        colors.pressedColor = c;
     }
 
     // Update is called once per frame
@@ -72,12 +105,12 @@ public class ControlManager : MonoBehaviour
             case 5: picture = scoreManagerScript.P5; break;
         }
 
-        buttonHelper(shipPlayer, shipBot, shipBot1, teamText, team, teamButtonObject,
+        buttonHelper(shipPlayer, shipBot, shipBot1, PText, team, teamButtonObject,
             setRotateButton, setShootButton, picture, startingPowerUpButton);
     }
 
     void buttonHelper(GameObject player, GameObject bot, GameObject bot1, Text textPlayer, int team,
-        GameObject teamButton, GameObject setRotateButton, GameObject setShootButton, GameObject picture,
+        Button teamButton, Button setRotateButton, Button setShootButton, GameObject picture,
             GameObject startingPowerUpButton)
     {
         List<GameObject> ship = gameManagerScript.ships[team-1];
@@ -87,8 +120,8 @@ public class ControlManager : MonoBehaviour
             ship.Remove(player);
             ship.Add(bot);
 
-            setRotateButton.SetActive(false);
-            setShootButton.SetActive(false);
+            setRotateButton.gameObject.SetActive(false);
+            setShootButton.gameObject.SetActive(false);
         }
         else if (ship.Contains(bot))
         {
@@ -101,8 +134,8 @@ public class ControlManager : MonoBehaviour
             textPlayer.text = "Off";
             ship.Remove(bot1);
 
-            teamButton.SetActive(false);
-            teamButton.SetActive(false);
+            teamButton.gameObject.SetActive(false);
+            teamButton.gameObject.SetActive(false);
             picture.SetActive(false);
             startingPowerUpButton.SetActive(false);
         }
@@ -111,11 +144,11 @@ public class ControlManager : MonoBehaviour
             textPlayer.text = "P" + player.GetComponent<MutualShip>().id;
             ship.Add(player);
 
-            setRotateButton.SetActive(true);
-            setShootButton.SetActive(true);
-            teamButton.SetActive(true);
-            teamButton.SetActive(true);
-            picture.SetActive(true);
+            setRotateButton.gameObject.SetActive(true);
+            setShootButton.gameObject.SetActive(true);
+            teamButton.gameObject.SetActive(true);
+            teamButton.gameObject.SetActive(true);
+            picture.gameObject.SetActive(true);
             startingPowerUpButton.SetActive(true);
         }
     }
