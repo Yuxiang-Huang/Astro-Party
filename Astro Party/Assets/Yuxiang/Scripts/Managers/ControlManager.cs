@@ -151,91 +151,31 @@ public class ControlManager : MonoBehaviour
         return ans;
     }
 
-//    public void P1SetRotate()
-//    {
-//        PlayerController script = gameManagerScript.P1ShipPlayer.GetComponent<PlayerController>();
-//        setRotateHelper(script, P1RotateText);
-//    }
+    public void setRotate()
+    {
+        KeyCode now = KeyCode.None;
 
-//    public void P1SetShoot()
-//    {
-//        PlayerController script = gameManagerScript.P1ShipPlayer.GetComponent<PlayerController>();
-//        setShootHelper(script, P1ShootText);
-//    }
+        foreach (KeyCode kcode in System.Enum.GetValues(typeof(KeyCode)))
+        {
+            if (Input.GetKey(kcode))
+                now = kcode;
+        }
 
-//    public void P2SetRotate()
-//    {
-//        PlayerController script = gameManagerScript.P2ShipPlayer.GetComponent<PlayerController>();
-//        setRotateHelper(script, P2RotateText);
-//    }
+        shipPlayer.GetComponent<PlayerController>().turn = now;
+        rotateText.text = now.ToString();
+    }
 
-//    public void P2SetShoot()
-//    {
-//        PlayerController script = gameManagerScript.P2ShipPlayer.GetComponent<PlayerController>();
-//        setShootHelper(script, P2ShootText);
-//    }
+    public void setShoot()
+    {
+        KeyCode now = KeyCode.None;
 
-//    public void P3SetRotate()
-//    {
-//        PlayerController script = gameManagerScript.P3ShipPlayer.GetComponent<PlayerController>();
-//        setRotateHelper(script, P3RotateText);
-//    }
+        foreach (KeyCode kcode in System.Enum.GetValues(typeof(KeyCode)))
+        {
+            if (Input.GetKey(kcode))
+                now = kcode;
+        }
 
-//    public void P3SetShoot()
-//    {
-//        PlayerController script = gameManagerScript.P3ShipPlayer.GetComponent<PlayerController>();
-//        setShootHelper(script, P3ShootText);
-//    }
-
-//    public void P4SetRotate()
-//    {
-//        PlayerController script = gameManagerScript.P4ShipPlayer.GetComponent<PlayerController>();
-//        setRotateHelper(script, P4RotateText);
-//    }
-
-//    public void P4SetShoot()
-//    {
-//        PlayerController script = gameManagerScript.P4ShipPlayer.GetComponent<PlayerController>();
-//        setShootHelper(script, P4ShootText);
-//    }
-
-//    public void P5SetRotate()
-//    {
-//        PlayerController script = gameManagerScript.P5ShipPlayer.GetComponent<PlayerController>();
-//        setRotateHelper(script, P5RotateText);
-//    }
-
-//    public void P5SetShoot()
-//    {
-//        PlayerController script = gameManagerScript.P5ShipPlayer.GetComponent<PlayerController>();
-//        setShootHelper(script, P5ShootText);
-//    }
-
-//    void setRotateHelper(PlayerController script, Text changeText)
-//    {
-//        KeyCode now = KeyCode.None;
-
-//        foreach (KeyCode kcode in System.Enum.GetValues(typeof(KeyCode)))
-//        {
-//            if (Input.GetKey(kcode))
-//                now = kcode;
-//        }
-
-//        script.turn = now;
-//        changeText.text = now.ToString();
-//    }
-
-//    void setShootHelper(PlayerController script, Text changeText)
-//    {
-//        KeyCode now = KeyCode.None;
-
-//        foreach (KeyCode kcode in System.Enum.GetValues(typeof(KeyCode)))
-//        {
-//            if (Input.GetKey(kcode))
-//                now = kcode;
-//        }
-
-//        script.shoot = now;
-//        changeText.text = now.ToString();
-//    }
+        shipPlayer.GetComponent<PlayerController>().shoot = now;
+        shootText.text = now.ToString();
+    }
 }
