@@ -27,7 +27,7 @@ public class ControlManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        team = id - 1;
+        team = id;
 
         gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
         scoreManagerScript = GameObject.Find("Score Manager").GetComponent<ScoreManager>();
@@ -80,7 +80,7 @@ public class ControlManager : MonoBehaviour
         GameObject teamButton, GameObject setRotateButton, GameObject setShootButton, GameObject picture,
             GameObject startingPowerUpButton)
     {
-        List<GameObject> ship = gameManagerScript.ships[team];
+        List<GameObject> ship = gameManagerScript.ships[team-1];
         if (ship.Contains(player))
         {
             textPlayer.text = "Bot1";
@@ -124,20 +124,22 @@ public class ControlManager : MonoBehaviour
     {
         GameObject curr = findShip(team, shipPlayer, shipBot);
 
-        gameManagerScript.ships[team].Remove(curr);
+        gameManagerScript.ships[team-1].Remove(curr);
         team++;
 
         if (team == 5)
         {
             team = 0;
         }
-        gameManagerScript.ships[team].Add(curr);
+        gameManagerScript.ships[team-1].Add(curr);
+
+        teamText.text = team.ToString();
     }
 
     GameObject findShip(int team, GameObject shipTarget, GameObject bot)
     {
         GameObject ans = null;
-        List<GameObject> ship = gameManagerScript.ships[team];
+        List<GameObject> ship = gameManagerScript.ships[team-1];
         if (ship.Contains(shipTarget))
         {
             ans = shipTarget;
@@ -148,31 +150,6 @@ public class ControlManager : MonoBehaviour
         }
         return ans;
     }
-
-//    public void P1SwitchTeamText()
-//    {
-//        P1TeamText.text = (gameManagerScript.P1Team + 1).ToString();
-//    }
-
-//    public void P2SwitchTeamText()
-//    {
-//        P2TeamText.text = (gameManagerScript.P2Team + 1).ToString();
-//    }
-
-//    public void P3SwitchTeamText()
-//    {
-//        P3TeamText.text = (gameManagerScript.P3Team + 1).ToString();
-//    }
-
-//    public void P4SwitchTeamText()
-//    {
-//        P4TeamText.text = (gameManagerScript.P4Team + 1).ToString();
-//    }
-
-//    public void P5SwitchTeamText()
-//    {
-//        P5TeamText.text = (gameManagerScript.P5Team + 1).ToString();
-//    }
 
 //    public void P1SetRotate()
 //    {
