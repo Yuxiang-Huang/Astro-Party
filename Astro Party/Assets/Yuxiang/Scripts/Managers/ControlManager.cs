@@ -69,21 +69,25 @@ public class ControlManager : MonoBehaviour
         colors.normalColor = c;
         colors.selectedColor = c;
         colors.pressedColor = c;
+        PButton.colors = colors;
 
         colors = teamButtonObject.colors;
         colors.normalColor = c;
         colors.selectedColor = c;
         colors.pressedColor = c;
+        teamButtonObject.colors = colors;
 
         colors = setRotateButton.colors;
         colors.normalColor = c;
         colors.selectedColor = c;
         colors.pressedColor = c;
+        setRotateButton.colors = colors;
 
         colors = setShootButton.colors;
         colors.normalColor = c;
         colors.selectedColor = c;
         colors.pressedColor = c;
+        setShootButton.colors = colors;
 
         teamButtonObject.gameObject.SetActive(false);
         setRotateButton.gameObject.SetActive(false);
