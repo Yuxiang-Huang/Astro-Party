@@ -29,6 +29,7 @@ public class ControlManager : MonoBehaviour
     void Start()
     {
         team = id;
+        teamText.text = team.ToString();
 
         gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
         scoreManagerScript = GameObject.Find("Score Manager").GetComponent<ScoreManager>();
