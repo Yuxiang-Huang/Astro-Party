@@ -7,6 +7,10 @@ public class Tutorial : MonoBehaviour
     public GameObject startScreen;
     public GameObject prepScreen;
 
+    public GameObject playerShip;
+
+    public List<GameObject> ships;
+
     // Start is called before the first frame update
     void Start()
     {
