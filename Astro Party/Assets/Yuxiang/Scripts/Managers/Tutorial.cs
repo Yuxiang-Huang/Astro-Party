@@ -18,10 +18,11 @@ public class Tutorial : MonoBehaviour
     public List<GameObject> ships;
     public GameObject tutorialMap;
 
-    public TextMeshProUGUI direction0;
-    public TextMeshProUGUI direction1;
+    public List<GameObject> directions;
+    int directionId = 0;
 
     public GameObject lastDirectionButton;
+    public GameObject nextDirectionButton;
 
     bool started;
 
@@ -35,20 +36,13 @@ public class Tutorial : MonoBehaviour
         shipRotate = KeyCode.A;
         shipShoot = KeyCode.S;
 
-        prepScreen.SetActive(false);
-        directionScreen.SetActive(false);
-        lastDirectionButton.SetActive(false);
-        endScreen.SetActive(false);
-
         GameObject shipPlayer = Instantiate(playerShip, new Vector3(0, 10, 0),
     playerShip.transform.rotation);
         shipPlayer.SetActive(false);
 
         ships.Add(shipPlayer);
 
-        endScreenText.SetActive(false);
-        direction0.gameObject.SetActive(false);
-        direction1.gameObject.SetActive(false);
+        end();
     }
 
     // Update is called once per frame
@@ -96,26 +90,40 @@ public class Tutorial : MonoBehaviour
         tutorialMap.SetActive(true);
         ships[0].SetActive(true);
         directionScreen.SetActive(true);
-        direction0.gameObject.SetActive(true);
+        directions[0].gameObject.SetActive(true);
         started = true;
     }
 
     public void nextDirection()
     {
-        if (direction0.gameObject.activeSelf)
+        if (directionId == 0)
         {
-            direction0.gameObject.SetActive(false);
-            direction1.gameObject.SetActive(true);
             lastDirectionButton.SetActive(true);
+        }
+
+        directions[directionId].SetActive(false);
+        directionId++;
+        directions[directionId].SetActive(true);
+
+        if (directionId == directions.Count - 1)
+        {
+            nextDirectionButton.SetActive(false);
         }
     }
 
     public void lastDirection()
     {
-        if (direction1.gameObject.activeSelf)
+        if (directionId == directions.Count - 1)
         {
-            direction1.gameObject.SetActive(false);
-            direction0.gameObject.SetActive(true);
+            nextDirectionButton.SetActive(true);
+        }
+
+        directions[directionId].SetActive(false);
+        directionId--;
+        directions[directionId].SetActive(true);
+
+        if (directionId == 0)
+        {
             lastDirectionButton.SetActive(false);
         }
     }
@@ -132,15 +140,19 @@ playerShip.transform.rotation);
         ships[0].SetActive(false);
 
         //screens and maps
+        prepScreen.SetActive(false);
         directionScreen.SetActive(false);
         endScreen.SetActive(false);
         startScreen.SetActive(true);
         tutorialMap.SetActive(false);
 
         //directions
-        direction0.gameObject.SetActive(true);
+        nextDirectionButton.SetActive(true);
         lastDirectionButton.SetActive(false);
-        direction1.gameObject.SetActive(false);
+        foreach (GameObject direction in directions)
+        {
+            direction.SetActive(false);
+        }
 
         //others
         started = false;
