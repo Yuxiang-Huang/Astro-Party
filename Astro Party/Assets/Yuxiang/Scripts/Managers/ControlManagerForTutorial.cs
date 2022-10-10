@@ -26,9 +26,9 @@ public class ControlManagerForTutorial : MonoBehaviour
         tutorialScript.playerShip.GetComponent<MutualShip>().id = id;
 
         //set control
-        PlayerController script = tutorialScript.playerShip.GetComponent<PlayerController>();
+        PlayerController script = tutorialScript.ships[0].GetComponent<PlayerController>();
         script.turn = KeyCode.A;
-        script.shoot = KeyCode.D;
+        script.shoot = KeyCode.S;
       
         rotateText.text = script.turn.ToString();
         shootText.text = script.shoot.ToString();
@@ -76,7 +76,12 @@ public class ControlManagerForTutorial : MonoBehaviour
     public void shipButton()
     {
         id++;
+        if (id == 6)
+        {
+            id = 1;
+        }
         tutorialScript.ships[0].GetComponent<MutualShip>().id = id;
+        tutorialScript.shipId = id;
         PText.text = "P" + id;
         buttonColorChange();
     }
@@ -92,6 +97,7 @@ public class ControlManagerForTutorial : MonoBehaviour
         }
 
         tutorialScript.playerShip.GetComponent<PlayerController>().turn = now;
+        tutorialScript.shipRotate = now;
         rotateText.text = now.ToString();
     }
 
@@ -106,6 +112,7 @@ public class ControlManagerForTutorial : MonoBehaviour
         }
 
         tutorialScript.playerShip.GetComponent<PlayerController>().shoot = now;
+        tutorialScript.shipShoot = now;
         shootText.text = now.ToString();
     }
 }
