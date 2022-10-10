@@ -24,12 +24,8 @@ public class ControlManagerForTutorial : MonoBehaviour
         //Creating ships
         tutorialScript = GameObject.Find("Tutorial Manager").GetComponent<Tutorial>();
 
-        shipPlayer = Instantiate(tutorialScript.playerShip, new Vector3(0, 0, 0),
-            tutorialScript.playerShip.transform.rotation);
+        shipPlayer = tutorialScript.playerShip;
         shipPlayer.GetComponent<MutualShip>().id = id;
-        shipPlayer.SetActive(false);
-
-        tutorialScript.ships.Add(shipPlayer);
 
         //set control
         PlayerController script = shipPlayer.GetComponent<PlayerController>();

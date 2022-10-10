@@ -10,11 +10,17 @@ public class Tutorial : MonoBehaviour
     public GameObject playerShip;
 
     public List<GameObject> ships;
+    public GameObject tutorialMap;
 
     // Start is called before the first frame update
     void Start()
     {
         prepScreen.SetActive(false);
+        GameObject shipPlayer = Instantiate(playerShip, new Vector3(0, 10, 0),
+    playerShip.transform.rotation);
+        shipPlayer.SetActive(false);
+
+        ships.Add(shipPlayer);
     }
 
     // Update is called once per frame
@@ -38,5 +44,7 @@ public class Tutorial : MonoBehaviour
     public void startTutorial()
     {
         prepScreen.SetActive(false);
+        tutorialMap.SetActive(true);
+        ships[0].SetActive(true);
     }
 }
