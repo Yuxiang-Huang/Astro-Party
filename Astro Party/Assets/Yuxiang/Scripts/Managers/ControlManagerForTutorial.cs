@@ -7,7 +7,6 @@ public class ControlManagerForTutorial : MonoBehaviour
 {
     public int id;
 
-    GameObject shipPlayer;
     public Button PButton;
     public Button setRotateButton;
     public Button setShootButton;
@@ -24,11 +23,10 @@ public class ControlManagerForTutorial : MonoBehaviour
         //Creating ships
         tutorialScript = GameObject.Find("Tutorial Manager").GetComponent<Tutorial>();
 
-        shipPlayer = tutorialScript.playerShip;
-        shipPlayer.GetComponent<MutualShip>().id = id;
+        tutorialScript.playerShip.GetComponent<MutualShip>().id = id;
 
         //set control
-        PlayerController script = shipPlayer.GetComponent<PlayerController>();
+        PlayerController script = tutorialScript.playerShip.GetComponent<PlayerController>();
         script.turn = KeyCode.A;
         script.shoot = KeyCode.D;
       
@@ -93,7 +91,7 @@ public class ControlManagerForTutorial : MonoBehaviour
                 now = kcode;
         }
 
-        shipPlayer.GetComponent<PlayerController>().turn = now;
+        tutorialScript.playerShip.GetComponent<PlayerController>().turn = now;
         rotateText.text = now.ToString();
     }
 
@@ -107,7 +105,7 @@ public class ControlManagerForTutorial : MonoBehaviour
                 now = kcode;
         }
 
-        shipPlayer.GetComponent<PlayerController>().shoot = now;
+        tutorialScript.playerShip.GetComponent<PlayerController>().shoot = now;
         shootText.text = now.ToString();
     }
 }
