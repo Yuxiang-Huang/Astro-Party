@@ -11,6 +11,8 @@ public class Tutorial : MonoBehaviour
     public GameObject directionScreen;
     public GameObject endScreen;
 
+    public GameObject endScreenText;
+
     public GameObject playerShip;
 
     public List<GameObject> ships;
@@ -44,6 +46,7 @@ public class Tutorial : MonoBehaviour
 
         ships.Add(shipPlayer);
 
+        endScreenText.SetActive(false);
         direction0.gameObject.SetActive(false);
         direction1.gameObject.SetActive(false);
     }
@@ -51,16 +54,27 @@ public class Tutorial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (started)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                if (endScreen.activeSelf)
+                {
+                    endScreen.SetActive(false);
+                    Time.timeScale = 1;
+                }
+                else
+                {
+                    endScreen.SetActive(true);
+                    Time.timeScale = 0;
+                }
+            }
+        }
+
         if (started && ships[0] == null)
         {
             endScreen.SetActive(true);
-            tutorialMap.SetActive(false);
-            ships[0] = Instantiate(playerShip, new Vector3(0, 10, 0),
-    playerShip.transform.rotation);
-            ships[0].GetComponent<MutualShip>().id = shipId;
-            ships[0].GetComponent<PlayerController>().turn = shipRotate;
-            ships[0].GetComponent<PlayerController>().shoot = shipShoot;
-            ships[0].SetActive(false);
+            endScreenText.SetActive(true);
         }
     }
 
@@ -108,12 +122,29 @@ public class Tutorial : MonoBehaviour
 
     public void end()
     {
+        //reset the ship
+        Destroy(ships[0]);
+        ships[0] = Instantiate(playerShip, new Vector3(0, 10, 0),
+playerShip.transform.rotation);
+        ships[0].GetComponent<MutualShip>().id = shipId;
+        ships[0].GetComponent<PlayerController>().turn = shipRotate;
+        ships[0].GetComponent<PlayerController>().shoot = shipShoot;
+        ships[0].SetActive(false);
+
+        //screens and maps
         directionScreen.SetActive(false);
         endScreen.SetActive(false);
         startScreen.SetActive(true);
+        tutorialMap.SetActive(false);
 
+        //directions
         direction0.gameObject.SetActive(true);
         lastDirectionButton.SetActive(false);
         direction1.gameObject.SetActive(false);
+
+        //others
+        started = false;
+        endScreenText.SetActive(false);
+        Time.timeScale = 1;
     }
 }
