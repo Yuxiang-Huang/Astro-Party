@@ -66,29 +66,29 @@ public class ControlManager : MonoBehaviour
             case 5: c = new Color(0, 255, 0); break;
         }
 
-        ColorBlock colors = PButton.colors;
-        colors.normalColor = c;
-        colors.selectedColor = c;
-        colors.pressedColor = c;
-        PButton.colors = colors;
+        //ColorBlock colors = PButton.colors;
+        //colors.normalColor = c;
+        //colors.selectedColor = c;
+        //colors.pressedColor = c;
+        //PButton.colors = colors;
 
-        colors = teamButtonObject.colors;
-        colors.normalColor = c;
-        colors.selectedColor = c;
-        colors.pressedColor = c;
-        teamButtonObject.colors = colors;
+        //colors = teamButtonObject.colors;
+        //colors.normalColor = c;
+        //colors.selectedColor = c;
+        //colors.pressedColor = c;
+        //teamButtonObject.colors = colors;
 
-        colors = setRotateButton.colors;
-        colors.normalColor = c;
-        colors.selectedColor = c;
-        colors.pressedColor = c;
-        setRotateButton.colors = colors;
+        //colors = setRotateButton.colors;
+        //colors.normalColor = c;
+        //colors.selectedColor = c;
+        //colors.pressedColor = c;
+        //setRotateButton.colors = colors;
 
-        colors = setShootButton.colors;
-        colors.normalColor = c;
-        colors.selectedColor = c;
-        colors.pressedColor = c;
-        setShootButton.colors = colors;
+        //colors = setShootButton.colors;
+        //colors.normalColor = c;
+        //colors.selectedColor = c;
+        //colors.pressedColor = c;
+        //setShootButton.colors = colors;
 
         teamButtonObject.gameObject.SetActive(false);
         setRotateButton.gameObject.SetActive(false);
