@@ -7,7 +7,7 @@ public class ControlManagerForTutorial : MonoBehaviour
 {
     public int id;
 
-    public GameObject shipPlayer;
+    GameObject shipPlayer;
     public Button PButton;
     public Button setRotateButton;
     public Button setShootButton;
@@ -22,15 +22,14 @@ public class ControlManagerForTutorial : MonoBehaviour
     void Start()
     {
         //Creating ships
+        tutorialScript = GameObject.Find("Tutorial Manager").GetComponent<Tutorial>();
+
         shipPlayer = Instantiate(tutorialScript.playerShip, new Vector3(0, 0, 0),
             tutorialScript.playerShip.transform.rotation);
         shipPlayer.GetComponent<MutualShip>().id = id;
         shipPlayer.SetActive(false);
 
         tutorialScript.ships.Add(shipPlayer);
-
-        setRotateButton.gameObject.SetActive(false);
-        setShootButton.gameObject.SetActive(false);
 
         //set control
         PlayerController script = shipPlayer.GetComponent<PlayerController>();
@@ -84,6 +83,7 @@ public class ControlManagerForTutorial : MonoBehaviour
     {
         id++;
         tutorialScript.ships[0].GetComponent<MutualShip>().id = id;
+        PText.text = "P" + id;
         buttonColorChange();
     }
 
