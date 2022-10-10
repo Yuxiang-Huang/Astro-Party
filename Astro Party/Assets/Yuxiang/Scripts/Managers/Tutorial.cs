@@ -18,11 +18,14 @@ public class Tutorial : MonoBehaviour
     public TextMeshProUGUI direction0;
     public TextMeshProUGUI direction1;
 
+    public GameObject lastDirectionButton;
+
     // Start is called before the first frame update
     void Start()
     {
         prepScreen.SetActive(false);
         directionScreen.SetActive(false);
+        lastDirectionButton.SetActive(false);
 
         GameObject shipPlayer = Instantiate(playerShip, new Vector3(0, 10, 0),
     playerShip.transform.rotation);
@@ -61,12 +64,23 @@ public class Tutorial : MonoBehaviour
         direction0.gameObject.SetActive(true);
     }
 
-    public void directionSwitch()
+    public void nextDirection()
     {
         if (direction0.gameObject.activeSelf)
         {
             direction0.gameObject.SetActive(false);
             direction1.gameObject.SetActive(true);
+            lastDirectionButton.SetActive(true);
+        }
+    }
+
+    public void lastDirection()
+    {
+        if (direction1.gameObject.activeSelf)
+        {
+            direction1.gameObject.SetActive(false);
+            direction0.gameObject.SetActive(true);
+            lastDirectionButton.SetActive(false);
         }
     }
 }
