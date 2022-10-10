@@ -43,3 +43,5 @@ This is a recreation of the game Astro Party. I am not using it for commercial p
     *  (10-05-2022): Today I made what might be the last power up I made for a long time. It is called jouster, which is destroy everything on contact with it. I fixed issues in the point system and the bullet today.
     
     *  (10-07-2022): Today I playtested the game with members in Stuy Game Devs and fixed issues along the way. Also, I removed the components in GameManager that deals with ship controls and merged it with the TextManager to form the ControlManager script that handles the ship screen.
+        
+    *  (10-09-2022): Today I started by finishing the ship screen. Then I worked on the Tutorial. I finished the prep screeen and laid the foundation for adding more directions.
