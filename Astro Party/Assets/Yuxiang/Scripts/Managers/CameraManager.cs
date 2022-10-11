@@ -11,6 +11,10 @@ public class CameraManager : MonoBehaviour
 
     public float itchScreenFactor = 1.6f;
 
+    public bool started;
+
+    public bool SPU;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +24,7 @@ public class CameraManager : MonoBehaviour
 
     void LateUpdate()
     {
-        if (gameManagerScript.gameStarted)
+        if (started)
         {
             float minX = gameManagerScript.spawnRadius;
             float maxX = -gameManagerScript.spawnRadius;
@@ -59,5 +63,22 @@ public class CameraManager : MonoBehaviour
             //Debug.Log("maxX: " + maxX);
             //Debug.Log("maxZ: " + maxZ);
         }
+    }
+
+    IEnumerator delayStart()
+    {
+        //reset
+        myCamera.orthographicSize = 800;
+        transform.position = new Vector3(0, transform.position.y, 0);
+
+        if (SPU)
+        {
+            yield return new WaitForSeconds(3.0f);
+        }
+        else
+        {
+            yield return new WaitForSeconds(2.0f);
+        }
+        started = true;
     }
 }

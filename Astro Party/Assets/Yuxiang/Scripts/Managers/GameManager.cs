@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     SpawnManager spawnManagerScript;
     PowerUpManager powerUpManagerScript;
     ScreenManager screenManagerScript;
+    CameraManager cameraMangerScript;
 
     public GameObject nextButton;
 
@@ -54,6 +55,7 @@ public class GameManager : MonoBehaviour
         spawnManagerScript = GameObject.Find("Spawn Manager").GetComponent<SpawnManager>();
         powerUpManagerScript = GameObject.Find("PowerUp Manager").GetComponent<PowerUpManager>();
         screenManagerScript = GameObject.Find("Screen Manager").GetComponent<ScreenManager>();
+        cameraMangerScript = GameObject.Find("Main Camera").GetComponent<CameraManager>();
     }
 
     // Update is called once per frame
@@ -160,6 +162,7 @@ public class GameManager : MonoBehaviour
 
         //call other scripts
         spawnManagerScript.RoundSpawn();
+        cameraMangerScript.StartCoroutine("delayStart");
 
         gameStarted = true;
 
@@ -221,6 +224,11 @@ public class GameManager : MonoBehaviour
                     inGameShips[i][j].GetComponent<MutualShip>().freezeTime += 1.0f;
                 }
             }
+            cameraMangerScript.SPU = true;
+        }
+        else
+        {
+            cameraMangerScript.SPU = false;
         }
     }
 
@@ -297,7 +305,9 @@ public class GameManager : MonoBehaviour
             needToClear.Remove(needToClear[0]);
         }
 
+        //other script
         spawnManagerScript.startSpawn = false;
+        cameraMangerScript.started = false;
     }
 
     void resetPosRot()
