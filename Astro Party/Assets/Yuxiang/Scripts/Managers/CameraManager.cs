@@ -9,7 +9,7 @@ public class CameraManager : MonoBehaviour
 
     public int space = 50;
 
-    public float itchScreenFactor = 1.5f;
+    public float itchScreenFactor = 1.6f;
 
     // Start is called before the first frame update
     void Start()
@@ -41,8 +41,8 @@ public class CameraManager : MonoBehaviour
                 }
             }
 
-            float lenX = (maxX - minX) / 4;
-            float lenZ = (maxZ - minZ) / 4;
+            float lenX = (maxX - minX) / 8;
+            float lenZ = (maxZ - minZ) / 8;
 
             minX = Mathf.Max(minX - lenX, -gameManagerScript.spawnRadius - space);
             maxX = Mathf.Min(maxX + lenX, gameManagerScript.spawnRadius + space);
