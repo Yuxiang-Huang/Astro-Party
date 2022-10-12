@@ -346,15 +346,15 @@ public class GameManager : MonoBehaviour
         fixedSpawn = !fixedSpawn;
     }
 
-    public void setBulletCancel()
+    public void setSuicidalBullet()
     {
         if (suicidalBullet)
         {
-            suicidalBulletText.text = "Bullet Cancel: Off";
+            suicidalBulletText.text = "Suicidal Bullet: Off";
         }
         else
         {
-            suicidalBulletText.text = "Bullet Cancel: On";
+            suicidalBulletText.text = "Suicidal Bullet: On";
         }
         suicidalBullet = !suicidalBullet;
     }
