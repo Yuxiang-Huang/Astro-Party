@@ -35,8 +35,8 @@ public class GameManager : MonoBehaviour
 
     public bool fixedSpawn;
     public Text fixedSpawnText;
-    public bool bulletCancel;
-    public Text bulletCancelText;
+    public bool suicidalBullet;
+    public Text suicidalBulletText;
 
     // Start is called before the first frame update
     void Start()
@@ -348,15 +348,15 @@ public class GameManager : MonoBehaviour
 
     public void setBulletCancel()
     {
-        if (bulletCancel)
+        if (suicidalBullet)
         {
-            bulletCancelText.text = "Bullet Cancel: Off";
+            suicidalBulletText.text = "Bullet Cancel: Off";
         }
         else
         {
-            bulletCancelText.text = "Bullet Cancel: On";
+            suicidalBulletText.text = "Bullet Cancel: On";
         }
-        bulletCancel = !bulletCancel;
+        suicidalBullet = !suicidalBullet;
     }
 
     float distance(Vector3 ship1, Vector3 ship2)
