@@ -60,7 +60,7 @@ public class BouncyBullet : MonoBehaviour
         {
             if (collision.gameObject.CompareTag("Asteroid"))
             {
-                collision.gameObject.GetComponent<Asteroid>().health--;
+                collision.gameObject.GetComponent<Asteroid>().health = 0;
             }
 
             if (collision.gameObject.CompareTag("Breakable"))
@@ -97,7 +97,8 @@ public class BouncyBullet : MonoBehaviour
                     }
                 }
 
-                if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Breakable"))
+                if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Breakable")
+                    || collision.gameObject.CompareTag("Asteroid"))
                 {
                     destroy = false;
                 }
