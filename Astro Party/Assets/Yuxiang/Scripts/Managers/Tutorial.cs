@@ -15,7 +15,6 @@ public class Tutorial : MonoBehaviour
 
     public GameObject playerShip;
 
-    public List<GameObject> ships;
     public GameObject tutorialMap;
 
     public List<GameObject> directions;
@@ -31,14 +30,15 @@ public class Tutorial : MonoBehaviour
     public KeyCode shipRotate;
     public KeyCode shipShoot;
 
-    public List<GameObject> needToClear;
-
     public GameObject cube0;
     public GameObject cube1;
     public List<GameObject> threeBody;
     public List<GameObject> asteroids;
     public GameObject laserIndicator;
     public GameObject bot;
+    public GameObject bot2;
+
+    GameManager gameManagerScript;
 
     // Start is called before the first frame update
     void Start()
@@ -46,11 +46,7 @@ public class Tutorial : MonoBehaviour
         shipRotate = KeyCode.A;
         shipShoot = KeyCode.S;
 
-        GameObject shipPlayer = Instantiate(playerShip, new Vector3(0, 10, 0),
-    playerShip.transform.rotation);
-        shipPlayer.SetActive(false);
-
-        ships.Add(shipPlayer);
+        gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
 
         end();
     }
@@ -83,7 +79,7 @@ public class Tutorial : MonoBehaviour
             }
         }
 
-        if (started && ships[0] == null)
+        if (started && gameManagerScript.inGameShips[0][0] == null)
         {
             endScreen.SetActive(true);
             endScreenText.SetActive(true);
@@ -106,7 +102,14 @@ public class Tutorial : MonoBehaviour
     {
         prepScreen.SetActive(false);
         tutorialMap.SetActive(true);
-        ships[0].SetActive(true);
+
+        GameObject shipPlayer = Instantiate(playerShip, new Vector3(0, 10, 0),
+playerShip.transform.rotation);
+        shipPlayer.GetComponent<MutualShip>().id = shipId;
+        shipPlayer.GetComponent<PlayerController>().turn = shipRotate;
+        shipPlayer.GetComponent<PlayerController>().shoot = shipShoot;
+        gameManagerScript.inGameShips[0].Add(shipPlayer);
+
         directionScreen.SetActive(true);
         directions[0].gameObject.SetActive(true);
         started = true;
@@ -134,12 +137,21 @@ public class Tutorial : MonoBehaviour
             foreach (GameObject asteroid in asteroids)
             {
                 GameObject curr = Instantiate(asteroid, generateRanPos(), asteroid.transform.rotation);
-                curr.GetComponent<Asteroid>().powerUp = laserIndicator;
-                needToClear.Add(curr);
+                gameManagerScript.inGameAsteroids.Add(curr);
             }
         }
 
-        if (directionId == 4)
+        if (directionId == 5)
+        {
+            GameObject curr = Instantiate(laserIndicator, generateRanPos(), laserIndicator.transform.rotation);
+            gameManagerScript.inGameIndicators.Add(curr);
+
+            //GameObject bot = Instantiate(bot, generateRanPos(), laserIndicator.transform.rotation);
+            //curr.GetComponent<Asteroid>().powerUp = laserIndicator;
+            //gameManagerScript.inGameIndicators.Add(curr);
+        }
+
+        if (directionId == 6)
         {
             cube0.transform.position = generateRanPos();
             cube1.transform.position = generateRanPos();
@@ -147,7 +159,7 @@ public class Tutorial : MonoBehaviour
             cube1.SetActive(true);
         }
 
-        if (directionId == 5)
+        if (directionId == 7)
         {
             foreach (GameObject body in threeBody)
             {
@@ -206,15 +218,6 @@ Random.Range(-spawnRadius, spawnRadius));
 
     public void end()
     {
-        //reset the ship
-        Destroy(ships[0]);
-        ships[0] = Instantiate(playerShip, new Vector3(0, 10, 0),
-playerShip.transform.rotation);
-        ships[0].GetComponent<MutualShip>().id = shipId;
-        ships[0].GetComponent<PlayerController>().turn = shipRotate;
-        ships[0].GetComponent<PlayerController>().shoot = shipShoot;
-        ships[0].SetActive(false);
-
         //screens and maps
         prepScreen.SetActive(false);
         directionScreen.SetActive(false);
@@ -239,11 +242,7 @@ playerShip.transform.rotation);
             body.SetActive(false);
         }
 
-        for (int i = needToClear.Count - 1; i >= 0; i --)
-        {
-            Destroy(needToClear[0]);
-            needToClear.Remove(needToClear[0]);
-        }
+        gameManagerScript.endRound();
 
         //others
         started = false;

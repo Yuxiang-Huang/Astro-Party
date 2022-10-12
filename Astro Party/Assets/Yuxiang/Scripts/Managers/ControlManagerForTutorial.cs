@@ -26,7 +26,7 @@ public class ControlManagerForTutorial : MonoBehaviour
         tutorialScript.playerShip.GetComponent<MutualShip>().id = id;
 
         //set control
-        PlayerController script = tutorialScript.ships[0].GetComponent<PlayerController>();
+        PlayerController script = tutorialScript.playerShip.GetComponent<PlayerController>();
         script.turn = KeyCode.A;
         script.shoot = KeyCode.S;
       
@@ -80,7 +80,7 @@ public class ControlManagerForTutorial : MonoBehaviour
         {
             id = 1;
         }
-        tutorialScript.ships[0].GetComponent<MutualShip>().id = id;
+        tutorialScript.playerShip.GetComponent<MutualShip>().id = id;
         tutorialScript.shipId = id;
         PText.text = "P" + id;
         buttonColorChange();
