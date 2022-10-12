@@ -48,7 +48,8 @@ public class Tutorial : MonoBehaviour
 
         gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
 
-        end();
+        //can't call end because other managers didn't set yet.
+        reset();
     }
 
     // Update is called once per frame
@@ -146,9 +147,14 @@ playerShip.transform.rotation);
             GameObject curr = Instantiate(laserIndicator, generateRanPos(), laserIndicator.transform.rotation);
             gameManagerScript.inGameIndicators.Add(curr);
 
-            //GameObject bot = Instantiate(bot, generateRanPos(), laserIndicator.transform.rotation);
-            //curr.GetComponent<Asteroid>().powerUp = laserIndicator;
-            //gameManagerScript.inGameIndicators.Add(curr);
+            GameObject toAddBot1 = Instantiate(bot, generateRanPos(), laserIndicator.transform.rotation);
+            gameManagerScript.inGameShips[1].Add(toAddBot1);
+
+            GameObject toAddBot2 = Instantiate(bot2, generateRanPos(), laserIndicator.transform.rotation);
+            gameManagerScript.inGameShips[1].Add(toAddBot2);
+
+            toAddBot1.GetComponent<MutualShip>().id = playerShip.GetComponent<MutualShip>().id + 1;
+            toAddBot2.GetComponent<MutualShip>().id = playerShip.GetComponent<MutualShip>().id + 1;
         }
 
         if (directionId == 6)
@@ -243,6 +249,38 @@ Random.Range(-spawnRadius, spawnRadius));
         }
 
         gameManagerScript.endRound();
+
+        //others
+        started = false;
+        endScreenText.SetActive(false);
+        Time.timeScale = 1;
+    }
+
+    public void reset()
+    {
+        //screens and maps
+        prepScreen.SetActive(false);
+        directionScreen.SetActive(false);
+        endScreen.SetActive(false);
+        startScreen.SetActive(true);
+        tutorialMap.SetActive(false);
+
+        //directions
+        directionId = 0;
+        nextDirectionButton.SetActive(true);
+        lastDirectionButton.SetActive(false);
+        endButton.SetActive(false);
+        foreach (GameObject direction in directions)
+        {
+            direction.SetActive(false);
+        }
+
+        cube0.SetActive(false);
+        cube1.SetActive(false);
+        foreach (GameObject body in threeBody)
+        {
+            body.SetActive(false);
+        }
 
         //others
         started = false;
