@@ -31,16 +31,18 @@ public class BotMove : MonoBehaviour
 
             foreach (List<GameObject> shipList in gameManagerScript.inGameShips)
             {
-                if (!shipList.Contains(this.gameObject))
+                foreach (GameObject ship in shipList)
                 {
-                    foreach (GameObject ship in shipList)
+                    if (ship.GetComponent<MutualShip>().team != GetComponent<MutualShip>().team)
                     {
                         if (distance(ship, this.gameObject) < minDistance)
                         {
                             target = ship;
+                            minDistance = distance(ship, this.gameObject);
                         }
                     }
                 }
+                
             }
 
             //shooting
@@ -51,8 +53,6 @@ public class BotMove : MonoBehaviour
                 botReloadTime = 0;
                 GetComponent<MutualShip>().shoot();
             }
-
-            Debug.Log(target.GetComponent<MutualShip>().id);
 
             //Can't trace too frequently
             if (traceTime <= 0)

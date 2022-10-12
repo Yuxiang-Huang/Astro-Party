@@ -37,19 +37,18 @@ public class BotMove1: MonoBehaviour
 
             foreach (List<GameObject> shipList in gameManagerScript.inGameShips)
             {
-                if (!shipList.Contains(this.gameObject))
+                foreach (GameObject ship in shipList)
                 {
-                    foreach (GameObject ship in shipList)
+                    if (ship.GetComponent<MutualShip>().team != GetComponent<MutualShip>().team)
                     {
-                        if (ship != this.gameObject)
+                        if (distance(ship, this.gameObject) < minDistance)
                         {
-                            if (distance(ship, this.gameObject) < minDistance)
-                            {
-                                target = ship;
-                            }
+                            target = ship;
+                            minDistance = distance(ship, this.gameObject);
                         }
                     }
                 }
+
             }
 
             //moving
