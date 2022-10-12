@@ -116,8 +116,8 @@ public class ControlManager : MonoBehaviour
                 script.shoot = KeyCode.P;
                 break;
             case 5:
-                script.turn = KeyCode.UpArrow;
-                script.shoot = KeyCode.DownArrow;
+                script.turn = KeyCode.LeftArrow;
+                script.shoot = KeyCode.RightArrow;
                 break;
         }
 

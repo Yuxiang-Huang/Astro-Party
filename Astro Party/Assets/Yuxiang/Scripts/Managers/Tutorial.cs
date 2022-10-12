@@ -21,6 +21,7 @@ public class Tutorial : MonoBehaviour
     public List<GameObject> directions;
     int directionId = 0;
 
+    public GameObject endButton;
     public GameObject lastDirectionButton;
     public GameObject nextDirectionButton;
 
@@ -115,7 +116,7 @@ public class Tutorial : MonoBehaviour
         }
 
         //special directions
-        if (directionId == 2)
+        if (directionId == 3)
         {
             cube0.transform.position = generateRanPos();
             cube1.transform.position = generateRanPos();
@@ -123,12 +124,13 @@ public class Tutorial : MonoBehaviour
             cube1.SetActive(true);
         }
 
-        if (directionId == 3)
+        if (directionId == 4)
         {
             foreach (GameObject body in threeBody)
             {
                 spawnBody(body);
             }
+            endButton.SetActive(true);
         }
     }
 
@@ -149,7 +151,7 @@ public class Tutorial : MonoBehaviour
         Vector3 ranPos = new Vector3(Random.Range(-spawnRadius, spawnRadius), -10,
           Random.Range(-spawnRadius, spawnRadius));
 
-        while (distance(ranPos, new Vector3(0, 0, 0)) < spawnRadius ||
+        while (distance(ranPos, new Vector3(0, 0, 0)) > spawnRadius ||
             distance(playerShip.transform.position, ranPos) < 100)
         {
             ranPos = new Vector3(Random.Range(-spawnRadius, spawnRadius), -10,
@@ -200,8 +202,10 @@ playerShip.transform.rotation);
         tutorialMap.SetActive(false);
 
         //directions
+        directionId = 0;
         nextDirectionButton.SetActive(true);
         lastDirectionButton.SetActive(false);
+        endButton.SetActive(false);
         foreach (GameObject direction in directions)
         {
             direction.SetActive(false);
