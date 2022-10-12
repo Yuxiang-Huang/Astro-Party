@@ -30,6 +30,10 @@ public class Tutorial : MonoBehaviour
     public KeyCode shipRotate;
     public KeyCode shipShoot;
 
+    public GameObject cube0;
+    public GameObject cube1;
+    public List<GameObject> threeBody;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -109,6 +113,55 @@ public class Tutorial : MonoBehaviour
         {
             nextDirectionButton.SetActive(false);
         }
+
+        //special directions
+        if (directionId == 2)
+        {
+            cube0.transform.position = generateRanPos();
+            cube1.transform.position = generateRanPos();
+            cube0.SetActive(true);
+            cube1.SetActive(true);
+        }
+
+        if (directionId == 3)
+        {
+            foreach (GameObject body in threeBody)
+            {
+                spawnBody(body);
+            }
+        }
+    }
+
+    void spawnBody(GameObject body)
+    {
+        body.transform.position = generateRanPos();
+
+        body.GetComponent<Rigidbody>().velocity =
+            new Vector3(Random.Range(-50, 50), 0, Random.Range(-50, 50));
+
+        body.SetActive(true);
+    }
+
+    Vector3 generateRanPos()
+    {
+        int spawnRadius = 750;
+
+        Vector3 ranPos = new Vector3(Random.Range(-spawnRadius, spawnRadius), -10,
+          Random.Range(-spawnRadius, spawnRadius));
+
+        while (distance(ranPos, new Vector3(0, 0, 0)) < spawnRadius ||
+            distance(playerShip.transform.position, ranPos) < 100)
+        {
+            ranPos = new Vector3(Random.Range(-spawnRadius, spawnRadius), -10,
+Random.Range(-spawnRadius, spawnRadius));
+        }
+
+        return ranPos;
+    }
+
+    float distance(Vector3 ship1, Vector3 ship2)
+    {
+        return Mathf.Sqrt(Mathf.Pow((ship1.x - ship2.x), 2) + Mathf.Pow((ship1.z - ship2.z), 2));
     }
 
     public void lastDirection()
@@ -152,6 +205,13 @@ playerShip.transform.rotation);
         foreach (GameObject direction in directions)
         {
             direction.SetActive(false);
+        }
+
+        cube0.SetActive(false);
+        cube1.SetActive(false);
+        foreach (GameObject body in threeBody)
+        {
+            body.SetActive(false);
         }
 
         //others
