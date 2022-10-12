@@ -25,16 +25,20 @@ public class Tutorial : MonoBehaviour
     public GameObject nextDirectionButton;
 
     bool started;
+    int spawnRadius = 700;
 
     public int shipId;
     public KeyCode shipRotate;
     public KeyCode shipShoot;
+
+    public List<GameObject> needToClear;
 
     public GameObject cube0;
     public GameObject cube1;
     public List<GameObject> threeBody;
     public List<GameObject> asteroids;
     public GameObject laserIndicator;
+    public GameObject bot;
 
     // Start is called before the first frame update
     void Start()
@@ -56,6 +60,14 @@ public class Tutorial : MonoBehaviour
     {
         if (started)
         {
+            if (distance(playerShip.transform.position, new Vector3(0, 0, 0)) > spawnRadius)
+            {
+                float angle = Mathf.Atan2(playerShip.transform.position.x, playerShip.transform.position.z);
+
+                playerShip.transform.position =
+                    new Vector3(spawnRadius * Mathf.Sin(angle), 10, spawnRadius * Mathf.Cos(angle));
+            }
+
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 if (endScreen.activeSelf)
@@ -123,6 +135,7 @@ public class Tutorial : MonoBehaviour
             {
                 GameObject curr = Instantiate(asteroid, generateRanPos(), asteroid.transform.rotation);
                 curr.GetComponent<Asteroid>().powerUp = laserIndicator;
+                needToClear.Add(curr);
             }
         }
 
@@ -156,8 +169,6 @@ public class Tutorial : MonoBehaviour
 
     Vector3 generateRanPos()
     {
-        int spawnRadius = 750;
-
         Vector3 ranPos = new Vector3(Random.Range(-spawnRadius, spawnRadius), -10,
           Random.Range(-spawnRadius, spawnRadius));
 
@@ -226,6 +237,12 @@ playerShip.transform.rotation);
         foreach (GameObject body in threeBody)
         {
             body.SetActive(false);
+        }
+
+        for (int i = needToClear.Count - 1; i >= 0; i --)
+        {
+            Destroy(needToClear[0]);
+            needToClear.Remove(needToClear[0]);
         }
 
         //others
