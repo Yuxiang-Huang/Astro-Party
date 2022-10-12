@@ -8,6 +8,7 @@ public class BotMove1: MonoBehaviour
     //[SerializeField] public NavMeshAgent agent;
 
     float botReloadTime;
+    float botTurnTime;
 
     GameManager gameManagerScript;
 
@@ -64,7 +65,15 @@ public class BotMove1: MonoBehaviour
             //    target.transform.position.x - transform.position.x));
             //Debug.Log(transform.rotation.ToEulerAngles().y);
 
-            transform.LookAt(target.transform);
+            if (botTurnTime <= 0)
+            {
+                transform.LookAt(target.transform);
+                botTurnTime = Random.Range(0, 0.5f);
+            }
+            else
+            {
+                botTurnTime -= Time.deltaTime;
+            }
 
             //shooting
             botReloadTime += Time.deltaTime;
