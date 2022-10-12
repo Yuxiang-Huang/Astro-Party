@@ -269,7 +269,6 @@ Random.Range(-spawnRadius, spawnRadius));
         prepScreen.SetActive(false);
         directionScreen.SetActive(false);
         endScreen.SetActive(false);
-        startScreen.SetActive(true);
         tutorialMap.SetActive(false);
 
         //directions

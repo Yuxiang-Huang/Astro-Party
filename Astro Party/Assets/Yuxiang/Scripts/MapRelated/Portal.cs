@@ -24,8 +24,25 @@ public class Portal : MonoBehaviour
     {
         float angle = pair.transform.rotation.ToEulerAngles().y;
 
-        collision.transform.position = pair.transform.position -
-            new Vector3 (Mathf.Cos(angle) * offSet, 0, Mathf.Sin(angle) * offSet);
-        collision.transform.rotation = pair.transform.rotation;
+        Debug.Log(angle);
+        Debug.Log(new Vector3(Mathf.Cos(angle) * offSet, 0, Mathf.Sin(angle) * offSet));
+
+        while (angle < 0)
+        {
+            angle += Mathf.PI;
+        }
+
+        collision.transform.position = pair.transform.position
+    + new Vector3(Mathf.Cos(angle) * offSet, 0, Mathf.Sin(angle) * offSet);
+
+        ////special 
+        //if ((angle > Mathf.PI / 2 && angle < Mathf.PI) || (angle > 3 * Mathf.PI / 2)){
+        //    collision.transform.rotation = pair.transform.rotation;
+        //    collision.transform.Rotate(new Vector3(0, 180, 0));
+        //}
+        //else
+        //{
+            collision.transform.rotation = pair.transform.rotation;
+        
     }
 }
