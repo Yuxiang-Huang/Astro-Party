@@ -258,11 +258,13 @@ public class PowerUpManager : MonoBehaviour
         if (indicators.Contains(mineIndicator))
         {
             indicators.Remove(mineIndicator);
+            SPU.Remove("Proximity Mine");
             mineText.text = "Proximity Mine: Off";
         }
         else
         {
             indicators.Add(mineIndicator);
+            SPU.Add("Proximity Mine");
             mineText.text = "Proximity Mine: On";
         }
     }
@@ -272,11 +274,13 @@ public class PowerUpManager : MonoBehaviour
         if (indicators.Contains(BBIndicator))
         {
             indicators.Remove(BBIndicator);
+            SPU.Remove("Bouncy Bullet");
             BBText.text = "Bouncy Bullet: Off";
         }
         else
         {
             indicators.Add(BBIndicator);
+            SPU.Add("Bouncy Bullet");
             BBText.text = "Bouncy Bullet: On";
         }
     }
@@ -286,11 +290,13 @@ public class PowerUpManager : MonoBehaviour
         if (indicators.Contains(jousterIndicator))
         {
             indicators.Remove(jousterIndicator);
+            SPU.Remove("Jouster");
             jousterText.text = "Jouster: Off";
         }
         else
         {
             indicators.Add(jousterIndicator);
+            SPU.Add("Jouster");
             jousterText.text = "Jouster: On";
         }
     }
@@ -324,6 +330,12 @@ public class PowerUpManager : MonoBehaviour
                         new Vector3(script.transform.position.x, powerUpyValue, script.transform.position.z),
                         mineIndicator.transform.rotation);
                     gameManagerScript.inGameIndicators.Add(toAdd3);
+                    break;
+                case "Jouster":
+                    GameObject toAdd4 = Instantiate(jousterIndicator,
+                        new Vector3(script.transform.position.x, powerUpyValue, script.transform.position.z),
+                        mineIndicator.transform.rotation);
+                    gameManagerScript.inGameIndicators.Add(toAdd4);
                     break;
             }
         }
