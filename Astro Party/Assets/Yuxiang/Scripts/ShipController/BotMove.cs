@@ -35,12 +35,9 @@ public class BotMove : MonoBehaviour
                 {
                     foreach (GameObject ship in shipList)
                     {
-                        if (ship != this.gameObject)
+                        if (distance(ship, this.gameObject) < minDistance)
                         {
-                            if (distance(ship, this.gameObject) < minDistance)
-                            {
-                                target = ship;
-                            }
+                            target = ship;
                         }
                     }
                 }
@@ -55,7 +52,7 @@ public class BotMove : MonoBehaviour
                 GetComponent<MutualShip>().shoot();
             }
 
-            //Debug.Log(target.transform.position);
+            Debug.Log(target.GetComponent<MutualShip>().id);
 
             //Can't trace too frequently
             if (traceTime <= 0)
