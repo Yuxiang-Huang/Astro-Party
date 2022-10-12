@@ -80,7 +80,7 @@ public class Tutorial : MonoBehaviour
             }
         }
 
-        if (started && gameManagerScript.inGameShips[0][0] == null)
+        if (started && gameManagerScript.inGameShips[0].Count == 0)
         {
             endScreen.SetActive(true);
             endScreenText.SetActive(true);
@@ -153,8 +153,15 @@ playerShip.transform.rotation);
             GameObject toAddBot2 = Instantiate(bot2, generateRanPos(), laserIndicator.transform.rotation);
             gameManagerScript.inGameShips[1].Add(toAddBot2);
 
-            toAddBot1.GetComponent<MutualShip>().id = playerShip.GetComponent<MutualShip>().id + 1;
-            toAddBot2.GetComponent<MutualShip>().id = playerShip.GetComponent<MutualShip>().id + 1;
+            int id = playerShip.GetComponent<MutualShip>().id + 1;
+            if (id == 6)
+            {
+                id = 1;
+            }
+            toAddBot1.GetComponent<MutualShip>().id = id;
+            toAddBot2.GetComponent<MutualShip>().id = id;
+            toAddBot1.GetComponent<MutualShip>().team = id;
+            toAddBot2.GetComponent<MutualShip>().team = id;
         }
 
         if (directionId == 6)

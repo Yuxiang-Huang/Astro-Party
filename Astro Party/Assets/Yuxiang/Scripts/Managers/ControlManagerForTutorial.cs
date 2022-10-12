@@ -20,6 +20,8 @@ public class ControlManagerForTutorial : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        id = 1;
+
         //Creating ships
         tutorialScript = GameObject.Find("Tutorial Manager").GetComponent<Tutorial>();
 
