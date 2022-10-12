@@ -34,9 +34,24 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (startSpawn && gameManagerScript.inGameAsteroids.Count <= shipNum)
+
+
+        if (startSpawn)
         {
-            spawnAsteroids();
+            bool spawn = true;
+
+            foreach (GameObject asteroid in gameManagerScript.inGameAsteroids)
+            {
+                if (asteroid == PowerUpAsteroid)
+                {
+                    spawn = false;
+                }
+            }
+
+            if (spawn)
+            {
+                spawnAsteroids();
+            }
         }
     }
 
@@ -54,6 +69,7 @@ public class SpawnManager : MonoBehaviour
         }
         else
         {
+            //if no indicators, no powerUp asteroid
             switch (Random.Range(0, 3))
             {
                 case 0: PowerUpAsteroid = smallAsteroid; break;
@@ -70,20 +86,14 @@ public class SpawnManager : MonoBehaviour
         if (mode != "none")
         {
             //definitely a powerUp asteroid
-
             GameObject asteroidClone2 = Instantiate(PowerUpAsteroid, generateRanPos(), PowerUpAsteroid.transform.rotation);
 
             gameManagerScript.inGameAsteroids.Add(asteroidClone2);
 
-            shipNum = 0;
-
             //spawn number of asteroids = number of ships
             foreach (List<GameObject> shipList in gameManagerScript.inGameShips)
             {
-                foreach (GameObject ship in shipList)
-                {
-                    shipNum++;
-                }
+                shipNum += shipList.Count;
             }
 
             switch (mode)
