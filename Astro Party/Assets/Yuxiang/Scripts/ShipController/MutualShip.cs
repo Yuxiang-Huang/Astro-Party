@@ -238,7 +238,14 @@ public class MutualShip : MonoBehaviour
 
                     //setting the script varibles
                     sideBullet1.GetComponent<BulletMove>().id = id;
-                    sideBullet1.GetComponent<BulletMove>().team = team;
+                    if (gameManagerScript.suicidalBullet)
+                    {
+                        sideBullet1.GetComponent<BulletMove>().team = -1;
+                    }
+                    else
+                    {
+                        sideBullet1.GetComponent<BulletMove>().team = team;
+                    }
 
                     GameObject sideBullet2 = Instantiate(powerUpManagerScript.bullet, transform.position +
                 new Vector3(bulletDis * Mathf.Sin(angle - 1), 20, bulletDis * Mathf.Cos(angle - 1)),
@@ -246,7 +253,14 @@ public class MutualShip : MonoBehaviour
 
                     //setting the script varibles
                     sideBullet2.GetComponent<BulletMove>().id = id;
-                    sideBullet2.GetComponent<BulletMove>().team = team;
+                    if (gameManagerScript.suicidalBullet)
+                    {
+                        sideBullet2.GetComponent<BulletMove>().team = -1;
+                    }
+                    else
+                    {
+                        sideBullet2.GetComponent<BulletMove>().team = team;
+                    }
                 }
 
                 GameObject myBullet = Instantiate(powerUpManagerScript.bullet, transform.position +
@@ -255,8 +269,14 @@ public class MutualShip : MonoBehaviour
 
                 //setting the script varibles
                 myBullet.GetComponent<BulletMove>().id = id;
-                myBullet.GetComponent<BulletMove>().team = team;
-
+                if (gameManagerScript.suicidalBullet)
+                {
+                    myBullet.GetComponent<BulletMove>().team = -1;
+                }
+                else
+                {
+                    myBullet.GetComponent<BulletMove>().team = team;
+                }
 
                 //Sound effect
                 playerAudio.PlayOneShot(SEManagerScript.bulletSound);
@@ -340,7 +360,14 @@ public class MutualShip : MonoBehaviour
 
                 //setting the script varibles
                 myBouncyBullet.GetComponent<BouncyBullet>().id = id;
-                myBouncyBullet.GetComponent<BouncyBullet>().team = team;
+                if (gameManagerScript.suicidalBullet)
+                {
+                    myBouncyBullet.GetComponent<BouncyBullet>().team = -1;
+                }
+                else
+                {
+                    myBouncyBullet.GetComponent<BouncyBullet>().team = team;
+                }
 
                 gameManagerScript.needToClear.Add(myBouncyBullet);
 
@@ -355,7 +382,14 @@ public class MutualShip : MonoBehaviour
 
                     //setting the script varibles
                     sideBullet1.GetComponent<BouncyBullet>().id = id;
-                    sideBullet1.GetComponent<BouncyBullet>().team = team;
+                    if (gameManagerScript.suicidalBullet)
+                    {
+                        sideBullet1.GetComponent<BouncyBullet>().team = -1;
+                    }
+                    else
+                    {
+                        sideBullet1.GetComponent<BouncyBullet>().team = team;
+                    }
 
                     GameObject sideBullet2 = Instantiate(powerUpManagerScript.bouncyBullet, transform.position +
                 new Vector3(bulletDis * Mathf.Sin(angle - 1), 20, bulletDis * Mathf.Cos(angle - 1)),
@@ -363,7 +397,14 @@ public class MutualShip : MonoBehaviour
 
                     //setting the script varibles
                     sideBullet2.GetComponent<BouncyBullet>().id = id;
-                    sideBullet2.GetComponent<BouncyBullet>().team = team;
+                    if (gameManagerScript.suicidalBullet)
+                    {
+                        sideBullet2.GetComponent<BouncyBullet>().team = -1;
+                    }
+                    else
+                    {
+                        sideBullet2.GetComponent<BouncyBullet>().team = team;
+                    }
 
                     gameManagerScript.needToClear.Add(sideBullet1);
                     gameManagerScript.needToClear.Add(sideBullet2);
