@@ -20,7 +20,6 @@ public class Tutorial : MonoBehaviour
 
     public List<GameObject> directions;
     int directionId = 0;
-
     public GameObject endButton;
     public GameObject lastDirectionButton;
     public GameObject nextDirectionButton;
@@ -34,6 +33,8 @@ public class Tutorial : MonoBehaviour
     public GameObject cube0;
     public GameObject cube1;
     public List<GameObject> threeBody;
+    public List<GameObject> asteroids;
+    public GameObject laserIndicator;
 
     // Start is called before the first frame update
     void Start()
@@ -118,13 +119,22 @@ public class Tutorial : MonoBehaviour
         //special directions
         if (directionId == 3)
         {
+            foreach (GameObject asteroid in asteroids)
+            {
+                GameObject curr = Instantiate(asteroid, generateRanPos(), asteroid.transform.rotation);
+                curr.GetComponent<Asteroid>().powerUp = laserIndicator;
+            }
+        }
+
+        if (directionId == 4)
+        {
             cube0.transform.position = generateRanPos();
             cube1.transform.position = generateRanPos();
             cube0.SetActive(true);
             cube1.SetActive(true);
         }
 
-        if (directionId == 4)
+        if (directionId == 5)
         {
             foreach (GameObject body in threeBody)
             {

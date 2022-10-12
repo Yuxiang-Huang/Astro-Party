@@ -14,7 +14,7 @@ public class Asteroid : MonoBehaviour
 
     SpawnManager spawnManagerScript;
 
-    GameObject powerUp;
+    public GameObject powerUp;
 
     Rigidbody rb;
 
