@@ -6,7 +6,9 @@ public class Portal : MonoBehaviour
 {
     public GameObject pair;
 
-    public bool once = true;
+    bool once = true;
+
+    public int offSet = 75;
 
     // Start is called before the first frame update
     void Start()
@@ -22,24 +24,21 @@ public class Portal : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("teleport2");
-
         float angle = transform.rotation.ToEulerAngles().y;
         float pairAngle = pair.transform.rotation.ToEulerAngles().y;
 
         //offset of ship to portal
         if (once)
         {
-            Debug.Log("teleport");
-            once = false;
+            StartCoroutine("wait");
 
-            Vector3 dif = transform.position - collision.transform.position;
+            Vector3 dif = collision.transform.position - transform.position;
             dif.y = collision.transform.position.y;
 
             collision.transform.position = Quaternion.AngleAxis(180 * (pairAngle - angle) / Mathf.PI, Vector3.up)
-                * dif + pair.transform.position;
-            Debug.Log(collision.transform.position);
-
+    * dif + pair.transform.position;
+         
+            //add a little more offset
             while (pairAngle < 0)
             {
                 pairAngle += 2 * Mathf.PI;
@@ -58,8 +57,6 @@ public class Portal : MonoBehaviour
                 reverse = true;
             }
 
-            float offSet = 50;
-
             if (reverse)
             {
                 collision.transform.position -= new Vector3(Mathf.Cos(pairAngle) * offSet, 0, Mathf.Sin(pairAngle) * offSet);
@@ -71,5 +68,12 @@ public class Portal : MonoBehaviour
 
             collision.transform.rotation = pair.transform.rotation;
         }
+    }
+
+    IEnumerator wait()
+    {
+        once = false;
+        yield return new WaitForSeconds(0.3f);
+        once = true;
     }
 }
