@@ -22,14 +22,14 @@ public class Portal : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        float angle = pair.transform.localRotation.ToEulerAngles().y;
+        float angle = pair.transform.rotation.ToEulerAngles().y;
 
         while (angle < 0)
         {
             angle += 2 * Mathf.PI;
         }
 
-        if (angle < Mathf.PI / 2)
+        if (angle < Mathf.PI)
         {
             angle = Mathf.PI / 2 - angle;
         }
