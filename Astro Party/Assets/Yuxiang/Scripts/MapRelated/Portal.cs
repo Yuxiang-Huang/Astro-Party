@@ -37,7 +37,9 @@ public class Portal : MonoBehaviour
 
             collision.transform.position = Quaternion.AngleAxis(180 * (pairAngle - angle) / Mathf.PI, Vector3.up)
     * dif + pair.transform.position;
-         
+
+            collision.transform.Rotate(new Vector3(0, (pairAngle - angle) * 180 / Mathf.PI + 180, 0));
+
             //add a little more offset
             while (pairAngle < 0)
             {
@@ -65,8 +67,6 @@ public class Portal : MonoBehaviour
             {
                 collision.transform.position += new Vector3(Mathf.Cos(pairAngle) * offSet, 0, Mathf.Sin(pairAngle) * offSet);
             }
-
-            collision.transform.rotation = pair.transform.rotation;
         }
     }
 
