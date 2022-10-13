@@ -29,23 +29,31 @@ public class Portal : MonoBehaviour
             angle += 2 * Mathf.PI;
         }
 
+        bool reverse = false;
+
         if (angle < Mathf.PI)
         {
             angle = Mathf.PI / 2 - angle;
         }
         else
         {
-            angle += Mathf.PI / 2 - (angle - Mathf.PI) / 2;
+            angle -= Mathf.PI;
+            angle = Mathf.PI / 2 - angle;
+            reverse = true;
         }
 
-        collision.transform.position = pair.transform.position
+        if (reverse){
+            collision.transform.position = pair.transform.position
+- new Vector3(Mathf.Cos(angle) * offSet, 0, Mathf.Sin(angle) * offSet);
+
+        }
+        else
+        {
+            collision.transform.position = pair.transform.position
 + new Vector3(Mathf.Cos(angle) * offSet, 0, Mathf.Sin(angle) * offSet);
+            
+        }
 
         collision.transform.rotation = pair.transform.rotation;
-
-        //if (angle > Mathf.PI)
-        //{
-        //    collision.transform.Rotate(new Vector3(0, 180, 0));
-        //}
     }
 }
