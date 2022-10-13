@@ -33,6 +33,10 @@ public class Portal : MonoBehaviour
         {
             angle = Mathf.PI / 2 - angle;
         }
+        else
+        {
+            angle += Mathf.PI / 2 - (angle - Mathf.PI) / 2;
+        }
 
         collision.transform.position = pair.transform.position
 + new Vector3(Mathf.Cos(angle) * offSet, 0, Mathf.Sin(angle) * offSet);
