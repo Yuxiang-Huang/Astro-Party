@@ -47,3 +47,4 @@ This is a recreation of the game Astro Party. I am not using it for commercial p
     *  (10-09-2022): Today I started by finishing the ship screen. Then I worked on the Tutorial. I finished the prep screeen and laid the foundation for adding more directions.
     
      *  (10-11-2022): Today is probably going to be the last time I spent so much time on it for a long time. I started by fixing the minor issues I found when playtesting with my friends in CS Dojo. Then I buff bouncy bullet and nerf type two bot. After that, I finished the tutorial by adding some more directions. Lastly I fixed a major bug in bot tracing system and added another option called suicial bullet that determines if one's ship will be killed by its own bullet.
+     *  (10-12-2022): Today I spent all my spare time on making a portal for the last map I am going to make for a long time. 
