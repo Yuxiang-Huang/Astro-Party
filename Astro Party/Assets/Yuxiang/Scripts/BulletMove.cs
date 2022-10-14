@@ -71,6 +71,11 @@ public class BulletMove : MonoBehaviour
                     }
                 }
 
+                if (collision.gameObject.CompareTag("Portal"))
+                {
+                    destroy = false;
+                }
+
                 if (destroy)
                 {
                     Destroy(gameObject);

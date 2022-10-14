@@ -26,6 +26,8 @@ public class Portal : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        
+
         float angle = transform.rotation.ToEulerAngles().y;
         float pairAngle = pair.transform.rotation.ToEulerAngles().y;
 

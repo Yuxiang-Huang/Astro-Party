@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4949045954764904785}
   m_Layer: 0
   m_Name: Blue0
-  m_TagString: Untagged
+  m_TagString: Portal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 4949045954789816583}
   m_Layer: 0
   m_Name: Red0
-  m_TagString: Untagged
+  m_TagString: Portal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

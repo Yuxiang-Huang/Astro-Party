@@ -98,7 +98,7 @@ public class BouncyBullet : MonoBehaviour
                 }
 
                 if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Breakable")
-                    || collision.gameObject.CompareTag("Asteroid"))
+                    || collision.gameObject.CompareTag("Asteroid") || collision.gameObject.CompareTag("Portal"))
                 {
                     destroy = false;
                 }
