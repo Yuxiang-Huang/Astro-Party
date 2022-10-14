@@ -7,7 +7,7 @@ import javax.swing.*;
 public class Screen {
 
   public static final int XRES = 500;
-  public static final int YRES = 500;
+  public static final int YRES = 200;
   public static final int MAX_COLOR = 255;
   public static final Color DEFAULT_COLOR = new Color(0, 0, 0);
 
