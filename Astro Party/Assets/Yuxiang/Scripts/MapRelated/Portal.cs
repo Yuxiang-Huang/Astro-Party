@@ -8,76 +8,75 @@ public class Portal : MonoBehaviour
 
     public GameObject pair;
 
-    bool once = true;
-
     public int offSet = 75;
+
+    float delay;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        delay = 0.1f;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        delay -= Time.deltaTime;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        
-
-        float angle = transform.rotation.ToEulerAngles().y;
-        float pairAngle = pair.transform.rotation.ToEulerAngles().y;
-
-        //offset of ship to portal
-        if (once)
+        if (other.CompareTag("Ship") || other.CompareTag("Pilot") || other.CompareTag("Bullet") ||
+            other.CompareTag("BouncyBullet"))
         {
-            StartCoroutine("wait");
+            float angle = transform.rotation.ToEulerAngles().y;
+            float pairAngle = pair.transform.rotation.ToEulerAngles().y;
 
-            Vector3 dif = collision.transform.position - transform.position;
-            dif.y = collision.transform.position.y;
+            Debug.Log("teleport");
 
-            collision.transform.position = Quaternion.AngleAxis(180 * (pairAngle - angle) / Mathf.PI, Vector3.up)
-    * dif + pair.transform.position;
-
-            collision.transform.Rotate(new Vector3(0, (pairAngle - angle) * 180 / Mathf.PI + 180, 0));
-
-            //add a little more offset
-            while (pairAngle < 0)
+            //offset of ship to portal
+            if (delay < 0)
             {
-                pairAngle += 2 * Mathf.PI;
-            }
+                delay = 0.25f;
 
-            bool reverse = false;
+                Debug.Log("teleport2");
 
-            if (pairAngle < Mathf.PI)
-            {
-                pairAngle = Mathf.PI / 2 - pairAngle;
-            }
-            else
-            {
-                pairAngle -= Mathf.PI;
-                pairAngle = Mathf.PI / 2 - pairAngle;
-                reverse = true;
-            }
+                Vector3 dif = other.transform.position - transform.position;
+                dif.y = other.transform.position.y;
 
-            if (reverse)
-            {
-                collision.transform.position -= new Vector3(Mathf.Cos(pairAngle) * offSet, 0, Mathf.Sin(pairAngle) * offSet);
-            }
-            else
-            {
-                collision.transform.position += new Vector3(Mathf.Cos(pairAngle) * offSet, 0, Mathf.Sin(pairAngle) * offSet);
+                other.transform.position = Quaternion.AngleAxis(180 * (pairAngle - angle) / Mathf.PI, Vector3.up)
+        * dif + pair.transform.position;
+
+                other.transform.Rotate(new Vector3(0, (pairAngle - angle) * 180 / Mathf.PI + 180, 0));
+
+                //add a little more offset
+                while (pairAngle < 0)
+                {
+                    pairAngle += 2 * Mathf.PI;
+                }
+
+                bool reverse = false;
+
+                if (pairAngle < Mathf.PI)
+                {
+                    pairAngle = Mathf.PI / 2 - pairAngle;
+                }
+                else
+                {
+                    pairAngle -= Mathf.PI;
+                    pairAngle = Mathf.PI / 2 - pairAngle;
+                    reverse = true;
+                }
+
+                if (reverse)
+                {
+                    other.transform.position -= new Vector3(Mathf.Cos(pairAngle) * offSet, 0, Mathf.Sin(pairAngle) * offSet);
+                }
+                else
+                {
+                    other.transform.position += new Vector3(Mathf.Cos(pairAngle) * offSet, 0, Mathf.Sin(pairAngle) * offSet);
+                }
             }
         }
-    }
-
-    IEnumerator wait()
-    {
-        once = false;
-        yield return new WaitForSeconds(0.1f);
-        once = true;
     }
 }

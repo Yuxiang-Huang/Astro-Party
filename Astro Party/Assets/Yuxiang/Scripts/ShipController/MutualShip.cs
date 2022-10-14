@@ -717,5 +717,10 @@ public class MutualShip : MonoBehaviour
             gameManagerScript.inGameIndicators.Remove(other.gameObject);
             Destroy(other.gameObject);
         }
+
+        if (other.gameObject.CompareTag("Portal"))
+        {
+           //Debug.Log("hmm");
+        }
     }
 }
