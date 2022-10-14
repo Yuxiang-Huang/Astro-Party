@@ -35,6 +35,8 @@ public class PortalManager : MonoBehaviour
         portalParentList = new List<GameObject>();
         portalList = new List<GameObject>();
 
+
+        //spawn five portals
         for (int i = 0; i < 5; i++)
         {
             portalParentList.Add(Instantiate(portals, new Vector3(Mathf.Cos(i * 2 * Mathf.PI / 5 + Mathf.PI/2) * spawnRadius,
@@ -75,11 +77,12 @@ public class PortalManager : MonoBehaviour
             portalList.RemoveAt(0);
         }
 
-        int color = 1;
 
+        int color = 1;
 
         while (portalList.Count > 0)
         {
+            //color and set pairs
             int ran = Random.Range(1, portalList.Count);
 
             if (gameManagerScript.fixedSpawn)
@@ -104,11 +107,11 @@ public class PortalManager : MonoBehaviour
                     portalList[0].GetComponent<Portal>().rend.material = yellow3;
                     portalList[ran].GetComponent<Portal>().rend.material = yellow3;
                     break;
-                case 5:
+                case 4:
                     portalList[0].GetComponent<Portal>().rend.material = cyan4;
                     portalList[ran].GetComponent<Portal>().rend.material = cyan4;
                     break;
-                case 4:
+                case 5:
                     portalList[0].GetComponent<Portal>().rend.material = green5;
                     portalList[ran].GetComponent<Portal>().rend.material = green5;
                     break;
