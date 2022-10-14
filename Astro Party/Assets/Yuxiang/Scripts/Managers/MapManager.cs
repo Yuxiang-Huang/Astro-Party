@@ -30,6 +30,9 @@ public class MapManager : MonoBehaviour
     public GameObject Map5;
     public Text Map5Text;
 
+    public GameObject Map6;
+    public Text Map6Text;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,12 +43,14 @@ public class MapManager : MonoBehaviour
         Map3.SetActive(false);
         Map4.SetActive(false);
         Map5.SetActive(false);
+        //Map6.SetActive(false);
 
         allMaps.Add(Map1);
         allMaps.Add(Map2);
         allMaps.Add(Map3);
         allMaps.Add(Map4);
         allMaps.Add(Map5);
+        allMaps.Add(Map6);
     }
 
     void Update()
@@ -108,6 +113,7 @@ public class MapManager : MonoBehaviour
             case 3: reset3(); break;
             case 4: reset4(); break;
             case 5: reset5(); break;
+            case 6: reset6(); break;
         }
     }
 
@@ -142,6 +148,11 @@ public class MapManager : MonoBehaviour
         Map5.GetComponent<SpiralBuilder>().reset();
     }
 
+    void reset6()
+    {
+        Map6.GetComponent<PortalManager>().reset();
+    }
+
     public void Map1OnOff()
     {
         MapOnOffHelper(Map1, Map1Text);
@@ -165,6 +176,11 @@ public class MapManager : MonoBehaviour
     public void Map5OnOff()
     {
         MapOnOffHelper(Map5, Map5Text);
+    }
+
+    public void Map6OnOff()
+    {
+        MapOnOffHelper(Map6, Map6Text);
     }
 
     void MapOnOffHelper(GameObject map, Text mapText)

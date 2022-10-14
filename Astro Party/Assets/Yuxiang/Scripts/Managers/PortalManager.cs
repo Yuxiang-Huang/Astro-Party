@@ -17,8 +17,17 @@ public class PortalManager : MonoBehaviour
 
     public int spawnRadius = 500;
 
+    GameManager gameManagerScript;
+
     // Start is called before the first frame update
     void Start()
+    {
+        gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
+
+        reset();
+    }
+
+    public void reset()
     {
         GameObject pivot = new GameObject ();
         pivot.transform.position = new Vector3(0, 0, 0);
@@ -32,7 +41,14 @@ public class PortalManager : MonoBehaviour
                 new Vector3(Mathf.Cos(i * 2 * Mathf.PI / 5) * spawnRadius, 0, Mathf.Sin(i * 2 * Mathf.PI / 5) * spawnRadius),
                 portals.transform.rotation));
 
-            portalParentList[i].transform.Rotate(0, Random.Range(0, 360), 0);
+            if (gameManagerScript.fixedSpawn)
+            {
+                //portalParentList[i].transform.Rotate(0, i * 72, 0);
+            }
+            else
+            {
+                portalParentList[i].transform.Rotate(0, Random.Range(0, 360), 0);
+            }
 
             portalParentList[i].transform.parent = pivot.transform;
 
@@ -40,13 +56,22 @@ public class PortalManager : MonoBehaviour
             portalList.Add(portalParentList[i].GetComponent<PortalParent>().portal2);
         }
 
-        pivot.transform.Rotate(0, Random.Range(0, 360), 0);
+        if (! gameManagerScript.fixedSpawn)
+        {
+            pivot.transform.Rotate(0, Random.Range(0, 360), 0);
+        }
 
         int color = 1;
+
 
         while (portalList.Count > 0)
         {
             int ran = Random.Range(1, portalList.Count);
+
+            if (gameManagerScript.fixedSpawn)
+            {
+                ran = 1;
+            }
 
             portalList[0].GetComponent<Portal>().pair = portalList[ran];
             portalList[ran].GetComponent<Portal>().pair = portalList[0];

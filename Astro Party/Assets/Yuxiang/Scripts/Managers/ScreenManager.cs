@@ -55,7 +55,6 @@ public class ScreenManager : MonoBehaviour
 
         scoreManagerScript = GameObject.Find("Score Manager").GetComponent<ScoreManager>();
         gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
-
     }
 
     // Update is called once per frame
