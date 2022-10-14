@@ -25,7 +25,7 @@ public class BulletMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void OnCollisionEnter(Collision collision)
