@@ -53,14 +53,19 @@ public class Portal : MonoBehaviour
 
                 bool reverse = false;
 
-                if (pairAngle < Mathf.PI)
+                if (pairAngle <= Mathf.PI)
                 {
                     pairAngle = Mathf.PI / 2 - pairAngle;
                 }
-                else
+                else if (pairAngle < 3 * Mathf.PI / 2)
                 {
                     pairAngle -= Mathf.PI;
                     pairAngle = Mathf.PI / 2 - pairAngle;
+                    reverse = true;
+                }
+                else
+                {
+                    pairAngle = 2 * Mathf.PI - pairAngle;
                     reverse = true;
                 }
 
