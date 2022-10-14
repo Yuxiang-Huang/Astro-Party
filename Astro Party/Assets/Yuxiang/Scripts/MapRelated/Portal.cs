@@ -26,48 +26,57 @@ public class Portal : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        float angle = transform.rotation.ToEulerAngles().y;
-        float pairAngle = pair.transform.rotation.ToEulerAngles().y;
-
-        //offset of ship to portal
-        if (wait < 0)
+        if (collision.gameObject.CompareTag("Ship") || collision.gameObject.CompareTag("Pilot") ||
+            collision.gameObject.CompareTag("Bullet") || collision.gameObject.CompareTag("BouncyBullet"))
         {
-            wait = 0.1f;
+            float angle = transform.rotation.ToEulerAngles().y;
+            float pairAngle = pair.transform.rotation.ToEulerAngles().y;
 
-            Vector3 dif = collision.transform.position - transform.position;
-            dif.y = collision.transform.position.y;
-
-            collision.transform.position = Quaternion.AngleAxis(180 * (pairAngle - angle) / Mathf.PI, Vector3.up)
-    * dif + pair.transform.position;
-
-            collision.transform.Rotate(new Vector3(0, (pairAngle - angle) * 180 / Mathf.PI + 180, 0));
-
-            //add a little more offset
-            while (pairAngle < 0)
+            //offset of ship to portal
+            if (wait < 0)
             {
-                pairAngle += 2 * Mathf.PI;
+                wait = 0.1f;
+
+                Vector3 dif = collision.transform.position - transform.position;
+                dif.y = collision.transform.position.y;
+
+                collision.transform.position = Quaternion.AngleAxis(180 * (pairAngle - angle) / Mathf.PI, Vector3.up)
+        * dif + pair.transform.position;
+
+                collision.transform.Rotate(new Vector3(0, (pairAngle - angle) * 180 / Mathf.PI + 180, 0));
+
+                //add a little more offset
+                while (pairAngle < 0)
+                {
+                    pairAngle += 2 * Mathf.PI;
+                }
+
+                bool reverse = false;
+
+                if (pairAngle < Mathf.PI)
+                {
+                    pairAngle = Mathf.PI / 2 - pairAngle;
+                }
+                else
+                {
+                    pairAngle -= Mathf.PI;
+                    pairAngle = Mathf.PI / 2 - pairAngle;
+                    reverse = true;
+                }
+
+                if (reverse)
+                {
+                    collision.transform.position -= new Vector3(Mathf.Cos(pairAngle) * offSet, 0, Mathf.Sin(pairAngle) * offSet);
+                }
+                else
+                {
+                    collision.transform.position += new Vector3(Mathf.Cos(pairAngle) * offSet, 0, Mathf.Sin(pairAngle) * offSet);
+                }
             }
 
-            bool reverse = false;
-
-            if (pairAngle < Mathf.PI)
+            if (collision.gameObject.CompareTag("Bullet") || collision.gameObject.CompareTag("BouncyBullet"))
             {
-                pairAngle = Mathf.PI / 2 - pairAngle;
-            }
-            else
-            {
-                pairAngle -= Mathf.PI;
-                pairAngle = Mathf.PI / 2 - pairAngle;
-                reverse = true;
-            }
-
-            if (reverse)
-            {
-                collision.transform.position -= new Vector3(Mathf.Cos(pairAngle) * offSet, 0, Mathf.Sin(pairAngle) * offSet);
-            }
-            else
-            {
-                collision.transform.position += new Vector3(Mathf.Cos(pairAngle) * offSet, 0, Mathf.Sin(pairAngle) * offSet);
+                collision.gameObject.GetComponent<Rigidbody>().velocity = new Vector3 (0, 0, 1000);
             }
         }
     }
