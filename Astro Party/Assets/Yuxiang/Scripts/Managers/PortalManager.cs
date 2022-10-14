@@ -37,13 +37,22 @@ public class PortalManager : MonoBehaviour
 
         for (int i = 0; i < 5; i++)
         {
-            portalParentList.Add(Instantiate(portals,
-                new Vector3(Mathf.Cos(i * 2 * Mathf.PI / 5) * spawnRadius, 0, Mathf.Sin(i * 2 * Mathf.PI / 5) * spawnRadius),
+            portalParentList.Add(Instantiate(portals, new Vector3(Mathf.Cos(i * 2 * Mathf.PI / 5 + Mathf.PI/2) * spawnRadius,
+                0, Mathf.Sin(i * 2 * Mathf.PI / 5 + Mathf.PI / 2) * spawnRadius),
                 portals.transform.rotation));
 
             if (gameManagerScript.fixedSpawn)
             {
-                //portalParentList[i].transform.Rotate(0, i * 72, 0);
+                int angle = 0;
+
+                switch (i)
+                {
+                    case 1: angle = -72; break;
+                    case 2: angle = 28; break;
+                    case 3: angle = -28; break;
+                    case 4: angle = 72; break;
+                }
+                portalParentList[i].transform.Rotate(0, angle, 0);
             }
             else
             {
@@ -59,6 +68,11 @@ public class PortalManager : MonoBehaviour
         if (! gameManagerScript.fixedSpawn)
         {
             pivot.transform.Rotate(0, Random.Range(0, 360), 0);
+        }
+        else
+        {
+            portalList.Add(portalList[0]);
+            portalList.RemoveAt(0);
         }
 
         int color = 1;
@@ -90,11 +104,11 @@ public class PortalManager : MonoBehaviour
                     portalList[0].GetComponent<Portal>().rend.material = yellow3;
                     portalList[ran].GetComponent<Portal>().rend.material = yellow3;
                     break;
-                case 4:
+                case 5:
                     portalList[0].GetComponent<Portal>().rend.material = cyan4;
                     portalList[ran].GetComponent<Portal>().rend.material = cyan4;
                     break;
-                case 5:
+                case 4:
                     portalList[0].GetComponent<Portal>().rend.material = green5;
                     portalList[ran].GetComponent<Portal>().rend.material = green5;
                     break;
