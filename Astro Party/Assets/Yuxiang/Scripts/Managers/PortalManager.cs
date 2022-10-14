@@ -15,20 +15,32 @@ public class PortalManager : MonoBehaviour
     public Material cyan4;
     public Material green5;
 
+    public int spawnRadius = 500;
+
     // Start is called before the first frame update
     void Start()
     {
+        GameObject pivot = new GameObject ();
+        pivot.transform.position = new Vector3(0, 0, 0);
+
         portalParentList = new List<GameObject>();
         portalList = new List<GameObject>();
 
         for (int i = 0; i < 5; i++)
         {
-            portalParentList.Add(Instantiate(portals, generateRanPos(), portals.transform.rotation));
+            portalParentList.Add(Instantiate(portals,
+                new Vector3(Mathf.Cos(i * 2 * Mathf.PI / 5) * spawnRadius, 0, Mathf.Sin(i * 2 * Mathf.PI / 5) * spawnRadius),
+                portals.transform.rotation));
+
             portalParentList[i].transform.Rotate(0, Random.Range(0, 360), 0);
+
+            portalParentList[i].transform.parent = pivot.transform;
 
             portalList.Add(portalParentList[i].GetComponent<PortalParent>().portal1);
             portalList.Add(portalParentList[i].GetComponent<PortalParent>().portal2);
         }
+
+        pivot.transform.Rotate(0, Random.Range(0, 360), 0);
 
         int color = 1;
 
@@ -74,26 +86,5 @@ public class PortalManager : MonoBehaviour
     void Update()
     {
         
-    }
-
-    Vector3 generateRanPos()
-    {
-        int spawnRadius = 750 - 125;
-
-        Vector3 ranPos = new Vector3(Random.Range(-spawnRadius, spawnRadius), 0,
-          Random.Range(-spawnRadius, spawnRadius));
-
-        //outside the circle
-        while (distance(ranPos, new Vector3(0, 0, 0)) > spawnRadius){
-            ranPos = new Vector3(Random.Range(-spawnRadius, spawnRadius), 0,
-Random.Range(-spawnRadius, spawnRadius));
-        }
-
-        return ranPos;
-    }
-
-    float distance(Vector3 ship1, Vector3 ship2)
-    {
-        return Mathf.Sqrt(Mathf.Pow((ship1.x - ship2.x), 2) + Mathf.Pow((ship1.z - ship2.z), 2));
     }
 }
