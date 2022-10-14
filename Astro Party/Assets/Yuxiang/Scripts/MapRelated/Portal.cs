@@ -53,19 +53,14 @@ public class Portal : MonoBehaviour
 
                 bool reverse = false;
 
-                if (pairAngle <= Mathf.PI)
+                if (pairAngle < Mathf.PI)
                 {
                     pairAngle = Mathf.PI / 2 - pairAngle;
-                }
-                else if (pairAngle < 3 * Mathf.PI / 2)
-                {
-                    pairAngle -= Mathf.PI;
-                    pairAngle = Mathf.PI / 2 - pairAngle;
-                    reverse = true;
                 }
                 else
                 {
-                    pairAngle = 2 * Mathf.PI - pairAngle;
+                    pairAngle -= Mathf.PI;
+                    pairAngle = Mathf.PI / 2 - pairAngle;
                     reverse = true;
                 }
 
@@ -81,7 +76,8 @@ public class Portal : MonoBehaviour
 
             if (collision.gameObject.CompareTag("Bullet") || collision.gameObject.CompareTag("BouncyBullet"))
             {
-                collision.gameObject.GetComponent<Rigidbody>().velocity = new Vector3 (0, 0, 1000);
+                collision.gameObject.GetComponent<Rigidbody>().velocity = new Vector3 (0, 0, 0);
+                collision.gameObject.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, 0, 1000), ForceMode.VelocityChange);
             }
         }
     }

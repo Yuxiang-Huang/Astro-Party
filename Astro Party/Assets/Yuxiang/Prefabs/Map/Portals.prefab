@@ -110,7 +110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rend: {fileID: 4949045954764904791}
   pair: {fileID: 0}
-  offSet: 75
+  offSet: 50
 --- !u!1 &4949045954789816577
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,7 +221,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rend: {fileID: 4949045954789816581}
   pair: {fileID: 0}
-  offSet: 75
+  offSet: 50
 --- !u!1 &4949045954877708698
 GameObject:
   m_ObjectHideFlags: 0

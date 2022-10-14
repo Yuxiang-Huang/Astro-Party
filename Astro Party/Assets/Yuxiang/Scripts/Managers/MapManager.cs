@@ -43,7 +43,7 @@ public class MapManager : MonoBehaviour
         Map3.SetActive(false);
         Map4.SetActive(false);
         Map5.SetActive(false);
-        Map6.SetActive(false);
+        //Map6.SetActive(false);
 
         //allMaps.Add(Map1);
         //allMaps.Add(Map2);
