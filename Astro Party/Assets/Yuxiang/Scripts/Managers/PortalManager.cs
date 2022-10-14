@@ -22,19 +22,34 @@ public class PortalManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
-
-        reset();
+        
     }
 
     public void reset()
     {
+        gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
+
+        //clear
+        if (portalList != null)
+        {
+            while (portalList.Count > 0)
+            {
+                Destroy(portalList[0]);
+                portalList.RemoveAt(0);
+            }
+
+            while (portalParentList.Count > 0)
+            {
+                Destroy(portalParentList[0]);
+                portalParentList.RemoveAt(0);
+            }
+        }
+
         GameObject pivot = new GameObject ();
         pivot.transform.position = new Vector3(0, 0, 0);
 
         portalParentList = new List<GameObject>();
         portalList = new List<GameObject>();
-
 
         //spawn five portals
         for (int i = 0; i < 5; i++)
@@ -76,7 +91,6 @@ public class PortalManager : MonoBehaviour
             portalList.Add(portalList[0]);
             portalList.RemoveAt(0);
         }
-
 
         int color = 1;
 
