@@ -108,6 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c21487b5c39b42409a9e715b2b65035, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 4949045954764904791}
   pair: {fileID: 0}
   offSet: 25
 --- !u!1 &4949045954789816577
@@ -218,6 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c21487b5c39b42409a9e715b2b65035, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 4949045954789816581}
   pair: {fileID: 0}
   offSet: 25
 --- !u!1 &4949045954877708698
@@ -229,6 +231,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4949045954877708697}
+  - component: {fileID: 3345194608884230374}
   m_Layer: 0
   m_Name: Portals
   m_TagString: Untagged
@@ -254,6 +257,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3345194608884230374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4949045954877708698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2cc0e62bc6a94366b994e2ff1d81e1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  portal1: {fileID: 4949045954764904786}
+  portal2: {fileID: 4949045954789816577}
 --- !u!1001 &4949045955840015084
 PrefabInstance:
   m_ObjectHideFlags: 0

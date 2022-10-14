@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Portal : MonoBehaviour
 {
+    public Renderer rend;
+
     public GameObject pair;
 
     bool once = true;

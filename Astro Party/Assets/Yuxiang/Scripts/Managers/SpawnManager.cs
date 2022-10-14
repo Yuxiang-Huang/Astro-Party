@@ -49,25 +49,25 @@ public class SpawnManager : MonoBehaviour
 
             if (spawn)
             {
-                shipNum = 0;
+                //shipNum = 0;
 
-                foreach (List<GameObject> shipList in gameManagerScript.inGameShips)
-                {
-                    shipNum += shipList.Count;
-                }
+                //foreach (List<GameObject> shipList in gameManagerScript.inGameShips)
+                //{
+                //    shipNum += shipList.Count;
+                //}
 
-                switch (mode)
-                {
-                    case "few": shipNum = shipNum / 2; break;
-                    case "many": shipNum = shipNum * 2; break;
-                }
+                //switch (mode)
+                //{
+                //    case "few": shipNum = shipNum / 2; break;
+                //    case "many": shipNum = shipNum * 2; break;
+                //}
 
-                for (int i = 0; i < shipNum; i++)
-                {
-                    GameObject asteroidClone = Instantiate(PowerUpAsteroid, generateRanPos(), PowerUpAsteroid.transform.rotation);
+                //for (int i = 0; i < shipNum; i++)
+                //{
+                //    GameObject asteroidClone = Instantiate(PowerUpAsteroid, generateRanPos(), PowerUpAsteroid.transform.rotation);
 
-                    gameManagerScript.inGameAsteroids.Add(asteroidClone);
-                }
+                //    gameManagerScript.inGameAsteroids.Add(asteroidClone);
+                //}
 
                 spawnAsteroids();
             }
