@@ -1,7 +1,10 @@
 # Astro Party II
 
-### Brief Summary:
-This is a recreation of the game Astro Party. I am not using it for commercial purpose, so please don't sue me.
+## Brief Summary:
+This is a recreation of the game Astro Party.
+
+### Game Link:
+https://yuxiang-huang.itch.io/astro-party-ii
 
 ### Development Log: (MM-DD-YYYY: "LOG")
 * #### Yuxiang Huang:
