@@ -19,10 +19,11 @@ public class PortalManager : MonoBehaviour
 
     GameManager gameManagerScript;
 
+    GameObject pivot;
+
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     public void reset()
@@ -45,8 +46,13 @@ public class PortalManager : MonoBehaviour
             }
         }
 
-        GameObject pivot = new GameObject ();
+        if (pivot != null)
+        {
+            Destroy(pivot);
+        }
+        pivot = new GameObject ();
         pivot.transform.position = new Vector3(0, 0, 0);
+        pivot.transform.parent = transform;
 
         portalParentList = new List<GameObject>();
         portalList = new List<GameObject>();
