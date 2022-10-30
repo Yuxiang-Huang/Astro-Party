@@ -45,6 +45,7 @@ public class ScoreManager : MonoBehaviour
     int scoreToWin = 5;
     public Text roundText;
     int maxScore = 5;
+    List<int> winningShip;
 
     public bool friendlyFire = false;
     public Text friendlyFireText;
@@ -120,7 +121,7 @@ public class ScoreManager : MonoBehaviour
             while (!closeEnough(P1.transform.position.x - startPosX, P1Score * lengthOfSquare))
             {
                 yield return new WaitForSeconds(1f);
-                checkPSolo(P1);
+                checkPSolo(P1, P1Score, 1);
             }
 
             if (P1Suicide)
@@ -144,7 +145,7 @@ public class ScoreManager : MonoBehaviour
             while (!closeEnough(P2.transform.position.x - startPosX, P2Score * lengthOfSquare))
             {
                 yield return new WaitForSeconds(1f);
-                checkPSolo(P2);
+                checkPSolo(P2, P2Score, 2);
             }
 
             if (P2Suicide)
@@ -169,7 +170,7 @@ public class ScoreManager : MonoBehaviour
             while (!closeEnough(P3.transform.position.x - startPosX, P3Score * lengthOfSquare))
             {
                 yield return new WaitForSeconds(1f);
-                checkPSolo(P3);
+                checkPSolo(P3, P3Score, 3);
             }
 
             if (P3Suicide)
@@ -194,7 +195,7 @@ public class ScoreManager : MonoBehaviour
             while (!closeEnough(P4.transform.position.x - startPosX, P4Score * lengthOfSquare))
             {
                 yield return new WaitForSeconds(1f);
-                checkPSolo(P4);
+                checkPSolo(P4, P4Score, 4);
             }
 
             if (P4Suicide)
@@ -219,7 +220,7 @@ public class ScoreManager : MonoBehaviour
             while (!closeEnough(P5.transform.position.x - startPosX, P5Score * lengthOfSquare))
             {
                 yield return new WaitForSeconds(1f);
-                checkPSolo(P5);
+                checkPSolo(P5, P5Score, 5);
             }
 
 
@@ -246,11 +247,11 @@ public class ScoreManager : MonoBehaviour
         else if (gameMode == "team")
         {
             yield return new WaitForSeconds(1f);
-            checkPScore(P1, P1Score);
-            checkPScore(P2, P2Score);
-            checkPScore(P3, P3Score);
-            checkPScore(P4, P4Score);
-            checkPScore(P5, P5Score);
+            checkPScoreTeam(P1, P1Score, 1);
+            checkPScoreTeam(P2, P2Score, 2);
+            checkPScoreTeam(P3, P3Score, 3);
+            checkPScoreTeam(P4, P4Score, 4);
+            checkPScoreTeam(P5, P5Score, 5);
         }
 
         yield return new WaitForSeconds(2f);
@@ -258,7 +259,7 @@ public class ScoreManager : MonoBehaviour
         scoreScreen.SetActive(false);
 
         //Check for winner
-        if (P1Score < scoreToWin && P2Score < scoreToWin && P3Score < scoreToWin && P4Score < scoreToWin && P5Score < scoreToWin)
+        if (winningShip.Count == 0)
         {
             gameManagerScript.startRound();
         }
@@ -274,30 +275,7 @@ public class ScoreManager : MonoBehaviour
                 Team4WinText.SetActive(false);
                 Team5WinText.SetActive(false);
 
-                int find = -1;
-
-                if (P1Score == scoreToWin)
-                {
-                    find = 1;
-                }
-                if (P2Score == scoreToWin)
-                {
-                    find = 2;
-                }
-                if (P3Score == scoreToWin)
-                {
-                    find = 3;
-                }
-                if (P4Score == scoreToWin)
-                {
-                    find = 4;
-                }
-                if (P5Score == scoreToWin)
-                {
-                    find = 5;
-                }
-
-                switch (findWinningTeam(find))
+                switch (findWinningTeam(winningShip[0]))
                 {
                     case 1:
                         Team1WinText.SetActive(true);
@@ -368,24 +346,36 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-    void checkPScore(GameObject P, int PScore)
+    void checkPScoreTeam(GameObject P, int PScore, int id)
     {
+        //moving the shipPic
         if (!closeEnough(P.transform.position.x - startPosX, PScore * lengthOfSquare))
         {
             P.transform.position = new Vector3(P.transform.position.x + lengthOfSquare, P.transform.position.y,
                 P.transform.position.z);
         }
+
+        //checking for winner
+        if (PScore == maxScore)
+        {
+            winningShip.Add(id);
+        }
     }
 
-    void checkPSolo(GameObject P)
+    void checkPSolo(GameObject P, int PScore, int id)
     {
         move(P, lengthOfSquare);
-
+        
         if (closeEnough(P.transform.position.x - startPosX, lengthOfSquare * (maxScore + 1)))
         {
             moveEverything();
             startPosX -= lengthOfSquare;
             maxScore++;
+            winningShip = new List<int>();
+            winningShip.Add(id);
+        } else if (PScore == maxScore)
+        {
+            winningShip.Add(id);
         }
     }
 
@@ -408,6 +398,7 @@ public class ScoreManager : MonoBehaviour
 
     int findWinningTeam(int shipID)
     {
+        //the index of the list containing the winning ship id
         for (int i = 0; i < gameManagerScript.ships.Count; i++)
         {
             for (int j = 0; j < gameManagerScript.ships[i].Count; j++)
@@ -430,6 +421,8 @@ public class ScoreManager : MonoBehaviour
 
     public void resetScore()
     {
+        winningShip = new List<int>();
+
         startPosX = origStartPosX;
         maxScore = scoreToWin;
 
