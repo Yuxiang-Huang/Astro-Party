@@ -39,6 +39,7 @@ public class Tutorial : MonoBehaviour
     public GameObject bot2;
 
     GameManager gameManagerScript;
+    CameraManager cameraMangerScript;
 
     bool notFirst;
     int numOfDirectionBack;
@@ -50,8 +51,8 @@ public class Tutorial : MonoBehaviour
         shipShoot = KeyCode.S;
 
         gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        cameraMangerScript = GameObject.Find("Main Camera").GetComponent<CameraManager>();
 
-        //can't call end because other managers didn't set yet.
         reset();
     }
 
@@ -151,13 +152,33 @@ playerShip.transform.rotation);
                 }
             }
 
-            if (directionId == 5)
+            else if (directionId == 6)
+            {
+                cube0.transform.position = generateRanPos();
+                cube1.transform.position = generateRanPos();
+                cube0.SetActive(true);
+                cube1.SetActive(true);
+            }
+
+            else if(directionId == 7)
+            {
+                foreach (GameObject body in threeBody)
+                {
+                    spawnBody(body);
+                }
+                endButton.SetActive(true);
+            }
+
+
+            else if(directionId == 5)
             {
                 GameObject toAddBot1 = Instantiate(bot, generateRanPos(), bot.transform.rotation);
                 gameManagerScript.inGameShips[1].Add(toAddBot1);
 
                 GameObject toAddBot2 = Instantiate(bot2, generateRanPos(), bot2.transform.rotation);
                 gameManagerScript.inGameShips[1].Add(toAddBot2);
+
+                cameraMangerScript.StartCoroutine("delayStart");
 
                 int id = playerShip.GetComponent<MutualShip>().id + 1;
                 if (id == 6)
@@ -168,23 +189,6 @@ playerShip.transform.rotation);
                 toAddBot2.GetComponent<MutualShip>().id = id;
                 toAddBot1.GetComponent<MutualShip>().team = id;
                 toAddBot2.GetComponent<MutualShip>().team = id;
-            }
-
-            if (directionId == 6)
-            {
-                cube0.transform.position = generateRanPos();
-                cube1.transform.position = generateRanPos();
-                cube0.SetActive(true);
-                cube1.SetActive(true);
-            }
-
-            if (directionId == 7)
-            {
-                foreach (GameObject body in threeBody)
-                {
-                    spawnBody(body);
-                }
-                endButton.SetActive(true);
             }
         }
 
