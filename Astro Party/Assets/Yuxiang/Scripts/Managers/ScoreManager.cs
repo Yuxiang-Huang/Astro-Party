@@ -52,6 +52,7 @@ public class ScoreManager : MonoBehaviour
     public GameObject scoreScreen;
 
     float lengthOfSquare;
+    float origStartPosX;
     float startPosX;
     float startPosXScoreBoard;
 
@@ -68,6 +69,7 @@ public class ScoreManager : MonoBehaviour
     {
         scoreScreen.SetActive(true);
 
+        origStartPosX = P1.transform.position.x;
         startPosX = P1.transform.position.x;
         startPosXScoreBoard= scoreBoard.transform.position.x;
 
@@ -120,9 +122,10 @@ public class ScoreManager : MonoBehaviour
                 yield return new WaitForSeconds(1f);
                 move(P1, lengthOfSquare);
 
-                if ((int)((P1.transform.position.x - startPosX) / lengthOfSquare) > max)
+                if (closeEnough(P1.transform.position.x - startPosX, lengthOfSquare * (max + 1)))
                 {
                     moveEverything();
+                    startPosX -= lengthOfSquare;
                     max++;
                 }
             }
@@ -399,7 +402,12 @@ public class ScoreManager : MonoBehaviour
     //for exceeding the point require to win
     void moveEverything()
     {
-
+        move(P1, -lengthOfSquare);
+        move(P2, -lengthOfSquare);
+        move(P3, -lengthOfSquare);
+        move(P4, -lengthOfSquare);
+        move(P5, -lengthOfSquare);
+        move(scoreBoard, -lengthOfSquare);
     }
 
     int findWinningTeam(int shipID)
@@ -426,6 +434,8 @@ public class ScoreManager : MonoBehaviour
 
     public void resetScore()
     {
+        startPosX = origStartPosX;
+
         P1Score = 0;
         P2Score = 0;
         P3Score = 0;

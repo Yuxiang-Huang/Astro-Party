@@ -15,6 +15,7 @@ public class MutualShip : MonoBehaviour
 
     int speed = 500;
     int bulletDis = 30;
+    int bulletY;
     public float bulletAnimationPos;
     public GameObject[] bulletAnimation;
     public float reloadTime;
@@ -51,6 +52,8 @@ public class MutualShip : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        bulletY = 15;
+
         playerRb = GetComponent<Rigidbody>();
         playerAudio = GetComponent<AudioSource>();
 
@@ -233,7 +236,7 @@ public class MutualShip : MonoBehaviour
                 if (tripleShot)
                 {
                     GameObject sideBullet1 = Instantiate(powerUpManagerScript.bullet, transform.position +
-                new Vector3(bulletDis * Mathf.Sin(angle + 1), 20, bulletDis * Mathf.Cos(angle + 1)),
+                new Vector3(bulletDis * Mathf.Sin(angle + 1), bulletY, bulletDis * Mathf.Cos(angle + 1)),
                 transform.rotation);
 
                     //setting the script varibles
@@ -248,7 +251,7 @@ public class MutualShip : MonoBehaviour
                     }
 
                     GameObject sideBullet2 = Instantiate(powerUpManagerScript.bullet, transform.position +
-                new Vector3(bulletDis * Mathf.Sin(angle - 1), 20, bulletDis * Mathf.Cos(angle - 1)),
+                new Vector3(bulletDis * Mathf.Sin(angle - 1), bulletY, bulletDis * Mathf.Cos(angle - 1)),
                 transform.rotation);
 
                     //setting the script varibles
@@ -264,7 +267,7 @@ public class MutualShip : MonoBehaviour
                 }
 
                 GameObject myBullet = Instantiate(powerUpManagerScript.bullet, transform.position +
-                new Vector3(bulletDis * Mathf.Sin(angle), 20, bulletDis * Mathf.Cos(angle)),
+                new Vector3(bulletDis * Mathf.Sin(angle), bulletY, bulletDis * Mathf.Cos(angle)),
                 transform.rotation);
 
                 //setting the script varibles
@@ -314,7 +317,7 @@ public class MutualShip : MonoBehaviour
                     float angleNow = transform.rotation.ToEulerAngles().y;
 
                     GameObject myBullet = Instantiate(powerUpManagerScript.bullet, transform.position +
-                new Vector3(bulletDis * Mathf.Sin(angleNow), 20, bulletDis * Mathf.Cos(angleNow)), transform.rotation);
+                new Vector3(bulletDis * Mathf.Sin(angleNow), bulletY, bulletDis * Mathf.Cos(angleNow)), transform.rotation);
 
                     transform.Rotate(0, 360 / numOfShots, 0);
 
@@ -355,7 +358,7 @@ public class MutualShip : MonoBehaviour
             {
                 GameObject myBouncyBullet = Instantiate(powerUpManagerScript.bouncyBullet,
                     transform.position +
-                new Vector3(bulletDis * Mathf.Sin(angle), 20, bulletDis * Mathf.Cos(angle)),
+                new Vector3(bulletDis * Mathf.Sin(angle), bulletY, bulletDis * Mathf.Cos(angle)),
                 transform.rotation);
 
                 //setting the script varibles
@@ -377,7 +380,7 @@ public class MutualShip : MonoBehaviour
                 if (tripleShot)
                 {
                     GameObject sideBullet1 = Instantiate(powerUpManagerScript.bouncyBullet, transform.position +
-                new Vector3(bulletDis * Mathf.Sin(angle + 1), 20, bulletDis * Mathf.Cos(angle + 1)),
+                new Vector3(bulletDis * Mathf.Sin(angle + 1), bulletY, bulletDis * Mathf.Cos(angle + 1)),
                 transform.rotation);
 
                     //setting the script varibles
@@ -392,7 +395,7 @@ public class MutualShip : MonoBehaviour
                     }
 
                     GameObject sideBullet2 = Instantiate(powerUpManagerScript.bouncyBullet, transform.position +
-                new Vector3(bulletDis * Mathf.Sin(angle - 1), 20, bulletDis * Mathf.Cos(angle - 1)),
+                new Vector3(bulletDis * Mathf.Sin(angle - 1), bulletY, bulletDis * Mathf.Cos(angle - 1)),
                 transform.rotation);
 
                     //setting the script varibles

@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
     public GameObject botShip1;
 
     public int spawnRadius;
-    int shipY = 10;
+    int shipY = 20;
     public bool gameStarted;
 
     public bool fixedSpawn;
