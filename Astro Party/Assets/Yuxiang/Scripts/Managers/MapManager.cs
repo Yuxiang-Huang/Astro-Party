@@ -47,12 +47,12 @@ public class MapManager : MonoBehaviour
         Map5.SetActive(false);
         Map6.SetActive(false);
 
-        //allMaps.Add(Map1);
+        allMaps.Add(Map1);
         allMaps.Add(Map2);
-        //allMaps.Add(Map3);
-        //allMaps.Add(Map4);
-        //allMaps.Add(Map5);
-        //allMaps.Add(Map6);
+        allMaps.Add(Map3);
+        allMaps.Add(Map4);
+        allMaps.Add(Map5);
+        allMaps.Add(Map6);
     }
 
     void Update()
