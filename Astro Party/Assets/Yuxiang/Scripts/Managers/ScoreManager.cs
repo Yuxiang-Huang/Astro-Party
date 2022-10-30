@@ -44,6 +44,7 @@ public class ScoreManager : MonoBehaviour
 
     int scoreToWin = 5;
     public Text roundText;
+    int maxScore = 5;
 
     public bool friendlyFire = false;
     public Text friendlyFireText;
@@ -107,7 +108,6 @@ public class ScoreManager : MonoBehaviour
 
     public IEnumerator scoreUpdate()
     {
-        int max = scoreToWin;
         //Debug.Log(startPosX);
         //Debug.Log(P1.transform.position.x);
         //Debug.Log(P1.transform.position.x - startPosX);
@@ -120,14 +120,7 @@ public class ScoreManager : MonoBehaviour
             while (!closeEnough(P1.transform.position.x - startPosX, P1Score * lengthOfSquare))
             {
                 yield return new WaitForSeconds(1f);
-                move(P1, lengthOfSquare);
-
-                if (closeEnough(P1.transform.position.x - startPosX, lengthOfSquare * (max + 1)))
-                {
-                    moveEverything();
-                    startPosX -= lengthOfSquare;
-                    max++;
-                }
+                checkPSolo(P1);
             }
 
             if (P1Suicide)
@@ -150,10 +143,8 @@ public class ScoreManager : MonoBehaviour
 
             while (!closeEnough(P2.transform.position.x - startPosX, P2Score * lengthOfSquare))
             {
-
                 yield return new WaitForSeconds(1f);
-                P2.transform.position = new Vector3(P2.transform.position.x + lengthOfSquare, P2.transform.position.y,
-                    P2.transform.position.z);
+                checkPSolo(P2);
             }
 
             if (P2Suicide)
@@ -177,10 +168,8 @@ public class ScoreManager : MonoBehaviour
 
             while (!closeEnough(P3.transform.position.x - startPosX, P3Score * lengthOfSquare))
             {
-
                 yield return new WaitForSeconds(1f);
-                P3.transform.position = new Vector3(P3.transform.position.x + lengthOfSquare, P3.transform.position.y,
-                    P3.transform.position.z);
+                checkPSolo(P3);
             }
 
             if (P3Suicide)
@@ -204,10 +193,8 @@ public class ScoreManager : MonoBehaviour
 
             while (!closeEnough(P4.transform.position.x - startPosX, P4Score * lengthOfSquare))
             {
-
                 yield return new WaitForSeconds(1f);
-                P4.transform.position = new Vector3(P4.transform.position.x + lengthOfSquare, P4.transform.position.y,
-                    P4.transform.position.z);
+                checkPSolo(P4);
             }
 
             if (P4Suicide)
@@ -231,10 +218,8 @@ public class ScoreManager : MonoBehaviour
 
             while (!closeEnough(P5.transform.position.x - startPosX, P5Score * lengthOfSquare))
             {
-
                 yield return new WaitForSeconds(1f);
-                P5.transform.position = new Vector3(P5.transform.position.x + lengthOfSquare, P5.transform.position.y,
-                    P5.transform.position.z);
+                checkPSolo(P5);
             }
 
 
@@ -256,7 +241,6 @@ public class ScoreManager : MonoBehaviour
 
                 P5Suicide = false;
             }
-
         }
 
         else if (gameMode == "team")
@@ -393,6 +377,18 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
+    void checkPSolo(GameObject P)
+    {
+        move(P, lengthOfSquare);
+
+        if (closeEnough(P.transform.position.x - startPosX, lengthOfSquare * (maxScore + 1)))
+        {
+            moveEverything();
+            startPosX -= lengthOfSquare;
+            maxScore++;
+        }
+    }
+
     void move(GameObject P, float len)
     {
         P.transform.position = new Vector3(P.transform.position.x + len, P.transform.position.y,
@@ -435,6 +431,7 @@ public class ScoreManager : MonoBehaviour
     public void resetScore()
     {
         startPosX = origStartPosX;
+        maxScore = scoreToWin;
 
         P1Score = 0;
         P2Score = 0;
@@ -505,6 +502,7 @@ public class ScoreManager : MonoBehaviour
         }
 
         lengthOfSquare = 500 / scoreToWin * scale;
+        maxScore = scoreToWin;
     }
 
     public void setFriendlyFire()
