@@ -116,6 +116,8 @@ public class ScoreManager : MonoBehaviour
 
         scoreScreen.SetActive(true);
 
+        winningShip = new List<int>();
+
         if (gameMode == "solo")
         {
             while (!closeEnough(P1.transform.position.x - startPosX, P1Score * lengthOfSquare))
@@ -265,10 +267,11 @@ public class ScoreManager : MonoBehaviour
         }
         else
         {
-            endScreen.SetActive(true);
-            pauseText.SetActive(false);
             if (gameMode == "team")
             {
+                endScreen.SetActive(true);
+                pauseText.SetActive(false);
+
                 Team1WinText.SetActive(false);
                 Team2WinText.SetActive(false);
                 Team3WinText.SetActive(false);
@@ -302,30 +305,12 @@ public class ScoreManager : MonoBehaviour
                 P4WinText.SetActive(false);
                 P5WinText.SetActive(false);
 
-                int find = -1;
-
-                if (P1Score >= scoreToWin)
+                if (winningShip.Count == 1)
                 {
-                    find = 1;
-                }
-                if (P2Score >= scoreToWin)
-                {
-                    find = 2;
-                }
-                if (P3Score >= scoreToWin)
-                {
-                    find = 3;
-                }
-                if (P4Score >= scoreToWin)
-                {
-                    find = 4;
-                }
-                if (P5Score >= scoreToWin)
-                {
-                    find = 5;
-                }
-                switch (find)
-                {
+                    endScreen.SetActive(true);
+                    pauseText.SetActive(false);
+                    switch (winningShip[0])
+                    {
                     case 1:
                         P1WinText.SetActive(true);
                         break;
@@ -341,6 +326,22 @@ public class ScoreManager : MonoBehaviour
                     case 5:
                         P5WinText.SetActive(true);
                         break;
+                    }
+                }
+                else
+                {
+                    //fight between the ships that has the maximum score after required score is reached
+                    for (int i = 0; i < gameManagerScript.ships.Count; i++)
+                    {
+                        for (int j = gameManagerScript.ships[i].Count - 1; j >= 0; j--)
+                        {
+                            if (!winningShip.Contains(gameManagerScript.ships[i][j].GetComponent<MutualShip>().id))
+                            {
+                                gameManagerScript.ships[i].RemoveAt(j);
+                            }
+                        }
+                    }
+                    gameManagerScript.startRound();
                 }
             }
         }
