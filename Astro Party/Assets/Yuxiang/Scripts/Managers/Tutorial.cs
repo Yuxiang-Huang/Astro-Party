@@ -177,11 +177,17 @@ playerShip.transform.rotation);
                 foreach (GameObject body in threeBody)
                 {
                     spawnBody(body);
+                }   
+            }
+            else
+            {
+                foreach (GameObject body in threeBody)
+                {
+                    body.SetActive(false);
                 }
-                endButton.SetActive(true);
             }
 
-            if(directionId == 8)
+            if (directionId == 8)
             {
                 GameObject toAddBot1 = Instantiate(bot, generateRanPos(), bot.transform.rotation);
                 gameManagerScript.inGameShips[1].Add(toAddBot1);
@@ -200,6 +206,8 @@ playerShip.transform.rotation);
                 toAddBot2.GetComponent<MutualShip>().id = id;
                 toAddBot1.GetComponent<MutualShip>().team = id;
                 toAddBot2.GetComponent<MutualShip>().team = id;
+
+                endButton.SetActive(true);
             }
         }
 
