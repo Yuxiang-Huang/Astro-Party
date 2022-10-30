@@ -37,6 +37,7 @@ public class Tutorial : MonoBehaviour
     public List<GameObject> asteroids;
     public GameObject bot;
     public GameObject bot2;
+    public GameObject powerUpScreen;
 
     GameManager gameManagerScript;
     CameraManager cameraMangerScript;
@@ -139,6 +140,17 @@ playerShip.transform.rotation);
             nextDirectionButton.SetActive(false);
         }
 
+        if (directionId == 5)
+        {
+            powerUpScreen.SetActive(true);
+            Time.timeScale = 0;
+        }
+        else
+        {
+            powerUpScreen.SetActive(false);
+            Time.timeScale = 1;
+        }
+
         //to prevent multiple calls
         if (numOfDirectionBack == 0)
         {
@@ -152,7 +164,7 @@ playerShip.transform.rotation);
                 }
             }
 
-            else if (directionId == 6)
+            if (directionId == 6)
             {
                 cube0.transform.position = generateRanPos();
                 cube1.transform.position = generateRanPos();
@@ -160,7 +172,7 @@ playerShip.transform.rotation);
                 cube1.SetActive(true);
             }
 
-            else if(directionId == 7)
+            if(directionId == 7)
             {
                 foreach (GameObject body in threeBody)
                 {
@@ -169,8 +181,7 @@ playerShip.transform.rotation);
                 endButton.SetActive(true);
             }
 
-
-            else if(directionId == 5)
+            if(directionId == 8)
             {
                 GameObject toAddBot1 = Instantiate(bot, generateRanPos(), bot.transform.rotation);
                 gameManagerScript.inGameShips[1].Add(toAddBot1);
@@ -238,6 +249,18 @@ Random.Range(-spawnRadius, spawnRadius));
         directions[directionId].SetActive(false);
         directionId--;
         directions[directionId].SetActive(true);
+
+        //powerup info screen, special case
+        if (directionId == 5)
+        {
+            powerUpScreen.SetActive(true);
+            Time.timeScale = 0;
+        }
+        else
+        {
+            powerUpScreen.SetActive(false);
+            Time.timeScale = 1;
+        }
 
         if (directionId == 0)
         {
