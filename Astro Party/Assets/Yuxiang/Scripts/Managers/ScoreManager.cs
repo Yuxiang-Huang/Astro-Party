@@ -72,7 +72,7 @@ public class ScoreManager : MonoBehaviour
         scale = canvas.scaleFactor;
         lengthOfSquare = 500 / scoreToWin * scale;
 
-        //resetScore();
+        resetScore();
         endScreen.SetActive(false);
         scoreScreen.SetActive(false);
 
@@ -121,7 +121,7 @@ public class ScoreManager : MonoBehaviour
 
                 if ((int)((P1.transform.position.x - startPosX) / lengthOfSquare) > max)
                 {
-                    move(scoreBoard, -lengthOfSquare);
+                    moveEverything();
                     max++;
                 }
             }
@@ -395,6 +395,12 @@ public class ScoreManager : MonoBehaviour
                     P.transform.position.z);
     }
 
+    //for exceeding the point require to win
+    void moveEverything()
+    {
+
+    }
+
     int findWinningTeam(int shipID)
     {
         for (int i = 0; i < gameManagerScript.ships.Count; i++)
@@ -442,7 +448,7 @@ public class ScoreManager : MonoBehaviour
     //Debug.Log(P3.transform.position);
     //Debug.Log(P4.transform.position);
 
-    scoreScreen.SetActive(true);
+        scoreScreen.SetActive(true);
 
         P1.transform.position = new Vector3(startPosX, P1.transform.position.y,
                 P1.transform.position.z);
@@ -459,31 +465,6 @@ public class ScoreManager : MonoBehaviour
         gameManagerScript.gameStarted = false;
 
         Time.timeScale = 1;
-
-        //destroy ships
-        for (int i = 0; i < gameManagerScript.inGameShips.Count; i++)
-        {
-            List<GameObject> shipList = gameManagerScript.inGameShips[i];
-            while (shipList.Count > 0)
-            {
-                Destroy(shipList[0]);
-                shipList.RemoveAt(0);
-            }
-        }
-
-        //destroy powerUps
-        while (gameManagerScript.inGameIndicators.Count > 0)
-        {
-            Destroy(gameManagerScript.inGameIndicators[0]);
-            gameManagerScript.inGameIndicators.Remove(gameManagerScript.inGameIndicators[0]);
-        }
-
-        //destroy Asteroids
-        while (gameManagerScript.inGameAsteroids.Count > 0)
-        {
-            Destroy(gameManagerScript.inGameAsteroids[0]);
-            gameManagerScript.inGameAsteroids.Remove(gameManagerScript.inGameAsteroids[0]);
-        }
 
         scoreScreen.SetActive(false);
 
