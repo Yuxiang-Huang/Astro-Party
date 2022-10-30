@@ -53,6 +53,7 @@ public class ScoreManager : MonoBehaviour
 
     float lengthOfSquare;
     float startPosX;
+    float startPosXScoreBoard;
 
     public Text teamModeText;
     public Text soloModeText;
@@ -68,15 +69,15 @@ public class ScoreManager : MonoBehaviour
         scoreScreen.SetActive(true);
 
         startPosX = P1.transform.position.x;
+        startPosXScoreBoard= scoreBoard.transform.position.x;
 
         scale = canvas.scaleFactor;
         lengthOfSquare = 500 / scoreToWin * scale;
 
-        //resetScore();
+        gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        resetScore();
         endScreen.SetActive(false);
         scoreScreen.SetActive(false);
-
-        gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
 
         shipMode = "ship";
     }
@@ -460,6 +461,8 @@ public class ScoreManager : MonoBehaviour
                 P4.transform.position.z);
         P5.transform.position = new Vector3(startPosX, P5.transform.position.y,
                 P5.transform.position.z);
+        scoreBoard.transform.position = new Vector3(startPosXScoreBoard, scoreBoard.transform.position.y,
+                scoreBoard.transform.position.z);
 
         //for pause
         gameManagerScript.gameStarted = false;
