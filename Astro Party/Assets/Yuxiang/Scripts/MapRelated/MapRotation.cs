@@ -19,8 +19,6 @@ public class MapRotation : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         mapManagerScript = GameObject.Find("Map Manager").GetComponent<MapManager>();
-
-        mapManagerScript.Map2rotatingObjects.Add(this.gameObject);
     }
 
     // Update is called once per frame
@@ -32,6 +30,8 @@ public class MapRotation : MonoBehaviour
 
     public void reset()
     {
+        rb = GetComponent<Rigidbody>();
+        mapManagerScript = GameObject.Find("Map Manager").GetComponent<MapManager>();
         velocity = mapManagerScript.velocity;
         
         float root2 = Mathf.Sqrt(2) / 2;
