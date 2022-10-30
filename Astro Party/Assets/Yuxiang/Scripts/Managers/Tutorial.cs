@@ -12,6 +12,7 @@ public class Tutorial : MonoBehaviour
     public GameObject endScreen;
 
     public GameObject endScreenText;
+    public GameObject pauseText;
 
     public GameObject playerShip;
 
@@ -34,11 +35,12 @@ public class Tutorial : MonoBehaviour
     public GameObject cube1;
     public List<GameObject> threeBody;
     public List<GameObject> asteroids;
-    public GameObject laserIndicator;
     public GameObject bot;
     public GameObject bot2;
 
     GameManager gameManagerScript;
+
+    bool notFirst;
 
     // Start is called before the first frame update
     void Start()
@@ -80,10 +82,13 @@ public class Tutorial : MonoBehaviour
             }
         }
 
+        //player dead
         if (started && gameManagerScript.inGameShips[0].Count == 0)
         {
             endScreen.SetActive(true);
             endScreenText.SetActive(true);
+            pauseText.SetActive(false);
+            gameManagerScript.endRound();
         }
     }
 
@@ -144,13 +149,10 @@ playerShip.transform.rotation);
 
         if (directionId == 5)
         {
-            GameObject curr = Instantiate(laserIndicator, generateRanPos(), laserIndicator.transform.rotation);
-            gameManagerScript.inGameIndicators.Add(curr);
-
-            GameObject toAddBot1 = Instantiate(bot, generateRanPos(), laserIndicator.transform.rotation);
+            GameObject toAddBot1 = Instantiate(bot, generateRanPos(), bot.transform.rotation);
             gameManagerScript.inGameShips[1].Add(toAddBot1);
 
-            GameObject toAddBot2 = Instantiate(bot2, generateRanPos(), laserIndicator.transform.rotation);
+            GameObject toAddBot2 = Instantiate(bot2, generateRanPos(), bot2.transform.rotation);
             gameManagerScript.inGameShips[1].Add(toAddBot2);
 
             int id = playerShip.GetComponent<MutualShip>().id + 1;
@@ -229,47 +231,24 @@ Random.Range(-spawnRadius, spawnRadius));
         }
     }
 
-    public void end()
-    {
-        //screens and maps
-        prepScreen.SetActive(false);
-        directionScreen.SetActive(false);
-        endScreen.SetActive(false);
-        startScreen.SetActive(true);
-        tutorialMap.SetActive(false);
-
-        //directions
-        directionId = 0;
-        nextDirectionButton.SetActive(true);
-        lastDirectionButton.SetActive(false);
-        endButton.SetActive(false);
-        foreach (GameObject direction in directions)
-        {
-            direction.SetActive(false);
-        }
-
-        cube0.SetActive(false);
-        cube1.SetActive(false);
-        foreach (GameObject body in threeBody)
-        {
-            body.SetActive(false);
-        }
-
-        gameManagerScript.endRound();
-
-        //others
-        started = false;
-        endScreenText.SetActive(false);
-        Time.timeScale = 1;
-    }
-
     public void reset()
     {
+        //managers not set at first
+        if (notFirst)
+        {
+            gameManagerScript.endRound();
+        }
+        else
+        {
+            notFirst = true;
+        }
+
         //screens and maps
         prepScreen.SetActive(false);
         directionScreen.SetActive(false);
         endScreen.SetActive(false);
         tutorialMap.SetActive(false);
+        startScreen.SetActive(true);
 
         //directions
         directionId = 0;
@@ -291,6 +270,7 @@ Random.Range(-spawnRadius, spawnRadius));
         //others
         started = false;
         endScreenText.SetActive(false);
+        pauseText.SetActive(true);
         Time.timeScale = 1;
     }
 }
