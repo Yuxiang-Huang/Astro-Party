@@ -19,6 +19,9 @@ public class MapManager : MonoBehaviour
     public GameObject Map2;
     public Text Map2Text;
     public List<GameObject> Map2rotatingObjects;
+    public int velocity;
+    public List<GameObject> Map2rotatingObjectsInner;
+    public int velocityInner;
 
     public GameObject Map3;
     public Text Map3Text;
@@ -124,9 +127,13 @@ public class MapManager : MonoBehaviour
 
     void reset2()
     {
+        velocity = Random.Range(50, 100);
+        velocityInner = -Random.Range(50, 100);
+
         foreach (GameObject curr in Map2rotatingObjects)
         {
             curr.GetComponent<MapRotation>().reset();
+            curr.GetComponent<MapRotation>().velocity = velocity;
         }
     }
 

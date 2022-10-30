@@ -11,10 +11,17 @@ public class MapRotation : MonoBehaviour
 
     public int mode;
 
+    MapManager mapManagerScript;
+
+    bool inner;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        mapManagerScript = GameObject.Find("Map Manager").GetComponent<MapManager>();
+
+        mapManagerScript.Map2rotatingObjects.Add(this.gameObject);
     }
 
     // Update is called once per frame
@@ -27,21 +34,41 @@ public class MapRotation : MonoBehaviour
 
     public void reset()
     {
-        velocity = Random.Range(50, 100);
+        float root2 = Mathf.Sqrt(2) / 2;
+
         switch (mode)
         {
             case 0:
-                transform.position = new Vector3(400, 0, 0);
+                transform.position = new Vector3(radius, 0, 0);
                 rb.velocity = new Vector3(0, 0, velocity);
-                break;
-            case 1:
-                rb.velocity = new Vector3(0, 0, -velocity);
                 break;
             case 2:
-                rb.velocity = new Vector3(-velocity, 0, velocity);
+                transform.position = new Vector3(0, 0, radius);
+                rb.velocity = new Vector3(-velocity, 0, 0);
+                break;
+            case 4:
+                transform.position = new Vector3(-radius, 0, 0);
+                rb.velocity = new Vector3(0, 0, -velocity);
+                break;
+            case 6:
+                transform.position = new Vector3(0, 0, -radius);
+                rb.velocity = new Vector3(velocity, 0, 0);
+                break;
+            case 1:
+                transform.position = new Vector3(root2 * radius, 0, root2 * radius);
+                rb.velocity = new Vector3(-root2 * radius, 0, root2 * radius);
                 break;
             case 3:
-                rb.velocity = new Vector3(0, 0, velocity);
+                transform.position = new Vector3(-root2 * radius, 0, root2 * radius);
+                rb.velocity = new Vector3(-root2 * radius, 0, -root2 * radius);
+                break;
+            case 5:
+                transform.position = new Vector3(-root2 * radius, 0, -root2 * radius);
+                rb.velocity = new Vector3(root2 * radius, 0, -root2 * radius);
+                break;
+            case 7:
+                transform.position = new Vector3(root2 * radius, 0, -root2 * radius);
+                rb.velocity = new Vector3(root2 * radius, 0, root2 * radius);
                 break;
         }
     }
