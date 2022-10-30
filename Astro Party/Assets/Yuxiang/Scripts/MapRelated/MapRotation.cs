@@ -7,13 +7,12 @@ public class MapRotation : MonoBehaviour
     Rigidbody rb;
 
     public float velocity;
+
     public float radius;
 
     public int mode;
 
     MapManager mapManagerScript;
-
-    bool inner;
 
     // Start is called before the first frame update
     void Start()
@@ -29,11 +28,12 @@ public class MapRotation : MonoBehaviour
     {
         //F = m v^2 / r
         rb.AddForce((new Vector3(0, 0, 0) - transform.position).normalized * rb.mass * velocity * velocity / radius);
-        rb.velocity = rb.velocity.normalized * velocity;
     }
 
     public void reset()
     {
+        velocity = mapManagerScript.velocity;
+        
         float root2 = Mathf.Sqrt(2) / 2;
 
         switch (mode)
@@ -56,19 +56,19 @@ public class MapRotation : MonoBehaviour
                 break;
             case 1:
                 transform.position = new Vector3(root2 * radius, 0, root2 * radius);
-                rb.velocity = new Vector3(-root2 * radius, 0, root2 * radius);
+                rb.velocity = new Vector3(-root2 * velocity, 0, root2 * velocity);
                 break;
             case 3:
                 transform.position = new Vector3(-root2 * radius, 0, root2 * radius);
-                rb.velocity = new Vector3(-root2 * radius, 0, -root2 * radius);
+                rb.velocity = new Vector3(-root2 * velocity, 0, -root2 * velocity);
                 break;
             case 5:
                 transform.position = new Vector3(-root2 * radius, 0, -root2 * radius);
-                rb.velocity = new Vector3(root2 * radius, 0, -root2 * radius);
+                rb.velocity = new Vector3(root2 * velocity, 0, -root2 * velocity);
                 break;
             case 7:
                 transform.position = new Vector3(root2 * radius, 0, -root2 * radius);
-                rb.velocity = new Vector3(root2 * radius, 0, root2 * radius);
+                rb.velocity = new Vector3(root2 * velocity, 0, root2 * velocity);
                 break;
         }
     }
