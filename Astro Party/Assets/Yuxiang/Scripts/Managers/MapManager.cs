@@ -50,7 +50,7 @@ public class MapManager : MonoBehaviour
         //allMaps.Add(Map3);
         //allMaps.Add(Map4);
         //allMaps.Add(Map5);
-        allMaps.Add(Map6);
+        //allMaps.Add(Map6);
     }
 
     void Update()
