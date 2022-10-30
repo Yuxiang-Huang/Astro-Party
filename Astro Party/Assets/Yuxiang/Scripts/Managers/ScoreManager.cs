@@ -46,6 +46,7 @@ public class ScoreManager : MonoBehaviour
     public Text roundText;
     int maxScore = 5;
     List<int> winningShip;
+    List<List<GameObject>> temp;
 
     public bool friendlyFire = false;
     public Text friendlyFireText;
@@ -307,6 +308,16 @@ public class ScoreManager : MonoBehaviour
 
                 int totalShip = 0;
 
+                if (temp == null)
+                {
+                    temp = new List<List<GameObject>>();
+
+                    for (int i = 0; i < gameManagerScript.ships.Count; i++)
+                    { 
+                        temp.Add(new List<GameObject>(gameManagerScript.ships[i]));
+                    }
+                }
+
                 //fight between the ships that has the maximum score after required score is reached
                 for (int i = 0; i < gameManagerScript.ships.Count; i++)
                 {
@@ -429,6 +440,12 @@ public class ScoreManager : MonoBehaviour
 
     public void resetScore()
     {
+        if (temp != null)
+        {
+            gameManagerScript.ships = temp;
+            temp = null;
+        }
+
         winningShip = new List<int>();
 
         startPosX = origStartPosX;
