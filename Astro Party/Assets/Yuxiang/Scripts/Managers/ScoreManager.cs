@@ -251,36 +251,11 @@ public class ScoreManager : MonoBehaviour
         else if (gameMode == "team")
         {
             yield return new WaitForSeconds(1f);
-
-            if (!closeEnough(P1.transform.position.x - startPosX, P1Score * lengthOfSquare))
-            {
-                P1.transform.position = new Vector3(P1.transform.position.x + lengthOfSquare, P1.transform.position.y,
-                    P1.transform.position.z);
-            }
-
-            if (!closeEnough(P2.transform.position.x - startPosX, P2Score * lengthOfSquare))
-            {
-                P2.transform.position = new Vector3(P2.transform.position.x + lengthOfSquare, P2.transform.position.y,
-                    P2.transform.position.z);
-            }
-
-            if (!closeEnough(P3.transform.position.x - startPosX, P3Score * lengthOfSquare))
-            {
-                P3.transform.position = new Vector3(P3.transform.position.x + lengthOfSquare, P3.transform.position.y,
-                    P3.transform.position.z);
-            }
-
-            if (!closeEnough(P4.transform.position.x - startPosX, P4Score * lengthOfSquare))
-            {
-                P4.transform.position = new Vector3(P4.transform.position.x + lengthOfSquare, P4.transform.position.y,
-                    P4.transform.position.z);
-            }
-
-            if (!closeEnough(P5.transform.position.x - startPosX, P5Score * lengthOfSquare))
-            {
-                P5.transform.position = new Vector3(P5.transform.position.x + lengthOfSquare, P5.transform.position.y,
-                    P5.transform.position.z);
-            }
+            checkPScore(P1, P1Score);
+            checkPScore(P2, P2Score);
+            checkPScore(P3, P3Score);
+            checkPScore(P4, P4Score);
+            checkPScore(P5, P5Score);
         }
 
         yield return new WaitForSeconds(2f);
@@ -395,6 +370,15 @@ public class ScoreManager : MonoBehaviour
                         break;
                 }
             }
+        }
+    }
+
+    void checkPScore(GameObject P, int PScore)
+    {
+        if (!closeEnough(P.transform.position.x - startPosX, PScore * lengthOfSquare))
+        {
+            P.transform.position = new Vector3(P.transform.position.x + lengthOfSquare, P.transform.position.y,
+                P.transform.position.z);
         }
     }
 
