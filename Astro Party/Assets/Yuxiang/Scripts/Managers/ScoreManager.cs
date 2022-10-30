@@ -72,7 +72,7 @@ public class ScoreManager : MonoBehaviour
         scale = canvas.scaleFactor;
         lengthOfSquare = 500 / scoreToWin * scale;
 
-        resetScore();
+        //resetScore();
         endScreen.SetActive(false);
         scoreScreen.SetActive(false);
 
