@@ -55,6 +55,8 @@ public class ScoreManager : MonoBehaviour
     public Text teamModeText;
     public Text soloModeText;
 
+    public GameObject pauseText;
+
     public Canvas canvas;
     public float scale;
 
@@ -69,7 +71,7 @@ public class ScoreManager : MonoBehaviour
         lengthOfSquare = 500 / scoreToWin * scale;
 
         //resetScore();
-
+        endScreen.SetActive(false);
         scoreScreen.SetActive(false);
 
         gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
@@ -293,6 +295,7 @@ public class ScoreManager : MonoBehaviour
         else
         {
             endScreen.SetActive(true);
+            pauseText.SetActive(false);
             if (gameMode == "team")
             {
                 Team1WinText.SetActive(false);

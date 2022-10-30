@@ -230,6 +230,9 @@ public class GameManager : MonoBehaviour
         {
             cameraMangerScript.SPU = false;
         }
+
+        //pause text will be set off by scoreManager
+        scoreManagerScript.pauseText.SetActive(true);
     }
 
     IEnumerator scoreScreen()
