@@ -305,7 +305,25 @@ public class ScoreManager : MonoBehaviour
                 P4WinText.SetActive(false);
                 P5WinText.SetActive(false);
 
-                if (winningShip.Count == 1)
+                int totalShip = 0;
+
+                //fight between the ships that has the maximum score after required score is reached
+                for (int i = 0; i < gameManagerScript.ships.Count; i++)
+                {
+                    for (int j = gameManagerScript.ships[i].Count - 1; j >= 0; j--)
+                    {
+                        if (!winningShip.Contains(gameManagerScript.ships[i][j].GetComponent<MutualShip>().id))
+                        {
+                            gameManagerScript.ships[i].RemoveAt(j);
+                        }
+                        else
+                        {
+                            totalShip++;
+                        }
+                    }
+                }
+
+                if (totalShip == 1)
                 {
                     endScreen.SetActive(true);
                     pauseText.SetActive(false);
@@ -330,17 +348,6 @@ public class ScoreManager : MonoBehaviour
                 }
                 else
                 {
-                    //fight between the ships that has the maximum score after required score is reached
-                    for (int i = 0; i < gameManagerScript.ships.Count; i++)
-                    {
-                        for (int j = gameManagerScript.ships[i].Count - 1; j >= 0; j--)
-                        {
-                            if (!winningShip.Contains(gameManagerScript.ships[i][j].GetComponent<MutualShip>().id))
-                            {
-                                gameManagerScript.ships[i].RemoveAt(j);
-                            }
-                        }
-                    }
                     gameManagerScript.startRound();
                 }
             }
