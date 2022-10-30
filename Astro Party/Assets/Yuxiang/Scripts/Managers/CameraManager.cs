@@ -63,6 +63,11 @@ public class CameraManager : MonoBehaviour
             //Debug.Log("maxX: " + maxX);
             //Debug.Log("maxZ: " + maxZ);
         }
+        else
+        {
+            myCamera.orthographicSize = 800;
+            transform.position = new Vector3(0, transform.position.y, 0);
+        }
     }
 
     IEnumerator delayStart()

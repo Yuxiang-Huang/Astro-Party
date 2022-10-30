@@ -306,6 +306,7 @@ Random.Range(-spawnRadius, spawnRadius));
         {
             direction.SetActive(false);
         }
+        numOfDirectionBack = 0;
 
         cube0.SetActive(false);
         cube1.SetActive(false);
@@ -316,6 +317,7 @@ Random.Range(-spawnRadius, spawnRadius));
 
         //others
         started = false;
+        cameraMangerScript.started = false;
         endScreenText.SetActive(false);
         pauseText.SetActive(true);
         Time.timeScale = 1;
