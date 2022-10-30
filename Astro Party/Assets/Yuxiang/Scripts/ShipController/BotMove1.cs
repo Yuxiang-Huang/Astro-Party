@@ -39,16 +39,38 @@ public class BotMove1: MonoBehaviour
             {
                 foreach (GameObject ship in shipList)
                 {
+                    bool trace = true;
+
+                    //don't trace teammates
+
                     if (ship.GetComponent<MutualShip>() != null)
                     {
-                        if (ship.GetComponent<MutualShip>().team != GetComponent<MutualShip>().team)
+                        if (ship.GetComponent<MutualShip>().team == GetComponent<MutualShip>().team)
                         {
-                            if (distance(ship, this.gameObject) < minDistance)
-                            {
-                                target = ship;
-                                minDistance = distance(ship, this.gameObject);
-                            }
+                            trace = false;
                         }
+                    }
+
+                    if (ship.GetComponent<BotPilotMove>() != null)
+                    {
+                        if (ship.GetComponent<BotPilotMove>().team == GetComponent<MutualShip>().team)
+                        {
+                            trace = false;
+                        }
+                    }
+
+                    if (ship.GetComponent<PilotPlayerController>() != null)
+                    {
+                        if (ship.GetComponent<PilotPlayerController>().team == GetComponent<MutualShip>().team)
+                        {
+                            trace = false;
+                        }
+                    }
+
+                    if (trace)
+                    {
+                        target = ship;
+                        minDistance = distance(ship, this.gameObject);
                     }
                 }
 
