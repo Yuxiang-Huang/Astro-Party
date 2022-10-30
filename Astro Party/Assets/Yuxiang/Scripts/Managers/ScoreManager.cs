@@ -40,6 +40,8 @@ public class ScoreManager : MonoBehaviour
     public GameObject Team4WinText;
     public GameObject Team5WinText;
 
+    public GameObject scoreBoard;
+
     int scoreToWin = 5;
     public Text roundText;
 
@@ -102,6 +104,12 @@ public class ScoreManager : MonoBehaviour
 
     public IEnumerator scoreUpdate()
     {
+        int max = scoreToWin;
+        //Debug.Log(startPosX);
+        //Debug.Log(P1.transform.position.x);
+        //Debug.Log(P1.transform.position.x - startPosX);
+        //Debug.Log(P1Score * lengthOfSquare);
+
         scoreScreen.SetActive(true);
 
         if (gameMode == "solo")
@@ -109,13 +117,13 @@ public class ScoreManager : MonoBehaviour
             while (!closeEnough(P1.transform.position.x - startPosX, P1Score * lengthOfSquare))
             {
                 yield return new WaitForSeconds(1f);
-                P1.transform.position = new Vector3(P1.transform.position.x + lengthOfSquare, P1.transform.position.y,
-                    P1.transform.position.z);
+                move(P1, lengthOfSquare);
 
-                //Debug.Log(startPosX);
-                //Debug.Log(P1.transform.position.x);
-                //Debug.Log(P1.transform.position.x - startPosX);
-                //Debug.Log(P1Score * lengthOfSquare);
+                if ((int)((P1.transform.position.x - startPosX) / lengthOfSquare) > max)
+                {
+                    move(scoreBoard, -lengthOfSquare);
+                    max++;
+                }
             }
 
             if (P1Suicide)
@@ -123,8 +131,7 @@ public class ScoreManager : MonoBehaviour
                 yield return new WaitForSeconds(1f);
                 if (P1Score > 0)
                 {
-                    P1.transform.position = new Vector3(P1.transform.position.x - lengthOfSquare, P1.transform.position.y,
-    P1.transform.position.z);
+                    move(P1, -lengthOfSquare);
                     P1Score--;
                 }
 
@@ -380,6 +387,12 @@ public class ScoreManager : MonoBehaviour
             P.transform.position = new Vector3(P.transform.position.x + lengthOfSquare, P.transform.position.y,
                 P.transform.position.z);
         }
+    }
+
+    void move(GameObject P, float len)
+    {
+        P.transform.position = new Vector3(P.transform.position.x + len, P.transform.position.y,
+                    P.transform.position.z);
     }
 
     int findWinningTeam(int shipID)

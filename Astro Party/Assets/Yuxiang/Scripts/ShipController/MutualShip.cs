@@ -688,6 +688,7 @@ public class MutualShip : MonoBehaviour
             Jouster script = other.gameObject.GetComponent<Jouster>();
             damage(script.id, script.team);
             script.health = 0;
+            other.gameObject.SetActive(false);
         }
 
         if (other.gameObject.CompareTag("PowerUp"))
