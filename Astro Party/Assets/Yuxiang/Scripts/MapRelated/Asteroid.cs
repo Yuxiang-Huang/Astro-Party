@@ -32,7 +32,7 @@ public class Asteroid : MonoBehaviour
 
         switch (type)
         {
-            case "large": health = 3; break;
+            case "large": health = 1; break;
 
             case "medium": health = 2; break;
 

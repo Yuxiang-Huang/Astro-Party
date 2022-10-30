@@ -41,6 +41,7 @@ public class Tutorial : MonoBehaviour
     GameManager gameManagerScript;
 
     bool notFirst;
+    int numOfDirectionBack;
 
     // Start is called before the first frame update
     void Start()
@@ -137,50 +138,59 @@ playerShip.transform.rotation);
             nextDirectionButton.SetActive(false);
         }
 
-        //special directions
-        if (directionId == 3)
+        //to prevent multiple calls
+        if (numOfDirectionBack == 0)
         {
-            foreach (GameObject asteroid in asteroids)
+            //special directions
+            if (directionId == 3)
             {
-                GameObject curr = Instantiate(asteroid, generateRanPos(), asteroid.transform.rotation);
-                gameManagerScript.inGameAsteroids.Add(curr);
+                foreach (GameObject asteroid in asteroids)
+                {
+                    GameObject curr = Instantiate(asteroid, generateRanPos(), asteroid.transform.rotation);
+                    gameManagerScript.inGameAsteroids.Add(curr);
+                }
+            }
+
+            if (directionId == 5)
+            {
+                GameObject toAddBot1 = Instantiate(bot, generateRanPos(), bot.transform.rotation);
+                gameManagerScript.inGameShips[1].Add(toAddBot1);
+
+                GameObject toAddBot2 = Instantiate(bot2, generateRanPos(), bot2.transform.rotation);
+                gameManagerScript.inGameShips[1].Add(toAddBot2);
+
+                int id = playerShip.GetComponent<MutualShip>().id + 1;
+                if (id == 6)
+                {
+                    id = 1;
+                }
+                toAddBot1.GetComponent<MutualShip>().id = id;
+                toAddBot2.GetComponent<MutualShip>().id = id;
+                toAddBot1.GetComponent<MutualShip>().team = id;
+                toAddBot2.GetComponent<MutualShip>().team = id;
+            }
+
+            if (directionId == 6)
+            {
+                cube0.transform.position = generateRanPos();
+                cube1.transform.position = generateRanPos();
+                cube0.SetActive(true);
+                cube1.SetActive(true);
+            }
+
+            if (directionId == 7)
+            {
+                foreach (GameObject body in threeBody)
+                {
+                    spawnBody(body);
+                }
+                endButton.SetActive(true);
             }
         }
 
-        if (directionId == 5)
+        if (numOfDirectionBack < 0)
         {
-            GameObject toAddBot1 = Instantiate(bot, generateRanPos(), bot.transform.rotation);
-            gameManagerScript.inGameShips[1].Add(toAddBot1);
-
-            GameObject toAddBot2 = Instantiate(bot2, generateRanPos(), bot2.transform.rotation);
-            gameManagerScript.inGameShips[1].Add(toAddBot2);
-
-            int id = playerShip.GetComponent<MutualShip>().id + 1;
-            if (id == 6)
-            {
-                id = 1;
-            }
-            toAddBot1.GetComponent<MutualShip>().id = id;
-            toAddBot2.GetComponent<MutualShip>().id = id;
-            toAddBot1.GetComponent<MutualShip>().team = id;
-            toAddBot2.GetComponent<MutualShip>().team = id;
-        }
-
-        if (directionId == 6)
-        {
-            cube0.transform.position = generateRanPos();
-            cube1.transform.position = generateRanPos();
-            cube0.SetActive(true);
-            cube1.SetActive(true);
-        }
-
-        if (directionId == 7)
-        {
-            foreach (GameObject body in threeBody)
-            {
-                spawnBody(body);
-            }
-            endButton.SetActive(true);
+            numOfDirectionBack++;
         }
     }
 
@@ -229,6 +239,8 @@ Random.Range(-spawnRadius, spawnRadius));
         {
             lastDirectionButton.SetActive(false);
         }
+
+        numOfDirectionBack--;
     }
 
     public void reset()
