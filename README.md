@@ -53,4 +53,5 @@ https://yuxiang-huang.itch.io/astro-party-ii
      *  (10-12-2022): Today I spent all my spare time on making a portal for the last map I am going to make for a long time. 
      *  (10-13-2022): Today I finished the last map I am going to make for a long time. 
      *  (10-14-2022): Today I switched all the background pictures to my own and playtested with members in Stuy Game Devs.
-
+     
+     *  (10-29-2022): Today I started with fixing the issues I found when play testing with my friends few days ago. I fixed the resetting of map 6, added more directions and ordered them in tutorial, and added pause text. Lastly, I remade map2 to be a more chaotic system with rotating blocks using rigidbody instead of translate.
