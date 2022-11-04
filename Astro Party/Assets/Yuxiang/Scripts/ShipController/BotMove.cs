@@ -48,7 +48,7 @@ public class BotMove : MonoBehaviour
                             if (ship.GetComponent<MutualShip>().highlighed)
                             {
                                 target = ship;
-                                break;
+                                minDistance = -1;
                             }
                         }
                     }
@@ -71,8 +71,11 @@ public class BotMove : MonoBehaviour
 
                     if (trace)
                     {
-                        target = ship;
-                        minDistance = distance(ship, this.gameObject);
+                        if (distance(ship, this.gameObject) < minDistance)
+                        {
+                            target = ship;
+                            minDistance = distance(ship, this.gameObject);
+                        }
                     }
                 }
                 

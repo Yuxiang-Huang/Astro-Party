@@ -139,7 +139,6 @@ public class HighlightModeManager : MonoBehaviour
 
         if (!assigned)
         {
-            Debug.Log("spawn");
             Instantiate(crown, new Vector3(pos.x, crownY, pos.z), crown.transform.rotation);
         }
     }
