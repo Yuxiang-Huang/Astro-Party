@@ -19,6 +19,7 @@ public class SpawnManager : MonoBehaviour
     public bool startSpawn;
 
     int space = 100;
+    int asteroidY = 0;
 
     int shipNum;
      
@@ -151,7 +152,7 @@ public class SpawnManager : MonoBehaviour
 
     Vector3 generateRanPos()
     {
-        Vector3 ranPos = new Vector3(Random.Range(-gameManagerScript.spawnRadius, gameManagerScript.spawnRadius), -10,
+        Vector3 ranPos = new Vector3(Random.Range(-gameManagerScript.spawnRadius, gameManagerScript.spawnRadius), -asteroidY,
           Random.Range(-gameManagerScript.spawnRadius, gameManagerScript.spawnRadius));
 
         //outside the circle
@@ -160,7 +161,7 @@ public class SpawnManager : MonoBehaviour
         {
             flag = false;
 
-            ranPos = new Vector3(Random.Range(-gameManagerScript.spawnRadius, gameManagerScript.spawnRadius), -10,
+            ranPos = new Vector3(Random.Range(-gameManagerScript.spawnRadius, gameManagerScript.spawnRadius), -asteroidY,
 Random.Range(-gameManagerScript.spawnRadius, gameManagerScript.spawnRadius));
 
             foreach (List<GameObject> shipList in gameManagerScript.inGameShips)

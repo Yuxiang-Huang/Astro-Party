@@ -8,7 +8,6 @@ public class Asteroid : MonoBehaviour
 
     PowerUpManager powerUpManagerScript;
     GameManager gameManagerScript;
-    SEManager SEManagerScript;
 
     public int health;
 
@@ -26,7 +25,6 @@ public class Asteroid : MonoBehaviour
         powerUpManagerScript = GameObject.Find("PowerUp Manager").GetComponent<PowerUpManager>();
         gameManagerScript = gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
         spawnManagerScript = GameObject.Find("Spawn Manager").GetComponent<SpawnManager>();
-        SEManagerScript = GameObject.Find("SoundEffect Manager").GetComponent<SEManager>();
 
         rb = GetComponent<Rigidbody>();
 
@@ -65,6 +63,7 @@ public class Asteroid : MonoBehaviour
             gameManagerScript.inGameAsteroids.Remove(gameObject);
             Destroy(gameObject);
 
+            //spawn power up
             if (type == "powerUp")
             {
                 GameObject toAdd = Instantiate(powerUp,
