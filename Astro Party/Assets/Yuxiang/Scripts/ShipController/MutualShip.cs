@@ -32,6 +32,7 @@ public class MutualShip : MonoBehaviour
     GameManager gameManagerScript;
     PowerUpManager powerUpManagerScript;
     SEManager SEManagerScript;
+    HighlightModeManager highlightModeManagerScript;
 
     public GameObject pilot;
 
@@ -48,6 +49,8 @@ public class MutualShip : MonoBehaviour
     public Material yellow3;
     public Material cyan4;
     public Material green5;
+
+    public bool highlighed;
 
     // Start is called before the first frame update
     void Start()
@@ -71,6 +74,7 @@ public class MutualShip : MonoBehaviour
         scoreManagerScript = GameObject.Find("Score Manager").GetComponent<ScoreManager>();
         powerUpManagerScript = GameObject.Find("PowerUp Manager").GetComponent<PowerUpManager>();
         SEManagerScript = GameObject.Find("SoundEffect Manager").GetComponent<SEManager>();
+        highlightModeManagerScript = GameObject.Find("Highlight Manager").GetComponent<HighlightModeManager>();
 
         //jousters
         jouster1.SetActive(false);
@@ -542,6 +546,15 @@ public class MutualShip : MonoBehaviour
             else if (scoreManagerScript.shipMode == "pilot" || scoreManagerScript.shipMode == "highlight")
             {
                 spawnPilot();
+            }
+
+            //for highlight mode
+            if (scoreManagerScript.shipMode == "highlight")
+            {
+                if (highlighed)
+                {
+                    highlightModeManagerScript.assign(otherID);
+                }
             }
         }
     }

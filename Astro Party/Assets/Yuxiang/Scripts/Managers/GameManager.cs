@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     PowerUpManager powerUpManagerScript;
     ScreenManager screenManagerScript;
     CameraManager cameraMangerScript;
+    HighlightModeManager highlightModeManagerScript;
 
     public GameObject nextButton;
 
@@ -59,6 +60,7 @@ public class GameManager : MonoBehaviour
         powerUpManagerScript = GameObject.Find("PowerUp Manager").GetComponent<PowerUpManager>();
         screenManagerScript = GameObject.Find("Screen Manager").GetComponent<ScreenManager>();
         cameraMangerScript = GameObject.Find("Main Camera").GetComponent<CameraManager>();
+        highlightModeManagerScript = GameObject.Find("Highlight Manager").GetComponent<HighlightModeManager>();
     }
 
     // Update is called once per frame

@@ -60,6 +60,11 @@ public class HighlightModeManager : MonoBehaviour
         P5Time.text = "P5: " + totalTime;
     }
 
+    public void assign(int id)
+    {
+
+    }
+
     void end()
     {
 
