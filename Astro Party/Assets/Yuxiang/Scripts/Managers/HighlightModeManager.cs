@@ -12,12 +12,14 @@ public class HighlightModeManager : MonoBehaviour
 
     float[] times;
     public TextMeshProUGUI[] PTime;
+    List<KeyValuePair<TextMeshProUGUI, float>> data;
 
     public int totalTime = 60;
 
     public GameObject crown;
     public GameObject crownPic;
     int crownY = 10;
+    float startTimeY;
     float startPosY;
     public float len;
     public Canvas canvas;
@@ -34,6 +36,7 @@ public class HighlightModeManager : MonoBehaviour
         //set variables
         canvas.gameObject.SetActive(true);
         startPosY = crownPic.transform.position.y;
+        startTimeY = PTime[0].gameObject.transform.position.y;
         float scale = canvas.scaleFactor;
         len *= scale;
         canvas.gameObject.SetActive(false);
@@ -89,6 +92,7 @@ public class HighlightModeManager : MonoBehaviour
                 crownPic.transform.position = new Vector3(pos.x, startPosY + (ID - 1) * len, pos.z);
 
                 //order the time
+                
             }
         }
     }
@@ -104,10 +108,15 @@ public class HighlightModeManager : MonoBehaviour
             times[i] = totalTime;
         }
 
+        data = new List<KeyValuePair<TextMeshProUGUI, float>>();
+
         for (int i = 0; i < PTime.Length; i++)
         {
             PTime[i].text = "P" + (i + 1) + ": " + (int)times[i];
             PTime[i].gameObject.SetActive(false);
+
+            //for ordering
+            data.Add(new KeyValuePair<TextMeshProUGUI, float>(PTime[i], times[i])); 
         }
 
         foreach (List<GameObject> shipList in gameManagerScript.inGameShips)
@@ -117,7 +126,6 @@ public class HighlightModeManager : MonoBehaviour
                 PTime[ship.GetComponent<MutualShip>().id - 1].gameObject.SetActive(true);
             }
         }
-
 
        Instantiate(crown, spawnManagerScript.generateRanPos(crownY), crown.transform.rotation);
     }
@@ -151,6 +159,14 @@ public class HighlightModeManager : MonoBehaviour
     void end(int winner)
     {
         started = false;
+
+        //reset the board
+        for (int i = 0; i < PTime.Length; i++)
+        {
+            Vector3 pos = PTime[i].transform.position;
+            PTime[i].transform.position = new Vector3(pos.x, startTimeY + i * len, pos.z);
+        }
+
         //solo vs team
         switch (winner)
         {
