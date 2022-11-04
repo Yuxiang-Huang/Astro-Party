@@ -130,7 +130,7 @@ public class ScoreManager : MonoBehaviour
             while (!closeEnough(P1.transform.position.x - startPosX, P1Score * lengthOfSquare))
             {
                 yield return new WaitForSeconds(1f);
-                checkPSolo(P1, P1Score, 1);
+                checkPSolo(P1, P1Score, 1, P1Suicide);
             }
 
             if (P1Suicide)
@@ -154,7 +154,7 @@ public class ScoreManager : MonoBehaviour
             while (!closeEnough(P2.transform.position.x - startPosX, P2Score * lengthOfSquare))
             {
                 yield return new WaitForSeconds(1f);
-                checkPSolo(P2, P2Score, 2);
+                checkPSolo(P2, P2Score, 2, P2Suicide);
             }
 
             if (P2Suicide)
@@ -179,7 +179,7 @@ public class ScoreManager : MonoBehaviour
             while (!closeEnough(P3.transform.position.x - startPosX, P3Score * lengthOfSquare))
             {
                 yield return new WaitForSeconds(1f);
-                checkPSolo(P3, P3Score, 3);
+                checkPSolo(P3, P3Score, 3, P3Suicide);
             }
 
             if (P3Suicide)
@@ -204,7 +204,7 @@ public class ScoreManager : MonoBehaviour
             while (!closeEnough(P4.transform.position.x - startPosX, P4Score * lengthOfSquare))
             {
                 yield return new WaitForSeconds(1f);
-                checkPSolo(P4, P4Score, 4);
+                checkPSolo(P4, P4Score, 4, P4Suicide);
             }
 
             if (P4Suicide)
@@ -229,7 +229,7 @@ public class ScoreManager : MonoBehaviour
             while (!closeEnough(P5.transform.position.x - startPosX, P5Score * lengthOfSquare))
             {
                 yield return new WaitForSeconds(1f);
-                checkPSolo(P5, P5Score, 5);
+                checkPSolo(P5, P5Score, 5, P5Suicide);
             }
 
 
@@ -387,9 +387,14 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-    void checkPSolo(GameObject P, int PScore, int id)
+    void checkPSolo(GameObject P, int PScore, int id, bool suicided)
     {
         move(P, lengthOfSquare);
+
+        if (suicided)
+        {
+            PScore--;
+        }
         
         if (closeEnough(P.transform.position.x - startPosX, lengthOfSquare * (maxScore + 1)))
         {
