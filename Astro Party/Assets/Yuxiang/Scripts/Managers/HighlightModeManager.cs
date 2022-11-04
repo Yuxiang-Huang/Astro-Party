@@ -12,6 +12,7 @@ public class HighlightModeManager : MonoBehaviour
 
     float[] times;
     public TextMeshProUGUI[] PTime;
+    List<KeyValuePair<TextMeshProUGUI, float>> data;
 
     public int totalTime = 60;
 
@@ -100,21 +101,48 @@ public class HighlightModeManager : MonoBehaviour
                 Vector3 pos = crownPic.transform.position;
                 crownPic.transform.position = new Vector3(pos.x, startPosY + (ID - 1) * len, pos.z);
 
-                ////order the time
-                //if (updateTime <= 0)
-                //{
-                //    updateTime = 1;
-                //    data.Sort((x, y) => y.Value.CompareTo(x.Value));
-                //    for (int i = 0; i < data.Count; i++)
-                //    {
-                //        pos = data[i].Key.transform.position;
-                //        data[i].Key.transform.position = new Vector3(pos.x, startTimeY + i * len, pos.z);
-                //    }
-                //}
-                //else
-                //{
-                //    updateTime -= Time.deltaTime;
-                //}
+                //order the time
+                if (updateTime <= 0)
+                {
+                    //update the values
+                    for (int i = data.Count - 1; i >= 0; i--)
+                    {
+                        if (data[i].Key == PTime[0])
+                        {
+                            data.Add(new KeyValuePair<TextMeshProUGUI, float>(data[i].Key, times[0]));
+                        }
+                        else if (data[i].Key == PTime[1])
+                        {
+                            data.Add(new KeyValuePair<TextMeshProUGUI, float>(data[i].Key, times[1]));
+                        }
+                        else if (data[i].Key == PTime[2])
+                        {
+                            data.Add(new KeyValuePair<TextMeshProUGUI, float>(data[i].Key, times[2]));
+                        }
+                        else if (data[i].Key == PTime[3])
+                        {
+                            data.Add(new KeyValuePair<TextMeshProUGUI, float>(data[i].Key, times[3]));
+                        }
+                        else if (data[i].Key == PTime[4])
+                        {
+                            data.Add(new KeyValuePair<TextMeshProUGUI, float>(data[i].Key, times[4]));
+                        }
+
+                        data.RemoveAt(i);
+                    }
+
+                    updateTime = 1;
+                    data.Sort((x, y) => x.Value.CompareTo(y.Value));
+                    for (int i = 0; i < data.Count; i++)
+                    {
+                        pos = data[i].Key.transform.position;
+                        data[i].Key.transform.position = new Vector3(pos.x, startTimeY + i * len, pos.z);
+                    }
+                }
+                else
+                {
+                    updateTime -= Time.deltaTime;
+                }
             }
         }
     }
@@ -130,7 +158,7 @@ public class HighlightModeManager : MonoBehaviour
             times[i] = totalTime;
         }
 
-        //data = new List<KeyValuePair<TextMeshProUGUI, float>>();
+        data = new List<KeyValuePair<TextMeshProUGUI, float>>();
 
         for (int i = 0; i < PTime.Length; i++)
         {
@@ -138,7 +166,7 @@ public class HighlightModeManager : MonoBehaviour
             PTime[i].gameObject.SetActive(false);
 
             //for ordering
-            //data.Add(new KeyValuePair<TextMeshProUGUI, float>(PTime[i], times[i])); 
+            data.Add(new KeyValuePair<TextMeshProUGUI, float>(PTime[i], times[i])); 
         }
 
         foreach (List<GameObject> shipList in gameManagerScript.inGameShips)
