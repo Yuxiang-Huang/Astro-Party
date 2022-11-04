@@ -596,11 +596,6 @@ public class MutualShip : MonoBehaviour
                 collision.gameObject.GetComponent<BotPilotMove>().kill(id, team);
             }
         }
-
-        if (collision.gameObject.CompareTag("Crown"))
-        {
-            highlighed = true;
-        }
     }
 
     void suicide()
@@ -714,6 +709,13 @@ public class MutualShip : MonoBehaviour
                 }
             }
             gameManagerScript.inGameIndicators.Remove(other.gameObject);
+            Destroy(other.gameObject);
+        }
+
+        //for highlight mode
+        if (other.gameObject.CompareTag("Crown"))
+        {
+            highlighed = true;
             Destroy(other.gameObject);
         }
     }

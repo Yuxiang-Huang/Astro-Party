@@ -218,17 +218,6 @@ public class GameManager : MonoBehaviour
 
             //auto balance
             powerUpManagerScript.autoBalance();
-
-            //highlight mode
-            if (scoreManagerScript.shipMode == "highlight")
-            {
-                highLightScreen.SetActive(true);
-                highlightModeManagerScript.startRound();
-            }
-            else
-            {
-                highLightScreen.SetActive(false);
-            }
         }
 
         if (hasSPU)
@@ -250,6 +239,17 @@ public class GameManager : MonoBehaviour
 
         //pause text will be set off by scoreManager
         scoreManagerScript.pauseText.SetActive(true);
+
+        //highlight mode
+        if (scoreManagerScript.shipMode == "highlight")
+        {
+            highLightScreen.SetActive(true);
+            highlightModeManagerScript.startRound();
+        }
+        else
+        {
+            highLightScreen.SetActive(false);
+        }
     }
 
     IEnumerator scoreScreen()

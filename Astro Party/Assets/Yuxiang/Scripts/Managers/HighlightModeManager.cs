@@ -114,7 +114,6 @@ public class HighlightModeManager : MonoBehaviour
         P4Time.text = "P4: " + times[3];
         P5Time.text = "P5: " + times[4];
 
-
         Instantiate(crown, spawnManagerScript.generateRanPos(crownY), crown.transform.rotation);
     }
 
