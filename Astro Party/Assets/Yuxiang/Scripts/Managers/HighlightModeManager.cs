@@ -12,7 +12,6 @@ public class HighlightModeManager : MonoBehaviour
 
     float[] times;
     public TextMeshProUGUI[] PTime;
-    List<KeyValuePair<TextMeshProUGUI, float>> data;
 
     public int totalTime = 60;
 
@@ -26,6 +25,8 @@ public class HighlightModeManager : MonoBehaviour
     float updateTime;
 
     public bool started;
+
+    public GameObject inGameCrown;
 
     // Start is called before the first frame update
     void Start()
@@ -72,6 +73,12 @@ public class HighlightModeManager : MonoBehaviour
             if (ID == -1)
             {
                 crownPic.SetActive(false);
+
+                //spawn if no crown
+                if (inGameCrown == null)
+                {
+                    inGameCrown = Instantiate(crown, spawnManagerScript.generateRanPos(crownY), crown.transform.rotation);
+                }
             }
             else
             {
@@ -85,28 +92,29 @@ public class HighlightModeManager : MonoBehaviour
                 //check for ending
                 if (times[ID - 1] <= 0)
                 {
-                    end(ID);
+                    reset();
+                    displayWinner(ID);
                 }
 
                 //update position
                 Vector3 pos = crownPic.transform.position;
                 crownPic.transform.position = new Vector3(pos.x, startPosY + (ID - 1) * len, pos.z);
 
-                //order the time
-                if (updateTime <= 0)
-                {
-                    updateTime = 1;
-                    data.Sort((x, y) => y.Value.CompareTo(x.Value));
-                    for (int i = 0; i < data.Count; i++)
-                    {
-                        pos = data[i].Key.transform.position;
-                        data[i].Key.transform.position = new Vector3(pos.x, startTimeY + i * len, pos.z);
-                    }
-                }
-                else
-                {
-                    updateTime -= Time.deltaTime;
-                }
+                ////order the time
+                //if (updateTime <= 0)
+                //{
+                //    updateTime = 1;
+                //    data.Sort((x, y) => y.Value.CompareTo(x.Value));
+                //    for (int i = 0; i < data.Count; i++)
+                //    {
+                //        pos = data[i].Key.transform.position;
+                //        data[i].Key.transform.position = new Vector3(pos.x, startTimeY + i * len, pos.z);
+                //    }
+                //}
+                //else
+                //{
+                //    updateTime -= Time.deltaTime;
+                //}
             }
         }
     }
@@ -122,7 +130,7 @@ public class HighlightModeManager : MonoBehaviour
             times[i] = totalTime;
         }
 
-        data = new List<KeyValuePair<TextMeshProUGUI, float>>();
+        //data = new List<KeyValuePair<TextMeshProUGUI, float>>();
 
         for (int i = 0; i < PTime.Length; i++)
         {
@@ -130,7 +138,7 @@ public class HighlightModeManager : MonoBehaviour
             PTime[i].gameObject.SetActive(false);
 
             //for ordering
-            data.Add(new KeyValuePair<TextMeshProUGUI, float>(PTime[i], times[i])); 
+            //data.Add(new KeyValuePair<TextMeshProUGUI, float>(PTime[i], times[i])); 
         }
 
         foreach (List<GameObject> shipList in gameManagerScript.inGameShips)
@@ -141,14 +149,14 @@ public class HighlightModeManager : MonoBehaviour
             }
         }
 
-       Instantiate(crown, spawnManagerScript.generateRanPos(crownY), crown.transform.rotation);
+        inGameCrown = Instantiate(crown, spawnManagerScript.generateRanPos(crownY), crown.transform.rotation);
     }
 
     public void assign(int ID, Vector3 pos, bool suicided)
     {
         if (suicided)
         {
-            Instantiate(crown, new Vector3(pos.x, crownY, pos.z), crown.transform.rotation);
+            inGameCrown = Instantiate(crown, new Vector3(pos.x, crownY, pos.z), crown.transform.rotation);
         }
         else
         {
@@ -169,17 +177,8 @@ public class HighlightModeManager : MonoBehaviour
         }
     }
 
-    void end(int winner)
+    public void displayWinner(int winner)
     {
-        started = false;
-
-        //reset the board
-        for (int i = 0; i < PTime.Length; i++)
-        {
-            Vector3 pos = PTime[i].transform.position;
-            PTime[i].transform.position = new Vector3(pos.x, startTimeY + i * len, pos.z);
-        }
-
         //solo vs team
         switch (winner)
         {
@@ -201,5 +200,19 @@ public class HighlightModeManager : MonoBehaviour
         }
         scoreManagerScript.endScreen.SetActive(true);
         scoreManagerScript.pauseText.SetActive(false);
+    }
+
+    public void reset()
+    {
+        started = false;
+
+        Destroy(inGameCrown);
+
+        //reset the board
+        for (int i = 0; i < PTime.Length; i++)
+        {
+            Vector3 pos = PTime[i].transform.position;
+            PTime[i].transform.position = new Vector3(pos.x, startTimeY + i * len, pos.z);
+        }
     }
 }
