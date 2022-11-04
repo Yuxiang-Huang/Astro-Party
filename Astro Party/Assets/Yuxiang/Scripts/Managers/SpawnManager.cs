@@ -106,7 +106,7 @@ public class SpawnManager : MonoBehaviour
         if (mode != "none")
         {
             //definitely a powerUp asteroid
-            GameObject asteroidClone2 = Instantiate(PowerUpAsteroid, generateRanPos(), PowerUpAsteroid.transform.rotation);
+            GameObject asteroidClone2 = Instantiate(PowerUpAsteroid, generateRanPos(asteroidY), PowerUpAsteroid.transform.rotation);
 
             gameManagerScript.inGameAsteroids.Add(asteroidClone2);
 
@@ -138,7 +138,7 @@ public class SpawnManager : MonoBehaviour
                     case 3: asteroid = PowerUpAsteroid; break;
                 }
 
-                GameObject asteroidClone = Instantiate(asteroid, generateRanPos(), PowerUpAsteroid.transform.rotation);
+                GameObject asteroidClone = Instantiate(asteroid, generateRanPos(asteroidY), PowerUpAsteroid.transform.rotation);
 
                 gameManagerScript.inGameAsteroids.Add(asteroidClone);
             }
@@ -150,9 +150,9 @@ public class SpawnManager : MonoBehaviour
         return Mathf.Sqrt(Mathf.Pow((ship1.x - ship2.x), 2) + Mathf.Pow((ship1.z - ship2.z), 2));
     }
 
-    Vector3 generateRanPos()
+    public Vector3 generateRanPos(int y)
     {
-        Vector3 ranPos = new Vector3(Random.Range(-gameManagerScript.spawnRadius, gameManagerScript.spawnRadius), -asteroidY,
+        Vector3 ranPos = new Vector3(Random.Range(-gameManagerScript.spawnRadius, gameManagerScript.spawnRadius), y,
           Random.Range(-gameManagerScript.spawnRadius, gameManagerScript.spawnRadius));
 
         //outside the circle
@@ -161,7 +161,7 @@ public class SpawnManager : MonoBehaviour
         {
             flag = false;
 
-            ranPos = new Vector3(Random.Range(-gameManagerScript.spawnRadius, gameManagerScript.spawnRadius), -asteroidY,
+            ranPos = new Vector3(Random.Range(-gameManagerScript.spawnRadius, gameManagerScript.spawnRadius), y,
 Random.Range(-gameManagerScript.spawnRadius, gameManagerScript.spawnRadius));
 
             foreach (List<GameObject> shipList in gameManagerScript.inGameShips)

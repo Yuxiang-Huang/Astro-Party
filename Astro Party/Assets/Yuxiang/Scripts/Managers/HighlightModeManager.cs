@@ -8,6 +8,7 @@ public class HighlightModeManager : MonoBehaviour
 {
     GameManager gameManagerScript;
     ScoreManager scoreManagerScript;
+    SpawnManager spawnManagerScript;
 
     float[] times;
     public TextMeshProUGUI P1Time;
@@ -23,11 +24,16 @@ public class HighlightModeManager : MonoBehaviour
 
     public bool started;
 
+    public GameObject crown;
+
+    int crownY = 10;
+
     // Start is called before the first frame update
     void Start()
     {
         gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
         scoreManagerScript = GameObject.Find("Score Manager").GetComponent<ScoreManager>();
+        spawnManagerScript = GameObject.Find("Spawn Manager").GetComponent<SpawnManager>();
 
         startPosY = P1Time.gameObject.transform.position.y;
         len = 30;
@@ -59,33 +65,36 @@ public class HighlightModeManager : MonoBehaviour
                 }
             }
 
-            times[ID - 1] -= Time.deltaTime;
-
-            if (times[ID - 1] <= 0)
+            if (ID != -1)
             {
-                end(ID);
-            }
+                times[ID - 1] -= Time.deltaTime;
 
-            switch (ID)
-            {
-                case 1:
-                    P1Time.text = "P1: " + (int) times[0];
-                    break;
-                case 2:
-                    P2Time.text = "P2: " + (int) times[1];
-                    break;
-                case 3:
-                    P3Time.text = "P3: " + (int) times[2];
-                    break;
-                case 4:
-                    P4Time.text = "P4: " + (int) times[3];
-                    break;
-                case 5:
-                    P5Time.text = "P5: " + (int) times[4];
-                    break;
-            }
+                if (times[ID - 1] <= 0)
+                {
+                    end(ID);
+                }
 
-            //order the time
+                switch (ID)
+                {
+                    case 1:
+                        P1Time.text = "P1: " + (int)times[0];
+                        break;
+                    case 2:
+                        P2Time.text = "P2: " + (int)times[1];
+                        break;
+                    case 3:
+                        P3Time.text = "P3: " + (int)times[2];
+                        break;
+                    case 4:
+                        P4Time.text = "P4: " + (int)times[3];
+                        break;
+                    case 5:
+                        P5Time.text = "P5: " + (int)times[4];
+                        break;
+                }
+
+                //order the time
+            }
         }
     }
 
@@ -106,21 +115,14 @@ public class HighlightModeManager : MonoBehaviour
         P5Time.text = "P5: " + times[4];
 
 
-        //for now just higlight first ship
-        foreach (List<GameObject> shipList in gameManagerScript.inGameShips)
-        {
-            foreach (GameObject ship in shipList)
-            {
-                ship.GetComponent<MutualShip>().highlighed = true;
-                break;
-            }
-        }
+        Instantiate(crown, spawnManagerScript.generateRanPos(crownY), crown.transform.rotation);
     }
 
     public void assign(int ID)
     {
         bool assigned = false;
 
+        //assign to the ship that killed it
         foreach (List<GameObject> shipList in gameManagerScript.inGameShips)
         {
             foreach (GameObject ship in shipList)
@@ -138,18 +140,7 @@ public class HighlightModeManager : MonoBehaviour
 
         if (!assigned)
         {
-            //for now just higlight first ship
-            foreach (List<GameObject> shipList in gameManagerScript.inGameShips)
-            {
-                foreach (GameObject ship in shipList)
-                {
-                    if (ship.GetComponent<MutualShip>() != null)
-                    {
-                        ship.GetComponent<MutualShip>().highlighed = true;
-                        break;
-                    }
-                }
-            }
+            Instantiate(crown, spawnManagerScript.generateRanPos(crownY), crown.transform.rotation);
         }
     }
 
