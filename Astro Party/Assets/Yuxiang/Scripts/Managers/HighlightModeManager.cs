@@ -7,6 +7,7 @@ using TMPro;
 public class HighlightModeManager : MonoBehaviour
 {
     GameManager gameManagerScript;
+    ScoreManager scoreManagerScript;
 
     float[] times;
     public TextMeshProUGUI P1Time;
@@ -14,20 +15,6 @@ public class HighlightModeManager : MonoBehaviour
     public TextMeshProUGUI P3Time;
     public TextMeshProUGUI P4Time;
     public TextMeshProUGUI P5Time;
-
-    public GameObject P1WinText;
-    public GameObject P2WinText;
-    public GameObject P3WinText;
-    public GameObject P4WinText;
-    public GameObject P5WinText;
-
-    public GameObject Team1WinText;
-    public GameObject Team2WinText;
-    public GameObject Team3WinText;
-    public GameObject Team4WinText;
-    public GameObject Team5WinText;
-
-    public GameObject endScreen;
 
     public int totalTime = 60;
 
@@ -40,6 +27,7 @@ public class HighlightModeManager : MonoBehaviour
     void Start()
     {
         gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        scoreManagerScript = GameObject.Find("Score Manager").GetComponent<ScoreManager>();
 
         startPosY = P1Time.gameObject.transform.position.y;
         len = 30;
@@ -72,7 +60,7 @@ public class HighlightModeManager : MonoBehaviour
 
             if (times[ID] <= 0)
             {
-                end();
+                end(ID);
             }
 
             switch (ID)
@@ -156,9 +144,29 @@ public class HighlightModeManager : MonoBehaviour
         }
     }
 
-    void end()
+    void end(int winner)
     {
         started = false;
-        
+        //solo vs team
+        switch (winner)
+        {
+            case 1:
+                scoreManagerScript.P1WinText.SetActive(true);
+                break;
+            case 2:
+                scoreManagerScript.P2WinText.SetActive(true);
+                break;
+            case 3:
+                scoreManagerScript.P3WinText.SetActive(true);
+                break;
+            case 4:
+                scoreManagerScript.P4WinText.SetActive(true);
+                break;
+            case 5:
+                scoreManagerScript.P5WinText.SetActive(true);
+                break;
+        }
+        scoreManagerScript.endScreen.SetActive(true);
+        scoreManagerScript.pauseText.SetActive(false);
     }
 }

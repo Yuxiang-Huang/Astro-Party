@@ -346,21 +346,21 @@ public class ScoreManager : MonoBehaviour
                     pauseText.SetActive(false);
                     switch (winningShip[0])
                     {
-                    case 1:
-                        P1WinText.SetActive(true);
-                        break;
-                    case 2:
-                        P2WinText.SetActive(true);
-                        break;
-                    case 3:
-                        P3WinText.SetActive(true);
-                        break;
-                    case 4:
-                        P4WinText.SetActive(true);
-                        break;
-                    case 5:
-                        P5WinText.SetActive(true);
-                        break;
+                        case 1:
+                            P1WinText.SetActive(true);
+                            break;
+                        case 2:
+                            P2WinText.SetActive(true);
+                            break;
+                        case 3:
+                            P3WinText.SetActive(true);
+                            break;
+                        case 4:
+                            P4WinText.SetActive(true);
+                            break;
+                        case 5:
+                            P5WinText.SetActive(true);
+                            break;
                     }
                 }
                 else
