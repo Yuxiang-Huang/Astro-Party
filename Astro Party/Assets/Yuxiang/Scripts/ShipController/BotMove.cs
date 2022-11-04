@@ -43,6 +43,14 @@ public class BotMove : MonoBehaviour
                         {
                             trace = false;
                         }
+                        else
+                        {
+                            if (ship.GetComponent<MutualShip>().highlighed)
+                            {
+                                target = ship;
+                                break;
+                            }
+                        }
                     }
 
                     if (ship.GetComponent<BotPilotMove>() != null)

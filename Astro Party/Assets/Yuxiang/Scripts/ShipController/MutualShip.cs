@@ -553,7 +553,7 @@ public class MutualShip : MonoBehaviour
             {
                 if (highlighed)
                 {
-                    highlightModeManagerScript.assign(otherID);
+                    highlightModeManagerScript.assign(otherID, this.transform.position);
                 }
             }
         }

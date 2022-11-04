@@ -117,7 +117,7 @@ public class HighlightModeManager : MonoBehaviour
         Instantiate(crown, spawnManagerScript.generateRanPos(crownY), crown.transform.rotation);
     }
 
-    public void assign(int ID)
+    public void assign(int ID, Vector3 pos)
     {
         bool assigned = false;
 
@@ -139,7 +139,8 @@ public class HighlightModeManager : MonoBehaviour
 
         if (!assigned)
         {
-            Instantiate(crown, spawnManagerScript.generateRanPos(crownY), crown.transform.rotation);
+            Debug.Log("spawn");
+            Instantiate(crown, new Vector3(pos.x, crownY, pos.z), crown.transform.rotation);
         }
     }
 
