@@ -49,16 +49,19 @@ public class HighlightModeManager : MonoBehaviour
             {
                 foreach (GameObject ship in shipList)
                 {
-                    if (ship.GetComponent<MutualShip>().highlighed)
+                    if (ship.GetComponent<MutualShip>() != null)
                     {
-                        ID = ship.GetComponent<MutualShip>().id;
+                        if (ship.GetComponent<MutualShip>().highlighed)
+                        {
+                            ID = ship.GetComponent<MutualShip>().id;
+                        }
                     }
                 }
             }
 
-            times[ID] -= Time.deltaTime;
+            times[ID - 1] -= Time.deltaTime;
 
-            if (times[ID] <= 0)
+            if (times[ID - 1] <= 0)
             {
                 end(ID);
             }
@@ -66,19 +69,19 @@ public class HighlightModeManager : MonoBehaviour
             switch (ID)
             {
                 case 1:
-                    P1Time.text = "P1: " + times[0];
+                    P1Time.text = "P1: " + (int) times[0];
                     break;
                 case 2:
-                    P2Time.text = "P2: " + times[1];
+                    P2Time.text = "P2: " + (int) times[1];
                     break;
                 case 3:
-                    P3Time.text = "P3: " + times[2];
+                    P3Time.text = "P3: " + (int) times[2];
                     break;
                 case 4:
-                    P4Time.text = "P4: " + times[3];
+                    P4Time.text = "P4: " + (int) times[3];
                     break;
                 case 5:
-                    P5Time.text = "P5: " + times[4];
+                    P5Time.text = "P5: " + (int) times[4];
                     break;
             }
 
@@ -122,10 +125,13 @@ public class HighlightModeManager : MonoBehaviour
         {
             foreach (GameObject ship in shipList)
             {
-                if (ship.GetComponent<MutualShip>().id == ID)
+                if (ship.GetComponent<MutualShip>() != null)
                 {
-                    ship.GetComponent<MutualShip>().highlighed = true;
-                    assigned = true;
+                    if (ship.GetComponent<MutualShip>().id == ID)
+                    {
+                        ship.GetComponent<MutualShip>().highlighed = true;
+                        assigned = true;
+                    }
                 }
             }
         }
@@ -137,8 +143,11 @@ public class HighlightModeManager : MonoBehaviour
             {
                 foreach (GameObject ship in shipList)
                 {
-                    ship.GetComponent<MutualShip>().highlighed = true;
-                    break;
+                    if (ship.GetComponent<MutualShip>() != null)
+                    {
+                        ship.GetComponent<MutualShip>().highlighed = true;
+                        break;
+                    }
                 }
             }
         }

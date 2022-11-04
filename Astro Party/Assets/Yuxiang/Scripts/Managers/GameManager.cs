@@ -147,18 +147,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void startRound()
-    {
-        //highlight mode
-        if (scoreManagerScript.shipMode == "highlight")
-        {
-            highLightScreen.SetActive(true);
-            highlightModeManagerScript.startRound();
-        }
-        else
-        {
-            highLightScreen.SetActive(false);
-        }
-         
+    {   
         //map
         mapManagerScript.resetMap();
         resetPosRot();
@@ -227,7 +216,19 @@ public class GameManager : MonoBehaviour
                 }
             }
 
+            //auto balance
             powerUpManagerScript.autoBalance();
+
+            //highlight mode
+            if (scoreManagerScript.shipMode == "highlight")
+            {
+                highLightScreen.SetActive(true);
+                highlightModeManagerScript.startRound();
+            }
+            else
+            {
+                highLightScreen.SetActive(false);
+            }
         }
 
         if (hasSPU)

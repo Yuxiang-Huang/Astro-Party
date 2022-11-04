@@ -587,36 +587,13 @@ public class MutualShip : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Pilot"))
         {
-            bool toKill = true;
-
-            //Friendly Fire 
-            if (!scoreManagerScript.friendlyFire)
+            if (collision.gameObject.GetComponent<PilotPlayerController>() != null)
             {
-                if(collision.gameObject.GetComponent<PilotPlayerController>() != null)
-                {
-                    if (team == collision.gameObject.GetComponent<PilotPlayerController>().team)
-                    {
-                        toKill = false;
-                    }
-                }
-
-                else if (collision.gameObject.GetComponent<BotPilotMove>() != null)
-                {
-                    if (team == collision.gameObject.GetComponent<BotPilotMove>().team)
-                    {
-                        toKill = false;
-                    }
-                }
+                collision.gameObject.GetComponent<PilotPlayerController>().kill(id, team);
             }
-            if (toKill)
+            else
             {
-                SEManagerScript.generalAudio.PlayOneShot(SEManagerScript.pilotDeath);
-
-                Destroy(collision.gameObject);
-                if (scoreManagerScript.shipMode == "pilot")
-                {
-                    earnPoint(id);
-                }
+                collision.gameObject.GetComponent<BotPilotMove>().kill(id, team);
             }
         }
     }
