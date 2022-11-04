@@ -148,9 +148,11 @@ public class GameManager : MonoBehaviour
 
     public void startRound()
     {
+        //highlight mode
         if (scoreManagerScript.shipMode == "highlight")
         {
             highLightScreen.SetActive(true);
+            highlightModeManagerScript.startRound();
         }
         else
         {

@@ -6,6 +6,8 @@ using TMPro;
 
 public class HighlightModeManager : MonoBehaviour
 {
+    GameManager gameManagerScript;
+
     List<int> time;
     public TextMeshProUGUI P1Time;
     public TextMeshProUGUI P2Time;
@@ -35,6 +37,8 @@ public class HighlightModeManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
+
         startPosY = P1Time.gameObject.transform.position.y;
         len = 30;
     }
@@ -58,11 +62,47 @@ public class HighlightModeManager : MonoBehaviour
         P3Time.text = "P3: " + totalTime;
         P4Time.text = "P4: " + totalTime;
         P5Time.text = "P5: " + totalTime;
+
+
+        //for now just higlight first ship
+        foreach (List<GameObject> shipList in gameManagerScript.inGameShips)
+        {
+            foreach (GameObject ship in shipList)
+            {
+                ship.GetComponent<MutualShip>().highlighed = true;
+                break;
+            }
+        }
     }
 
-    public void assign(int id)
+    public void assign(int ID)
     {
+        bool assigned = false;
 
+        foreach (List<GameObject> shipList in gameManagerScript.inGameShips)
+        {
+            foreach (GameObject ship in shipList)
+            {
+                if (ship.GetComponent<MutualShip>().id == ID)
+                {
+                    ship.GetComponent<MutualShip>().highlighed = true;
+                    assigned = true;
+                }
+            }
+        }
+
+        if (!assigned)
+        {
+            //for now just higlight first ship
+            foreach (List<GameObject> shipList in gameManagerScript.inGameShips)
+            {
+                foreach (GameObject ship in shipList)
+                {
+                    ship.GetComponent<MutualShip>().highlighed = true;
+                    break;
+                }
+            }
+        }
     }
 
     void end()
