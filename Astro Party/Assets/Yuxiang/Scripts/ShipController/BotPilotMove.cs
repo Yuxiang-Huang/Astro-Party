@@ -182,7 +182,10 @@ public class BotPilotMove : MonoBehaviour
                 }
             }
 
-            Destroy(this.gameObject);
+            if (scoreManagerScript.shipMode != "highlight")
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 

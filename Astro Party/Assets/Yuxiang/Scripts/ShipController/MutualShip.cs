@@ -539,7 +539,7 @@ public class MutualShip : MonoBehaviour
                 }
                 Destroy(this.gameObject);
             }
-            else if (scoreManagerScript.shipMode == "pilot")
+            else if (scoreManagerScript.shipMode == "pilot" || scoreManagerScript.shipMode == "highlight")
             {
                 spawnPilot();
             }

@@ -159,7 +159,10 @@ public class PilotPlayerController : MonoBehaviour
                 }
             }
 
-            Destroy(this.gameObject);
+            if (scoreManagerScript.shipMode != "highlight")
+            { 
+                Destroy(this.gameObject);
+            }
         }
     }
 
