@@ -10,6 +10,7 @@ public class BotMove : MonoBehaviour
     float botReloadTime;
 
     GameManager gameManagerScript;
+    ScoreManager scoreManagerScript;
 
     float traceTime;
 
@@ -19,6 +20,7 @@ public class BotMove : MonoBehaviour
     void Start()
     {
         gameManagerScript = gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        scoreManagerScript = GameObject.Find("Score Manager").GetComponent<ScoreManager>();
     }
 
     // Update is called once per frame
@@ -59,11 +61,21 @@ public class BotMove : MonoBehaviour
                         {
                             trace = false;
                         }
+
+                        if (scoreManagerScript.shipMode == "highlight")
+                        {
+                            trace = false;
+                        }
                     }
 
                     if (ship.GetComponent<PilotPlayerController>() != null)
                     {
                         if (ship.GetComponent<PilotPlayerController>().team == GetComponent<MutualShip>().team)
+                        {
+                            trace = false;
+                        }
+
+                        if (scoreManagerScript.shipMode == "highlight")
                         {
                             trace = false;
                         }

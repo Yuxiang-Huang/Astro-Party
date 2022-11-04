@@ -19,14 +19,13 @@ public class HighlightModeManager : MonoBehaviour
 
     public int totalTime = 60;
 
+    public GameObject crown;
+    public GameObject crownPic;
+    int crownY = 10;
     float startPosY;
-    float len;
+    public float len = 20;
 
     public bool started;
-
-    public GameObject crown;
-
-    int crownY = 10;
 
     // Start is called before the first frame update
     void Start()
@@ -35,8 +34,7 @@ public class HighlightModeManager : MonoBehaviour
         scoreManagerScript = GameObject.Find("Score Manager").GetComponent<ScoreManager>();
         spawnManagerScript = GameObject.Find("Spawn Manager").GetComponent<SpawnManager>();
 
-        startPosY = P1Time.gameObject.transform.position.y;
-        len = 30;
+        startPosY = crownPic.transform.position.y;
 
         times = new float[5];
     }
@@ -65,15 +63,17 @@ public class HighlightModeManager : MonoBehaviour
                 }
             }
 
-            if (ID != -1)
+            if (ID == -1)
             {
+                crownPic.SetActive(false);
+            }
+            else
+            {
+                crownPic.SetActive(true);
+
                 times[ID - 1] -= Time.deltaTime;
 
-                if (times[ID - 1] <= 0)
-                {
-                    end(ID);
-                }
-
+                //change time
                 switch (ID)
                 {
                     case 1:
@@ -92,6 +92,16 @@ public class HighlightModeManager : MonoBehaviour
                         P5Time.text = "P5: " + (int)times[4];
                         break;
                 }
+
+                //check for ending
+                if (times[ID - 1] <= 0)
+                {
+                    end(ID);
+                }
+
+                //update position
+                Vector3 pos = crownPic.transform.position;
+                crownPic.transform.position = new Vector3(pos.x, startPosY += (ID - 1) *  len, pos.z);
 
                 //order the time
             }

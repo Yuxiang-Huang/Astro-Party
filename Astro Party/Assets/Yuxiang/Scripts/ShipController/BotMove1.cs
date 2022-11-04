@@ -65,11 +65,21 @@ public class BotMove1: MonoBehaviour
                         {
                             trace = false;
                         }
+
+                        if (scoreManagerScript.shipMode == "highlight")
+                        {
+                            trace = false;
+                        }
                     }
 
                     if (ship.GetComponent<PilotPlayerController>() != null)
                     {
                         if (ship.GetComponent<PilotPlayerController>().team == GetComponent<MutualShip>().team)
+                        {
+                            trace = false;
+                        }
+
+                        if (scoreManagerScript.shipMode == "highlight")
                         {
                             trace = false;
                         }
