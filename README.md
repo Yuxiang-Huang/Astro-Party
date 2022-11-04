@@ -56,3 +56,5 @@ https://yuxiang-huang.itch.io/astro-party-ii
      
      *  (10-29-2022): Today I started with fixing the issues I found when play testing with my friends few days ago. I fixed the resetting of map 6, added more directions and ordered them in tutorial, and added pause text. Lastly, I remade map2 to be a more chaotic system with rotating blocks using rigidbody instead of translate.
      *  (10-30-2022): Today I added the translation of the scoreboard when the player point exceed the point required to win. Then, I added the tie breaker system and use functions to reduce code in ScoreManager. Lastly, I play tested and fix issues I found; mainly the AI tracing issue.
+
+     *  (11-3-2022): Today I started by fixing issues I found after play tested with my firends. Then, I create a new mode call highlight where pilots don't get killed and players fight to keep the crown.
