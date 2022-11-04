@@ -23,6 +23,7 @@ public class HighlightModeManager : MonoBehaviour
     float startPosY;
     public float len;
     public Canvas canvas;
+    float updateTime;
 
     public bool started;
 
@@ -92,7 +93,20 @@ public class HighlightModeManager : MonoBehaviour
                 crownPic.transform.position = new Vector3(pos.x, startPosY + (ID - 1) * len, pos.z);
 
                 //order the time
-                
+                if (updateTime <= 0)
+                {
+                    updateTime = 1;
+                    data.Sort((x, y) => y.Value.CompareTo(x.Value));
+                    for (int i = 0; i < data.Count; i++)
+                    {
+                        pos = data[i].Key.transform.position;
+                        data[i].Key.transform.position = new Vector3(pos.x, startTimeY + i * len, pos.z);
+                    }
+                }
+                else
+                {
+                    updateTime -= Time.deltaTime;
+                }
             }
         }
     }
@@ -148,7 +162,6 @@ public class HighlightModeManager : MonoBehaviour
                         if (ship.GetComponent<MutualShip>().id == ID)
                         {
                             ship.GetComponent<MutualShip>().highlighed = true;
-                            //assigned = true;
                         }
                     }
                 }
