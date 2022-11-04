@@ -43,7 +43,15 @@ public class Portal : MonoBehaviour
                 collision.transform.position = Quaternion.AngleAxis(180 * (pairAngle - angle) / Mathf.PI, Vector3.up)
         * dif + pair.transform.position;
 
-                collision.transform.Rotate(new Vector3(0, (pairAngle - angle) * 180 / Mathf.PI + 180, 0));
+                if (collision.gameObject.CompareTag("Ship") ||
+            collision.gameObject.CompareTag("Bullet") || collision.gameObject.CompareTag("BouncyBullet"))
+                {
+                    collision.transform.Rotate(new Vector3(0, (pairAngle - angle) * 180 / Mathf.PI + 180, 0));
+                }
+                else
+                {
+                    collision.transform.Rotate(new Vector3(0, 0, (pairAngle - angle) * 180 / Mathf.PI + 180));
+                }
 
                 //velocity for bullets
                 if (collision.gameObject.CompareTag("Bullet") || collision.gameObject.CompareTag("BouncyBullet"))

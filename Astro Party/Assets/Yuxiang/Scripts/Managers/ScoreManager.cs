@@ -72,6 +72,12 @@ public class ScoreManager : MonoBehaviour
     {
         scoreScreen.SetActive(true);
 
+        P1.SetActive(false);
+        P2.SetActive(false);
+        P3.SetActive(false);
+        P4.SetActive(false);
+        P5.SetActive(false);
+
         origStartPosX = P1.transform.position.x;
         startPosX = P1.transform.position.x;
         startPosXScoreBoard= scoreBoard.transform.position.x;
