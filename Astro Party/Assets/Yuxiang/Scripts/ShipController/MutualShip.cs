@@ -553,7 +553,7 @@ public class MutualShip : MonoBehaviour
             {
                 if (highlighed)
                 {
-                    highlightModeManagerScript.assign(otherID, this.transform.position);
+                    highlightModeManagerScript.assign(otherID, this.transform.position, id == otherID);
                 }
             }
         }
@@ -578,7 +578,6 @@ public class MutualShip : MonoBehaviour
         }
 
         gameManagerScript.inGameShips[team].Add(myPilot);
-        
 
         Destroy(this.gameObject);
     }

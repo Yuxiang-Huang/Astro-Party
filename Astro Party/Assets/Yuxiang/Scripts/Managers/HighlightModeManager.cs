@@ -11,11 +11,7 @@ public class HighlightModeManager : MonoBehaviour
     SpawnManager spawnManagerScript;
 
     float[] times;
-    public TextMeshProUGUI P1Time;
-    public TextMeshProUGUI P2Time;
-    public TextMeshProUGUI P3Time;
-    public TextMeshProUGUI P4Time;
-    public TextMeshProUGUI P5Time;
+    public TextMeshProUGUI[] PTime;
 
     public int totalTime = 60;
 
@@ -80,24 +76,7 @@ public class HighlightModeManager : MonoBehaviour
                 times[ID - 1] -= Time.deltaTime;
 
                 //change time
-                switch (ID)
-                {
-                    case 1:
-                        P1Time.text = "P1: " + (int)times[0];
-                        break;
-                    case 2:
-                        P2Time.text = "P2: " + (int)times[1];
-                        break;
-                    case 3:
-                        P3Time.text = "P3: " + (int)times[2];
-                        break;
-                    case 4:
-                        P4Time.text = "P4: " + (int)times[3];
-                        break;
-                    case 5:
-                        P5Time.text = "P5: " + (int)times[4];
-                        break;
-                }
+                PTime[ID - 1].text = "P" + ID + ": " + (int)times[ID-1];
 
                 //check for ending
                 if (times[ID - 1] <= 0)
@@ -118,62 +97,54 @@ public class HighlightModeManager : MonoBehaviour
     {
         started = true;
 
+        //time text
         times = new float[5];
         for (int i = 0; i < 5; i++)
         {
             times[i] = totalTime;
         }
 
-        P1Time.text = "P1: " + times[0];
-        P2Time.text = "P2: " + times[1];
-        P3Time.text = "P3: " + times[2];
-        P4Time.text = "P4: " + times[3];
-        P5Time.text = "P5: " + times[4];
+        for (int i = 0; i < PTime.Length; i++)
+        {
+            PTime[i].text = "P" + (i + 1) + ": " + (int)times[i];
+            PTime[i].gameObject.SetActive(false);
+        }
 
-        Instantiate(crown, spawnManagerScript.generateRanPos(crownY), crown.transform.rotation);
+        foreach (List<GameObject> shipList in gameManagerScript.inGameShips)
+        {
+            foreach (GameObject ship in shipList)
+            {
+                PTime[ship.GetComponent<MutualShip>().id - 1].gameObject.SetActive(true);
+            }
+        }
+
+
+       Instantiate(crown, spawnManagerScript.generateRanPos(crownY), crown.transform.rotation);
     }
 
-    public void assign(int ID, Vector3 pos)
+    public void assign(int ID, Vector3 pos, bool suicided)
     {
-        //didn't work...
-        //bool assigned = false;
-
-        //assign to the ship that killed it
-        foreach (List<GameObject> shipList in gameManagerScript.inGameShips)
-        {
-            foreach (GameObject ship in shipList)
-            {
-                if (ship.GetComponent<MutualShip>() != null)
-                {
-                    if (ship.GetComponent<MutualShip>().id == ID)
-                    {
-                        ship.GetComponent<MutualShip>().highlighed = true;
-                        //assigned = true;
-                    }
-                }
-            }
-        }
-
-        //bad way to spawn a crown in suicidal scenario
-        int curr = -1;
-
-        foreach (List<GameObject> shipList in gameManagerScript.inGameShips)
-        {
-            foreach (GameObject ship in shipList)
-            {
-                if (ship.GetComponent<MutualShip>() != null)
-                {
-                    if (ship.GetComponent<MutualShip>().highlighed)
-                    {
-                        curr = ship.GetComponent<MutualShip>().id;
-                    }
-                }
-            }
-        }
-
-        if (curr == -1)
+        if (suicided)
         {
             Instantiate(crown, new Vector3(pos.x, crownY, pos.z), crown.transform.rotation);
+        }
+        else
+        {
+            //assign to the ship that killed it
+            foreach (List<GameObject> shipList in gameManagerScript.inGameShips)
+            {
+                foreach (GameObject ship in shipList)
+                {
+                    if (ship.GetComponent<MutualShip>() != null)
+                    {
+                        if (ship.GetComponent<MutualShip>().id == ID)
+                        {
+                            ship.GetComponent<MutualShip>().highlighed = true;
+                            //assigned = true;
+                        }
+                    }
+                }
+            }
         }
     }
 
