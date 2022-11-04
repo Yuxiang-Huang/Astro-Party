@@ -38,10 +38,13 @@ public class GameManager : MonoBehaviour
     public bool suicidalBullet;
     public Text suicidalBulletText;
 
+    public GameObject highLightScreen;
+
     // Start is called before the first frame update
     void Start()
     {
         nextButton.SetActive(false);
+        highLightScreen.SetActive(false);
 
         ships = new List<List<GameObject>>() {new List<GameObject>(), new List<GameObject>(), new List<GameObject>(),
         new List<GameObject>(), new List<GameObject>()};
@@ -143,6 +146,15 @@ public class GameManager : MonoBehaviour
 
     public void startRound()
     {
+        if (scoreManagerScript.shipMode == "highlight")
+        {
+            highLightScreen.SetActive(true);
+        }
+        else
+        {
+            highLightScreen.SetActive(false);
+        }
+         
         //map
         mapManagerScript.resetMap();
         resetPosRot();

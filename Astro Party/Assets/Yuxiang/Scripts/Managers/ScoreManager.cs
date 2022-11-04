@@ -558,6 +558,12 @@ public class ScoreManager : MonoBehaviour
         }
         else if (shipMode == "pilot")
         {
+            shipMode = "highlight";
+            teamModeText.text = "Team Highlight";
+            soloModeText.text = "Solo Highlight";
+        }
+        else if (shipMode == "highlight")
+        {
             shipMode = "ship";
             teamModeText.text = "Team Ship Hunter";
             soloModeText.text = "Solo Ship Hunter";
