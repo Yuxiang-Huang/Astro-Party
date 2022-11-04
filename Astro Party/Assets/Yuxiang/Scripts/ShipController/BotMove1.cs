@@ -11,6 +11,7 @@ public class BotMove1: MonoBehaviour
     float botTurnTime;
 
     GameManager gameManagerScript;
+    ScoreManager scoreManagerScript;
 
     public bool disable;
 
@@ -24,6 +25,7 @@ public class BotMove1: MonoBehaviour
     void Start()
     {
         gameManagerScript = gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        scoreManagerScript = GameObject.Find("Score Manager").GetComponent<ScoreManager>();
         rb = GetComponent<Rigidbody>();
     }
 

@@ -23,7 +23,8 @@ public class HighlightModeManager : MonoBehaviour
     public GameObject crownPic;
     int crownY = 10;
     float startPosY;
-    public float len = 20;
+    public float len;
+    public Canvas canvas;
 
     public bool started;
 
@@ -34,7 +35,12 @@ public class HighlightModeManager : MonoBehaviour
         scoreManagerScript = GameObject.Find("Score Manager").GetComponent<ScoreManager>();
         spawnManagerScript = GameObject.Find("Spawn Manager").GetComponent<SpawnManager>();
 
+        //set variables
+        canvas.gameObject.SetActive(true);
         startPosY = crownPic.transform.position.y;
+        float scale = canvas.scaleFactor;
+        len *= scale;
+        canvas.gameObject.SetActive(false);
 
         times = new float[5];
     }
@@ -101,7 +107,7 @@ public class HighlightModeManager : MonoBehaviour
 
                 //update position
                 Vector3 pos = crownPic.transform.position;
-                crownPic.transform.position = new Vector3(pos.x, startPosY += (ID - 1) *  len, pos.z);
+                crownPic.transform.position = new Vector3(pos.x, startPosY + (ID - 1) * len, pos.z);
 
                 //order the time
             }
@@ -129,7 +135,8 @@ public class HighlightModeManager : MonoBehaviour
 
     public void assign(int ID, Vector3 pos)
     {
-        bool assigned = false;
+        //didn't work...
+        //bool assigned = false;
 
         //assign to the ship that killed it
         foreach (List<GameObject> shipList in gameManagerScript.inGameShips)
@@ -141,13 +148,30 @@ public class HighlightModeManager : MonoBehaviour
                     if (ship.GetComponent<MutualShip>().id == ID)
                     {
                         ship.GetComponent<MutualShip>().highlighed = true;
-                        assigned = true;
+                        //assigned = true;
                     }
                 }
             }
         }
 
-        if (!assigned)
+        //bad way to spawn a crown in suicidal scenario
+        int curr = -1;
+
+        foreach (List<GameObject> shipList in gameManagerScript.inGameShips)
+        {
+            foreach (GameObject ship in shipList)
+            {
+                if (ship.GetComponent<MutualShip>() != null)
+                {
+                    if (ship.GetComponent<MutualShip>().highlighed)
+                    {
+                        curr = ship.GetComponent<MutualShip>().id;
+                    }
+                }
+            }
+        }
+
+        if (curr == -1)
         {
             Instantiate(crown, new Vector3(pos.x, crownY, pos.z), crown.transform.rotation);
         }
