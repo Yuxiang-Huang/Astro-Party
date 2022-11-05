@@ -9,6 +9,7 @@ public class ScoreManager : MonoBehaviour
     public string gameMode;
 
     GameManager gameManagerScript;
+    HighlightModeManager highlightModeManagerScript;
 
     public GameObject P1;
     public GameObject P2;
@@ -42,9 +43,6 @@ public class ScoreManager : MonoBehaviour
 
     public GameObject scoreBoard;
 
-    int scoreToWin = 5;
-    public Text roundText;
-    int maxScore = 5;
     List<int> winningShip;
     List<List<GameObject>> temp;
 
@@ -53,14 +51,20 @@ public class ScoreManager : MonoBehaviour
 
     public GameObject endScreen;
     public GameObject scoreScreen;
+    public Text teamModeText;
+    public Text soloModeText;
+
+    public GameObject time;
+    public Text timeText;
+    public GameObject round;
+    int scoreToWin = 5;
+    public Text roundText;
+    int maxScore = 5;
 
     float lengthOfSquare;
     float origStartPosX;
     float startPosX;
     float startPosXScoreBoard;
-
-    public Text teamModeText;
-    public Text soloModeText;
 
     public GameObject pauseText;
 
@@ -86,9 +90,13 @@ public class ScoreManager : MonoBehaviour
         lengthOfSquare = 500 / scoreToWin * scale;
 
         gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        highlightModeManagerScript = GameObject.Find("Highlight Manager").GetComponent<HighlightModeManager>();
+
         resetScore();
         endScreen.SetActive(false);
         scoreScreen.SetActive(false);
+        round.SetActive(true);
+        time.SetActive(false);
 
         gameMode = "ship";
     }
@@ -534,6 +542,27 @@ public class ScoreManager : MonoBehaviour
         maxScore = scoreToWin;
     }
 
+    public void changeTime()
+    {
+        if (highlightModeManagerScript.totalTime == 30)
+        {
+            highlightModeManagerScript.totalTime = 60;
+            timeText.text = "Standard \n60 Seconds";
+        }
+
+        else if (highlightModeManagerScript.totalTime == 60)
+        {
+            highlightModeManagerScript.totalTime = 90;
+            timeText.text = "Long \n90 Seconds";
+        }
+
+        else if (highlightModeManagerScript.totalTime == 90)
+        {
+            highlightModeManagerScript.totalTime = 30;
+            timeText.text = "Quick \n30 Seconds";
+        }
+    }
+
     public void setFriendlyFire()
     {
         if (friendlyFire)
@@ -561,9 +590,15 @@ public class ScoreManager : MonoBehaviour
             gameMode = "highlight";
             teamModeText.text = "Team Highlight";
             soloModeText.text = "Solo Highlight";
+
+            round.SetActive(false);
+            time.SetActive(true);
         }
         else if (gameMode == "highlight")
         {
+            round.SetActive(true);
+            time.SetActive(false);
+
             gameMode = "ship";
             teamModeText.text = "Team Ship Hunter";
             soloModeText.text = "Solo Ship Hunter";
