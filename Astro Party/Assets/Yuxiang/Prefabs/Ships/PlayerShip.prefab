@@ -896,7 +896,8 @@ MonoBehaviour:
   sideCannons: {fileID: 3947802593197462750}
   shield: {fileID: 5570031850638550453}
   freezeCube: {fileID: 5088078409450587797}
-  crown: {fileID: 0}
+  crown: {fileID: 9129187359973295250}
+  crownRend: {fileID: 7239556649328685742}
   rend: {fileID: 6242058927961685472}
   blue1: {fileID: 2100000, guid: aee1eda5f1062490492bde072ef0f2f7, type: 2}
   red2: {fileID: 2100000, guid: 329078c58a0c04150bb7949cfde893ca, type: 2}
@@ -1236,8 +1237,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01cf4879d5dc14ab6abef60c24c37457, type: 3}
+--- !u!1 &9129187359973295250 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 01cf4879d5dc14ab6abef60c24c37457, type: 3}
+  m_PrefabInstance: {fileID: 8246102294735419843}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8501304220618694184 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 01cf4879d5dc14ab6abef60c24c37457, type: 3}
+  m_PrefabInstance: {fileID: 8246102294735419843}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &7239556649328685742 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7635826562936255635, guid: 01cf4879d5dc14ab6abef60c24c37457, type: 3}
   m_PrefabInstance: {fileID: 8246102294735419843}
   m_PrefabAsset: {fileID: 0}

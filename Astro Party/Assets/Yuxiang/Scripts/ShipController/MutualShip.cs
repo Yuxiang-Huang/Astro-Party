@@ -43,6 +43,7 @@ public class MutualShip : MonoBehaviour
     public GameObject shield;
     public GameObject freezeCube;
     public GameObject crown;
+    public Renderer crownRend;
 
     public Renderer rend;
     public Material blue1;
@@ -106,8 +107,6 @@ public class MutualShip : MonoBehaviour
         freezeCube.SetActive(false);
 
         //setColor and control
-
-        Renderer crownRend = crown.GetComponent<Renderer>();
 
         switch (id)
         {
