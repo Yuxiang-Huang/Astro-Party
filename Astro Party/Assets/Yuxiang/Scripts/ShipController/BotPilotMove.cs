@@ -22,6 +22,8 @@ public class BotPilotMove : MonoBehaviour
     public Material cyan4;
     public Material green5;
 
+    public bool attacked;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -165,8 +167,16 @@ public class BotPilotMove : MonoBehaviour
                 toKill = false;
             }
         }
+
+        if (attacked)
+        {
+            toKill = false;
+        }
+
         if (toKill)
         {
+            attacked = true;
+
             if (scoreManagerScript.gameMode == "pilot")
             {
                 //sound effect
