@@ -17,7 +17,6 @@ public class HighlightModeManager : MonoBehaviour
     public int totalTime = 60;
 
     public GameObject crown;
-    public GameObject crownPic;
     int crownY = 10;
     float startTimeY;
     float startPosY;
@@ -38,7 +37,6 @@ public class HighlightModeManager : MonoBehaviour
 
         //set variables
         canvas.gameObject.SetActive(true);
-        startPosY = crownPic.transform.position.y;
         startTimeY = PTime[0].gameObject.transform.position.y;
         float scale = canvas.scaleFactor;
         len *= scale;
@@ -73,8 +71,6 @@ public class HighlightModeManager : MonoBehaviour
 
             if (ID == -1)
             {
-                crownPic.SetActive(false);
-
                 //spawn if no crown
                 if (inGameCrown == null)
                 {
@@ -83,8 +79,6 @@ public class HighlightModeManager : MonoBehaviour
             }
             else
             {
-                crownPic.SetActive(true);
-
                 times[ID - 1] -= Time.deltaTime;
 
                 //change time
@@ -97,10 +91,6 @@ public class HighlightModeManager : MonoBehaviour
                     displayWinner(ID);
                     gameManagerScript.endRound();
                 }
-
-                //update position
-                Vector3 pos = crownPic.transform.position;
-                crownPic.transform.position = new Vector3(pos.x, startPosY + (ID - 1) * len, pos.z);
 
                 ////order the time
                 //if (updateTime <= 0)

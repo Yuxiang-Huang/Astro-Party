@@ -42,6 +42,7 @@ public class MutualShip : MonoBehaviour
     public GameObject sideCannons;
     public GameObject shield;
     public GameObject freezeCube;
+    public GameObject crown;
 
     public Renderer rend;
     public Material blue1;
@@ -106,24 +107,29 @@ public class MutualShip : MonoBehaviour
 
         //setColor and control
 
-        PlayerController script = GetComponent<PlayerController>();
+        Renderer crownRend = crown.GetComponent<Renderer>();
 
         switch (id)
         {
             case 1:
                 rend.material = blue1;
+                crownRend.material = blue1;
                 break;
             case 2:
                 rend.material = red2;
+                crownRend.material = red2;
                 break;
             case 3:
                 rend.material = yellow3;
+                crownRend.material = yellow3;
                 break;
             case 4:
                 rend.material = cyan4;
+                crownRend.material = cyan4;
                 break;
             case 5:
                 rend.material = green5;
+                crownRend.material = green5;
                 break;
         }
     }
@@ -214,6 +220,15 @@ public class MutualShip : MonoBehaviour
             bulletAnimation[i].transform.position = new Vector3(transform.position.x +
                 Mathf.Cos(bulletAnimationPos + i * 2 * Mathf.PI / 3) * bulletDis * 2,
                 transform.position.y, transform.position.z + Mathf.Sin(bulletAnimationPos + i * 2 * Mathf.PI / 3) * bulletDis * 2);
+        }
+
+        if (scoreManagerScript.gameMode == "highlight")
+        {
+            if (highlighed)
+            {
+                crown.SetActive(true);
+                crown.transform.Rotate(new Vector3(0, 20, 0));
+            }
         }
     }
 
