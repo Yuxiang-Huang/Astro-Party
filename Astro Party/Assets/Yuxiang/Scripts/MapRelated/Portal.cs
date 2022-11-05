@@ -8,20 +8,18 @@ public class Portal : MonoBehaviour
 
     public GameObject pair;
 
-    float wait;
-
     public int offSet = 75;
 
     // Start is called before the first frame update
     void Start()
     {
-        wait = 0.1f;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        wait -= Time.deltaTime;
+
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -33,61 +31,57 @@ public class Portal : MonoBehaviour
             float pairAngle = pair.transform.rotation.ToEulerAngles().y;
 
             //offset of ship to portal
-            if (wait < 0)
+
+            Vector3 dif = collision.transform.position - transform.position;
+            dif.y = collision.transform.position.y;
+
+            collision.transform.position = Quaternion.AngleAxis(180 * (pairAngle - angle) / Mathf.PI, Vector3.up)
+    * dif + pair.transform.position;
+
+            if (collision.gameObject.CompareTag("Ship") ||
+        collision.gameObject.CompareTag("Bullet") || collision.gameObject.CompareTag("BouncyBullet"))
             {
-                wait = 0.1f;
+                collision.transform.Rotate(new Vector3(0, (pairAngle - angle) * 180 / Mathf.PI + 180, 0));
+            }
+            else
+            {
+                collision.transform.Rotate(new Vector3(0, 0, (pairAngle - angle) * 180 / Mathf.PI + 180));
+            }
 
-                Vector3 dif = collision.transform.position - transform.position;
-                dif.y = collision.transform.position.y;
+            //velocity for bullets
+            if (collision.gameObject.CompareTag("Bullet") || collision.gameObject.CompareTag("BouncyBullet"))
+            {
+                collision.gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+                collision.gameObject.GetComponent<Rigidbody>().AddForce(1000 * collision.transform.forward,
+                    ForceMode.VelocityChange);
+            }
 
-                collision.transform.position = Quaternion.AngleAxis(180 * (pairAngle - angle) / Mathf.PI, Vector3.up)
-        * dif + pair.transform.position;
+            //add a little more offset
+            while (pairAngle < 0)
+            {
+                pairAngle += 2 * Mathf.PI;
+            }
 
-                if (collision.gameObject.CompareTag("Ship") ||
-            collision.gameObject.CompareTag("Bullet") || collision.gameObject.CompareTag("BouncyBullet"))
-                {
-                    collision.transform.Rotate(new Vector3(0, (pairAngle - angle) * 180 / Mathf.PI + 180, 0));
-                }
-                else
-                {
-                    collision.transform.Rotate(new Vector3(0, 0, (pairAngle - angle) * 180 / Mathf.PI + 180));
-                }
+            bool reverse = false;
 
-                //velocity for bullets
-                if (collision.gameObject.CompareTag("Bullet") || collision.gameObject.CompareTag("BouncyBullet"))
-                {
-                    collision.gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
-                    collision.gameObject.GetComponent<Rigidbody>().AddForce(1000 * collision.transform.forward,
-                        ForceMode.VelocityChange);
-                }
+            if (pairAngle < Mathf.PI)
+            {
+                pairAngle = Mathf.PI / 2 - pairAngle;
+            }
+            else
+            {
+                pairAngle -= Mathf.PI;
+                pairAngle = Mathf.PI / 2 - pairAngle;
+                reverse = true;
+            }
 
-                //add a little more offset
-                while (pairAngle < 0)
-                {
-                    pairAngle += 2 * Mathf.PI;
-                }
-
-                bool reverse = false;
-
-                if (pairAngle < Mathf.PI)
-                {
-                    pairAngle = Mathf.PI / 2 - pairAngle;
-                }
-                else
-                {
-                    pairAngle -= Mathf.PI;
-                    pairAngle = Mathf.PI / 2 - pairAngle;
-                    reverse = true;
-                }
-
-                if (reverse)
-                {
-                    collision.transform.position -= new Vector3(Mathf.Cos(pairAngle) * offSet, 0, Mathf.Sin(pairAngle) * offSet);
-                }
-                else
-                {
-                    collision.transform.position += new Vector3(Mathf.Cos(pairAngle) * offSet, 0, Mathf.Sin(pairAngle) * offSet);
-                }
+            if (reverse)
+            {
+                collision.transform.position -= new Vector3(Mathf.Cos(pairAngle) * offSet, 0, Mathf.Sin(pairAngle) * offSet);
+            }
+            else
+            {
+                collision.transform.position += new Vector3(Mathf.Cos(pairAngle) * offSet, 0, Mathf.Sin(pairAngle) * offSet);
             }
         }
     }

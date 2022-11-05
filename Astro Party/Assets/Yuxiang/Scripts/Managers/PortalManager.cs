@@ -88,6 +88,7 @@ public class PortalManager : MonoBehaviour
             portalList.Add(portalParentList[i].GetComponent<PortalParent>().portal2);
         }
 
+        //rotate the portals
         if (! gameManagerScript.fixedSpawn)
         {
             pivot.transform.Rotate(0, Random.Range(0, 360), 0);
@@ -98,11 +99,11 @@ public class PortalManager : MonoBehaviour
             portalList.RemoveAt(0);
         }
 
+        //color and set pairs
         int color = 1;
 
         while (portalList.Count > 0)
         {
-            //color and set pairs
             int ran = Random.Range(1, portalList.Count);
 
             if (gameManagerScript.fixedSpawn)
