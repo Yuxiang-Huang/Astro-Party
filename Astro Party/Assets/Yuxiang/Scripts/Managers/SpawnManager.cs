@@ -30,10 +30,11 @@ public class SpawnManager : MonoBehaviour
         gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
 
         mode = "some";
+
+        InvokeRepeating("intervalUpdate", 0, 5.0f);
     }
 
-    // Update is called once per frame
-    void Update()
+    void intervalUpdate()
     {
         //spawn asteroid when no more powerUp asteroid
         if (startSpawn && powerUpManagerScript.indicators.Count > 0)
@@ -50,26 +51,6 @@ public class SpawnManager : MonoBehaviour
 
             if (spawn)
             {
-                //shipNum = 0;
-
-                //foreach (List<GameObject> shipList in gameManagerScript.inGameShips)
-                //{
-                //    shipNum += shipList.Count;
-                //}
-
-                //switch (mode)
-                //{
-                //    case "few": shipNum = shipNum / 2; break;
-                //    case "many": shipNum = shipNum * 2; break;
-                //}
-
-                //for (int i = 0; i < shipNum; i++)
-                //{
-                //    GameObject asteroidClone = Instantiate(PowerUpAsteroid, generateRanPos(), PowerUpAsteroid.transform.rotation);
-
-                //    gameManagerScript.inGameAsteroids.Add(asteroidClone);
-                //}
-
                 spawnAsteroids();
             }
         }
@@ -120,8 +101,8 @@ public class SpawnManager : MonoBehaviour
 
             switch (mode)
             {
-                case "few": shipNum = shipNum / 2; break;
-                case "many": shipNum = shipNum * 2; break;
+                case "few": shipNum /= 2; break;
+                case "many": shipNum *= 2; break;
             }
 
             for (int i = 0; i < shipNum; i++)
