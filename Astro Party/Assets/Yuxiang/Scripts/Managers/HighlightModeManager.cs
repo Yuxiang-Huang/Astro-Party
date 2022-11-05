@@ -95,6 +95,7 @@ public class HighlightModeManager : MonoBehaviour
                 {
                     reset();
                     displayWinner(ID);
+                    gameManagerScript.endRound();
                 }
 
                 //update position

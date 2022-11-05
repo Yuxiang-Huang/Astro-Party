@@ -66,14 +66,6 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //foreach (List<GameObject> shipList in inGameShips)
-        //{
-        //    foreach (GameObject ship in shipList)
-        //    {
-        //        Debug.Log(ship);
-        //    }
-        //}
-
         //choosing team
         int activeTeam = 0;
         foreach (List<GameObject> ship in ships)
@@ -117,7 +109,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        //remove killed indicators
+        //remove taken indicators
         for (int i = inGameIndicators.Count - 1; i >= 0; i--)
         {
             if (inGameIndicators[i] == null)
@@ -127,7 +119,7 @@ public class GameManager : MonoBehaviour
         }
 
         //check for ending round
-        if (gameStarted)
+        if (gameStarted && (scoreManagerScript.gameMode == "pilot" || scoreManagerScript.gameMode == "ship"))
         {
             int activeTeamInGame = 0;
             foreach (List<GameObject> ship in inGameShips)
