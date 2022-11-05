@@ -226,7 +226,7 @@ public class MutualShip : MonoBehaviour
             if (highlighed)
             {
                 crown.SetActive(true);
-                crown.transform.Rotate(new Vector3(0, 20, 0));
+                crown.transform.Rotate(new Vector3(0, 2, 0));
             }
         }
     }
