@@ -12,6 +12,7 @@ public class CameraManager : MonoBehaviour
     public float itchScreenFactor = 1.6f;
 
     public bool started;
+    public bool startLock;
 
     public bool SPU;
 
@@ -54,7 +55,7 @@ public class CameraManager : MonoBehaviour
             minZ = Mathf.Max(minZ - lenZ, -gameManagerScript.spawnRadius - space);
             maxZ = Mathf.Min(maxZ + lenZ, gameManagerScript.spawnRadius + space);
 
-            myCamera.orthographicSize = Mathf.Max(500, Mathf.Max((maxX - minX) / itchScreenFactor, (maxZ - minZ))) / 2;
+            myCamera.orthographicSize = Mathf.Max(500, Mathf.Max((maxX - minX) / itchScreenFactor, maxZ - minZ)) / 2;
 
             transform.position = new Vector3((minX + maxX) / 2, transform.position.y, (minZ + maxZ) / 2);
 
@@ -70,6 +71,7 @@ public class CameraManager : MonoBehaviour
         }
     }
 
+    //used in gameManager startRound
     IEnumerator delayStart()
     {
         //reset
@@ -84,6 +86,15 @@ public class CameraManager : MonoBehaviour
         {
             yield return new WaitForSeconds(2.0f);
         }
-        started = true;
+
+        //for map 6
+        if (startLock)
+        {
+            startLock = false;
+        }
+        else
+        {
+            started = true;
+        }
     }
 }

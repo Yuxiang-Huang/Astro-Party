@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class MapManager : MonoBehaviour
 {
     GameManager gameManagerScript;
+    CameraManager cameraMangerScript;
 
     List<GameObject> allMaps = new List<GameObject>();
 
@@ -39,6 +40,7 @@ public class MapManager : MonoBehaviour
     void Start()
     {
         gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        cameraMangerScript = GameObject.Find("Main Camera").GetComponent<CameraManager>();
 
         Map1.SetActive(false);
         Map2.SetActive(false);
@@ -157,6 +159,8 @@ public class MapManager : MonoBehaviour
     void reset6()
     {
         Map6.GetComponent<PortalManager>().reset();
+        //fix camera for map6
+        cameraMangerScript.startLock = true;
     }
 
     public void Map1OnOff()
