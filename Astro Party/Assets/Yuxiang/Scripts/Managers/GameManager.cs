@@ -241,7 +241,7 @@ public class GameManager : MonoBehaviour
         scoreManagerScript.pauseText.SetActive(true);
 
         //highlight mode
-        if (scoreManagerScript.shipMode == "highlight")
+        if (scoreManagerScript.gameMode == "highlight")
         {
             highLightScreen.SetActive(true);
             highlightModeManagerScript.startRound();
@@ -266,7 +266,7 @@ public class GameManager : MonoBehaviour
             List<GameObject> shipList = inGameShips[i];
 
             //reward for team winner
-            if (scoreManagerScript.gameMode == "team")
+            if (scoreManagerScript.SoloOrTeam == "team")
             {
                 if (shipList.Count > 0)
                 {

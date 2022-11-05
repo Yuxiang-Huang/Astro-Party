@@ -531,7 +531,7 @@ public class MutualShip : MonoBehaviour
 
             powerUpManagerScript.dropItem(this);
 
-            if (scoreManagerScript.shipMode == "ship")
+            if (scoreManagerScript.gameMode == "ship")
             {
                 if (otherID == id)
                 {
@@ -543,13 +543,13 @@ public class MutualShip : MonoBehaviour
                 }
                 Destroy(this.gameObject);
             }
-            else if (scoreManagerScript.shipMode == "pilot" || scoreManagerScript.shipMode == "highlight")
+            else if (scoreManagerScript.gameMode == "pilot" || scoreManagerScript.gameMode == "highlight")
             {
                 spawnPilot();
             }
 
             //for highlight mode
-            if (scoreManagerScript.shipMode == "highlight")
+            if (scoreManagerScript.gameMode == "highlight")
             {
                 if (highlighed)
                 {
@@ -599,7 +599,7 @@ public class MutualShip : MonoBehaviour
 
     void suicide()
     {
-        if (scoreManagerScript.gameMode == "solo")
+        if (scoreManagerScript.SoloOrTeam == "solo")
         { 
             switch (id)
             {
@@ -624,7 +624,7 @@ public class MutualShip : MonoBehaviour
 
     void earnPoint(int ID)
     {
-        if (scoreManagerScript.gameMode == "solo")
+        if (scoreManagerScript.SoloOrTeam == "solo")
         {
             //suicide
             if (ID == -1)

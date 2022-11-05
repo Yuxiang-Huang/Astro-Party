@@ -62,7 +62,7 @@ public class BotMove : MonoBehaviour
                             trace = false;
                         }
 
-                        if (scoreManagerScript.shipMode == "highlight")
+                        if (scoreManagerScript.gameMode == "highlight")
                         {
                             trace = false;
                         }
@@ -75,7 +75,7 @@ public class BotMove : MonoBehaviour
                             trace = false;
                         }
 
-                        if (scoreManagerScript.shipMode == "highlight")
+                        if (scoreManagerScript.gameMode == "highlight")
                         {
                             trace = false;
                         }

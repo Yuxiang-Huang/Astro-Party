@@ -167,11 +167,11 @@ public class BotPilotMove : MonoBehaviour
         }
         if (toKill)
         {
-            //sound effect
-            SEManagerScript.generalAudio.PlayOneShot(SEManagerScript.pilotDeath);
-
-            if (scoreManagerScript.shipMode == "pilot")
+            if (scoreManagerScript.gameMode == "pilot")
             {
+                //sound effect
+                SEManagerScript.generalAudio.PlayOneShot(SEManagerScript.pilotDeath);
+
                 if (otherID == id)
                 {
                     suicide();
@@ -182,7 +182,7 @@ public class BotPilotMove : MonoBehaviour
                 }
             }
 
-            if (scoreManagerScript.shipMode != "highlight")
+            if (scoreManagerScript.gameMode != "highlight")
             {
                 Destroy(this.gameObject);
             }
@@ -191,7 +191,7 @@ public class BotPilotMove : MonoBehaviour
 
     void earnPoint(int ID)
     {
-        if (scoreManagerScript.gameMode == "solo")
+        if (scoreManagerScript.SoloOrTeam == "solo")
         {
             //suicide
             if (ID == -1)
@@ -242,7 +242,7 @@ public class BotPilotMove : MonoBehaviour
 
     void suicide()
     {
-        if (scoreManagerScript.gameMode == "solo")
+        if (scoreManagerScript.SoloOrTeam == "solo")
         {
             switch (id)
             {

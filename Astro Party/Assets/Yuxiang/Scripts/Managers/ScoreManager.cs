@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
+    public string SoloOrTeam;
     public string gameMode;
-    public string shipMode;
 
     GameManager gameManagerScript;
 
@@ -90,7 +90,7 @@ public class ScoreManager : MonoBehaviour
         endScreen.SetActive(false);
         scoreScreen.SetActive(false);
 
-        shipMode = "ship";
+        gameMode = "ship";
     }
 
     // Update is called once per frame
@@ -125,7 +125,7 @@ public class ScoreManager : MonoBehaviour
 
         winningShip = new List<int>();
 
-        if (gameMode == "solo")
+        if (SoloOrTeam == "solo")
         {
             while (!closeEnough(P1.transform.position.x - startPosX, P1Score * lengthOfSquare))
             {
@@ -253,7 +253,7 @@ public class ScoreManager : MonoBehaviour
             }
         }
 
-        else if (gameMode == "team")
+        else if (SoloOrTeam == "team")
         {
             yield return new WaitForSeconds(1f);
             checkPScoreTeam(P1, P1Score, 1);
@@ -274,7 +274,7 @@ public class ScoreManager : MonoBehaviour
         }
         else
         {
-            if (gameMode == "team")
+            if (SoloOrTeam == "team")
             {
                 endScreen.SetActive(true);
                 pauseText.SetActive(false);
@@ -304,7 +304,7 @@ public class ScoreManager : MonoBehaviour
                         break;
                 }
             }
-            if (gameMode == "solo")
+            if (SoloOrTeam == "solo")
             {
                 P1WinText.SetActive(false);
                 P2WinText.SetActive(false);
@@ -548,23 +548,23 @@ public class ScoreManager : MonoBehaviour
         friendlyFire = !friendlyFire;
     }
 
-    public void setShipMode()
+    public void setgameMode()
     {
-        if (shipMode == "ship")
+        if (gameMode == "ship")
         {
-            shipMode = "pilot";
+            gameMode = "pilot";
             teamModeText.text = "Team Pilot Hunter";
             soloModeText.text = "Solo Pilot Hunter";
         }
-        else if (shipMode == "pilot")
+        else if (gameMode == "pilot")
         {
-            shipMode = "highlight";
+            gameMode = "highlight";
             teamModeText.text = "Team Highlight";
             soloModeText.text = "Solo Highlight";
         }
-        else if (shipMode == "highlight")
+        else if (gameMode == "highlight")
         {
-            shipMode = "ship";
+            gameMode = "ship";
             teamModeText.text = "Team Ship Hunter";
             soloModeText.text = "Solo Ship Hunter";
         }

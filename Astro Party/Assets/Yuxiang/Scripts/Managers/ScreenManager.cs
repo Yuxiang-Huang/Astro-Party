@@ -76,17 +76,17 @@ public class ScreenManager : MonoBehaviour
 
         //determine game mode to be solo or team
 
-        scoreManagerScript.gameMode = "solo";
+        scoreManagerScript.SoloOrTeam = "solo";
 
         for (int i = 0; i < gameManagerScript.ships.Count; i++)
         {
             if (gameManagerScript.ships[i].Count > 1)
             {
-                scoreManagerScript.gameMode = "team";
+                scoreManagerScript.SoloOrTeam = "team";
             }
         }
 
-        if (scoreManagerScript.gameMode == "team")
+        if (scoreManagerScript.SoloOrTeam == "team")
         {
             friendlyFireButton.SetActive(true);
             teamModeText.SetActive(true);
