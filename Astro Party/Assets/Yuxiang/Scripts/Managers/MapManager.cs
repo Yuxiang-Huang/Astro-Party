@@ -47,6 +47,7 @@ public class MapManager : MonoBehaviour
         gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
         cameraMangerScript = GameObject.Find("Main Camera").GetComponent<CameraManager>();
 
+        Map0.SetActive(false);
         Map1.SetActive(false);
         Map2.SetActive(false);
         Map3.SetActive(false);
@@ -54,12 +55,13 @@ public class MapManager : MonoBehaviour
         Map5.SetActive(false);
         Map6.SetActive(false);
 
+        //allMaps.Add(Map0);
         allMaps.Add(Map1);
-        allMaps.Add(Map2);
-        allMaps.Add(Map3);
-        allMaps.Add(Map4);
-        allMaps.Add(Map5);
-        allMaps.Add(Map6);
+        //allMaps.Add(Map2);
+        //allMaps.Add(Map3);
+        //allMaps.Add(Map4);
+        //allMaps.Add(Map5);
+        //allMaps.Add(Map6);
     }
 
     void Update()
@@ -134,8 +136,8 @@ public class MapManager : MonoBehaviour
 
     void reset1()
     {
-        float posV = Random.Range(5, 25);
-        float negV = -Random.Range(5, 25);
+        float posV = Random.Range(0.5f, 1.5f);
+        float negV = -Random.Range(0.5f, 1.5f);
 
         if (Random.Range(0, 2) == 0)
         {
