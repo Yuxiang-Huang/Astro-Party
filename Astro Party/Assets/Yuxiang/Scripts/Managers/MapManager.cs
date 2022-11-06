@@ -8,8 +8,12 @@ public class MapManager : MonoBehaviour
     GameManager gameManagerScript;
     CameraManager cameraMangerScript;
 
+    List<GameObject> currMaps = new List<GameObject>();
     List<GameObject> allMaps = new List<GameObject>();
     List<Text> allText = new List<Text>();
+
+    bool allChange;
+    public Text allChangeText;
 
     int currMapID;
 
@@ -64,6 +68,11 @@ public class MapManager : MonoBehaviour
         allMaps.Add(Map5);
         allMaps.Add(Map6);
 
+        foreach (GameObject map in allMaps)
+        {
+            currMaps.Add(map);
+        }
+
         allText.Add(Map0Text);
         allText.Add(Map1Text);
         allText.Add(Map2Text);
@@ -75,7 +84,7 @@ public class MapManager : MonoBehaviour
 
     void Update()
     {
-        if (allMaps.Count == 0)
+        if (currMaps.Count == 0)
         {
             backButton.SetActive(false);
         }
@@ -89,7 +98,7 @@ public class MapManager : MonoBehaviour
     {
         if (currMapID != 0)
         {
-            foreach (GameObject currMap in allMaps)
+            foreach (GameObject currMap in currMaps)
             {
                 if (currMap.GetComponent<Map>().mapID == currMapID)
                 {
@@ -101,10 +110,10 @@ public class MapManager : MonoBehaviour
 
     public void resetMap()
     {
-        //last map
+        //last map off
         if (currMapID != 0)
         {
-            foreach (GameObject currMap in allMaps)
+            foreach (GameObject currMap in currMaps)
             {
                 if (currMap.GetComponent<Map>().mapID == currMapID)
                 {
@@ -114,7 +123,7 @@ public class MapManager : MonoBehaviour
         }
 
         //next map
-        GameObject map = allMaps[Random.Range(0, allMaps.Count)];
+        GameObject map = currMaps[Random.Range(0, currMaps.Count)];
 
         currMapID = map.GetComponent<Map>().mapID;
 
@@ -126,6 +135,7 @@ public class MapManager : MonoBehaviour
 
         gameManagerScript.spawnRadius = map.GetComponent<Map>().radius;
 
+        //call function
         switch (currMapID)
         {
             case 0: reset0(); break;
@@ -136,6 +146,45 @@ public class MapManager : MonoBehaviour
             case 5: reset5(); break;
             case 6: reset6(); break;
         }
+    }
+
+
+    public void AllChange()
+    {
+        if (allChange)
+        {
+            //all on
+            while (currMaps.Count > 0)
+            {
+                currMaps.RemoveAt(0);
+            }
+
+            foreach (GameObject map in allMaps)
+            {
+                currMaps.Add(map);
+            }
+
+            foreach (Text mapText in allText)
+            {
+                mapText.text = "On";
+            }
+            allChangeText.text = "All Off";
+        }
+        else
+        {
+            //all off
+            while (currMaps.Count > 0)
+            {
+                currMaps.RemoveAt(0);
+            }
+
+            foreach (Text mapText in allText)
+            {
+                mapText.text = "Off";
+            }
+            allChangeText.text = "All On";
+        }
+        allChange = !allChange;
     }
 
     void reset0()
@@ -198,19 +247,6 @@ public class MapManager : MonoBehaviour
         cameraMangerScript.startLock = true;
     }
 
-    public void AllOff()
-    {
-        while (allMaps.Count > 0)
-        {
-            allMaps.RemoveAt(0);
-        }
-
-        foreach (Text mapText in allText)
-        {
-            mapText.text = "Off";
-        }
-    }
-
     public void Map0OnOff()
     {
         MapOnOffHelper(Map0, Map0Text);
@@ -248,14 +284,14 @@ public class MapManager : MonoBehaviour
 
     void MapOnOffHelper(GameObject map, Text mapText)
     {
-        if (allMaps.Contains(map))
+        if (currMaps.Contains(map))
         {
-            allMaps.Remove(map);
+            currMaps.Remove(map);
             mapText.text = "Off";
         }
         else
         {
-            allMaps.Add(map);
+            currMaps.Add(map);
             mapText.text = "On";
         }
     }
