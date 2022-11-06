@@ -14,8 +14,13 @@ public class MapManager : MonoBehaviour
 
     public GameObject backButton;
 
+    public GameObject Map0;
+    public Text Map0Text;
+
     public GameObject Map1;
     public Text Map1Text;
+    public List<GameObject> Map1rotatingInner;
+    public List<GameObject> Map1rotatingOuter;
 
     public GameObject Map2;
     public Text Map2Text;
