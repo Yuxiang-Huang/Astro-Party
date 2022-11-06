@@ -81,6 +81,7 @@ public class PowerUpManager : MonoBehaviour
         allText.Add(tripleText);
         allText.Add(freezerText);
         allText.Add(shieldText);
+        allText.Add(mineText);
         allText.Add(BBText);
         allText.Add(jousterText);
 
