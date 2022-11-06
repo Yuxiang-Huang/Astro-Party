@@ -43,7 +43,7 @@ public class Freezer : MonoBehaviour
 
             if (toFreeze)
             {
-                collision.gameObject.GetComponent<MutualShip>().freezeTime += 1.5f;
+                collision.gameObject.GetComponent<MutualShip>().freezeTime += 1f;
             }
         }
 

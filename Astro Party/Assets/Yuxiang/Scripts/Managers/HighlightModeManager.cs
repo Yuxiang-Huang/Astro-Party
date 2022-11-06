@@ -88,7 +88,7 @@ public class HighlightModeManager : MonoBehaviour
                 PTime[ID - 1].text = "P" + ID + ": " + (int)times[ID-1];
 
                 //check for ending
-                if (times[ID - 1] <= (ID - 1) * 0.1f) //restore this little difference
+                if (times[ID - 1] <= 0)
                 {
                     reset();
                     displayWinner(ID);
@@ -131,7 +131,8 @@ public class HighlightModeManager : MonoBehaviour
                     updateTime = 1;
 
                     TextMeshProUGUI curr = PTime[ID - 1];
-                    data.Sort((x, y) => x.Value.CompareTo(y.Value));
+                    //to prevent equal case
+                    data.Sort((x, y) => x.Value.CompareTo(y.Value + 0.1f));
                     for (int i = 0; i < data.Count; i++)
                     {
                         //set time pos
@@ -162,8 +163,7 @@ public class HighlightModeManager : MonoBehaviour
         times = new float[5];
         for (int i = 0; i < 5; i++)
         {
-            //little difference to prevent sorting problem
-            times[i] = totalTime + 0.1f * i;
+            times[i] = totalTime;
         }
 
         data = new List<KeyValuePair<TextMeshProUGUI, float>>();
