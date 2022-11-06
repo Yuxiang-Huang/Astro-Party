@@ -189,6 +189,11 @@ public class MapManager : MonoBehaviour
         cameraMangerScript.startLock = true;
     }
 
+    public void Map0OnOff()
+    {
+        MapOnOffHelper(Map0, Map0Text);
+    }
+
     public void Map1OnOff()
     {
         MapOnOffHelper(Map1, Map1Text);
