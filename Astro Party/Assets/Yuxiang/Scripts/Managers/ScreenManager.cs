@@ -17,6 +17,7 @@ public class ScreenManager : MonoBehaviour
     public GameObject infoScreen2;
     public GameObject mapScreen;
     public GameObject powerUpScreen;
+    public GameObject specialPowerUpScreen;
 
     public GameObject SPUScreen;
     public TextMeshProUGUI P1SPUText;
@@ -46,6 +47,7 @@ public class ScreenManager : MonoBehaviour
         infoScreen2.SetActive(false);
         mapScreen.SetActive(false);
         powerUpScreen.SetActive(false);
+        specialPowerUpScreen.SetActive(false);
         P1PowerUpScreen.SetActive(false);
         P2PowerUpScreen.SetActive(false);
         P3PowerUpScreen.SetActive(false);
@@ -167,6 +169,14 @@ public class ScreenManager : MonoBehaviour
         infoScreen1.SetActive(true);
     }
 
+    //power up
+
+    public void nextToSpecialPowerUp()
+    {
+        powerUpScreen.SetActive(false);
+        specialPowerUpScreen.SetActive(true);
+    }
+
     public void nextToP1PowerUp()
     {
         powerUpScreen.SetActive(false);
@@ -204,6 +214,7 @@ public class ScreenManager : MonoBehaviour
         P3PowerUpScreen.SetActive(false);
         P4PowerUpScreen.SetActive(false);
         P5PowerUpScreen.SetActive(false);
+        specialPowerUpScreen.SetActive(false);
         powerUpScreen.SetActive(true);
     }
 

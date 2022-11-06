@@ -5,7 +5,7 @@ import java.lang.*;
 
 public class Main {
   public static void main(String[] args) throws InterruptedException {
-    for (int times = 10; times < 17; times ++){
+    for (int times = 17; times < 18; times ++){
       Screen s = new Screen();
       Color c;
 
