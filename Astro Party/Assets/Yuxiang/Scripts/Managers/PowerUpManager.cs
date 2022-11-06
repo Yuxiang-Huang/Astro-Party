@@ -99,12 +99,14 @@ public class PowerUpManager : MonoBehaviour
     {
         if (isAutoBalance)
         {
+            //find maxScore
             int maxScore = scoreManagerScript.P1Score;
             maxScore = Mathf.Max(maxScore, scoreManagerScript.P2Score);
             maxScore = Mathf.Max(maxScore, scoreManagerScript.P3Score);
             maxScore = Mathf.Max(maxScore, scoreManagerScript.P4Score);
             maxScore = Mathf.Max(maxScore, scoreManagerScript.P5Score);
 
+            //helper
             foreach (List<GameObject> shipList in gameManagerScript.inGameShips)
             {
                 foreach (GameObject ship in shipList)

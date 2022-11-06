@@ -104,11 +104,6 @@ public class SPUManager : MonoBehaviour
 
     public void setTripleSPU()
     {
-        setTripleHelper(id, SPUTripleText);
-    }
-
-    void setTripleHelper(int id, Text modeText)
-    {
         foreach (List<GameObject> shipList in gameManagerScript.ships)
         {
             foreach (GameObject ship in shipList)
@@ -119,12 +114,12 @@ public class SPUManager : MonoBehaviour
                     if (script.tripleShot)
                     {
                         script.tripleShot = false;
-                        modeText.text = "Triple Shot: Off";
+                        SPUTripleText.text = "Triple Shot: Off";
                     }
                     else
                     {
                         script.tripleShot = true;
-                        modeText.text = "Triple Shot: On";
+                        SPUTripleText.text = "Triple Shot: On";
                     }
                 }
             }
@@ -134,11 +129,6 @@ public class SPUManager : MonoBehaviour
     //Shield
 
     public void setShieldSPU()
-    {
-        setShiledHelper(id, SPUShieldText);
-    }
-
-    void setShiledHelper(int id, Text modeText)
     {
         foreach (List<GameObject> shipList in gameManagerScript.ships)
         {
@@ -150,12 +140,12 @@ public class SPUManager : MonoBehaviour
                     if (script.hasShield)
                     {
                         script.hasShield = false;
-                        modeText.text = "Shield: Off";
+                        SPUShieldText.text = "Shield: Off";
                     }
                     else
                     {
                         script.hasShield = true;
-                        modeText.text = "Shield: On";
+                        SPUShieldText.text = "Shield: On";
                     }
                 }
             }

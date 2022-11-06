@@ -17,7 +17,7 @@ public class ScreenManager : MonoBehaviour
     public GameObject infoScreen2;
     public GameObject mapScreen;
     public GameObject powerUpScreen;
-    public GameObject specialPowerUpScreen;
+    public GameObject AllSPUScreen;
 
     public GameObject SPUScreen;
     public TextMeshProUGUI P1SPUText;
@@ -39,6 +39,13 @@ public class ScreenManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //set it for allSPUManager
+        P1PowerUpScreen.SetActive(true);
+        P2PowerUpScreen.SetActive(true);
+        P3PowerUpScreen.SetActive(true);
+        P4PowerUpScreen.SetActive(true);
+        P5PowerUpScreen.SetActive(true);
+
         startScreen.SetActive(true);
         shipScreen.SetActive(false);
         lastScreen.SetActive(false);
@@ -47,7 +54,7 @@ public class ScreenManager : MonoBehaviour
         infoScreen2.SetActive(false);
         mapScreen.SetActive(false);
         powerUpScreen.SetActive(false);
-        specialPowerUpScreen.SetActive(false);
+        AllSPUScreen.SetActive(false);
         P1PowerUpScreen.SetActive(false);
         P2PowerUpScreen.SetActive(false);
         P3PowerUpScreen.SetActive(false);
@@ -174,7 +181,7 @@ public class ScreenManager : MonoBehaviour
     public void nextToSpecialPowerUp()
     {
         powerUpScreen.SetActive(false);
-        specialPowerUpScreen.SetActive(true);
+        AllSPUScreen.SetActive(true);
     }
 
     public void nextToP1PowerUp()
@@ -214,7 +221,7 @@ public class ScreenManager : MonoBehaviour
         P3PowerUpScreen.SetActive(false);
         P4PowerUpScreen.SetActive(false);
         P5PowerUpScreen.SetActive(false);
-        specialPowerUpScreen.SetActive(false);
+        AllSPUScreen.SetActive(false);
         powerUpScreen.SetActive(true);
     }
 
