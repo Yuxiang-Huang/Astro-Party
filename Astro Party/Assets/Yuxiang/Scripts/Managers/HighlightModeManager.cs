@@ -17,9 +17,10 @@ public class HighlightModeManager : MonoBehaviour
     public int totalTime = 60;
 
     public GameObject crown;
+    public GameObject crownPic;
     int crownY = 10;
+    float startCrownY;
     float startTimeY;
-    float startPosY;
     public float len;
     public Canvas canvas;
     float updateTime;
@@ -38,6 +39,7 @@ public class HighlightModeManager : MonoBehaviour
         //set variables
         canvas.gameObject.SetActive(true);
         startTimeY = PTime[0].gameObject.transform.position.y;
+        startCrownY = crownPic.gameObject.transform.position.y;
         float scale = canvas.scaleFactor;
         len *= scale;
         canvas.gameObject.SetActive(false);
@@ -71,6 +73,7 @@ public class HighlightModeManager : MonoBehaviour
 
             if (ID == -1)
             {
+                crownPic.SetActive(false);
                 //spawn if no crown
                 if (inGameCrown == null)
                 {
@@ -92,48 +95,70 @@ public class HighlightModeManager : MonoBehaviour
                     gameManagerScript.endRound();
                 }
 
-                ////order the time
-                //if (updateTime <= 0)
-                //{
-                //    //update the values
-                //    for (int i = data.Count - 1; i >= 0; i--)
-                //    {
-                //        if (data[i].Key == PTime[0])
-                //        {
-                //            data.Add(new KeyValuePair<TextMeshProUGUI, float>(data[i].Key, times[0]));
-                //        }
-                //        else if (data[i].Key == PTime[1])
-                //        {
-                //            data.Add(new KeyValuePair<TextMeshProUGUI, float>(data[i].Key, times[1]));
-                //        }
-                //        else if (data[i].Key == PTime[2])
-                //        {
-                //            data.Add(new KeyValuePair<TextMeshProUGUI, float>(data[i].Key, times[2]));
-                //        }
-                //        else if (data[i].Key == PTime[3])
-                //        {
-                //            data.Add(new KeyValuePair<TextMeshProUGUI, float>(data[i].Key, times[3]));
-                //        }
-                //        else if (data[i].Key == PTime[4])
-                //        {
-                //            data.Add(new KeyValuePair<TextMeshProUGUI, float>(data[i].Key, times[4]));
-                //        }
+                //Update Crown
+                crownPic.SetActive(true);
 
-                //        data.RemoveAt(i);
-                //    }
+                //order the time
+                if (updateTime <= 0)
+                {
+                    //update the values
+                    for (int i = data.Count - 1; i >= 0; i--)
+                    {
+                        if (data[i].Key == PTime[0])
+                        {
+                            data.Add(new KeyValuePair<TextMeshProUGUI, float>(data[i].Key, times[0]));
+                        }
+                        else if (data[i].Key == PTime[1])
+                        {
+                            data.Add(new KeyValuePair<TextMeshProUGUI, float>(data[i].Key, times[1]));
+                        }
+                        else if (data[i].Key == PTime[2])
+                        {
+                            data.Add(new KeyValuePair<TextMeshProUGUI, float>(data[i].Key, times[2]));
+                        }
+                        else if (data[i].Key == PTime[3])
+                        {
+                            data.Add(new KeyValuePair<TextMeshProUGUI, float>(data[i].Key, times[3]));
+                        }
+                        else if (data[i].Key == PTime[4])
+                        {
+                            data.Add(new KeyValuePair<TextMeshProUGUI, float>(data[i].Key, times[4]));
+                        }
 
-                //    updateTime = 1;
-                //    data.Sort((x, y) => x.Value.CompareTo(y.Value));
-                //    for (int i = 0; i < data.Count; i++)
-                //    {
-                //        pos = data[i].Key.transform.position;
-                //        data[i].Key.transform.position = new Vector3(pos.x, startTimeY + i * len, pos.z);
-                //    }
-                //}
-                //else
-                //{
-                //    updateTime -= Time.deltaTime;
-                //}
+                        data.RemoveAt(i);
+                    }
+
+                    updateTime = 1;
+
+                    TextMeshProUGUI curr = PTime[ID - 1];
+                    for (int i = 1; i < data.Count; i++)
+                    {
+                        //switch with the time before it
+                        if (data[i].Key == curr){
+                            int yval = i;
+                            if (data[i].Value < data[i - 1].Value)
+                            {
+                                yval--;
+                                data.Insert(i - 1, data[i]);
+                                data.RemoveAt(i);
+
+                                //set pos
+                                Vector3 pos = data[i-1].Key.transform.position;
+                                data[i].Key.transform.position = new Vector3(pos.x, startTimeY + (i - 1) * len, pos.y);
+
+                                pos = data[i].Key.transform.position;
+                                data[i].Key.transform.position = new Vector3(pos.x, startTimeY + i * len, pos.y);
+                            }
+                            //set crown pos
+                            Vector3 pos0 = crownPic.transform.position;
+                            crownPic.transform.position = new Vector3(pos0.x, startCrownY + yval * len, pos0.y);
+                        }
+                    }
+                }
+                else
+                {
+                    updateTime -= Time.deltaTime;
+                }
             }
         }
     }
