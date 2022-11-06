@@ -88,7 +88,7 @@ public class HighlightModeManager : MonoBehaviour
                 PTime[ID - 1].text = "P" + ID + ": " + (int)times[ID-1];
 
                 //check for ending
-                if (times[ID - 1] <= 0)
+                if (times[ID - 1] <= (ID - 1) * 0.1f) //restore this little difference
                 {
                     reset();
                     displayWinner(ID);
@@ -101,7 +101,7 @@ public class HighlightModeManager : MonoBehaviour
                 //order the time
                 if (updateTime <= 0)
                 {
-                    //update the values
+                    //update the time values
                     for (int i = data.Count - 1; i >= 0; i--)
                     {
                         if (data[i].Key == PTime[0])
@@ -131,27 +131,18 @@ public class HighlightModeManager : MonoBehaviour
                     updateTime = 1;
 
                     TextMeshProUGUI curr = PTime[ID - 1];
-                    for (int i = 1; i < data.Count; i++)
+                    data.Sort((x, y) => x.Value.CompareTo(y.Value));
+                    for (int i = 0; i < data.Count; i++)
                     {
-                        //switch with the time before it
-                        if (data[i].Key == curr){
-                            int yval = i;
-                            if (data[i].Value < data[i - 1].Value)
-                            {
-                                yval--;
-                                data.Insert(i - 1, data[i]);
-                                data.RemoveAt(i);
+                        //set time pos
+                        Vector3 pos = data[i].Key.transform.position;
+                        data[i].Key.transform.position = new Vector3(pos.x, startTimeY + i * len, pos.z);
 
-                                //set pos
-                                Vector3 pos = data[i-1].Key.transform.position;
-                                data[i].Key.transform.position = new Vector3(pos.x, startTimeY + (i - 1) * len, pos.y);
-
-                                pos = data[i].Key.transform.position;
-                                data[i].Key.transform.position = new Vector3(pos.x, startTimeY + i * len, pos.y);
-                            }
+                        if (data[i].Key == curr)
+                        {
                             //set crown pos
-                            Vector3 pos0 = crownPic.transform.position;
-                            crownPic.transform.position = new Vector3(pos0.x, startCrownY + yval * len, pos0.y);
+                            pos = crownPic.transform.position;
+                            crownPic.transform.position = new Vector3(pos.x, startCrownY + i * len, pos.y);
                         }
                     }
                 }
@@ -171,7 +162,8 @@ public class HighlightModeManager : MonoBehaviour
         times = new float[5];
         for (int i = 0; i < 5; i++)
         {
-            times[i] = totalTime;
+            //little difference to prevent sorting problem
+            times[i] = totalTime + 0.1f * i;
         }
 
         data = new List<KeyValuePair<TextMeshProUGUI, float>>();
