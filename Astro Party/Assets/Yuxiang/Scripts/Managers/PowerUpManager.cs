@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class PowerUpManager : MonoBehaviour
 {
+    public List<KeyValuePair<string, GameObject>> allPowerUps = new List<KeyValuePair<string, GameObject>>();
     public List<GameObject> indicators = new List<GameObject>();
     public List<string> SPU = new List<string>();
 
@@ -55,6 +56,16 @@ public class PowerUpManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        allPowerUps.Add(new KeyValuePair<string, GameObject>("Laser Beam", laserIndicator));
+        allPowerUps.Add(new KeyValuePair<string, GameObject>("Scatter Shot", scatterIndicator));
+        allPowerUps.Add(new KeyValuePair<string, GameObject>("Triple Shot", tripleShotIndicator));
+        allPowerUps.Add(new KeyValuePair<string, GameObject>("Freezer", freezerIndicator));
+        allPowerUps.Add(new KeyValuePair<string, GameObject>("Shield", shieldIndicator));
+        allPowerUps.Add(new KeyValuePair<string, GameObject>("Proximity Mine", mineIndicator));
+        allPowerUps.Add(new KeyValuePair<string, GameObject>("Bouncy Bullet", BBIndicator));
+        allPowerUps.Add(new KeyValuePair<string, GameObject>("Jouster", jousterIndicator));
+
+
         indicators.Add(laserIndicator);
         indicators.Add(scatterIndicator);
         //indicators.Add(tripleShotIndicator);
@@ -64,12 +75,13 @@ public class PowerUpManager : MonoBehaviour
         indicators.Add(BBIndicator);
         indicators.Add(jousterIndicator);
 
-        SPU.Add("Laser Beam");
         SPU.Add("Scatter Shot");
         SPU.Add("Freezer");
         SPU.Add("Proximity Mine");
         SPU.Add("Bouncy Bullet");
         SPU.Add("Jouster");
+
+        //except triple shot, shield
 
         gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
         scoreManagerScript = GameObject.Find("Score Manager").GetComponent<ScoreManager>();
@@ -134,6 +146,7 @@ public class PowerUpManager : MonoBehaviour
         }
     }
 
+    //for auto balance
     void getPowerUp(int score, int maxScore, MutualShip script)
     {
         if (score < maxScore - 1)
@@ -163,6 +176,23 @@ public class PowerUpManager : MonoBehaviour
     }
 
     //PowerUP
+
+    public void AllOff()
+    {
+        while (indicators.Count > 0)
+        {
+            indicators.RemoveAt(0);
+        }
+
+        laserText.text = "Laser Beam: Off";
+        scatterText.text = "Scatter Shot: Off";
+        tripleText.text = "Triple Shot: Off";
+        freezerText.text = "Freezer: Off";
+        shieldText.text = "Shield: Off";
+        mineText.text = "Proximity Mine: Off";
+        BBText.text = "Bouncy Bullet: Off";
+        jousterText.text = "Jouster: Off";
+    }
 
     public void setTriplePowerUp()
     {
