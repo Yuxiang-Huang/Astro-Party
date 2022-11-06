@@ -8,6 +8,7 @@ public class PowerUpManager : MonoBehaviour
     public List<KeyValuePair<string, GameObject>> allPowerUps = new List<KeyValuePair<string, GameObject>>();
     public List<GameObject> indicators = new List<GameObject>();
     public List<string> SPU = new List<string>();
+    public List<Text> allText = new List<Text>();
 
     public int powerUpyValue = 30;
 
@@ -65,23 +66,23 @@ public class PowerUpManager : MonoBehaviour
         allPowerUps.Add(new KeyValuePair<string, GameObject>("Bouncy Bullet", BBIndicator));
         allPowerUps.Add(new KeyValuePair<string, GameObject>("Jouster", jousterIndicator));
 
+        foreach (KeyValuePair<string, GameObject> curr in allPowerUps)
+        {
+            SPU.Add(curr.Key);
+            indicators.Add(curr.Value);
+        }
+        indicators.Remove(tripleShotIndicator);
+        SPU.Remove("Triple Shot");
+        SPU.Remove("Shield");
 
-        indicators.Add(laserIndicator);
-        indicators.Add(scatterIndicator);
-        //indicators.Add(tripleShotIndicator);
-        indicators.Add(freezerIndicator);
-        indicators.Add(shieldIndicator);
-        indicators.Add(mineIndicator);
-        indicators.Add(BBIndicator);
-        indicators.Add(jousterIndicator);
-
-        SPU.Add("Scatter Shot");
-        SPU.Add("Freezer");
-        SPU.Add("Proximity Mine");
-        SPU.Add("Bouncy Bullet");
-        SPU.Add("Jouster");
-
-        //except triple shot, shield
+        //set text
+        allText.Add(laserText);
+        allText.Add(scatterText);
+        allText.Add(tripleText);
+        allText.Add(freezerText);
+        allText.Add(shieldText);
+        allText.Add(BBText);
+        allText.Add(jousterText);
 
         gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
         scoreManagerScript = GameObject.Find("Score Manager").GetComponent<ScoreManager>();
@@ -184,14 +185,10 @@ public class PowerUpManager : MonoBehaviour
             indicators.RemoveAt(0);
         }
 
-        laserText.text = "Laser Beam: Off";
-        scatterText.text = "Scatter Shot: Off";
-        tripleText.text = "Triple Shot: Off";
-        freezerText.text = "Freezer: Off";
-        shieldText.text = "Shield: Off";
-        mineText.text = "Proximity Mine: Off";
-        BBText.text = "Bouncy Bullet: Off";
-        jousterText.text = "Jouster: Off";
+        for (int i = 0; i < allText.Count; i++)
+        {
+            allText[i].text = allPowerUps[i].Key + " Off";
+        }
     }
 
     public void setTriplePowerUp()
@@ -337,38 +334,15 @@ public class PowerUpManager : MonoBehaviour
     {
         if (script.shootMode != "normal")
         {
-            switch (script.shootMode)
+            foreach (KeyValuePair<string, GameObject> curr in allPowerUps)
             {
-                case "Laser Beam":
-                    GameObject toAdd = Instantiate(laserIndicator,
+                if (script.shootMode == curr.Key)
+                {
+                    GameObject toAdd = Instantiate(curr.Value,
                         new Vector3(script.transform.position.x, powerUpyValue, script.transform.position.z),
-                        laserIndicator.transform.rotation);
+                        curr.Value.transform.rotation);
                     gameManagerScript.inGameIndicators.Add(toAdd);
-                    break;
-                case "Scatter Shot":
-                    GameObject toAdd1 = Instantiate(scatterIndicator,
-                        new Vector3(script.transform.position.x, powerUpyValue, script.transform.position.z),
-                        scatterIndicator.transform.rotation);
-                    gameManagerScript.inGameIndicators.Add(toAdd1);
-                    break;
-                case "Freezer":
-                    GameObject toAdd2 = Instantiate(freezerIndicator,
-                        new Vector3(script.transform.position.x, powerUpyValue, script.transform.position.z),
-                        freezerIndicator.transform.rotation);
-                    gameManagerScript.inGameIndicators.Add(toAdd2);
-                    break;
-                case "Proximity Mine":
-                    GameObject toAdd3 = Instantiate(mineIndicator,
-                        new Vector3(script.transform.position.x, powerUpyValue, script.transform.position.z),
-                        mineIndicator.transform.rotation);
-                    gameManagerScript.inGameIndicators.Add(toAdd3);
-                    break;
-                case "Jouster":
-                    GameObject toAdd4 = Instantiate(jousterIndicator,
-                        new Vector3(script.transform.position.x, powerUpyValue, script.transform.position.z),
-                        mineIndicator.transform.rotation);
-                    gameManagerScript.inGameIndicators.Add(toAdd4);
-                    break;
+                }
             }
         }
     }
