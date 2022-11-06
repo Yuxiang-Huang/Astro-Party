@@ -19,8 +19,8 @@ public class MapManager : MonoBehaviour
 
     public GameObject Map1;
     public Text Map1Text;
-    public List<GameObject> Map1rotatingInner;
-    public List<GameObject> Map1rotatingOuter;
+    public GameObject Map1rotatingInner;
+    public GameObject Map1rotatingOuter;
 
     public GameObject Map2;
     public Text Map2Text;
@@ -117,6 +117,7 @@ public class MapManager : MonoBehaviour
 
         switch (currMapID)
         {
+            case 0: reset0(); break;
             case 1: reset1(); break;
             case 2: reset2(); break;
             case 3: reset3(); break;
@@ -126,9 +127,27 @@ public class MapManager : MonoBehaviour
         }
     }
 
-    void reset1()
+    void reset0()
     {
         //nothing
+    }
+
+    void reset1()
+    {
+        float posV = Random.Range(5, 25);
+        float negV = -Random.Range(5, 25);
+
+        if (Random.Range(0, 2) == 0)
+        {
+            Map1rotatingInner.GetComponent<Map1RotatingObject>().velocity = negV;
+            Map1rotatingOuter.GetComponent<Map1RotatingObject>().velocity = posV;
+        }
+        else
+        {
+            Map1rotatingInner.GetComponent<Map1RotatingObject>().velocity = posV;
+            Map1rotatingOuter.GetComponent<Map1RotatingObject>().velocity = negV;
+
+        }
     }
 
     void reset2()
@@ -138,8 +157,8 @@ public class MapManager : MonoBehaviour
 
         foreach (GameObject curr in Map2rotatingObjects)
         {
-            curr.GetComponent<MapRotation>().reset();
-            curr.GetComponent<MapRotation>().velocity = velocity2;
+            curr.GetComponent<Map2CircularMotion>().reset();
+            curr.GetComponent<Map2CircularMotion>().velocity = velocity2;
         }
     }
 
