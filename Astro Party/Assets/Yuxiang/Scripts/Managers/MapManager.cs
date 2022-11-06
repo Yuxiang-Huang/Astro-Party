@@ -9,6 +9,7 @@ public class MapManager : MonoBehaviour
     CameraManager cameraMangerScript;
 
     List<GameObject> allMaps = new List<GameObject>();
+    List<Text> allText = new List<Text>();
 
     int currMapID;
 
@@ -62,6 +63,14 @@ public class MapManager : MonoBehaviour
         allMaps.Add(Map4);
         allMaps.Add(Map5);
         allMaps.Add(Map6);
+
+        allText.Add(Map0Text);
+        allText.Add(Map1Text);
+        allText.Add(Map2Text);
+        allText.Add(Map3Text);
+        allText.Add(Map4Text);
+        allText.Add(Map5Text);
+        allText.Add(Map6Text);
     }
 
     void Update()
@@ -187,6 +196,19 @@ public class MapManager : MonoBehaviour
         Map6.GetComponent<PortalManager>().reset();
         //fix camera for map6
         cameraMangerScript.startLock = true;
+    }
+
+    public void AllOff()
+    {
+        while (allMaps.Count > 0)
+        {
+            allMaps.RemoveAt(0);
+        }
+
+        foreach (Text mapText in allText)
+        {
+            mapText.text = "Off";
+        }
     }
 
     public void Map0OnOff()
