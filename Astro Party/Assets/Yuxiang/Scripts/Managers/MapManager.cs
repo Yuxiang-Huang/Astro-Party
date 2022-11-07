@@ -46,19 +46,14 @@ public class MapManager : MonoBehaviour
     public GameObject Map6;
     public Text Map6Text;
 
+    public GameObject Map7;
+    public Text Map7Text;
+
     // Start is called before the first frame update
     void Start()
     {
         gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
         cameraMangerScript = GameObject.Find("Main Camera").GetComponent<CameraManager>();
-
-        Map0.SetActive(false);
-        Map1.SetActive(false);
-        Map2.SetActive(false);
-        Map3.SetActive(false);
-        Map4.SetActive(false);
-        Map5.SetActive(false);
-        Map6.SetActive(false);
 
         allMaps.Add(Map0);
         allMaps.Add(Map1);
@@ -67,6 +62,13 @@ public class MapManager : MonoBehaviour
         allMaps.Add(Map4);
         allMaps.Add(Map5);
         allMaps.Add(Map6);
+        allMaps.Add(Map7);
+
+        foreach (GameObject map in allMaps)
+        {
+            //if (map.GetComponent<Map>().mapID != 1)
+            map.SetActive(false);
+        }
 
         foreach (GameObject map in allMaps)
         {
@@ -80,6 +82,7 @@ public class MapManager : MonoBehaviour
         allText.Add(Map4Text);
         allText.Add(Map5Text);
         allText.Add(Map6Text);
+        allText.Add(Map7Text);
     }
 
     void Update()
@@ -145,6 +148,7 @@ public class MapManager : MonoBehaviour
             case 4: reset4(); break;
             case 5: reset5(); break;
             case 6: reset6(); break;
+            case 7: reset7(); break;
         }
     }
 
@@ -247,6 +251,11 @@ public class MapManager : MonoBehaviour
         cameraMangerScript.startLock = true;
     }
 
+    void reset7()
+    {
+        Map7.GetComponent<Map7FogManager>().reset();
+    }
+
     public void Map0OnOff()
     {
         MapOnOffHelper(Map0, Map0Text);
@@ -280,6 +289,11 @@ public class MapManager : MonoBehaviour
     public void Map6OnOff()
     {
         MapOnOffHelper(Map6, Map6Text);
+    }
+
+    public void Map7OnOff()
+    {
+        MapOnOffHelper(Map7, Map7Text);
     }
 
     void MapOnOffHelper(GameObject map, Text mapText)

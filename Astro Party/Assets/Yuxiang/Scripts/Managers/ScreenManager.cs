@@ -46,7 +46,7 @@ public class ScreenManager : MonoBehaviour
         P4PowerUpScreen.SetActive(true);
         P5PowerUpScreen.SetActive(true);
 
-        //startScreen.SetActive(true);
+        startScreen.SetActive(true);
         shipScreen.SetActive(false);
         lastScreen.SetActive(false);
         infoScreen.SetActive(false);

@@ -295,7 +295,7 @@ Random.Range(-spawnRadius, spawnRadius));
         directionScreen.SetActive(false);
         endScreen.SetActive(false);
         tutorialMap.SetActive(false);
-        //startScreen.SetActive(true);
+        startScreen.SetActive(true);
 
         //directions
         directionId = 0;
