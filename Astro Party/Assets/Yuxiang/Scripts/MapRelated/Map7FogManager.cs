@@ -33,8 +33,11 @@ public class Map7FogManager : MonoBehaviour
         {
             for (int j = -spawnLen; j <= spawnLen; j += 100)
             {
-                GameObject curr = Instantiate(fog, new Vector3(i, fogyValue, j), fog.transform.rotation);
-                curr.transform.parent = parent.transform;
+                if (Random.Range(0, 5) == 0)
+                {
+                    GameObject curr = Instantiate(fog, new Vector3(i, fogyValue, j), fog.transform.rotation);
+                    curr.transform.parent = parent.transform;
+                }
             }
         }
     }
