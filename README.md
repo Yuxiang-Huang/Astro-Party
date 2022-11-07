@@ -58,3 +58,5 @@ https://yuxiang-huang.itch.io/astro-party-ii
      *  (10-30-2022): Today I added the translation of the scoreboard when the player point exceed the point required to win. Then, I added the tie breaker system and use functions to reduce code in ScoreManager. Lastly, I play tested and fix issues I found; mainly the AI tracing issue.
 
      *  (11-3-2022): Today I started by fixing issues I found after play tested with my firends. Then, I create a new mode call highlight where pilots don't get killed and players fight to keep the crown.
+     
+     *  (11-5-2022): Today I started perfecting the highlight mode by fixing the issues I encountered when play tested with my friends. I also replaced the crown object with a better online model and give indicator on the ship when it is highlighted. Lastly, I added different time options to the mode and ordered the time texts.
