@@ -51,7 +51,7 @@ public class Map5SpiralBuilder : MonoBehaviour
 
         curr = new Vector3(curr.x + 100, curr.y, curr.z);
 
-        GameObject now2 = Instantiate(breakableWall, curr, transform.rotation);
+        GameObject now2 = Instantiate(wall, curr, transform.rotation);
         now2.transform.SetParent(p.transform);
 
         int times = 10;
