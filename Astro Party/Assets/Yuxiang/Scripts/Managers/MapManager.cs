@@ -72,7 +72,7 @@ public class MapManager : MonoBehaviour
 
         foreach (GameObject map in allMaps)
         {
-            if (map.GetComponent<Map>().mapID == 1)
+            if (map.GetComponent<Map>().mapID == 6)
                 currMaps.Add(map);
             mapFixedSpawn.Add("Both");
         }
@@ -200,7 +200,15 @@ public class MapManager : MonoBehaviour
 
     void reset1()
     {
-        if (fixedSpawnHelper(1) == 0)
+        if (isFixedSpawned(1))
+        {
+            //restore
+            Map1rotatingInner.GetComponent<Map1RotatingObject>().velocity = 0;
+            Map1rotatingOuter.GetComponent<Map1RotatingObject>().velocity = 0;
+            Map1rotatingInner.transform.rotation = Quaternion.Euler(0, 0, 0);
+            Map1rotatingOuter.transform.rotation = Quaternion.Euler(0, 45, 0);
+        }
+        else
         {
             //set random velocity
             float posV = Random.Range(0.5f, 1.25f);
@@ -217,14 +225,6 @@ public class MapManager : MonoBehaviour
                 Map1rotatingOuter.GetComponent<Map1RotatingObject>().velocity = negV;
 
             }
-        }
-        else
-        {
-            //restore
-            Map1rotatingInner.GetComponent<Map1RotatingObject>().velocity = 0;
-            Map1rotatingOuter.GetComponent<Map1RotatingObject>().velocity = 0;
-            Map1rotatingInner.transform.rotation = Quaternion.Euler(0, 0, 0);
-            Map1rotatingOuter.transform.rotation = Quaternion.Euler(0, 45, 0);
         }
     }
 
@@ -338,23 +338,23 @@ public class MapManager : MonoBehaviour
         mapText.text = mapFixedSpawn[id];
     }
 
-    public int fixedSpawnHelper(int id)
+    public bool isFixedSpawned(int id)
     {
         if (mapFixedSpawn[id] == "Both")
         {
-            return Random.Range(0, 2);
+            return Random.Range(0, 2) == 1;
         }
 
         else if (mapFixedSpawn[id] == "Unfixed")
         {
-            return 0;
+            return false;
         }
 
         else if (mapFixedSpawn[id] == "Fixed")
         {
-            return 1;
+            return true;
         }
 
-        return -1;
+        return false;
     }
 }

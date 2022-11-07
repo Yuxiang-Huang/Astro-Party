@@ -17,7 +17,9 @@ public class Map6PortalManager : MonoBehaviour
 
     public int spawnRadius = 500;
 
-    GameManager gameManagerScript;
+    MapManager mapManagerScript;
+
+    int mapId;
 
     GameObject pivot;
 
@@ -28,7 +30,14 @@ public class Map6PortalManager : MonoBehaviour
 
     public void reset()
     {
-        gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        mapManagerScript = GameObject.Find("Map Manager").GetComponent<MapManager>();
+
+        bool fixedSpawn = false;
+
+        if (mapManagerScript.isFixedSpawned(GetComponent<Map>().mapID))
+        {
+            fixedSpawn = true;
+        }
 
         //clear
         if (portalList != null)
@@ -64,23 +73,24 @@ public class Map6PortalManager : MonoBehaviour
                 0, Mathf.Sin(i * 2 * Mathf.PI / 5 + Mathf.PI / 2) * spawnRadius),
                 portals.transform.rotation));
 
-            //if (gameManagerScript.fixedSpawn)
-            //{
-            //    int angle = 0;
+            //fixed the angles
+            if (fixedSpawn)
+            {
+                int angle = 0;
 
-            //    switch (i)
-            //    {
-            //        case 1: angle = -72; break;
-            //        case 2: angle = 28; break;
-            //        case 3: angle = -28; break;
-            //        case 4: angle = 72; break;
-            //    }
-            //    portalParentList[i].transform.Rotate(0, angle, 0);
-            //}
-            //else
-            //{
+                switch (i)
+                {
+                    case 1: angle = -72; break;
+                    case 2: angle = 28; break;
+                    case 3: angle = -28; break;
+                    case 4: angle = 72; break;
+                }
+                portalParentList[i].transform.Rotate(0, angle, 0);
+            }
+            else
+            {
                 portalParentList[i].transform.Rotate(0, Random.Range(0, 360), 0);
-            //}
+            }
 
             portalParentList[i].transform.parent = pivot.transform;
 
@@ -89,15 +99,15 @@ public class Map6PortalManager : MonoBehaviour
         }
 
         //rotate the portals
-        //if (! gameManagerScript.fixedSpawn)
-        //{
-        //    pivot.transform.Rotate(0, Random.Range(0, 360), 0);
-        //}
-        //else
-        //{
+        if (!fixedSpawn)
+        {
+            pivot.transform.Rotate(0, Random.Range(0, 360), 0);
+        }
+        else
+        {
             portalList.Add(portalList[0]);
             portalList.RemoveAt(0);
-        //}
+        }
 
         //color and set pairs
         int color = 1;
@@ -106,10 +116,10 @@ public class Map6PortalManager : MonoBehaviour
         {
             int ran = Random.Range(1, portalList.Count);
 
-            //if (gameManagerScript.fixedSpawn)
-            //{
-            //    ran = 1;
-            //}
+            if (fixedSpawn)
+            {
+                ran = 1;
+            }
 
             portalList[0].GetComponent<Portal>().pair = portalList[ran];
             portalList[ran].GetComponent<Portal>().pair = portalList[0];
