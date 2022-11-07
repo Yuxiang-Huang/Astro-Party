@@ -78,6 +78,7 @@ public class CameraManager : MonoBehaviour
         myCamera.orthographicSize = 800;
         transform.position = new Vector3(0, transform.position.y, 0);
 
+        //longer for starting power up
         if (SPU)
         {
             yield return new WaitForSeconds(3.0f);

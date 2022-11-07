@@ -226,23 +226,23 @@ public class MapManager : MonoBehaviour
     {
         foreach (GameObject curr in Map3ThreeBodyObjects)
         {
-            curr.GetComponent<ThreeBody>().reset();
+            curr.GetComponent<Map3ThreeBody>().reset();
         }
     }
 
     void reset4()
     {
-        Map4.GetComponent<LaserBeamControl>().reset();
+        Map4.GetComponent<Map4LaserBeamControl>().reset();
     }
 
     void reset5()
     {
-        Map5.GetComponent<SpiralBuilder>().reset();
+        Map5.GetComponent<Map5SpiralBuilder>().reset();
     }
 
     void reset6()
     {
-        Map6.GetComponent<PortalManager>().reset();
+        Map6.GetComponent<Map6PortalManager>().reset();
         //fix camera for map6
         cameraMangerScript.startLock = true;
     }

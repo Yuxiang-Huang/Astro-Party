@@ -204,10 +204,6 @@ public class GameManager : MonoBehaviour
                 }
             }
 
-            //call other scripts
-            spawnManagerScript.RoundSpawn();
-            cameraMangerScript.StartCoroutine("delayStart");
-
             //auto balance
             powerUpManagerScript.autoBalance();
         }
@@ -228,6 +224,10 @@ public class GameManager : MonoBehaviour
         {
             cameraMangerScript.SPU = false;
         }
+
+        //call other scripts
+        spawnManagerScript.RoundSpawn();
+        cameraMangerScript.StartCoroutine("delayStart");
 
         //pause text will be set off by scoreManager
         scoreManagerScript.pauseText.SetActive(true);
