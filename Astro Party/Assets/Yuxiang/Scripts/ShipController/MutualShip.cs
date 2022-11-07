@@ -445,6 +445,8 @@ public class MutualShip : MonoBehaviour
                 playerRb.AddRelativeForce(new Vector3(0, 0, speed * 30), ForceMode.Force);
             }
 
+            //check for powerup usage
+
             powerUpUsed++;
 
             if (powerUpUsed == powerUpManagerScript.maxPowerUp)

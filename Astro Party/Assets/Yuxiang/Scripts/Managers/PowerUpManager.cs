@@ -221,20 +221,28 @@ public class PowerUpManager : MonoBehaviour
         allChange = !allChange;
     }
 
-    public void setTriplePowerUp()
+    public void increaseUsage()
     {
-        if (maxPowerUp == 1)
+        maxPowerUp++;
+        if (maxPowerUp >= 10)
         {
-            maxPowerUp = 3;
-            maxPowerUpText.text = "Triple PowerUp: On";
+            maxPowerUp = 9;
         }
-        else
+
+        maxPowerUpText.text = "" + maxPowerUp;
+    }
+
+    public void decreaseUsage()
+    {
+        maxPowerUp--;
+        if (maxPowerUp <= 0)
         {
             maxPowerUp = 1;
-            maxPowerUpText.text = "Triple PowerUp: Off";
         }
+
+        maxPowerUpText.text = "" + maxPowerUp;
     }
-    
+
 
     public void setLaser()
     {
