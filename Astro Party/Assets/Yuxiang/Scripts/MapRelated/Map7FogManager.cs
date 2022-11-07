@@ -8,9 +8,9 @@ public class Map7FogManager : MonoBehaviour
 
     public GameObject fog;
 
-    public int spawnLen = 850;
+    public int spawnLen;
     public int speed;
-    public float fogYvalue = 90;
+    float fogYvalue = 90;
 
     bool started;
 
@@ -34,7 +34,7 @@ public class Map7FogManager : MonoBehaviour
             {
                 spawnTime = waitTime;
 
-                for (int x = 0; x < spawnLen; x+= 10)
+                for (int x = -spawnLen; x < spawnLen; x += 100)
                 {
                     if (Random.Range(0, 8) == 0)
                     { 
