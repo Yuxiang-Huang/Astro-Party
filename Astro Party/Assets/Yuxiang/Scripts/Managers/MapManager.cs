@@ -72,9 +72,9 @@ public class MapManager : MonoBehaviour
 
         foreach (GameObject map in allMaps)
         {
-            //if (map.GetComponent<Map>().mapID == 7)
-            currMaps.Add(map);
-            mapFixedSpawn.Add("Fixed");
+            if (map.GetComponent<Map>().mapID == 1)
+                currMaps.Add(map);
+            mapFixedSpawn.Add("Both");
         }
 
         allText.Add(Map0Text);
@@ -200,19 +200,31 @@ public class MapManager : MonoBehaviour
 
     void reset1()
     {
-        float posV = Random.Range(0.5f, 1.25f);
-        float negV = -Random.Range(0.5f, 1.25f);
-
-        if (Random.Range(0, 2) == 0)
+        if (fixedSpawnHelper(1) == 0)
         {
-            Map1rotatingInner.GetComponent<Map1RotatingObject>().velocity = negV;
-            Map1rotatingOuter.GetComponent<Map1RotatingObject>().velocity = posV;
+            //set random velocity
+            float posV = Random.Range(0.5f, 1.25f);
+            float negV = -Random.Range(0.5f, 1.25f);
+
+            if (Random.Range(0, 2) == 0)
+            {
+                Map1rotatingInner.GetComponent<Map1RotatingObject>().velocity = negV;
+                Map1rotatingOuter.GetComponent<Map1RotatingObject>().velocity = posV;
+            }
+            else
+            {
+                Map1rotatingInner.GetComponent<Map1RotatingObject>().velocity = posV;
+                Map1rotatingOuter.GetComponent<Map1RotatingObject>().velocity = negV;
+
+            }
         }
         else
         {
-            Map1rotatingInner.GetComponent<Map1RotatingObject>().velocity = posV;
-            Map1rotatingOuter.GetComponent<Map1RotatingObject>().velocity = negV;
-
+            //restore
+            Map1rotatingInner.GetComponent<Map1RotatingObject>().velocity = 0;
+            Map1rotatingOuter.GetComponent<Map1RotatingObject>().velocity = 0;
+            Map1rotatingInner.transform.rotation = Quaternion.Euler(0, 0, 0);
+            Map1rotatingOuter.transform.rotation = Quaternion.Euler(0, 45, 0);
         }
     }
 
@@ -324,5 +336,25 @@ public class MapManager : MonoBehaviour
         }
 
         mapText.text = mapFixedSpawn[id];
+    }
+
+    public int fixedSpawnHelper(int id)
+    {
+        if (mapFixedSpawn[id] == "Both")
+        {
+            return Random.Range(0, 2);
+        }
+
+        else if (mapFixedSpawn[id] == "Unfixed")
+        {
+            return 0;
+        }
+
+        else if (mapFixedSpawn[id] == "Fixed")
+        {
+            return 1;
+        }
+
+        return -1;
     }
 }
