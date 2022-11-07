@@ -157,10 +157,6 @@ public class GameManager : MonoBehaviour
         //sound effect
         SEManagerScript.generalAudio.PlayOneShot(SEManagerScript.ready);
 
-        //call other scripts
-        spawnManagerScript.RoundSpawn();
-        cameraMangerScript.StartCoroutine("delayStart");
-
         gameStarted = true;
 
         //spawn ships
@@ -208,8 +204,9 @@ public class GameManager : MonoBehaviour
                 }
             }
 
-            //spawn asteroids
-            spawnManagerScript.intervalUpdate();
+            //call other scripts
+            spawnManagerScript.RoundSpawn();
+            cameraMangerScript.StartCoroutine("delayStart");
 
             //auto balance
             powerUpManagerScript.autoBalance();

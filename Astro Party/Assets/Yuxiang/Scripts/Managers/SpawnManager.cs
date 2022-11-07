@@ -13,6 +13,8 @@ public class SpawnManager : MonoBehaviour
     public GameObject largeAsteroid;
     public GameObject PowerUpAsteroid;
 
+    public GameObject PowerUpAsteroidOrig;
+
     PowerUpManager powerUpManagerScript;
     GameManager gameManagerScript;
 
@@ -21,7 +23,7 @@ public class SpawnManager : MonoBehaviour
     int space = 100;
     int asteroidY = 0;
 
-    int shipNum;
+    int requireNum;
      
     // Start is called before the first frame update
     void Start()
@@ -36,16 +38,27 @@ public class SpawnManager : MonoBehaviour
 
     public void intervalUpdate()
     {
-        //spawn asteroid when no more powerUp asteroid
-        if (startSpawn && powerUpManagerScript.indicators.Count > 0)
+        //spawn when started
+        if (startSpawn)
         {
             bool spawn = true;
 
-            foreach (GameObject asteroid in gameManagerScript.inGameAsteroids)
+            //check for number of asteroids
+            if (gameManagerScript.inGameAsteroids.Count > requireNum)
             {
-                if (asteroid.GetComponent<Asteroid>().type == "powerUp")
+                spawn = false;
+            }
+
+            //check for if there is one power up asteroid
+            if (powerUpManagerScript.indicators.Count > 0 && !spawn)
+            {
+                spawn = true;
+                foreach (GameObject asteroid in gameManagerScript.inGameAsteroids)
                 {
-                    spawn = false;
+                    if (asteroid.GetComponent<Asteroid>().type == "powerUp")
+                    {
+                        spawn = false;
+                    }
                 }
             }
 
@@ -67,6 +80,8 @@ public class SpawnManager : MonoBehaviour
                 powerUpManagerScript.indicators[ran].transform.rotation);
 
             gameManagerScript.inGameIndicators.Add(powerUp);
+
+            PowerUpAsteroid = PowerUpAsteroidOrig;
         }
         else
         {
@@ -79,7 +94,19 @@ public class SpawnManager : MonoBehaviour
             }
         }
 
+        //set requireNum
+        requireNum = 3;
+
+        switch (mode)
+        {
+            case "none": requireNum = 0; break;
+            case "few": requireNum = 1; break;
+            case "many": requireNum = 5; break;
+        }
+
         startSpawn = true;
+
+        intervalUpdate();
     }
 
     void spawnAsteroids()
@@ -87,25 +114,12 @@ public class SpawnManager : MonoBehaviour
         if (mode != "none")
         {
             //definitely a powerUp asteroid
-            GameObject asteroidClone2 = Instantiate(PowerUpAsteroid, generateRanPos(asteroidY), PowerUpAsteroid.transform.rotation);
+            GameObject asteroidClone = Instantiate(PowerUpAsteroid, generateRanPos(asteroidY), PowerUpAsteroid.transform.rotation);
 
-            gameManagerScript.inGameAsteroids.Add(asteroidClone2);
+            gameManagerScript.inGameAsteroids.Add(asteroidClone);
 
-            shipNum = 0;
-
-            //spawn number of asteroids = number of ships
-            foreach (List<GameObject> shipList in gameManagerScript.inGameShips)
-            {
-                shipNum += shipList.Count;
-            }
-
-            switch (mode)
-            {
-                case "few": shipNum /= 2; break;
-                case "many": shipNum *= 2; break;
-            }
-
-            for (int i = 0; i < shipNum; i++)
+            //spawn required number of random asteroids
+            while (gameManagerScript.inGameAsteroids.Count < requireNum + 2)
             {
                 GameObject asteroid = PowerUpAsteroid;
 
@@ -119,7 +133,7 @@ public class SpawnManager : MonoBehaviour
                     case 3: asteroid = PowerUpAsteroid; break;
                 }
 
-                GameObject asteroidClone = Instantiate(asteroid, generateRanPos(asteroidY), PowerUpAsteroid.transform.rotation);
+                asteroidClone = Instantiate(asteroid, generateRanPos(asteroidY), PowerUpAsteroid.transform.rotation);
 
                 gameManagerScript.inGameAsteroids.Add(asteroidClone);
             }
@@ -131,6 +145,7 @@ public class SpawnManager : MonoBehaviour
         return Mathf.Sqrt(Mathf.Pow((ship1.x - ship2.x), 2) + Mathf.Pow((ship1.z - ship2.z), 2));
     }
 
+    //generate a random position at least space away from any ship with a specific y value
     public Vector3 generateRanPos(int y)
     {
         Vector3 ranPos = new Vector3(Random.Range(-gameManagerScript.spawnRadius, gameManagerScript.spawnRadius), y,
