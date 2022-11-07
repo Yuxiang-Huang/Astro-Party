@@ -12,6 +12,9 @@ public class PowerUpManager : MonoBehaviour
 
     public int powerUpyValue = 30;
 
+    bool allChange;
+    public Text allChangeText;
+
     public GameObject bullet;
 
     bool isAutoBalance;
@@ -179,17 +182,43 @@ public class PowerUpManager : MonoBehaviour
 
     //PowerUP
 
-    public void AllOff()
+    public void AllChange()
     {
-        while (indicators.Count > 0)
+        if (allChange)
         {
-            indicators.RemoveAt(0);
-        }
+            //all on
+            while (indicators.Count > 0)
+            {
+                indicators.RemoveAt(0);
+            }
 
-        for (int i = 0; i < allText.Count; i++)
-        {
-            allText[i].text = allPowerUps[i].Key + " Off";
+            foreach (KeyValuePair<string, GameObject> indicator in allPowerUps)
+            {
+                indicators.Add(indicator.Value);
+            }
+
+            for (int i = 0; i < allText.Count; i++)
+            {
+                allText[i].text = allPowerUps[i].Key + " On";
+            }
+            allChangeText.text = "All Off";
         }
+        else
+        {
+            //all off
+            while (indicators.Count > 0)
+            {
+                indicators.RemoveAt(0);
+            }
+
+            for (int i = 0; i < allText.Count; i++)
+            {
+                allText[i].text = allPowerUps[i].Key + " Off";
+            }
+
+            allChangeText.text = "All On";
+        }
+        allChange = !allChange;
     }
 
     public void setTriplePowerUp()

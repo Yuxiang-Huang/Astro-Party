@@ -34,7 +34,7 @@ public class SpawnManager : MonoBehaviour
         InvokeRepeating("intervalUpdate", 0, 5.0f);
     }
 
-    void intervalUpdate()
+    public void intervalUpdate()
     {
         //spawn asteroid when no more powerUp asteroid
         if (startSpawn && powerUpManagerScript.indicators.Count > 0)

@@ -208,6 +208,9 @@ public class GameManager : MonoBehaviour
                 }
             }
 
+            //spawn asteroids
+            spawnManagerScript.intervalUpdate();
+
             //auto balance
             powerUpManagerScript.autoBalance();
         }
