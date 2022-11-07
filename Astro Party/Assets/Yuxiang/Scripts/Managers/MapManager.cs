@@ -72,7 +72,7 @@ public class MapManager : MonoBehaviour
 
         foreach (GameObject map in allMaps)
         {
-            if (map.GetComponent<Map>().mapID == 4)
+            if (map.GetComponent<Map>().mapID == 2)
                 currMaps.Add(map);
             mapFixedSpawn.Add("Both");
         }
@@ -230,11 +230,20 @@ public class MapManager : MonoBehaviour
 
     void reset2()
     {
+        int radius = 200;
+
         velocity = Random.Range(125, 175);
         velocity2 = Random.Range(75, 125);
 
+        if (isFixedSpawned(2))
+        {
+            velocity2 = velocity;
+            radius = 300;
+        } 
+
         foreach (GameObject curr in Map2rotatingObjects)
         {
+            curr.GetComponent<Map2CircularMotion>().radius = radius;
             curr.GetComponent<Map2CircularMotion>().reset();
             curr.GetComponent<Map2CircularMotion>().velocity = velocity2;
         }
