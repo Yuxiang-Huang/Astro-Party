@@ -15,7 +15,6 @@ public class Map7FogManager : MonoBehaviour
     bool started;
 
     float spawnTime;
-    public float waitTime;
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +31,7 @@ public class Map7FogManager : MonoBehaviour
         {
             if (spawnTime <= 0)
             {
-                spawnTime = waitTime;
+                spawnTime = Random.Range(1f, 2f);
 
                 spawnHelper("up");
                 spawnHelper("down");
