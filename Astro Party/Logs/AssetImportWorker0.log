@@ -6711,3 +6711,40 @@ Received Import Request.
   path: Assets/Yuxiang/Course Library/Pictures/Maps/Map3.png
   artifactKey: Guid(0b7935c67a03b49e4850d3196266e1d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Yuxiang/Course Library/Pictures/Maps/Map3.png using Guid(0b7935c67a03b49e4850d3196266e1d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '384b3edc5ef7a2733a601284fc7ed61a') in 0.022703 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001979 seconds.
+Callback registration failed. Increase kMaxCallback.
+Fatal Error! Callback registration failed. Increase kMaxCallback.
+Obtained 30 stack frames.
+#0  0x007fff6227b2c6 in __pthread_kill
+#1  0x007fff621e56a6 in abort
+#2  0x000001111cd28e in CrashDontLaunchBugReporter()
+#3  0x0000010fdc8afd in EditorMonoConsole::LogToConsoleImplementation(CppLogEntry const&)
+#4  0x0000010fdc8247 in EditorMonoConsole::LogToConsoleImplementation(DebugStringToFileData const&)
+#5  0x0000010fdc920e in LogToConsoleImplementation(DebugStringToFileData const&)
+#6  0x00000110d77053 in DebugStringToFilePostprocessedStacktrace(DebugStringToFileData const&)
+#7  0x00000110d7792b in DebugStringToFile(DebugStringToFileData const&)
+#8  0x0000010ea3a224 in CallbackArrayBase<void (*)(AssemblyLoadFailure), void (*)(void const*, AssemblyLoadFailure)>::Register(void (*)(AssemblyLoadFailure), void (*)(void const*, AssemblyLoadFailure), void const*)
+#9  0x0000011020eda8 in LoadDomainAndUserAssemblies(bool)
+#10 0x0000011021182f in LoadUserAssemblies()
+#11 0x00000110446689 in AssetImportWorkerClient::ReloadMonoDomain(AssetResolver&)
+#12 0x0000011046801c in invocation function for block in AssetImportWorkerClient::HandleMessage(PrepareMessage const&)::$_5::operator()() const
+#13 0x007fff620f363d in _dispatch_client_callout
+#14 0x007fff620ff1ea in _dispatch_async_and_wait_invoke
+#15 0x007fff620f363d in _dispatch_client_callout
+#16 0x007fff620fe68d in _dispatch_main_queue_callback_4CF
+#17 0x007fff3608da37 in __CFRUNLOOP_IS_SERVICING_THE_MAIN_DISPATCH_QUEUE__
+#18 0x007fff3608d161 in __CFRunLoopRun
+#19 0x007fff3608c61e in CFRunLoopRunSpecific
+#20 0x007fff352eb1ab in RunCurrentEventLoopInMode
+#21 0x007fff352eaee5 in ReceiveNextEventCommon
+#22 0x007fff352eac76 in _BlockUntilNextEventMatchingListInModeWithFilter
+#23 0x007fff3368377d in _DPSNextEvent
+#24 0x007fff3368246b in -[NSApplication(NSEvent) _nextEventMatchingEventMask:untilDate:inMode:dequeue:]
+#25 0x007fff3367c588 in -[NSApplication run]
+#26 0x007fff3366bac8 in NSApplicationMain
+#27 0x000001111f51d4 in EditorMain(int, char const**)
+#28 0x000001111f53f9 in main
+#29 0x007fff621403d5 in start

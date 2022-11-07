@@ -72,8 +72,8 @@ public class MapManager : MonoBehaviour
 
         foreach (GameObject map in allMaps)
         {
-            if (map.GetComponent<Map>().mapID == 5)
-                currMaps.Add(map);
+            //if (map.GetComponent<Map>().mapID == 3)
+            currMaps.Add(map);
             mapFixedSpawn.Add("Both");
         }
 
