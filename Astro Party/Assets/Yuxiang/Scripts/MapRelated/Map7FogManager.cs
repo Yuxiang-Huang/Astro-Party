@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Map7FogManager : MonoBehaviour
 {
-    public List<GameObject> allFogs;
+    public GameObject parent;
 
     public GameObject fog;
 
@@ -52,26 +52,30 @@ public class Map7FogManager : MonoBehaviour
         {
             if (Random.Range(0, 16) == 0)
             {
-                GameObject curr = new GameObject();
+                GameObject curr = Instantiate(fog, new Vector3(i, fogYvalue, spawnLen), fog.transform.rotation);
                 switch (direction)
                 {
                     case "up":
+                        Destroy(curr);
                         curr = Instantiate(fog, new Vector3(i, fogYvalue, spawnLen), fog.transform.rotation);
                         break;
                     case "down":
+                        Destroy(curr);
                         curr = Instantiate(fog, new Vector3(i, fogYvalue, -spawnLen), fog.transform.rotation);
                         break;
                     case "left":
+                        Destroy(curr);
                         curr = Instantiate(fog, new Vector3(-spawnLen, fogYvalue, i), fog.transform.rotation);
                         break;
                     case "right":
+                        Destroy(curr);
                         curr = Instantiate(fog, new Vector3(spawnLen, fogYvalue, i), fog.transform.rotation);
                         break;
                 }
 
                 curr.GetComponent<Fog>().direction = direction;
                 curr.GetComponent<Fog>().speed = speed;
-                allFogs.Add(curr);
+                curr.transform.parent = parent.transform;
             }
         }
     }
@@ -80,11 +84,8 @@ public class Map7FogManager : MonoBehaviour
     {
         started = true;
 
-        while (allFogs.Count > 0)
-        {
-            Destroy(allFogs[0]);
-            allFogs.RemoveAt(0);
-        }
+        Destroy(parent);
+        parent = new GameObject();
 
         //for (int i = -spawnLen; i <= spawnLen; i += 100)
         //{

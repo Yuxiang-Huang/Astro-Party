@@ -20,7 +20,7 @@ public class Fog : MonoBehaviour
     void Update()
     {
         if (outOfBound(transform.position)) {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
 
         Vector3 blow = new Vector3 (0, 0, 0);
