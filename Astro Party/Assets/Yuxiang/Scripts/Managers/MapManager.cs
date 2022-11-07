@@ -66,13 +66,13 @@ public class MapManager : MonoBehaviour
 
         foreach (GameObject map in allMaps)
         {
-            //if (map.GetComponent<Map>().mapID != 1)
             map.SetActive(false);
         }
 
         foreach (GameObject map in allMaps)
         {
-            currMaps.Add(map);
+            if (map.GetComponent<Map>().mapID == 7)
+                currMaps.Add(map);
         }
 
         allText.Add(Map0Text);

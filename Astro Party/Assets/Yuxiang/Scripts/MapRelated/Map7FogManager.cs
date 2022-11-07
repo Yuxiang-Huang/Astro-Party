@@ -16,12 +16,12 @@ public class Map7FogManager : MonoBehaviour
 
     float spawnTime;
 
+    GameManager gameManagerScript;
+
     // Start is called before the first frame update
     void Start()
     {
-        reset();
-
-        started = true;
+    
     }
 
     // Update is called once per frame
@@ -49,7 +49,7 @@ public class Map7FogManager : MonoBehaviour
     {
         for (int i = -spawnLen; i < spawnLen; i += 100)
         {
-            if (Random.Range(0, 16) == 0)
+            if (Random.Range(0, 8) == 0)
             {
                 GameObject curr = Instantiate(fog, new Vector3(i, fogYvalue, spawnLen), fog.transform.rotation);
                 switch (direction)
@@ -81,20 +81,32 @@ public class Map7FogManager : MonoBehaviour
 
     public void reset()
     {
-        started = true;
+        gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
 
+        //reset parent
         Destroy(parent);
         parent = new GameObject();
+        parent.transform.parent = transform;
 
-        //for (int i = -spawnLen; i <= spawnLen; i += 100)
-        //{
-        //    for (int j = -spawnLen; j <= spawnLen; j += 100)
-        //    {
-        //            GameObject curr = Instantiate(fog, new Vector3(i, fogyValue, j), fog.transform.rotation);
-        //            curr.transform.parent = parent.transform;
+        if (gameManagerScript.fixedSpawn)
+        {
+            for (int i = -spawnLen; i <= spawnLen; i += 100)
+            {
+                for (int j = -spawnLen; j <= spawnLen; j += 100)
+                {
+                    if (Random.Range(0, 4) == 0)
+                    {
+                        GameObject curr = Instantiate(fog, new Vector3(i, fogYvalue, j), fog.transform.rotation);
+                        curr.transform.parent = parent.transform;
+                    }
+                }
+            }
+            started = false;
+        }
 
-        //    }
-        //}
-        //started = false;   
+        else
+        {
+            started = true;
+        }
     }
 }
