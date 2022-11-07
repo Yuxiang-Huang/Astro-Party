@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7904103097922481965}
   - component: {fileID: 8263299353227166561}
   - component: {fileID: 8654147322723172234}
+  - component: {fileID: -2569648507743097494}
   m_Layer: 0
   m_Name: Fog
   m_TagString: Untagged
@@ -96,3 +97,18 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &-2569648507743097494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3080100823104091557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e4fbdcd450054cdbbcd3130ac05f249, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: 0
+  outOfBoundLen: 850
+  speed: 1
