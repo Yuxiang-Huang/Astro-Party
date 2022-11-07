@@ -54,6 +54,12 @@ public class Map4LaserBeamControl : MonoBehaviour
                 laserBeams[i].SetActive(false);
             //}
         }
+
+        for (int i = 0; i < fixedLasersBeams.Count; i++)
+        {
+            fixedIndicators[i].SetActive(false);
+            fixedLasersBeams[i].SetActive(false);
+        }
     }
 
     IEnumerator spawnLaser()
