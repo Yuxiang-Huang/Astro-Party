@@ -34,8 +34,8 @@ public class GameManager : MonoBehaviour
     int shipY = 20;
     public bool gameStarted;
 
-    public bool fixedSpawn;
-    public Text fixedSpawnText;
+    public bool shipFixedSpawn;
+    public Text shipFixedSpawnText;
     public bool suicidalBullet;
     public Text suicidalBulletText;
 
@@ -165,7 +165,7 @@ public class GameManager : MonoBehaviour
             for (int j = 0; j < ships[i].Count; j++)
             {
                 int ran;
-                if (fixedSpawn)
+                if (shipFixedSpawn)
                 {
                     ran = ships[i][j].GetComponent<MutualShip>().id - 1;
                 }
@@ -197,7 +197,7 @@ public class GameManager : MonoBehaviour
                 //begin freeze
                 inGameShips[i][j].GetComponent<MutualShip>().freezeTime = 2.0f;
 
-                if (!fixedSpawn)
+                if (!shipFixedSpawn)
                 {
                     pos.RemoveAt(ran);
                     rot.RemoveAt(ran);
@@ -331,7 +331,7 @@ public class GameManager : MonoBehaviour
 
         float radian = Mathf.PI / 2;
 
-        if (! fixedSpawn)
+        if (! shipFixedSpawn)
         {
             radian += Random.Range(0, 2 * Mathf.PI);
         }
@@ -347,15 +347,15 @@ public class GameManager : MonoBehaviour
 
     public void setFixedSpawn()
     {
-        if (fixedSpawn)
+        if (shipFixedSpawn)
         {
-            fixedSpawnText.text = "Fixed Spawn: Off";
+            shipFixedSpawnText.text = "Fixed Spawn: Off";
         }
         else
         {
-            fixedSpawnText.text = "Fixed Spawn: On";
+            shipFixedSpawnText.text = "Fixed Spawn: On";
         }
-        fixedSpawn = !fixedSpawn;
+        shipFixedSpawn = !shipFixedSpawn;
     }
 
     public void setSuicidalBullet()

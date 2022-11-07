@@ -88,25 +88,25 @@ public class Map7FogManager : MonoBehaviour
         parent = new GameObject();
         parent.transform.parent = transform;
 
-        if (gameManagerScript.fixedSpawn)
-        {
-            for (int i = -spawnLen; i <= spawnLen; i += 100)
-            {
-                for (int j = -spawnLen; j <= spawnLen; j += 100)
-                {
-                    if (Random.Range(0, 4) == 0)
-                    {
-                        GameObject curr = Instantiate(fog, new Vector3(i, fogYvalue, j), fog.transform.rotation);
-                        curr.transform.parent = parent.transform;
-                    }
-                }
-            }
-            started = false;
-        }
+        //if (gameManagerScript.fixedSpawn)
+        //{
+        //    for (int i = -spawnLen; i <= spawnLen; i += 100)
+        //    {
+        //        for (int j = -spawnLen; j <= spawnLen; j += 100)
+        //        {
+        //            if (Random.Range(0, 4) == 0)
+        //            {
+        //                GameObject curr = Instantiate(fog, new Vector3(i, fogYvalue, j), fog.transform.rotation);
+        //                curr.transform.parent = parent.transform;
+        //            }
+        //        }
+        //    }
+        //    started = false;
+        //}
 
-        else
-        {
+        //else
+        //{
             started = true;
-        }
+        //}
     }
 }

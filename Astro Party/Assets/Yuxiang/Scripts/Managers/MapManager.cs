@@ -11,6 +11,7 @@ public class MapManager : MonoBehaviour
     List<GameObject> currMaps = new List<GameObject>();
     List<GameObject> allMaps = new List<GameObject>();
     List<Text> allText = new List<Text>();
+    List<string> mapFixedSpawn = new List<string>();
 
     bool allChange;
     public Text allChangeText;
@@ -71,8 +72,9 @@ public class MapManager : MonoBehaviour
 
         foreach (GameObject map in allMaps)
         {
-            if (map.GetComponent<Map>().mapID == 7)
-                currMaps.Add(map);
+            //if (map.GetComponent<Map>().mapID == 7)
+            currMaps.Add(map);
+            mapFixedSpawn.Add("Fixed");
         }
 
         allText.Add(Map0Text);
@@ -298,15 +300,29 @@ public class MapManager : MonoBehaviour
 
     void MapOnOffHelper(GameObject map, Text mapText)
     {
-        if (currMaps.Contains(map))
+        int id = map.GetComponent<Map>().mapID;
+        if (mapFixedSpawn[id] == "Fixed")
         {
+            mapFixedSpawn[id] = "Unfixed";
+        }
+
+        else if (mapFixedSpawn[id] == "Unfixed")
+        {
+            mapFixedSpawn[id] = "Both";
+        }
+
+        else if (mapFixedSpawn[id] == "Both")
+        {
+            mapFixedSpawn[id] = "None";
             currMaps.Remove(map);
-            mapText.text = "Off";
         }
-        else
+
+        else if (mapFixedSpawn[id] == "None")
         {
+            mapFixedSpawn[id] = "Fixed";
             currMaps.Add(map);
-            mapText.text = "On";
         }
+
+        mapText.text = mapFixedSpawn[id];
     }
 }
