@@ -25,6 +25,7 @@ public class Map4LaserBeamControl : MonoBehaviour
     {
         gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
         SEManagerScript = GameObject.Find("SoundEffect Manager").GetComponent<SEManager>();
+        mapManagerScript = GameObject.Find("Map Manager").GetComponent<MapManager>();
     }
 
     // Update is called once per frame
@@ -64,8 +65,6 @@ public class Map4LaserBeamControl : MonoBehaviour
 
     IEnumerator spawnLaser()
     {
-        mapManagerScript = GameObject.Find("Map Manager").GetComponent<MapManager>();
-
         SEManagerScript.generalAudio.PlayOneShot(SEManagerScript.laserChargeSound);
 
         if (mapManagerScript.isFixedSpawned(GetComponent<Map>().mapID))

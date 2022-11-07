@@ -23,6 +23,11 @@ public class Map6PortalManager : MonoBehaviour
 
     GameObject pivot;
 
+    private void Awake()
+    {
+        mapManagerScript = GameObject.Find("Map Manager").GetComponent<MapManager>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,14 +35,7 @@ public class Map6PortalManager : MonoBehaviour
 
     public void reset()
     {
-        mapManagerScript = GameObject.Find("Map Manager").GetComponent<MapManager>();
-
-        bool fixedSpawn = false;
-
-        if (mapManagerScript.isFixedSpawned(GetComponent<Map>().mapID))
-        {
-            fixedSpawn = true;
-        }
+        bool fixedSpawn = mapManagerScript.isFixedSpawned(GetComponent<Map>().mapID);
 
         //clear
         if (portalList != null)

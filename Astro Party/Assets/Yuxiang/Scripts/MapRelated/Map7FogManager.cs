@@ -18,6 +18,11 @@ public class Map7FogManager : MonoBehaviour
 
     MapManager mapManagerScript;
 
+    private void Awake()
+    {
+        mapManagerScript = GameObject.Find("Map Manager").GetComponent<MapManager>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -81,8 +86,6 @@ public class Map7FogManager : MonoBehaviour
 
     public void reset()
     {
-        mapManagerScript = GameObject.Find("Map Manager").GetComponent<MapManager>();
-
         //reset parent
         Destroy(parent);
         parent = new GameObject();

@@ -10,10 +10,20 @@ public class Map5SpiralBuilder : MonoBehaviour
 
     GameObject p;
 
+    int count = 0;
+    bool fixedSpawn;
+
+    MapManager mapManagerScript;
+
+    private void Awake()
+    {
+        mapManagerScript = GameObject.Find("Map Manager").GetComponent<MapManager>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        reset();
+        
     }
 
     // Update is called once per frame
@@ -24,6 +34,8 @@ public class Map5SpiralBuilder : MonoBehaviour
 
     public void reset()
     {
+        fixedSpawn = mapManagerScript.isFixedSpawned(GetComponent<Map>().mapID);
+
         Destroy(p);
 
         p = new GameObject();
@@ -92,13 +104,29 @@ public class Map5SpiralBuilder : MonoBehaviour
 
     GameObject pick()
     {
-        if (Random.Range(0, 2) == 0)
+        if (fixedSpawn)
         {
-            return wall;
+            count++;
+
+            if (count % 2 == 0)
+            {
+                return wall;
+            }
+            else
+            {
+                return breakableWall;
+            }
         }
         else
         {
-            return breakableWall;
+            if (Random.Range(0, 2) == 0)
+            {
+                return wall;
+            }
+            else
+            {
+                return breakableWall;
+            }
         }
     }
 }
