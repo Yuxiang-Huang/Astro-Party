@@ -194,8 +194,8 @@ public class MapManager : MonoBehaviour
 
     void reset1()
     {
-        float posV = Random.Range(0.5f, 1.5f);
-        float negV = -Random.Range(0.5f, 1.5f);
+        float posV = Random.Range(0.5f, 1.25f);
+        float negV = -Random.Range(0.5f, 1.25f);
 
         if (Random.Range(0, 2) == 0)
         {

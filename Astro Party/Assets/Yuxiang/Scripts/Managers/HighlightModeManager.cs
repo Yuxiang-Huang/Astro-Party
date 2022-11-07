@@ -172,20 +172,29 @@ public class HighlightModeManager : MonoBehaviour
         {
             PTime[i].text = "P" + (i + 1) + ": " + (int)times[i];
             PTime[i].gameObject.SetActive(false);
-
-            //for ordering
-            data.Add(new KeyValuePair<TextMeshProUGUI, float>(PTime[i], times[i])); 
         }
 
         foreach (List<GameObject> shipList in gameManagerScript.inGameShips)
         {
             foreach (GameObject ship in shipList)
             {
-                PTime[ship.GetComponent<MutualShip>().id - 1].gameObject.SetActive(true);
+                int i = ship.GetComponent<MutualShip>().id - 1;
+
+                PTime[i].gameObject.SetActive(true);
+
+                //for ordering
+                data.Add(new KeyValuePair<TextMeshProUGUI, float>(PTime[i], times[i]));
             }
         }
 
-        inGameCrown = Instantiate(crown, spawnManagerScript.generateRanPos(crownY), crown.transform.rotation);
+        //set time pos
+        for (int i = 0; i < data.Count; i++)
+        {
+            Vector3 pos = data[i].Key.transform.position;
+            data[i].Key.transform.position = new Vector3(pos.x, startTimeY + i * len, pos.z);
+        }
+
+       inGameCrown = Instantiate(crown, spawnManagerScript.generateRanPos(crownY), crown.transform.rotation);
     }
 
     public void assign(int ID, Vector3 pos, bool suicided)
@@ -243,12 +252,5 @@ public class HighlightModeManager : MonoBehaviour
         started = false;
 
         Destroy(inGameCrown);
-
-        //reset the board
-        for (int i = 0; i < PTime.Length; i++)
-        {
-            Vector3 pos = PTime[i].transform.position;
-            PTime[i].transform.position = new Vector3(pos.x, startTimeY + i * len, pos.z);
-        }
     }
 }
