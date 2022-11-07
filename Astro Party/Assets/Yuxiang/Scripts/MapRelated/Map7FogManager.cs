@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Map7FogManager : MonoBehaviour
 {
-    public GameObject parent;
+    public List<GameObject> allFogs;
 
     public GameObject fog;
 
@@ -34,16 +34,10 @@ public class Map7FogManager : MonoBehaviour
             {
                 spawnTime = waitTime;
 
-                for (int x = -spawnLen; x < spawnLen; x += 100)
-                {
-                    if (Random.Range(0, 8) == 0)
-                    { 
-                        GameObject curr = Instantiate(fog, new Vector3(x, fogYvalue, spawnLen), fog.transform.rotation);
-                        curr.GetComponent<Fog>().direction = 4;
-                        curr.GetComponent<Fog>().speed = speed;
-                        curr.transform.parent = parent.transform;
-                    }
-                }
+                spawnHelper("up");
+                spawnHelper("down");
+                spawnHelper("left");
+                spawnHelper("right");
             }
             else
             {
@@ -52,12 +46,45 @@ public class Map7FogManager : MonoBehaviour
         }
     }
 
+    void spawnHelper(string direction)
+    {
+        for (int i = -spawnLen; i < spawnLen; i += 100)
+        {
+            if (Random.Range(0, 16) == 0)
+            {
+                GameObject curr = new GameObject();
+                switch (direction)
+                {
+                    case "up":
+                        curr = Instantiate(fog, new Vector3(i, fogYvalue, spawnLen), fog.transform.rotation);
+                        break;
+                    case "down":
+                        curr = Instantiate(fog, new Vector3(i, fogYvalue, -spawnLen), fog.transform.rotation);
+                        break;
+                    case "left":
+                        curr = Instantiate(fog, new Vector3(-spawnLen, fogYvalue, i), fog.transform.rotation);
+                        break;
+                    case "right":
+                        curr = Instantiate(fog, new Vector3(spawnLen, fogYvalue, i), fog.transform.rotation);
+                        break;
+                }
+
+                curr.GetComponent<Fog>().direction = direction;
+                curr.GetComponent<Fog>().speed = speed;
+                allFogs.Add(curr);
+            }
+        }
+    }
+
     public void reset()
     {
         started = true;
 
-        Destroy(parent);
-        parent = new GameObject();
+        while (allFogs.Count > 0)
+        {
+            Destroy(allFogs[0]);
+            allFogs.RemoveAt(0);
+        }
 
         //for (int i = -spawnLen; i <= spawnLen; i += 100)
         //{

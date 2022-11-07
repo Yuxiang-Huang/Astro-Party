@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Fog : MonoBehaviour
 {
-    public int direction;
+    public string direction;
 
     int outOfBoundLen = 850;
 
@@ -27,10 +27,10 @@ public class Fog : MonoBehaviour
 
         switch (direction)
         {
-            case 1: blow = new Vector3(speed, 0, 0); break;
-            case 2: blow = new Vector3(-speed, 0, 0); break;
-            case 3: blow = new Vector3(0, 0, speed); break;
-            case 4: blow = new Vector3(0, 0, -speed); break;
+            case "right": blow = new Vector3(-speed, 0, 0); break;
+            case "left": blow = new Vector3(speed, 0, 0); break;
+            case "down": blow = new Vector3(0, 0, speed); break;
+            case "up": blow = new Vector3(0, 0, -speed); break;
         }
 
         transform.position = transform.position + blow;
