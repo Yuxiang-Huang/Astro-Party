@@ -10,12 +10,15 @@ public class Map4LaserBeamControl : MonoBehaviour
 
     public List<GameObject> indicators;
     public List<GameObject> laserBeams;
+    public List<GameObject> fixedLasersBeams;
+    public List<GameObject> fixedIndicators;
 
     float time;
     float interval = 7.0f;
 
     SEManager SEManagerScript;
     GameManager gameManagerScript;
+    MapManager mapManagerScript;
 
     // Start is called before the first frame update
     void Start()
@@ -44,54 +47,90 @@ public class Map4LaserBeamControl : MonoBehaviour
         time = 3;
         for (int i = 0; i < indicators.Count; i++)
         {
-            if (Random.Range(0, 2) == 0)
-            {
+            //???
+            //if (Random.Range(0, 2) == 0)
+            //{
                 indicators[i].SetActive(false);
                 laserBeams[i].SetActive(false);
-            }
+            //}
         }
     }
 
     IEnumerator spawnLaser()
     {
+        mapManagerScript = GameObject.Find("Map Manager").GetComponent<MapManager>();
+
         SEManagerScript.generalAudio.PlayOneShot(SEManagerScript.laserChargeSound);
 
-        bool[] spawn = new bool[indicators.Count];
-
-        for (int i = 0; i < indicators.Count; i++)
+        if (mapManagerScript.isFixedSpawned(GetComponent<Map>().mapID))
         {
-            if (Random.Range(0, 2) == 0)
-            {
-                spawn[i] = true;
-                indicators[i].SetActive(true);
-            }
+            //indicator
+            fixedIndicators[0].SetActive(true);
+
+            yield return new WaitForSeconds(2.25f);
+
+            //laser beam
+            fixedIndicators[0].SetActive(false);
+            fixedLasersBeams[0].SetActive(true);
+
+            yield return new WaitForSeconds(2f);
+
+            //clear
+            fixedLasersBeams[0].SetActive(false);
+
+            //switch
+            fixedIndicators.Add(fixedIndicators[0]);
+            fixedIndicators.RemoveAt(0);
+            fixedLasersBeams.Add(fixedLasersBeams[0]);
+            fixedLasersBeams.RemoveAt(0);
         }
 
-        yield return new WaitForSeconds(2.25f);
-
-        for (int i = 0; i < indicators.Count; i++)
+        else
         {
-            if (spawn[i])
+            //indicator
+            bool[] spawn = new bool[indicators.Count];
+
+            for (int i = 0; i < indicators.Count; i++)
             {
-                indicators[i].SetActive(false);
-                laserBeams[i].SetActive(true);
+                if (Random.Range(0, 2) == 0)
+                {
+                    spawn[i] = true;
+                    indicators[i].SetActive(true);
+                }
             }
-        }
 
-        yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(2.25f);
 
-        for (int i = 0; i < indicators.Count; i++)
-        {
-            if (spawn[i])
+            //laser beam
+            for (int i = 0; i < indicators.Count; i++)
             {
-                laserBeams[i].SetActive(false);
+                if (spawn[i])
+                {
+                    indicators[i].SetActive(false);
+                    laserBeams[i].SetActive(true);
+                }
             }
+
+            yield return new WaitForSeconds(2f);
+
+            //clear
+            for (int i = 0; i < indicators.Count; i++)
+            {
+                if (spawn[i])
+                {
+                    laserBeams[i].SetActive(false);
+                }
+            }
+
+            //rotate
+            float rand = Random.Range(0, 2 * Mathf.PI);
+
+            indicator.transform.Rotate(new Vector3(0, rand, 0));
+            laserBeam.transform.Rotate(new Vector3(0, rand, 0));
+
+            //random interval
+            interval = Random.Range(5f, 10f);
         }
-
-        float rand = Random.Range(0, 2 * Mathf.PI);
-
-        indicator.transform.Rotate(new Vector3 (0, rand, 0));
-        laserBeam.transform.Rotate(new Vector3(0, rand, 0));
     }
 
     //used once to make the map
