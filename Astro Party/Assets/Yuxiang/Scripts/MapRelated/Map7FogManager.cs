@@ -16,7 +16,7 @@ public class Map7FogManager : MonoBehaviour
 
     float spawnTime;
 
-    GameManager gameManagerScript;
+    MapManager mapManagerScript;
 
     // Start is called before the first frame update
     void Start()
@@ -81,32 +81,32 @@ public class Map7FogManager : MonoBehaviour
 
     public void reset()
     {
-        gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        mapManagerScript = GameObject.Find("Map Manager").GetComponent<MapManager>();
 
         //reset parent
         Destroy(parent);
         parent = new GameObject();
         parent.transform.parent = transform;
 
-        //if (gameManagerScript.fixedSpawn)
-        //{
-        //    for (int i = -spawnLen; i <= spawnLen; i += 100)
-        //    {
-        //        for (int j = -spawnLen; j <= spawnLen; j += 100)
-        //        {
-        //            if (Random.Range(0, 4) == 0)
-        //            {
-        //                GameObject curr = Instantiate(fog, new Vector3(i, fogYvalue, j), fog.transform.rotation);
-        //                curr.transform.parent = parent.transform;
-        //            }
-        //        }
-        //    }
-        //    started = false;
-        //}
+        if (mapManagerScript.isFixedSpawned(GetComponent<Map>().mapID))
+        {
+            for (int i = -spawnLen; i <= spawnLen; i += 100)
+            {
+                for (int j = -spawnLen; j <= spawnLen; j += 100)
+                {
+                    if (Random.Range(0, 4) == 0)
+                    {
+                        GameObject curr = Instantiate(fog, new Vector3(i, fogYvalue, j), fog.transform.rotation);
+                        curr.transform.parent = parent.transform;
+                    }
+                }
+            }
+            started = false;
+        }
 
-        //else
-        //{
+        else
+        {
             started = true;
-        //}
+        }
     }
 }

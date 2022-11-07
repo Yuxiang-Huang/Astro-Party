@@ -94,6 +94,7 @@ public class Map4LaserBeamControl : MonoBehaviour
         laserBeam.transform.Rotate(new Vector3(0, rand, 0));
     }
 
+    //used once to make the map
     void make(GameObject beam)
     {
         Vector3 endPoint1 = new Vector3(radius * Mathf.Cos(Mathf.PI / 10), 1, radius * Mathf.Sin(Mathf.PI / 10));
