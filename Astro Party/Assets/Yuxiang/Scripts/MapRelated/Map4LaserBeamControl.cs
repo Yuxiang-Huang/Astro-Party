@@ -88,6 +88,8 @@ public class Map4LaserBeamControl : MonoBehaviour
             fixedIndicators.RemoveAt(0);
             fixedLasersBeams.Add(fixedLasersBeams[0]);
             fixedLasersBeams.RemoveAt(0);
+
+            interval = 7.0f;
         }
 
         else
@@ -134,7 +136,7 @@ public class Map4LaserBeamControl : MonoBehaviour
             laserBeam.transform.Rotate(new Vector3(0, rand, 0));
 
             //random interval
-            interval = Random.Range(5f, 10f);
+            interval = Random.Range(5f, 7f);
         }
     }
 

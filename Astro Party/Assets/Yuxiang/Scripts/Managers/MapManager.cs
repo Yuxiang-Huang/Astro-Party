@@ -13,7 +13,7 @@ public class MapManager : MonoBehaviour
     List<Text> allText = new List<Text>();
     List<string> mapFixedSpawn = new List<string>();
 
-    bool allChange;
+    string allChange = "All Off";
     public Text allChangeText;
 
     int currMapID;
@@ -157,40 +157,62 @@ public class MapManager : MonoBehaviour
 
     public void AllChange()
     {
-        if (allChange)
-        {
-            //all on
-            while (currMaps.Count > 0)
-            {
-                currMaps.RemoveAt(0);
-            }
+        string setString = "";
 
+        //remove all maps
+        while (currMaps.Count > 0)
+        {
+            currMaps.RemoveAt(0);
+        }
+
+        if (allChange == "All Off")
+        {
+            //all Off
+            setString = "None";
+            allChange = "All Fixed";
+        }
+        else
+        {
+           //add all maps
             foreach (GameObject map in allMaps)
             {
                 currMaps.Add(map);
             }
 
-            foreach (Text mapText in allText)
+            if (allChange == "All Fixed")
             {
-                mapText.text = "On";
-            }
-            allChangeText.text = "All Off";
-        }
-        else
-        {
-            //all off
-            while (currMaps.Count > 0)
-            {
-                currMaps.RemoveAt(0);
+                //all Off
+                setString = "Fixed";
+                allChange = "All Unfixed";
             }
 
-            foreach (Text mapText in allText)
+            else if (allChange == "All Unfixed")
             {
-                mapText.text = "Off";
+                //all Off
+                setString = "Unfixed";
+                allChange = "All On";
             }
-            allChangeText.text = "All On";
+
+            else if (allChange == "All On")
+            {
+                //all Off
+                setString = "Both";
+                allChange = "All Off";
+            }
         }
-        allChange = !allChange;
+
+        //set string in mapFixedSpawn and allText
+        for (int i = 0; i < mapFixedSpawn.Count; i++)
+        {
+            mapFixedSpawn[i] = setString;
+        }
+
+        foreach (Text mapText in allText)
+        {
+            mapText.text = setString;
+        }
+
+        allChangeText.text = allChange;
     }
 
     void reset0()
@@ -322,6 +344,7 @@ public class MapManager : MonoBehaviour
     void MapOnOffHelper(GameObject map, Text mapText)
     {
         int id = map.GetComponent<Map>().mapID;
+
         if (mapFixedSpawn[id] == "Fixed")
         {
             mapFixedSpawn[id] = "Unfixed";

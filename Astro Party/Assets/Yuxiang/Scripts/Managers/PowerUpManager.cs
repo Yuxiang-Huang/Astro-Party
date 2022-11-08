@@ -226,7 +226,7 @@ public class PowerUpManager : MonoBehaviour
         maxPowerUp++;
         if (maxPowerUp >= 10)
         {
-            maxPowerUp = 9;
+            maxPowerUp = 1;
         }
 
         maxPowerUpText.text = "" + maxPowerUp;
@@ -237,7 +237,7 @@ public class PowerUpManager : MonoBehaviour
         maxPowerUp--;
         if (maxPowerUp <= 0)
         {
-            maxPowerUp = 1;
+            maxPowerUp = 9;
         }
 
         maxPowerUpText.text = "" + maxPowerUp;
