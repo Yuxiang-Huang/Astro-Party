@@ -128,9 +128,11 @@ public class MutualShip : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //freezed
+        //frozen
         if (freezeTime > 0)
         {
+            //no velocity when frozen
+            GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
             freezeTime -= Time.deltaTime;
         }
         //freeze
@@ -171,6 +173,7 @@ public class MutualShip : MonoBehaviour
                 {
                     GetComponent<BotMove>().agent.enabled = true;
                     GetComponent<BotMove>().disable = false;
+                    GetComponent<BotMove>().traceTime = 0;
                 }
                 else
                 {

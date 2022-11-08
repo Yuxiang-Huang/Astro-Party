@@ -54,7 +54,7 @@ public class Map7FogManager : MonoBehaviour
     {
         for (int i = -spawnLen; i < spawnLen; i += 100)
         {
-            if (Random.Range(0, 8) == 0)
+            if (Random.Range(0, 16) == 0)
             {
                 GameObject curr = Instantiate(fog, new Vector3(i, fogYvalue, spawnLen), fog.transform.rotation);
                 switch (direction)
@@ -91,6 +91,7 @@ public class Map7FogManager : MonoBehaviour
         parent = new GameObject();
         parent.transform.parent = transform;
 
+        //fixed spawn
         if (mapManagerScript.isFixedSpawned(GetComponent<Map>().mapID))
         {
             for (int i = -spawnLen; i <= spawnLen; i += 100)

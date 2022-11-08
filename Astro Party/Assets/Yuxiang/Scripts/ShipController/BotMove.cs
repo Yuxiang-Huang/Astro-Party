@@ -12,20 +12,27 @@ public class BotMove : MonoBehaviour
     GameManager gameManagerScript;
     ScoreManager scoreManagerScript;
 
-    float traceTime;
+    public float traceTime;
 
     public bool disable;
+
+    Rigidbody rb;
 
     // Start is called before the first frame update
     void Start()
     {
         gameManagerScript = gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
         scoreManagerScript = GameObject.Find("Score Manager").GetComponent<ScoreManager>();
+
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        //no velocity for AI agent
+        rb.velocity = new Vector3(0, 0, 0);
+
         if (!disable)
         {
             GameObject target = this.gameObject;
@@ -106,7 +113,7 @@ public class BotMove : MonoBehaviour
             if (traceTime <= 0)
             {
                 agent.SetDestination(target.transform.position);
-                traceTime = 1f;
+                traceTime = Random.Range(0.75f, 1.25f);
             }
             if (traceTime > 0)
             {
