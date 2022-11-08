@@ -2,13 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Builder : MonoBehaviour
+public class BorderBuilder : MonoBehaviour
 {
-
     public GameObject borderWall;
-
-    public GameObject wall;
-    public GameObject breakableWall;
 
     // Start is called before the first frame update
     void Start()
@@ -32,8 +28,8 @@ public class Builder : MonoBehaviour
         {
             float angle = 2 * Mathf.PI / n * i;
 
-            GameObject now = Instantiate(wall, new Vector3(radius * Mathf.Cos(angle), 0, radius * Mathf.Sin(angle)),
-                wall.transform.rotation);
+            GameObject now = Instantiate(borderWall, new Vector3(radius * Mathf.Cos(angle), 0, radius * Mathf.Sin(angle)),
+                borderWall.transform.rotation);
             now.transform.Rotate(new Vector3(0, 180 * angle / Mathf.PI, 0));
         }
     }
