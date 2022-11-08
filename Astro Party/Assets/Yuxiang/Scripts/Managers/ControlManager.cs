@@ -66,29 +66,10 @@ public class ControlManager : MonoBehaviour
             case 5: c = new Color(0, 255, 0); break;
         }
 
-        ColorBlock colors = PButton.colors;
-        colors.normalColor = c;
-        colors.selectedColor = c;
-        colors.pressedColor = c;
-        PButton.colors = colors;
-
-        colors = teamButtonObject.colors;
-        colors.normalColor = c;
-        colors.selectedColor = c;
-        colors.pressedColor = c;
-        teamButtonObject.colors = colors;
-
-        colors = setRotateButton.colors;
-        colors.normalColor = c;
-        colors.selectedColor = c;
-        colors.pressedColor = c;
-        setRotateButton.colors = colors;
-
-        colors = setShootButton.colors;
-        colors.normalColor = c;
-        colors.selectedColor = c;
-        colors.pressedColor = c;
-        setShootButton.colors = colors;
+        setColor(PButton, c);
+        setColor(teamButtonObject, c);
+        setColor(setRotateButton, c);
+        setColor(setShootButton, c);
 
         teamButtonObject.gameObject.SetActive(false);
         setRotateButton.gameObject.SetActive(false);
@@ -108,12 +89,12 @@ public class ControlManager : MonoBehaviour
                 script.shoot = KeyCode.X;
                 break;
             case 3:
-                script.turn = KeyCode.T;
-                script.shoot = KeyCode.Y;
+                script.turn = KeyCode.N;
+                script.shoot = KeyCode.M;
                 break;
             case 4:
-                script.turn = KeyCode.O;
-                script.shoot = KeyCode.P;
+                script.turn = KeyCode.RightBracket;
+                script.shoot = KeyCode.Backslash;
                 break;
             case 5:
                 script.turn = KeyCode.LeftArrow;
@@ -129,6 +110,15 @@ public class ControlManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void setColor(Button button, Color c)
+    {
+        ColorBlock colors = button.colors;
+        colors.normalColor = c;
+        colors.selectedColor = c;
+        colors.pressedColor = c;
+        button.colors = colors;
     }
 
     public void shipButton()

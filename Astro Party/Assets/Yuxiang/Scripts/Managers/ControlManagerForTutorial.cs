@@ -56,23 +56,18 @@ public class ControlManagerForTutorial : MonoBehaviour
             case 5: c = new Color(0, 255, 0); break;
         }
 
-        ColorBlock colors = PButton.colors;
-        colors.normalColor = c;
-        colors.selectedColor = c;
-        colors.pressedColor = c;
-        PButton.colors = colors;
+        setColor(PButton, c);
+        setColor(setRotateButton, c);
+        setColor(setShootButton, c);
+    }
 
-        colors = setRotateButton.colors;
+    void setColor(Button button, Color c)
+    {
+        ColorBlock colors = button.colors;
         colors.normalColor = c;
         colors.selectedColor = c;
         colors.pressedColor = c;
-        setRotateButton.colors = colors;
-
-        colors = setShootButton.colors;
-        colors.normalColor = c;
-        colors.selectedColor = c;
-        colors.pressedColor = c;
-        setShootButton.colors = colors;
+        button.colors = colors;
     }
 
     public void shipButton()

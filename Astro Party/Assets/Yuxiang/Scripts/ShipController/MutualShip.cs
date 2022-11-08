@@ -99,7 +99,7 @@ public class MutualShip : MonoBehaviour
 
         freezeCube.SetActive(false);
 
-        //setColor and control
+        //setColor
         switch (id)
         {
             case 1:
