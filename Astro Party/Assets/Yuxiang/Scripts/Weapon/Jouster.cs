@@ -8,10 +8,16 @@ public class Jouster : MonoBehaviour
     public int team;
     public int health;
 
+    private void Awake()
+    {
+        id = GetComponentInParent<MutualShip>().id;
+        id = GetComponentInParent<MutualShip>().team;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-  
+        
     }
 
     void Update()
@@ -45,6 +51,7 @@ public class Jouster : MonoBehaviour
             }
         }
 
+        ////double ontrigger issue
         //if (other.CompareTag("Ship"))
         //{
         //    other.GetComponent<MutualShip>().damage(id, team);

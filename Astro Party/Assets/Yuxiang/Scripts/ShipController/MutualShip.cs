@@ -14,7 +14,7 @@ public class MutualShip : MonoBehaviour
     public bool hasShield;
 
     int speed = 500;
-    int bulletDis = 30;
+    int bulletDis = 50;
     int bulletY = 5;
     public float bulletAnimationPos;
     public GameObject[] bulletAnimation;
@@ -68,21 +68,17 @@ public class MutualShip : MonoBehaviour
             }
         }
 
-        ammo = 3;
-
         gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
         scoreManagerScript = GameObject.Find("Score Manager").GetComponent<ScoreManager>();
         powerUpManagerScript = GameObject.Find("PowerUp Manager").GetComponent<PowerUpManager>();
         SEManagerScript = GameObject.Find("SoundEffect Manager").GetComponent<SEManager>();
         highlightModeManagerScript = GameObject.Find("Highlight Manager").GetComponent<HighlightModeManager>();
 
-        //jousters
+        ammo = 3;
+
+        //attached
         jouster1.SetActive(false);
-        jouster1.GetComponent<Jouster>().id = id;
-        jouster1.GetComponent<Jouster>().team = team;
         jouster2.SetActive(false);
-        jouster2.GetComponent<Jouster>().id = id;
-        jouster2.GetComponent<Jouster>().team = team;
 
         if (tripleShot)
         {
@@ -105,7 +101,6 @@ public class MutualShip : MonoBehaviour
         freezeCube.SetActive(false);
 
         //setColor and control
-
         switch (id)
         {
             case 1:
@@ -210,13 +205,14 @@ public class MutualShip : MonoBehaviour
             reloadTime = 2;
         }
 
+        //bullet animation
         bulletAnimationPos += Time.deltaTime;
 
         for (int i = 0; i < bulletAnimation.Length; i++)
         {
             bulletAnimation[i].transform.position = new Vector3(transform.position.x +
-                Mathf.Cos(bulletAnimationPos + i * 2 * Mathf.PI / 3) * bulletDis * 2,
-                transform.position.y, transform.position.z + Mathf.Sin(bulletAnimationPos + i * 2 * Mathf.PI / 3) * bulletDis * 2);
+                Mathf.Cos(bulletAnimationPos + i * 2 * Mathf.PI / 3) * bulletDis,
+                transform.position.y, transform.position.z + Mathf.Sin(bulletAnimationPos + i * 2 * Mathf.PI / 3) * bulletDis);
         }
 
         //check for crown in highlight
@@ -398,6 +394,10 @@ public class MutualShip : MonoBehaviour
             {
                 sideBullet2.GetComponent<Identification>().team = team;
             }
+
+            //add to be destroyed after round ends
+            gameManagerScript.needToClear.Add(sideBullet1);
+            gameManagerScript.needToClear.Add(sideBullet2);
         }
 
         GameObject myBullet = Instantiate(projectile, transform.position +
@@ -414,6 +414,7 @@ public class MutualShip : MonoBehaviour
         {
             myBullet.GetComponent<Identification>().team = team;
         }
+        gameManagerScript.needToClear.Add(myBullet);
     }
  
     IEnumerator laserFreeze()
