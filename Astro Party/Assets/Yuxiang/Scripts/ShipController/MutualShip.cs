@@ -15,7 +15,6 @@ public class MutualShip : MonoBehaviour
 
     int speed = 500;
     int bulletDis = 50;
-    int bulletY = 0;
     public float bulletAnimationPos;
     public GameObject[] bulletAnimation;
     public float reloadTime;
@@ -283,13 +282,15 @@ public class MutualShip : MonoBehaviour
                     float angleNow = transform.rotation.ToEulerAngles().y;
 
                     GameObject myBullet = Instantiate(powerUpManagerScript.bullet, transform.position +
-                new Vector3(bulletDis * Mathf.Sin(angleNow), bulletY, bulletDis * Mathf.Cos(angleNow)), transform.rotation);
+                new Vector3(bulletDis * Mathf.Sin(angleNow), 0, bulletDis * Mathf.Cos(angleNow)), transform.rotation);
 
                     transform.Rotate(0, 360 / numOfShots, 0);
 
                     //setting the script varibles
                     myBullet.GetComponent<BulletMove>().id = id;
                     myBullet.GetComponent<BulletMove>().team = team;
+
+                    gameManagerScript.needToClear.Add(myBullet);
                 }
 
                 transform.Rotate(0, 360 - ran, 0);
@@ -366,7 +367,7 @@ public class MutualShip : MonoBehaviour
         if (tripleShot)
         {
             GameObject sideBullet1 = Instantiate(projectile, transform.position +
-        new Vector3(bulletDis * Mathf.Sin(angle + 1), bulletY, bulletDis * Mathf.Cos(angle + 1)),
+        new Vector3(bulletDis * Mathf.Sin(angle + 1), 0, bulletDis * Mathf.Cos(angle + 1)),
         transform.rotation);
 
             //setting the script varibles
@@ -381,7 +382,7 @@ public class MutualShip : MonoBehaviour
             }
 
             GameObject sideBullet2 = Instantiate(projectile, transform.position +
-        new Vector3(bulletDis * Mathf.Sin(angle - 1), bulletY, bulletDis * Mathf.Cos(angle - 1)),
+        new Vector3(bulletDis * Mathf.Sin(angle - 1), 0, bulletDis * Mathf.Cos(angle - 1)),
         transform.rotation);
 
             //setting the script varibles
@@ -401,7 +402,7 @@ public class MutualShip : MonoBehaviour
         }
 
         GameObject myBullet = Instantiate(projectile, transform.position +
-        new Vector3(bulletDis * Mathf.Sin(angle), bulletY, bulletDis * Mathf.Cos(angle)),
+        new Vector3(bulletDis * Mathf.Sin(angle), 0, bulletDis * Mathf.Cos(angle)),
         transform.rotation);
 
         //setting the script varibles
