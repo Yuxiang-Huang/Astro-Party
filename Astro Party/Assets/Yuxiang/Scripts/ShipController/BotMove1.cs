@@ -128,7 +128,7 @@ public class BotMove1: MonoBehaviour
             if (botReloadTime >= 1)
             {
                 botReloadTime = 0;
-                GetComponent<MutualShip>().shoot();
+                GetComponent<MutualShip>().fire();
             }
         }
     }

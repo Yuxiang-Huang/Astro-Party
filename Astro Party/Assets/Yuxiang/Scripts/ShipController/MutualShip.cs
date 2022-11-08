@@ -15,7 +15,7 @@ public class MutualShip : MonoBehaviour
 
     int speed = 500;
     int bulletDis = 30;
-    int bulletY;
+    int bulletY = 5;
     public float bulletAnimationPos;
     public GameObject[] bulletAnimation;
     public float reloadTime;
@@ -57,8 +57,6 @@ public class MutualShip : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        bulletY = 15;
-
         playerRb = GetComponent<Rigidbody>();
         playerAudio = GetComponent<AudioSource>();
 
@@ -140,7 +138,6 @@ public class MutualShip : MonoBehaviour
         if (freezeTime > 0)
         {
             freezeTime -= Time.deltaTime;
-            freezeTime = Mathf.Max(0, freezeTime);
         }
         //freeze
         if (!freezed && freezeTime > 0)
@@ -165,7 +162,8 @@ public class MutualShip : MonoBehaviour
             freezed = true;
         }
 
-        if (freezed && freezeTime == 0)
+        //unfreeze
+        if (freezed && freezeTime <= 0)
         {
             if (GetComponent<PlayerController>() != null)
             {
@@ -221,6 +219,7 @@ public class MutualShip : MonoBehaviour
                 transform.position.y, transform.position.z + Mathf.Sin(bulletAnimationPos + i * 2 * Mathf.PI / 3) * bulletDis * 2);
         }
 
+        //check for crown in highlight
         if (scoreManagerScript.gameMode == "highlight")
         {
             if (highlighed)
@@ -231,12 +230,13 @@ public class MutualShip : MonoBehaviour
         }
     }
 
-    public void shoot()
+    public void fire()
     {
         float angle = transform.rotation.ToEulerAngles().y;
 
         if (shootMode == "normal")
         {
+            //ammo change
             if (ammo > 0)
             {
                 ammo--;
@@ -248,56 +248,7 @@ public class MutualShip : MonoBehaviour
                     reloadTime = 2;
                 }
 
-                //Debug.Log(Mathf.Cos(transform.rotation.y));
-                //Debug.Log(Mathf.Sin(transform.rotation.y));
-
-                if (tripleShot)
-                {
-                    GameObject sideBullet1 = Instantiate(powerUpManagerScript.bullet, transform.position +
-                new Vector3(bulletDis * Mathf.Sin(angle + 1), bulletY, bulletDis * Mathf.Cos(angle + 1)),
-                transform.rotation);
-
-                    //setting the script varibles
-                    sideBullet1.GetComponent<BulletMove>().id = id;
-                    if (gameManagerScript.suicidalBullet)
-                    {
-                        sideBullet1.GetComponent<BulletMove>().team = -1;
-                    }
-                    else
-                    {
-                        sideBullet1.GetComponent<BulletMove>().team = team;
-                    }
-
-                    GameObject sideBullet2 = Instantiate(powerUpManagerScript.bullet, transform.position +
-                new Vector3(bulletDis * Mathf.Sin(angle - 1), bulletY, bulletDis * Mathf.Cos(angle - 1)),
-                transform.rotation);
-
-                    //setting the script varibles
-                    sideBullet2.GetComponent<BulletMove>().id = id;
-                    if (gameManagerScript.suicidalBullet)
-                    {
-                        sideBullet2.GetComponent<BulletMove>().team = -1;
-                    }
-                    else
-                    {
-                        sideBullet2.GetComponent<BulletMove>().team = team;
-                    }
-                }
-
-                GameObject myBullet = Instantiate(powerUpManagerScript.bullet, transform.position +
-                new Vector3(bulletDis * Mathf.Sin(angle), bulletY, bulletDis * Mathf.Cos(angle)),
-                transform.rotation);
-
-                //setting the script varibles
-                myBullet.GetComponent<BulletMove>().id = id;
-                if (gameManagerScript.suicidalBullet)
-                {
-                    myBullet.GetComponent<BulletMove>().team = -1;
-                }
-                else
-                {
-                    myBullet.GetComponent<BulletMove>().team = team;
-                }
+                shoot(angle, powerUpManagerScript.bullet);
 
                 //Sound effect
                 playerAudio.PlayOneShot(SEManagerScript.bulletSound);
@@ -322,6 +273,7 @@ public class MutualShip : MonoBehaviour
                 //Freeze after using laser
                 StartCoroutine("laserFreeze");
             }
+
             else if (shootMode == "Scatter Shot")
             {
                 int numOfShots = 16;
@@ -349,6 +301,7 @@ public class MutualShip : MonoBehaviour
                 //Sound effect
                 playerAudio.PlayOneShot(SEManagerScript.bulletSound);
             }
+
             else if (shootMode == "Freezer")
             {
                 GameObject myFreezer = Instantiate(powerUpManagerScript.freezer, transform.position, transform.rotation);
@@ -374,62 +327,10 @@ public class MutualShip : MonoBehaviour
 
             else if (shootMode == "Bouncy Bullet")
             {
-                GameObject myBouncyBullet = Instantiate(powerUpManagerScript.bouncyBullet,
-                    transform.position +
-                new Vector3(bulletDis * Mathf.Sin(angle), bulletY, bulletDis * Mathf.Cos(angle)),
-                transform.rotation);
-
-                //setting the script varibles
-                myBouncyBullet.GetComponent<BouncyBullet>().id = id;
-                if (gameManagerScript.suicidalBullet)
-                {
-                    myBouncyBullet.GetComponent<BouncyBullet>().team = -1;
-                }
-                else
-                {
-                    myBouncyBullet.GetComponent<BouncyBullet>().team = team;
-                }
-
-                gameManagerScript.needToClear.Add(myBouncyBullet);
+                shoot(angle, powerUpManagerScript.bouncyBullet);
 
                 //Sound effect
                 playerAudio.PlayOneShot(SEManagerScript.bulletSound);
-
-                if (tripleShot)
-                {
-                    GameObject sideBullet1 = Instantiate(powerUpManagerScript.bouncyBullet, transform.position +
-                new Vector3(bulletDis * Mathf.Sin(angle + 1), bulletY, bulletDis * Mathf.Cos(angle + 1)),
-                transform.rotation);
-
-                    //setting the script varibles
-                    sideBullet1.GetComponent<BouncyBullet>().id = id;
-                    if (gameManagerScript.suicidalBullet)
-                    {
-                        sideBullet1.GetComponent<BouncyBullet>().team = -1;
-                    }
-                    else
-                    {
-                        sideBullet1.GetComponent<BouncyBullet>().team = team;
-                    }
-
-                    GameObject sideBullet2 = Instantiate(powerUpManagerScript.bouncyBullet, transform.position +
-                new Vector3(bulletDis * Mathf.Sin(angle - 1), bulletY, bulletDis * Mathf.Cos(angle - 1)),
-                transform.rotation);
-
-                    //setting the script varibles
-                    sideBullet2.GetComponent<BouncyBullet>().id = id;
-                    if (gameManagerScript.suicidalBullet)
-                    {
-                        sideBullet2.GetComponent<BouncyBullet>().team = -1;
-                    }
-                    else
-                    {
-                        sideBullet2.GetComponent<BouncyBullet>().team = team;
-                    }
-
-                    gameManagerScript.needToClear.Add(sideBullet1);
-                    gameManagerScript.needToClear.Add(sideBullet2);
-                }
             }
 
             else if (shootMode == "Jouster")
@@ -446,9 +347,7 @@ public class MutualShip : MonoBehaviour
             }
 
             //check for powerup usage
-
             powerUpUsed++;
-
             if (powerUpUsed == powerUpManagerScript.maxPowerUp)
             {
                 shootMode = "normal";
@@ -465,6 +364,58 @@ public class MutualShip : MonoBehaviour
         }
     }
 
+    //shoot for bullet, bouncy bullet and
+    void shoot(float angle, GameObject projectile)
+    {
+        if (tripleShot)
+        {
+            GameObject sideBullet1 = Instantiate(projectile, transform.position +
+        new Vector3(bulletDis * Mathf.Sin(angle + 1), bulletY, bulletDis * Mathf.Cos(angle + 1)),
+        transform.rotation);
+
+            //setting the script varibles
+            sideBullet1.GetComponent<Identification>().id = id;
+            if (gameManagerScript.suicidalBullet)
+            {
+                sideBullet1.GetComponent<Identification>().team = -1;
+            }
+            else
+            {
+                sideBullet1.GetComponent<Identification>().team = team;
+            }
+
+            GameObject sideBullet2 = Instantiate(projectile, transform.position +
+        new Vector3(bulletDis * Mathf.Sin(angle - 1), bulletY, bulletDis * Mathf.Cos(angle - 1)),
+        transform.rotation);
+
+            //setting the script varibles
+            sideBullet2.GetComponent<Identification>().id = id;
+            if (gameManagerScript.suicidalBullet)
+            {
+                sideBullet2.GetComponent<Identification>().team = -1;
+            }
+            else
+            {
+                sideBullet2.GetComponent<Identification>().team = team;
+            }
+        }
+
+        GameObject myBullet = Instantiate(projectile, transform.position +
+        new Vector3(bulletDis * Mathf.Sin(angle), bulletY, bulletDis * Mathf.Cos(angle)),
+        transform.rotation);
+
+        //setting the script varibles
+        myBullet.GetComponent<Identification>().id = id;
+        if (gameManagerScript.suicidalBullet)
+        {
+            myBullet.GetComponent<Identification>().team = -1;
+        }
+        else
+        {
+            myBullet.GetComponent<Identification>().team = team;
+        }
+    }
+ 
     IEnumerator laserFreeze()
     {
         playerRb.constraints = RigidbodyConstraints.FreezeAll;

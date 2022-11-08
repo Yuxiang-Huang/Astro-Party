@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(shoot) && !shootDisable)
         {
-            GetComponent<MutualShip>().shoot();
+            GetComponent<MutualShip>().fire();
         }
 
         if (Input.GetKeyDown(turn))

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6461146982367622489}
   - component: {fileID: 6461146982367622491}
   - component: {fileID: 7000561420965282628}
+  - component: {fileID: -6561344737274019143}
   m_Layer: 0
   m_Name: BouncyBullet
   m_TagString: BouncyBullet
@@ -133,3 +134,17 @@ MonoBehaviour:
   yellow3: {fileID: 2100000, guid: 90dc638151335479185544a45af3f6ec, type: 2}
   cyan4: {fileID: 2100000, guid: 766cb1bc9d98e4bf9b48150d9f39940b, type: 2}
   green5: {fileID: 2100000, guid: c59522cafbf944136839f49263b32d74, type: 2}
+--- !u!114 &-6561344737274019143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6461146982367622469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36c037069b3a34f818f0638dafd2c054, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  team: 0

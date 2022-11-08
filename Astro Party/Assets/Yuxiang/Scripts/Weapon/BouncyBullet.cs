@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletMove : MonoBehaviour
+public class BouncyBullet : MonoBehaviour
 {
     public int id;
     public int team;
@@ -10,16 +10,42 @@ public class BulletMove : MonoBehaviour
     Rigidbody Rb;
     int speed = 1000;
 
-    GameManager gameManagerScript;
-
     bool attacked;
+
+    public Renderer rend;
+    public Material blue1;
+    public Material red2;
+    public Material yellow3;
+    public Material cyan4;
+    public Material green5;
 
     // Start is called before the first frame update
     void Start()
     {
+        id = GetComponent<Identification>().id;
+        team = GetComponent<Identification>().team;
+
         Rb = GetComponent<Rigidbody>();
         Rb.AddRelativeForce(new Vector3(0, 0, speed), ForceMode.VelocityChange);
-        gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
+
+        switch (id)
+        {
+            case 1:
+                rend.material = blue1;
+                break;
+            case 2:
+                rend.material = red2;
+                break;
+            case 3:
+                rend.material = yellow3;
+                break;
+            case 4:
+                rend.material = cyan4;
+                break;
+            case 5:
+                rend.material = green5;
+                break;
+        }
     }
 
     // Update is called once per frame
@@ -34,7 +60,7 @@ public class BulletMove : MonoBehaviour
         {
             if (collision.gameObject.CompareTag("Asteroid"))
             {
-                collision.gameObject.GetComponent<Asteroid>().health--;
+                collision.gameObject.GetComponent<Asteroid>().health = 0;
             }
 
             if (collision.gameObject.CompareTag("Breakable"))
@@ -62,16 +88,17 @@ public class BulletMove : MonoBehaviour
             if (!collision.gameObject.CompareTag("Floor"))
             {
                 bool destroy = true;
-                if (collision.gameObject.CompareTag("Bullet"))
+
+                if (collision.gameObject.GetComponent<BouncyBullet>() != null)
                 {
-                    //for scatter shot
-                    if (collision.gameObject.GetComponent<BulletMove>().id == id)
+                    if (collision.gameObject.GetComponent<BouncyBullet>().id == id)
                     {
                         destroy = false;
                     }
                 }
 
-                if (collision.gameObject.CompareTag("Portal"))
+                if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Breakable")
+                    || collision.gameObject.CompareTag("Asteroid") || collision.gameObject.CompareTag("Portal"))
                 {
                     destroy = false;
                 }

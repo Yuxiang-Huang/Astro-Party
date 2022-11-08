@@ -99,7 +99,7 @@ public class BotMove : MonoBehaviour
             if (botReloadTime >= 1)
             {
                 botReloadTime = 0;
-                GetComponent<MutualShip>().shoot();
+                GetComponent<MutualShip>().fire();
             }
 
             //Can't trace too frequently
