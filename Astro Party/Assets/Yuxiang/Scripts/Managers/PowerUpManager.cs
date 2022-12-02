@@ -23,8 +23,8 @@ public class PowerUpManager : MonoBehaviour
     public int maxPowerUp = 1;
     public Text maxPowerUpText;
 
-    public bool allRandomSPU;
-    public Text allRandomSPUText;
+    public bool allSameRandomSPU;
+    public Text allSameRandomSPUText;
 
     public GameObject laser;
     public GameObject laserIndicator;
@@ -166,18 +166,18 @@ public class PowerUpManager : MonoBehaviour
 
     //Starting Power Up
 
-    public void setRandomSPUAll()
+    public void setRandomSPUAllSame()
     {
-        if (allRandomSPU)
+        if (allSameRandomSPU)
         {
-            allRandomSPUText.text = "Random Starting PowerUp: Off";
+            allSameRandomSPUText.text = "Random Starting PowerUp: Off";
         }
         else
         {
-            allRandomSPUText.text = "Random Starting PowerUp: On";
+            allSameRandomSPUText.text = "Random Starting PowerUp: On";
         }
 
-        allRandomSPU = !allRandomSPU;
+        allSameRandomSPU = !allSameRandomSPU;
     }
 
     //PowerUP

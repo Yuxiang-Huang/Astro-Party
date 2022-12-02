@@ -148,7 +148,7 @@ public class GameManager : MonoBehaviour
         string startingPowerUp = "normal";
         bool hasSPU = false;
 
-        if (powerUpManagerScript.allRandomSPU)
+        if (powerUpManagerScript.allSameRandomSPU)
         {
             hasSPU = true;
             startingPowerUp = powerUpManagerScript.SPU[Random.Range(0, powerUpManagerScript.SPU.Count)];

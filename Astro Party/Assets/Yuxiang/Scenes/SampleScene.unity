@@ -6343,9 +6343,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1925715356}
-        m_TargetAssemblyTypeName: PowerUpManager, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 1925715357}
+        m_TargetAssemblyTypeName: AllSPUManager, Assembly-CSharp
+        m_MethodName: setRandomAllSPU
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8462,8 +8462,8 @@ MonoBehaviour:
   autoBalanceText: {fileID: 575997786}
   maxPowerUp: 1
   maxPowerUpText: {fileID: 1774003748}
-  allRandomSPU: 0
-  allRandomSPUText: {fileID: 0}
+  allSameRandomSPU: 0
+  allSameRandomSPUText: {fileID: 0}
   laser: {fileID: 6509910874384710604, guid: cfea443daa6b1433aa831465e8c8e4da, type: 3}
   laserIndicator: {fileID: 8667850671334641019, guid: 958da0f093d824256859aff34cd571fa, type: 3}
   laserText: {fileID: 969323364}
@@ -12412,7 +12412,7 @@ RectTransform:
   - {fileID: 116282506}
   - {fileID: 771887944}
   m_Father: {fileID: 0}
-  m_RootOrder: 35
+  m_RootOrder: 36
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -38700,13 +38700,13 @@ MonoBehaviour:
   infoScreen2: {fileID: 1453480421}
   mapScreen: {fileID: 1892979923}
   powerUpScreen: {fileID: 1859962656}
-  AllSPUScreen: {fileID: 0}
+  AllSPUScreen: {fileID: 1925715356}
   SPUScreen: {fileID: 466708193}
-  P1SPUText: {fileID: 590924024}
-  P2SPUText: {fileID: 683415214}
-  P3SPUText: {fileID: 205308575}
-  P4SPUText: {fileID: 116282507}
-  P5SPUText: {fileID: 771887945}
+  P1SPUText: {fileID: 0}
+  P2SPUText: {fileID: 0}
+  P3SPUText: {fileID: 0}
+  P4SPUText: {fileID: 0}
+  P5SPUText: {fileID: 0}
   P1PowerUpScreen: {fileID: 1172546300}
   P2PowerUpScreen: {fileID: 312740618}
   P3PowerUpScreen: {fileID: 2091339650}
@@ -44923,7 +44923,7 @@ RectTransform:
   - {fileID: 925095292}
   - {fileID: 595714478}
   m_Father: {fileID: 0}
-  m_RootOrder: 36
+  m_RootOrder: 35
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -46228,7 +46228,6 @@ MonoBehaviour:
   - {fileID: 554775924}
   - {fileID: 1641284249}
   title: {fileID: 0}
-  RandomRandomSPUText: {fileID: 0}
   AllRandomSPUText: {fileID: 0}
   AllSPUCurrText: {fileID: 0}
   AllSPULaserText: {fileID: 0}

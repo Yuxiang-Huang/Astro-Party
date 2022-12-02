@@ -7,10 +7,7 @@ public class AllSPUManager : MonoBehaviour
 {
     public List<GameObject> SPUPlayers;
 
-    GameManager gameManagerScript;
-
     public Text title;
-    public Text RandomRandomSPUText;
     public Text AllRandomSPUText;
     public Text AllSPUCurrText;
     public Text AllSPULaserText;
@@ -25,7 +22,7 @@ public class AllSPUManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
+
     }
 
     // Update is called once per frame
@@ -34,10 +31,10 @@ public class AllSPUManager : MonoBehaviour
 
     }
 
-    //public void setRandomAllSPU()
-    //{
-    //    setHelper("Random Starting PowerUp", RandomAllSPUText, id);
-    //}
+    public void setRandomAllSPU()
+    {
+        setHelper("Random Starting PowerUp", AllRandomSPUText);
+    }
 
     //public void setLaserAllSPU()
     //{
@@ -69,33 +66,13 @@ public class AllSPUManager : MonoBehaviour
     //    setHelper("Jouster", AllSPUJousterText, id);
     //}
 
-    void setHelper(string modeString, Text modeText, int id)
+    void setHelper(string modeString, Text modeText)
     {
-        foreach (GameObject ship in gameManagerScript.allShips)
+        if (modeString == "Random Starting PowerUp")
         {
-            MutualShip script = ship.GetComponent<MutualShip>();
-            if (script.id == id)
+            foreach (GameObject SPU in SPUPlayers)
             {
-                //to set last powerUpText off
-
-                if (script.shootMode == modeString)
-                {
-                    script.shootMode = "normal";
-                    modeText.text = modeString + ": Off";
-                    AllSPUCurrText = null;
-                }
-                else
-                {
-                    if (AllSPUCurrText != null)
-                    {
-                        AllSPUCurrText.text = script.shootMode + ": Off";
-                    }
-
-                    script.shootMode = modeString;
-                    modeText.text = modeString + ": On";
-
-                    AllSPUCurrText = modeText;
-                }
+                SPU.GetComponent<SPUManager>().setRandomSPU();
             }
         }
     }

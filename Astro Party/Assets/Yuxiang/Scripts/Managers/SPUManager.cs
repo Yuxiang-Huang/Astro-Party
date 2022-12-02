@@ -22,7 +22,7 @@ public class SPUManager : MonoBehaviour
     public Text SPUJousterText;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
         title.text = "P" + id + " Starting Power Up";
@@ -77,7 +77,6 @@ public class SPUManager : MonoBehaviour
             if (script.id == id)
             {
                 //to set last powerUpText off
-
                 if (script.shootMode == modeString)
                 {
                     script.shootMode = "normal";
