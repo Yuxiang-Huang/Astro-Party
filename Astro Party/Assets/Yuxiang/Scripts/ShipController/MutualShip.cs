@@ -290,8 +290,10 @@ public class MutualShip : MonoBehaviour
                     transform.Rotate(0, 360 / numOfShots, 0);
 
                     //setting the script varibles
-                    myBullet.GetComponent<BulletMove>().id = id;
-                    myBullet.GetComponent<BulletMove>().team = team;
+                    myBullet.GetComponent<Identification>().id = id;
+                    myBullet.GetComponent<Identification>().team = team;
+
+                    print(myBullet.GetComponent<BulletMove>().id);
 
                     gameManagerScript.needToClear.Add(myBullet);
                 }
@@ -423,11 +425,12 @@ public class MutualShip : MonoBehaviour
  
     IEnumerator laserFreeze()
     {
+        //freeze a few
         playerRb.constraints = RigidbodyConstraints.FreezeAll;
         yield return new WaitForSeconds(0.3f);
         playerRb.constraints = RigidbodyConstraints.FreezeRotation;
 
-        //not for bot
+        //opposite force not for bot
         if (GetComponent<PlayerController>() != null)
         {
             playerRb.AddRelativeForce(new Vector3(0, 0, -speed * 30), ForceMode.Force);
@@ -438,6 +441,7 @@ public class MutualShip : MonoBehaviour
     {
         speed += speedBoostInt;
 
+        //for player
         if (GetComponent<PlayerController>() != null)
         {
             GetComponent<PlayerController>().speed += speedBoostInt;
@@ -449,6 +453,7 @@ public class MutualShip : MonoBehaviour
             GetComponent<PlayerController>().maxVelocity -= speedBoostInt;
         }
 
+        //for Bot
         if (GetComponent<BotMove>() != null)
         {
             GetComponent<NavMeshAgent>().speed += speedBoostInt;
@@ -458,6 +463,7 @@ public class MutualShip : MonoBehaviour
             GetComponent<NavMeshAgent>().speed -= speedBoostInt;
         }
 
+        //for Bot 1
         if (GetComponent<BotMove1>() != null)
         {
             GetComponent<BotMove1>().speed += speedBoostInt;

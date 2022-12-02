@@ -143,7 +143,7 @@ public class HighlightModeManager : MonoBehaviour
                         {
                             //set crown pos
                             pos = crownPic.transform.position;
-                            crownPic.transform.position = new Vector3(pos.x, startCrownY + i * len, pos.y);
+                            crownPic.transform.position = new Vector3(pos.x, startCrownY + i * len, pos.z);
                         }
                     }
                 }
