@@ -5,12 +5,13 @@ using UnityEngine.UI;
 
 public class AllSPUManager : MonoBehaviour
 {
-    public List<GameObject> playerAllSPU;
+    public List<GameObject> SPUPlayers;
 
     GameManager gameManagerScript;
 
     public Text title;
-    public Text AllRandomAllSPUText;
+    public Text RandomRandomSPUText;
+    public Text AllRandomSPUText;
     public Text AllSPUCurrText;
     public Text AllSPULaserText;
     public Text AllSPUScatterText;
