@@ -69,15 +69,69 @@ public class AllSPUManager : MonoBehaviour
 
     void setHelper(string modeString)
     {
+        Dictionary<string, Text> textToUse = new Dictionary<string, Text>();
+
         if (modeString == "Random Starting PowerUp")
         {
-            
+            foreach (GameObject SPU in SPUPlayers)
+            {
+                SPUManager script = SPU.GetComponent<SPUManager>();
+                script.setOnHelper(modeString, script.RandomSPUText, script.id);
+            }
         }
 
-        foreach (GameObject SPU in SPUPlayers)
+        else if (modeString == "Laser Beam")
         {
-            SPUManager script = SPU.GetComponent<SPUManager>();
-            script.setOnHelper(modeString, script.RandomSPUText, script.id);
+            foreach (GameObject SPU in SPUPlayers)
+            {
+                SPUManager script = SPU.GetComponent<SPUManager>();
+                script.setOnHelper(modeString, script.SPULaserText, script.id);
+            }
+        }
+
+        else if (modeString == "Scatter Shot")
+        {
+            foreach (GameObject SPU in SPUPlayers)
+            {
+                SPUManager script = SPU.GetComponent<SPUManager>();
+                script.setOnHelper(modeString, script.SPUScatterText, script.id);
+            }
+        }
+
+        else if (modeString == "Freezer")
+        {
+            foreach (GameObject SPU in SPUPlayers)
+            {
+                SPUManager script = SPU.GetComponent<SPUManager>();
+                script.setOnHelper(modeString, script.SPUFreezerText, script.id);
+            }
+        }
+
+        else if (modeString == "Proximity Mine")
+        {
+            foreach (GameObject SPU in SPUPlayers)
+            {
+                SPUManager script = SPU.GetComponent<SPUManager>();
+                script.setOnHelper(modeString, script.SPUMineText, script.id);
+            }
+        }
+
+        else if (modeString == "Bouncy Bullet")
+        {
+            foreach (GameObject SPU in SPUPlayers)
+            {
+                SPUManager script = SPU.GetComponent<SPUManager>();
+                script.setOnHelper(modeString, script.SPUBBText, script.id);
+            }
+        }
+
+        else if (modeString == "Jouster")
+        {
+            foreach (GameObject SPU in SPUPlayers)
+            {
+                SPUManager script = SPU.GetComponent<SPUManager>();
+                script.setOnHelper(modeString, script.SPUJousterText, script.id);
+            }
         }
     }
 
