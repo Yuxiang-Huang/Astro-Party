@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     PowerUpManager powerUpManagerScript;
     ScreenManager screenManagerScript;
     CameraManager cameraMangerScript;
-    HighlightModeManager highlightModeManagerScript;
+    public HighlightModeManager highlightModeManagerScript;
 
     public GameObject nextButton;
 

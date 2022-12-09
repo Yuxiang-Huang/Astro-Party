@@ -293,8 +293,6 @@ public class MutualShip : MonoBehaviour
                     myBullet.GetComponent<Identification>().id = id;
                     myBullet.GetComponent<Identification>().team = team;
 
-                    print(myBullet.GetComponent<BulletMove>().id);
-
                     gameManagerScript.needToClear.Add(myBullet);
                 }
 
@@ -693,7 +691,8 @@ public class MutualShip : MonoBehaviour
         if (other.gameObject.CompareTag("Crown"))
         {
             highlighed = true;
-            Destroy(other.gameObject);
+            Destroy(other.transform.parent.gameObject);
+            gameManagerScript.highlightModeManagerScript.inGameCrown = null;
         }
     }
 }

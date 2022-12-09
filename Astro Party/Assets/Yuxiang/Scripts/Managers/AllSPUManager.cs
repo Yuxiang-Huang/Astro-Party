@@ -71,11 +71,13 @@ public class AllSPUManager : MonoBehaviour
     {
         if (modeString == "Random Starting PowerUp")
         {
-            foreach (GameObject SPU in SPUPlayers)
-            {
-                SPUManager script = SPU.GetComponent<SPUManager>();
-                script.setOnHelper(modeString, script.RandomSPUText, script.id);
-            }
+            
+        }
+
+        foreach (GameObject SPU in SPUPlayers)
+        {
+            SPUManager script = SPU.GetComponent<SPUManager>();
+            script.setOnHelper(modeString, script.RandomSPUText, script.id);
         }
     }
 
