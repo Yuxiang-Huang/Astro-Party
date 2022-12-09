@@ -7,19 +7,18 @@ public class AllSPUManager : MonoBehaviour
 {
     public List<GameObject> SPUPlayers;
 
-    string currMode;
+    //string currMode;
 
-    public Text title;
-    public Text AllRandomSPUText;
-    public Text AllSPUCurrText;
-    public Text AllSPULaserText;
-    public Text AllSPUScatterText;
-    public Text AllSPUTripleText;
-    public Text AllSPUFreezerText;
-    public Text AllSPUShieldText;
-    public Text AllSPUMineText;
-    public Text AllSPUBBText;
-    public Text AllSPUJousterText;
+    //public Text title;
+    //public Text AllRandomSPUText;
+    //public Text AllSPULaserText;
+    //public Text AllSPUScatterText;
+    //public Text AllSPUTripleText;
+    //public Text AllSPUFreezerText;
+    //public Text AllSPUShieldText;
+    //public Text AllSPUMineText;
+    //public Text AllSPUBBText;
+    //public Text AllSPUJousterText;
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +34,7 @@ public class AllSPUManager : MonoBehaviour
 
     public void setRandomAllSPU()
     {
-        setHelper("Random Starting PowerUp", AllRandomSPUText);
+        setHelper("Random Starting PowerUp");
     }
 
     //public void setLaserAllSPU()
@@ -68,27 +67,14 @@ public class AllSPUManager : MonoBehaviour
     //    setHelper("Jouster", AllSPUJousterText, id);
     //}
 
-    void setHelper(string modeString, Text modeText)
+    void setHelper(string modeString)
     {
-        //to set last powerUpText off
-        if (AllSPUCurrText != null)
-        {
-            modeText.text = modeString + ": Off";
-            AllSPUCurrText = null;
-        }
-        else
-        {
-            AllSPUCurrText.text = currMode + ": Off";
-            modeText.text = modeString + ": On";
-
-            AllSPUCurrText = modeText;
-        }
-
         if (modeString == "Random Starting PowerUp")
         {
             foreach (GameObject SPU in SPUPlayers)
             {
-                SPU.GetComponent<SPUManager>().setRandomSPU();
+                SPUManager script = SPU.GetComponent<SPUManager>();
+                script.setOnHelper(modeString, script.RandomSPUText, script.id);
             }
         }
     }

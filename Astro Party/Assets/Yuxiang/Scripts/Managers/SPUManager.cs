@@ -83,18 +83,50 @@ public class SPUManager : MonoBehaviour
                     modeText.text = modeString + ": Off";
                     SPUCurrText = null;
                 }
+                //set script powerup
                 else
                 {
                     if (SPUCurrText != null)
                     {
+                        //set last one off
                         SPUCurrText.text = script.shootMode + ": Off";
                     }
 
+                    //update script
                     script.shootMode = modeString;
+
+                    //update modetext
                     modeText.text = modeString + ": On";
 
+                    //update current
                     SPUCurrText = modeText;
                 }
+            }
+        }
+    }
+
+    public void setOnHelper(string modeString, Text modeText, int id)
+    {
+        foreach (GameObject ship in gameManagerScript.allShips)
+        {
+            MutualShip script = ship.GetComponent<MutualShip>();
+            //find the ship
+            if (script.id == id)
+            {
+                if (SPUCurrText != null)
+                {
+                    //set last one off
+                    SPUCurrText.text = script.shootMode + ": Off";
+                }
+
+                //update script
+                script.shootMode = modeString;
+
+                //update modetext
+                modeText.text = modeString + ": On";
+
+                //update current
+                SPUCurrText = modeText;
             }
         }
     }

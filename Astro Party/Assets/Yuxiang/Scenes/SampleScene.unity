@@ -502,9 +502,9 @@ RectTransform:
   m_Father: {fileID: 1859962660}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 755, y: -80}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -50, y: -80}
   m_SizeDelta: {x: 75, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &19630255
@@ -6322,7 +6322,7 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 0.64705884, b: 0, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 1, g: 0.64705884, b: 0, a: 1}
+    m_PressedColor: {r: 0, g: 0, b: 0, a: 1}
     m_SelectedColor: {r: 1, g: 0.64705884, b: 0, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -7209,7 +7209,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Jouster: Off'
+  m_Text: Jouster
 --- !u!222 &306994808
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12110,7 +12110,7 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 0.64705884, b: 0, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 1, g: 0.64705884, b: 0, a: 1}
+    m_PressedColor: {r: 0, g: 0, b: 0, a: 1}
     m_SelectedColor: {r: 1, g: 0.64705884, b: 0, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -18056,7 +18056,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Laser Beam: Off'
+  m_Text: Laser Beam
 --- !u!222 &738712583
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -25615,7 +25615,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Scatter Shot: Off'
+  m_Text: Scatter Shot
 --- !u!222 &1053047859
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -27804,7 +27804,7 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 0.64705884, b: 0, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 1, g: 0.64705884, b: 0, a: 1}
+    m_PressedColor: {r: 0, g: 0, b: 0, a: 1}
     m_SelectedColor: {r: 1, g: 0.64705884, b: 0, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -30044,7 +30044,7 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 0.64705884, b: 0, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 1, g: 0.64705884, b: 0, a: 1}
+    m_PressedColor: {r: 0, g: 0, b: 0, a: 1}
     m_SelectedColor: {r: 1, g: 0.64705884, b: 0, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -34378,7 +34378,7 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 0.64705884, b: 0, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 1, g: 0.64705884, b: 0, a: 1}
+    m_PressedColor: {r: 0, g: 0, b: 0, a: 1}
     m_SelectedColor: {r: 1, g: 0.64705884, b: 0, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -35808,7 +35808,7 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 0.64705884, b: 0, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 1, g: 0.64705884, b: 0, a: 1}
+    m_PressedColor: {r: 0, g: 0, b: 0, a: 1}
     m_SelectedColor: {r: 1, g: 0.64705884, b: 0, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -37742,7 +37742,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 21
+    m_FontSize: 24
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -37753,7 +37753,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Random Starting PowerUp: Off'
+  m_Text: Random Starting PowerUp
 --- !u!222 &1484203334
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -39028,7 +39028,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Shield: Off'
+  m_Text: Shield
 --- !u!222 &1582119199
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -39805,7 +39805,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Freezer: Off'
+  m_Text: Freezer
 --- !u!222 &1627598853
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -40028,7 +40028,7 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 0.64705884, b: 0, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 1, g: 0.64705884, b: 0, a: 1}
+    m_PressedColor: {r: 0, g: 0, b: 0, a: 1}
     m_SelectedColor: {r: 1, g: 0.64705884, b: 0, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -40577,7 +40577,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Triple Shot: Off'
+  m_Text: Triple Shot
 --- !u!222 &1657758549
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -42408,7 +42408,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Bouncy Bullet: Off'
+  m_Text: Bouncy Bullet
 --- !u!222 &1742176477
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -43442,7 +43442,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Proximity Mine: Off'
+  m_Text: Proximity Mine
 --- !u!222 &1797502745
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -46227,17 +46227,6 @@ MonoBehaviour:
   - {fileID: 2091339650}
   - {fileID: 554775924}
   - {fileID: 1641284249}
-  title: {fileID: 0}
-  AllRandomSPUText: {fileID: 0}
-  AllSPUCurrText: {fileID: 0}
-  AllSPULaserText: {fileID: 0}
-  AllSPUScatterText: {fileID: 0}
-  AllSPUTripleText: {fileID: 0}
-  AllSPUFreezerText: {fileID: 0}
-  AllSPUShieldText: {fileID: 0}
-  AllSPUMineText: {fileID: 0}
-  AllSPUBBText: {fileID: 0}
-  AllSPUJousterText: {fileID: 0}
 --- !u!114 &1925715358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50244,7 +50233,7 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 0.64705884, b: 0, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 1, g: 0.64705884, b: 0, a: 1}
+    m_PressedColor: {r: 0, g: 0, b: 0, a: 1}
     m_SelectedColor: {r: 1, g: 0.64705884, b: 0, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -51301,7 +51290,7 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 0.64705884, b: 0, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 1, g: 0.64705884, b: 0, a: 1}
+    m_PressedColor: {r: 0, g: 0, b: 0, a: 1}
     m_SelectedColor: {r: 1, g: 0.64705884, b: 0, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
