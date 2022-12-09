@@ -7,6 +7,8 @@ public class AllSPUManager : MonoBehaviour
 {
     public List<GameObject> SPUPlayers;
 
+    string currMode;
+
     public Text title;
     public Text AllRandomSPUText;
     public Text AllSPUCurrText;
@@ -68,6 +70,20 @@ public class AllSPUManager : MonoBehaviour
 
     void setHelper(string modeString, Text modeText)
     {
+        //to set last powerUpText off
+        if (AllSPUCurrText != null)
+        {
+            modeText.text = modeString + ": Off";
+            AllSPUCurrText = null;
+        }
+        else
+        {
+            AllSPUCurrText.text = currMode + ": Off";
+            modeText.text = modeString + ": On";
+
+            AllSPUCurrText = modeText;
+        }
+
         if (modeString == "Random Starting PowerUp")
         {
             foreach (GameObject SPU in SPUPlayers)
