@@ -12212,9 +12212,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1925715356}
-        m_TargetAssemblyTypeName: SPUManager, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 1925715357}
+        m_TargetAssemblyTypeName: AllSPUManager, Assembly-CSharp
+        m_MethodName: setTripleAllSPU
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -27906,9 +27906,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1925715356}
-        m_TargetAssemblyTypeName: SPUManager, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 1925715357}
+        m_TargetAssemblyTypeName: AllSPUManager, Assembly-CSharp
+        m_MethodName: setJousterAllSPU
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -28287,6 +28287,7 @@ MonoBehaviour:
   inGameIndicators: []
   inGameAsteroids: []
   needToClear: []
+  highlightModeManagerScript: {fileID: 0}
   nextButton: {fileID: 1505796206}
   playerShip: {fileID: 6525305646514065557, guid: 7c0419a36677d4cb6886c0454ffb6615, type: 3}
   botShip: {fileID: 929155996236426145, guid: ab8e0b32f0a374f799dfc66ac9162a6f, type: 3}
@@ -30146,9 +30147,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1925715356}
-        m_TargetAssemblyTypeName: SPUManager, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 1925715357}
+        m_TargetAssemblyTypeName: AllSPUManager, Assembly-CSharp
+        m_MethodName: setFreezerAllSPU
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -34613,9 +34614,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1925715356}
-        m_TargetAssemblyTypeName: SPUManager, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 1925715357}
+        m_TargetAssemblyTypeName: AllSPUManager, Assembly-CSharp
+        m_MethodName: setMineAllSPU
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -36043,9 +36044,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1925715356}
-        m_TargetAssemblyTypeName: SPUManager, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 1925715357}
+        m_TargetAssemblyTypeName: AllSPUManager, Assembly-CSharp
+        m_MethodName: setScatterAllSPU
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -40263,9 +40264,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1925715356}
-        m_TargetAssemblyTypeName: SPUManager, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 1925715357}
+        m_TargetAssemblyTypeName: AllSPUManager, Assembly-CSharp
+        m_MethodName: setBBAllSPU
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -50469,9 +50470,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1925715356}
-        m_TargetAssemblyTypeName: SPUManager, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 1925715357}
+        m_TargetAssemblyTypeName: AllSPUManager, Assembly-CSharp
+        m_MethodName: setShieldAllSPU
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -51526,9 +51527,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1925715356}
-        m_TargetAssemblyTypeName: SPUManager, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 1925715357}
+        m_TargetAssemblyTypeName: AllSPUManager, Assembly-CSharp
+        m_MethodName: setLaserAllSPU
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
