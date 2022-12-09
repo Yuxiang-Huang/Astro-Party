@@ -50,10 +50,6 @@ public class ControlManager : MonoBehaviour
         shipPlayer.GetComponent<MutualShip>().id = id;
         shipPlayer.SetActive(false);
 
-        gameManagerScript.allShips.Add(shipBot);
-        gameManagerScript.allShips.Add(shipBot1);
-        gameManagerScript.allShips.Add(shipPlayer);
-
         //button color
         Color c = new Color(0, 0, 255);
 

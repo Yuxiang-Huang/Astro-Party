@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public List<GameObject> allShips;
     public List<List<GameObject>> ships;
     public List<List<GameObject>> inGameShips;
     public List<GameObject> inGameIndicators;

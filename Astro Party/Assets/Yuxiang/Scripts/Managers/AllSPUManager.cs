@@ -120,4 +120,29 @@ public class AllSPUManager : MonoBehaviour
             }
         }
     }
+
+    public void SPUAllOff()
+    {
+        foreach (List<GameObject> shipList in gameManagerScript.ships)
+        {
+            foreach (GameObject ship in shipList)
+            {
+                MutualShip script = ship.GetComponent<MutualShip>();
+                if (script.shootMode != "normal")
+                {
+                    foreach (GameObject SPU in SPUPlayers)
+                    {
+                        SPUManager SPUScript = SPU.GetComponent<SPUManager>();
+                        if (SPUScript.id == script.id)
+                        {
+                            SPUScript.SPUCurrText.text = script.shootMode + ": Off";
+                        }
+                    }
+                    script.shootMode = "normal";
+                    script.hasShield = false;
+                    script.tripleShot = false;
+                }    
+            }
+        }
+    }
 }
