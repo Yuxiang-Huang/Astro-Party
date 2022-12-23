@@ -137,8 +137,8 @@ public class AllSPUManager : MonoBehaviour
                         if (SPUScript.id == script.id)
                         {
                             SPUScript.SPUCurrText.text = script.shootMode + ": Off";
+                            SPUScript.SPUCurrText = null;
                         }
-                        SPUScript.SPUCurrText = null;
                     }
                     script.shootMode = "normal";
                     script.hasShield = false;
@@ -147,6 +147,7 @@ public class AllSPUManager : MonoBehaviour
             }
         }
 
+        //switch text of triple and shield to off
         foreach (GameObject SPU in SPUPlayers)
         {
             SPUManager SPUScript = SPU.GetComponent<SPUManager>();
