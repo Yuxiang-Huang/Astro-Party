@@ -28283,7 +28283,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1825dd4e2df5479783b49cfaa86347f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allShips: []
   inGameIndicators: []
   inGameAsteroids: []
   needToClear: []
@@ -30280,9 +30279,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1925715356}
-        m_TargetAssemblyTypeName: SPUManager, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 1925715357}
+        m_TargetAssemblyTypeName: AllSPUManager, Assembly-CSharp
+        m_MethodName: SPUAllOff
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -38917,11 +38916,11 @@ MonoBehaviour:
   powerUpScreen: {fileID: 1859962656}
   AllSPUScreen: {fileID: 1925715356}
   SPUScreen: {fileID: 466708193}
-  P1SPUText: {fileID: 0}
-  P2SPUText: {fileID: 0}
-  P3SPUText: {fileID: 0}
-  P4SPUText: {fileID: 0}
-  P5SPUText: {fileID: 0}
+  P1SPUText: {fileID: 590924024}
+  P2SPUText: {fileID: 683415214}
+  P3SPUText: {fileID: 205308575}
+  P4SPUText: {fileID: 116282507}
+  P5SPUText: {fileID: 771887945}
   P1PowerUpScreen: {fileID: 1172546300}
   P2PowerUpScreen: {fileID: 312740618}
   P3PowerUpScreen: {fileID: 2091339650}

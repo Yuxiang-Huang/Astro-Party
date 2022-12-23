@@ -43,7 +43,7 @@ MonoBehaviour:
     width: 1440
     height: 810
   m_ShowMode: 4
-  m_Title: Scene
+  m_Title: Game
   m_RootView: {fileID: 5}
   m_MinSize: {x: 875, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
@@ -67,8 +67,8 @@ MonoBehaviour:
     y: 0
     width: 801
     height: 423
-  m_MinSize: {x: 100, y: 121}
-  m_MaxSize: {x: 4000, y: 4021}
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -97,7 +97,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 121}
   m_MaxSize: {x: 4000, y: 4021}
   vertical: 0
-  controlID: 373
+  controlID: 300
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -197,7 +197,7 @@ MonoBehaviour:
   m_MinSize: {x: 709, y: 492}
   m_MaxSize: {x: 18004, y: 14042}
   vertical: 0
-  controlID: 5140
+  controlID: 89
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -222,7 +222,7 @@ MonoBehaviour:
   m_MinSize: {x: 201, y: 442}
   m_MaxSize: {x: 4001, y: 8042}
   vertical: 1
-  controlID: 5141
+  controlID: 16
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -299,7 +299,7 @@ MonoBehaviour:
   m_MinSize: {x: 232, y: 492}
   m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
-  controlID: 5076
+  controlID: 90
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -528,9 +528,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 1757, y: 721, z: 0}
+    m_Target: {x: 0, y: 0.25718552, z: 0}
     speed: 2
-    m_Value: {x: 1757, y: 721, z: 0}
+    m_Value: {x: 0, y: 0.25718552, z: 0}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -577,13 +577,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.060078807, y: 0.15951647, z: -0.009726786, w: 0.98532456}
+    m_Target: {x: 0.28817302, y: 0.12451278, z: -0.037822906, w: 0.94870234}
     speed: 2
-    m_Value: {x: 0.060078386, y: 0.15951535, z: -0.009726718, w: 0.98531765}
+    m_Value: {x: 0.28817102, y: 0.12451191, z: -0.037822645, w: 0.9486958}
   m_Size:
-    m_Target: 1129.662
+    m_Target: 66.66289
     speed: 2
-    m_Value: 1129.662
+    m_Value: 66.66289
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -635,10 +635,10 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 501}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: b6ddfcff68fbffff2645000040520000
+      scrollPos: {x: 0, y: 619}
+      m_SelectedIDs: 684b0000
+      m_LastClickedID: 19304
+      m_ExpandedIDs: b82afeff6cfbfffff8500000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -699,7 +699,8 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SkipHidden: 0
     m_SearchArea: 1
-    m_Folders: []
+    m_Folders:
+    - Assets
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 0
@@ -713,7 +714,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 0c580000
     m_LastClickedID: 22540
-    m_ExpandedIDs: ffffffff000000007c5500008489000086890000888900008a8900008c8900008e890000908900009289000096890000988900009c8900009e890000a0890000a2890000a4890000a6890000a8890000aa890000b0890000b6890000ba890000bc890000be890000c0890000c6890000
+    m_ExpandedIDs: 0000000022560000328a0000348a0000368a0000388a00003a8a00003c8a00003e8a0000408a0000428a0000448a0000468a0000488a00004a8a00004c8a00004e8a0000508a0000528a0000548a0000568a0000588a00005a8a00005c8a00005e8a0000608a0000628a0000648a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -738,10 +739,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_AssetTreeState:
-    scrollPos: {x: 0, y: 294.99854}
+    scrollPos: {x: 0, y: 250}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff000000007c5500008489000086890000888900008a8900008c8900008e890000908900009289000096890000988900009c8900009e890000a0890000a2890000a4890000a6890000a8890000aa890000b0890000b6890000b8890000ba890000bc890000be890000c0890000c6890000
+    m_ExpandedIDs: ffffffff0000000022560000328a0000348a0000368a0000388a00003a8a00003c8a00003e8a0000408a0000428a0000448a0000468a0000488a00004a8a00004c8a00004e8a0000508a0000528a0000548a0000568a0000588a00005c8a00005e8a0000608a0000628a0000648a0000908a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
