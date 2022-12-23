@@ -9,19 +9,6 @@ public class AllSPUManager : MonoBehaviour
 
     GameManager gameManagerScript;
 
-    //string currMode;
-
-    //public Text title;
-    //public Text AllRandomSPUText;
-    //public Text AllSPULaserText;
-    //public Text AllSPUScatterText;
-    //public Text AllSPUTripleText;
-    //public Text AllSPUFreezerText;
-    //public Text AllSPUShieldText;
-    //public Text AllSPUMineText;
-    //public Text AllSPUBBText;
-    //public Text AllSPUJousterText;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -107,6 +94,12 @@ public class AllSPUManager : MonoBehaviour
                 script.tripleShot = true;
             }
         }
+
+        foreach (GameObject SPU in SPUPlayers)
+        {
+            SPUManager SPUScript = SPU.GetComponent<SPUManager>();
+            SPUScript.SPUTripleText.text = "Triple Shot: On";
+        }
     }
 
     public void setShieldAllSPU()
@@ -119,10 +112,17 @@ public class AllSPUManager : MonoBehaviour
                 script.hasShield = true;
             }
         }
+
+        foreach (GameObject SPU in SPUPlayers)
+        {
+            SPUManager SPUScript = SPU.GetComponent<SPUManager>();
+            SPUScript.SPUShieldText.text = "Shield: On";
+        }
     }
 
     public void SPUAllOff()
     {
+        //for every ship
         foreach (List<GameObject> shipList in gameManagerScript.ships)
         {
             foreach (GameObject ship in shipList)
@@ -130,6 +130,7 @@ public class AllSPUManager : MonoBehaviour
                 MutualShip script = ship.GetComponent<MutualShip>();
                 if (script.shootMode != "normal")
                 {
+                    //check every SPU Manager
                     foreach (GameObject SPU in SPUPlayers)
                     {
                         SPUManager SPUScript = SPU.GetComponent<SPUManager>();
@@ -137,12 +138,20 @@ public class AllSPUManager : MonoBehaviour
                         {
                             SPUScript.SPUCurrText.text = script.shootMode + ": Off";
                         }
+                        SPUScript.SPUCurrText = null;
                     }
                     script.shootMode = "normal";
                     script.hasShield = false;
                     script.tripleShot = false;
                 }    
             }
+        }
+
+        foreach (GameObject SPU in SPUPlayers)
+        {
+            SPUManager SPUScript = SPU.GetComponent<SPUManager>();
+            SPUScript.SPUTripleText.text = "Triple Shot: Off";
+            SPUScript.SPUShieldText.text = "Shield: Off";
         }
     }
 }
